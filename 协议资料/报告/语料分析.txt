@@ -1,0 +1,129 @@
+======================================================================
+梦想世界 script.fls 解密语料 —— 分析
+======================================================================
+
+脚本文件数        : 484
+总字节            : 11,769,080
+code object 总数  : 20,781
+函数总数          : 8,672
+字符串常量总数    : 77,883
+
+--- 目录分布 ---
+  dialog        208 个    4,103,715 字节
+  (根)           140 个    2,305,994 字节
+  data           80 个    4,575,168 字节
+  lib            24 个      258,273 字节
+  login          17 个      226,836 字节
+  core           11 个      205,475 字节
+  audio           2 个       29,650 字节
+  avatar          2 个       63,969 字节
+
+--- 最大的 20 个脚本 ---
+  1,059,589     4 code  data/tool_lycos_new.py
+  1,004,400    11 code  data/itemdata.py
+   544,677     2 code  data/tool_lycos.py
+   390,000  1881 code  dialog/dlgdreamblog.py
+   183,794   649 code  dialog/dlggroup.py
+   170,376     3 code  data/magicdata.py
+   141,113     2 code  data/emote_data.py
+   126,688     1 code  data/itemsounddata.py
+   120,675    10 code  data/achieve.py
+   103,544     2 code  data/pizza.py
+   100,763   403 code  interface.py
+    97,452     2 code  data/newsdata.py
+    94,260   267 code  warui.py
+    91,584   207 code  dialog/dlgsale.py
+    87,273     2 code  data/titledata.py
+    85,437   225 code  dialog/dlgitembill.py
+    83,222   190 code  netopenui.py
+    80,476   218 code  card_game.py
+    80,275   332 code  wrapinterface.py
+    75,576   184 code  dialog/dlgmap.py
+
+--- 函数名 Top 40（跨模块） ---
+   188  OnMessage
+    98  Show
+    86  Enter
+    83  Leave
+    80  CloseWindow
+    62  RightUp
+    51  GetData
+    39  <lambda>
+    37  LeftUp
+    33  OnEnter
+    33  __init__
+    32  OnLeave
+    30  MsgEnter
+    29  ShowSwitch
+    28  Refresh
+    26  _OK
+    20  OnSelect
+    20  OnButtonEnter
+    20  OnButtonLeave
+    18  LeftDown
+    16  Hold
+    16  DoBuy
+    15  OnHotBoxClick
+    11  Timer
+    11  CSetDirection
+    11  SetCheck
+    11  Switch
+    11  ShowDesc
+    10  __del__
+    10  domake
+    10  IsSelected
+    10  SetSelect
+    10  Select
+     9  Clear
+     9  OnItemLeave
+     9  SetData
+     9  OnItemEnter
+     9  IsValidTxt
+     9  BarChange
+     9  OnHand
+
+--- 出现最多的标识符 Top 40（近似 import/属性热点） ---
+   2545  None
+   1865  interface
+   1772  __init__
+   1232  True
+   1207  False
+   1136  C_object
+   1076  __name__
+   1013  net
+    983  __module__
+    941  len
+    920  g_Net
+    871  SetPos
+    830  combdialog
+    824  SetShow
+    802  range
+    765  DialogPanel
+    740  SimpleXml
+    734  CCombDialog
+    721  GetObject
+    706  append
+    680  PacketAddI
+    674  InsertXmlSearchCondition
+    665  PacketPrepare
+    631  a20
+    630  hero
+    599  hasattr
+    592  combmacro
+    574  GetPos
+    574  CTextObject
+    573  Center
+    562  GetSize
+    557  <code '_joinarrdn' file='script\\dialog\\dlgdreamblog.py' line=548>
+    547  int
+    512  PacketSend
+    501  GetParent
+    497  wrapinterface
+    462  CImagesObject
+    461  FontID14
+    460  Enable
+    459  get
+
+--- 中文字符串 ---
+  含中文的文件: 372
+  中文字符串数: 48,502

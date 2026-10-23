@@ -1,0 +1,184 @@
+==============================================================================
+ 一键回归：51 个步骤
+==============================================================================
+
+── ① 协议对账 ──
+  ▶ 线序对账 _extract_wire --audit …
+    PASS（0.1s）
+  ▶ build_*↔OVERLAY 审计 …
+    PASS（0.3s）
+  ▶ 上行覆盖率 _c2s_coverage …
+    PASS（1.7s）
+
+── ② 分派契约 / 数据层 ──
+  ▶ 硬约束 #5/#16/#17 _test_hard_constraints …
+    PASS（0.5s）
+  ▶ 分派契约 _test_dispatch …
+    PASS（0.7s）
+  ▶ 物伤公式 _test_damage …
+    PASS（0.1s）
+  ▶ 玩家招式 _test_hero_magic …
+    PASS（0.3s）
+  ▶ 宠物招式 _test_pet_skill …
+    PASS（0.4s）
+  ▶ 默认模型守护 _test_dmg_default_model …
+    PASS（0.3s）
+  ▶ 时间双通道 _test_time_channels …
+    PASS（0.6s）
+  ▶ STATS 格式契约 _stats --self-test …
+    PASS（0.1s）
+  ▶ 真机端口一致性 _test_live_port_sync …
+    PASS（0.2s）
+  ▶ 客户端解码对照 _test_client_decode …
+    PASS（0.2s）
+  ▶ 覆盖表解码 _test_tap …
+    PASS（15.8s）
+  ▶ 真实链路标红 _test_war_chain …
+    PASS（1.8s）
+  ▶ 世界编辑器 _test_editor …
+    PASS（9.3s）
+  ▶ 地图全图 _test_map …
+    PASS（0.6s）
+  ▶ 场景遇怪 _test_encounter_map …
+    PASS（0.2s）
+  ▶ 主线 1–3 _test_quest_chain …
+    PASS（1.1s）
+  ▶ 老角色重登 _test_returning_login …
+    PASS（0.2s）
+  ▶ 制作链·真扣费 _test_craft …
+    PASS（0.4s）
+  ▶ 事件总线·帧批合并 _test_bus …
+    PASS（12.2s）
+  ▶ 排序稳定 _test_speed_stability …
+    PASS（0.2s）
+  ▶ 宠物实例 _test_pet_instance …
+    PASS（0.3s）
+  ▶ 主线剧情4-6 _test_quest_story4 …
+    PASS（1.2s）
+  ▶ 战斗全链路 _test_battle_flow …
+    PASS（0.2s）
+  ▶ 战斗核心 _test_battle_core …
+    PASS（0.2s）
+  ▶ 系统设置 _test_sysopt …
+    PASS（0.2s）
+  ▶ 内容扩充 _test_content …
+    PASS（0.2s）
+  ▶ 存档锁 _test_save_lock …
+    PASS（3.4s）
+  ▶ 存档增量·异步 _test_save_async …
+    PASS（3.0s）
+  ▶ 优雅停止 _test_server_stop …
+    PASS（0.6s）
+  ▶ GM 面板状态 _test_gm_web_state …
+    PASS（2.1s）
+  ▶ Web 端口冲突 _test_web_port_conflict …
+    PASS（1.4s）
+  ▶ 端口回填 _test_port_backfill …
+    PASS（1.3s）
+  ▶ 循环解码 _test_loop_decode …
+    PASS（0.4s）
+  ▶ 丢帧计数 _test_drop_count …
+    PASS（0.3s）
+  ▶ 热加载 _test_world_config_reload …
+    PASS（0.5s）
+  ▶ 特性状态 _test_feature_status …
+    PASS（1.3s）
+  ▶ 变异·规范化守护 _test_mutation_normalize …
+    PASS（0.9s）
+  ▶ schema 迁移 _test_schema_migration …
+    PASS（0.2s）
+
+── ③ socket 冒烟 ──
+  ▶ 冒烟 _e2e_m4（战斗基础） …
+    PASS（1.2s）
+  ▶ 冒烟 _e2e_m5（战败/6敌） …
+    PASS（2.4s）
+  ▶ 冒烟 _e2e_m7（招式/会心） …
+    PASS（0.7s）
+  ▶ 冒烟 _e2e_m9（养成闭环） …
+    PASS（12.7s）
+  ▶ 冒烟 _e2e_m11（op100/101） …
+    PASS（4.8s）
+  ▶ 冒烟 _test_war2（战斗深化·自带内核） …
+    PASS（14.6s）
+  ▶ 覆盖统计 coverage_smoke …
+    PASS（94.4s）
+
+── ④ 文档体检 ──
+  ▶ 分册同步 _split_docs --check …
+    PASS（0.1s）
+  ▶ 跨文件扫描 _test_anchor_multifile …
+    PASS（0.1s）
+  ▶ 文档三向体检 _check_anchors（主文档 + docs/） …
+    PASS（3.0s）
+
+==============================================================================
+ 汇总
+==============================================================================
+  PASS      0.1s  线序对账 _extract_wire --audit
+  PASS      0.3s  build_*↔OVERLAY 审计
+  PASS      1.7s  上行覆盖率 _c2s_coverage
+  PASS      0.5s  硬约束 #5/#16/#17 _test_hard_constraints
+  PASS      0.7s  分派契约 _test_dispatch
+  PASS      0.1s  物伤公式 _test_damage
+  PASS      0.3s  玩家招式 _test_hero_magic
+  PASS      0.4s  宠物招式 _test_pet_skill
+  PASS      0.3s  默认模型守护 _test_dmg_default_model
+  PASS      0.6s  时间双通道 _test_time_channels
+  PASS      0.1s  STATS 格式契约 _stats --self-test
+  PASS      0.2s  真机端口一致性 _test_live_port_sync
+  PASS      0.2s  客户端解码对照 _test_client_decode
+  PASS     15.8s  覆盖表解码 _test_tap
+  PASS      1.8s  真实链路标红 _test_war_chain
+  PASS      9.3s  世界编辑器 _test_editor
+  PASS      0.6s  地图全图 _test_map
+  PASS      0.2s  场景遇怪 _test_encounter_map
+  PASS      1.1s  主线 1–3 _test_quest_chain
+  PASS      0.2s  老角色重登 _test_returning_login
+  PASS      0.4s  制作链·真扣费 _test_craft
+  PASS     12.2s  事件总线·帧批合并 _test_bus
+  PASS      0.2s  排序稳定 _test_speed_stability
+  PASS      0.3s  宠物实例 _test_pet_instance
+  PASS      1.2s  主线剧情4-6 _test_quest_story4
+  PASS      0.2s  战斗全链路 _test_battle_flow
+  PASS      0.2s  战斗核心 _test_battle_core
+  PASS      0.2s  系统设置 _test_sysopt
+  PASS      0.2s  内容扩充 _test_content
+  PASS      3.4s  存档锁 _test_save_lock
+  PASS      3.0s  存档增量·异步 _test_save_async
+  PASS      0.6s  优雅停止 _test_server_stop
+  PASS      2.1s  GM 面板状态 _test_gm_web_state
+  PASS      1.4s  Web 端口冲突 _test_web_port_conflict
+  PASS      1.3s  端口回填 _test_port_backfill
+  PASS      0.4s  循环解码 _test_loop_decode
+  PASS      0.3s  丢帧计数 _test_drop_count
+  PASS      0.5s  热加载 _test_world_config_reload
+  PASS      1.3s  特性状态 _test_feature_status
+  PASS      0.9s  变异·规范化守护 _test_mutation_normalize
+  PASS      0.2s  schema 迁移 _test_schema_migration
+  PASS      1.2s  冒烟 _e2e_m4（战斗基础）
+  PASS      2.4s  冒烟 _e2e_m5（战败/6敌）
+  PASS      0.7s  冒烟 _e2e_m7（招式/会心）
+  PASS     12.7s  冒烟 _e2e_m9（养成闭环）
+  PASS      4.8s  冒烟 _e2e_m11（op100/101）
+  PASS     14.6s  冒烟 _test_war2（战斗深化·自带内核）
+  PASS     94.4s  覆盖统计 coverage_smoke
+  PASS      0.1s  分册同步 _split_docs --check
+  PASS      0.1s  跨文件扫描 _test_anchor_multifile
+  PASS      3.0s  文档三向体检 _check_anchors（主文档 + docs/）
+------------------------------------------------------------------------------
+ 合计 51/51 通过
+
+退出码审计：通过（无非 0 被吞，0 条例外均已登记）
+
+=== STATS ===
+build_star_count     : 57
+coverage_denominator : 134
+coverage_numerator   : 134
+dispatch_pre_war_ops : 58
+elapsed_sec          : 198.8
+mode                 : full
+steps_failed         : 0
+steps_passed         : 51
+steps_total          : 51
+=== END STATS ===

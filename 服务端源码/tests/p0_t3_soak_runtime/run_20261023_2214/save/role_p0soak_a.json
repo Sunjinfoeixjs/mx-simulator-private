@@ -1,0 +1,197 @@
+{
+ "px": 4,
+ "py": -1,
+ "hero_id": 1,
+ "hero_name": "角色_p0soak_a",
+ "move_count": 41,
+ "hero_hp": 400,
+ "hero_res": {
+  "m_MP": 100,
+  "m_FP": 100,
+  "m_At": 39,
+  "m_Df": 15,
+  "m_Dp": 4
+ },
+ "items": {
+  "2001": {
+   "shape": 22100,
+   "key": 0,
+   "qty": 5,
+   "pos": 20,
+   "infoext": ""
+  },
+  "2002": {
+   "shape": 12,
+   "key": 0,
+   "qty": 10,
+   "pos": 21,
+   "infoext": ""
+  },
+  "2003": {
+   "shape": 10411,
+   "key": 0,
+   "qty": 3,
+   "pos": 22,
+   "infoext": ""
+  },
+  "2004": {
+   "shape": 25045,
+   "key": 0,
+   "qty": 2,
+   "pos": 23,
+   "infoext": ""
+  },
+  "2005": {
+   "shape": 72132,
+   "key": 0,
+   "qty": 1,
+   "pos": 24,
+   "infoext": ""
+  },
+  "2006": {
+   "shape": 70942,
+   "key": 0,
+   "qty": 1,
+   "pos": 25,
+   "infoext": ""
+  },
+  "2007": {
+   "shape": 12,
+   "key": 0,
+   "qty": 5,
+   "pos": 100,
+   "infoext": ""
+  },
+  "2008": {
+   "shape": 10411,
+   "key": 0,
+   "qty": 3,
+   "pos": 101,
+   "infoext": ""
+  },
+  "2009": {
+   "shape": 21101,
+   "key": 0,
+   "qty": 3,
+   "pos": 26,
+   "infoext": ""
+  },
+  "2010": {
+   "shape": 22312,
+   "key": 0,
+   "qty": 5,
+   "pos": 27,
+   "infoext": ""
+  }
+ },
+ "pets": [
+  {
+   "pid": 1001,
+   "name": "梦想企鹅",
+   "shape": 4005,
+   "level": 5,
+   "exp": 104,
+   "expnext": 464,
+   "attr_lv": {
+    "3": 5,
+    "4": 5,
+    "5": 5,
+    "6": 5,
+    "7": 5,
+    "8": 5
+   },
+   "point": 20,
+   "str": 10,
+   "con": 10,
+   "mag": 10,
+   "cha": 10,
+   "dex": 10,
+   "skills": [
+    112,
+    319,
+    317,
+    415,
+    102,
+    505
+   ],
+   "hf_from": 6,
+   "factor_idx": 0,
+   "key": 0,
+   "birthkey": 2,
+   "bound": false,
+   "lookon": false,
+   "equips": {},
+   "hp": 350,
+   "mp": 380,
+   "fp": 30,
+   "life": 8700,
+   "mo_ling_guo": 0,
+   "tire": 0
+  }
+ ],
+ "pet_hp": 350,
+ "active_pet_id": 1001,
+ "pet_shape": 4005,
+ "hero_shape": 111,
+ "coins": 50000,
+ "iid_seq": 9000,
+ "mapid": 1001,
+ "tasks": {},
+ "story_point": 0,
+ "quests_done": [],
+ "juqing_skills": {},
+ "sys_switch": 0,
+ "sys_data": {},
+ "mobile": {
+  "check": 0,
+  "receive": 1,
+  "enable_friends": 1,
+  "limit": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "degree": 0,
+  "money": 0,
+  "balance": 0
+ },
+ "private_info": "",
+ "exp": 1200,
+ "next_exp": 1000,
+ "grade": 1,
+ "points": 5,
+ "attrs": {
+  "36": 10,
+  "32": 10,
+  "33": 10,
+  "34": 10,
+  "35": 10
+ },
+ "magics": {
+  "1101": 1,
+  "1102": 1,
+  "1103": 1,
+  "2101": 1,
+  "1401": 1,
+  "1301": 1,
+  "2401": 1,
+  "2501": 1
+ },
+ "tili": 100,
+ "huoli": 100,
+ "life_lv": 5,
+ "life_exp": 0,
+ "team": {
+  "active": false,
+  "title": "",
+  "min_lv": 0,
+  "max_lv": 0,
+  "attr_class": 0,
+  "message": "",
+  "lineup": 0,
+  "target": 0
+ },
+ "_save_tag": "p0soak_a-3508-633232",
+ "_schema": 2
+}

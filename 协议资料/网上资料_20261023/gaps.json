@@ -1,0 +1,42 @@
+[
+ {
+  "check": "招式精修名不在客户端 magicdata",
+  "group": "刀招",
+  "name": "摇影斩",
+  "candidates": [
+   "幽影斩"
+  ]
+ },
+ {
+  "check": "招式精修名不在客户端 magicdata",
+  "group": "刀招",
+  "name": "魔影斩",
+  "candidates": [
+   "幽影斩"
+  ]
+ },
+ {
+  "check": "招式精修名不在客户端 magicdata",
+  "group": "枪招",
+  "name": "踏雪寻梅",
+  "candidates": []
+ },
+ {
+  "check": "宠物技能名不在客户端 petskill.py",
+  "group": "标准技能",
+  "name": "强壮",
+  "candidates": [
+   "终级强壮",
+   "高级强壮"
+  ]
+ },
+ {
+  "check": "宠物技能名不在客户端 petskill.py",
+  "group": "标准技能",
+  "name": "偷袭",
+  "candidates": [
+   "终级偷袭",
+   "高级偷袭"
+  ]
+ }
+]

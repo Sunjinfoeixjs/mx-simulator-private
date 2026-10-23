@@ -1,0 +1,19 @@
+{
+  "bytes_drained": 34776,
+  "cycles": 54,
+  "duplicate_checks": 6,
+  "elapsed_sec": 20.014,
+  "error": null,
+  "final_owners": 0,
+  "final_sessions": 0,
+  "requested_sec": 20,
+  "save_paths": [
+    "C:\\Users\\Administrator\\MX\\服务端源码\\tests\\p0_t3_soak_runtime\\smoke3\\save\\role_p0soak_a.json",
+    "C:\\Users\\Administrator\\MX\\服务端源码\\tests\\p0_t3_soak_runtime\\smoke3\\save\\role_p0soak_b.json"
+  ],
+  "start_epoch": 1792764932.070914,
+  "status": "PASS",
+  "tracemalloc_current": 1145604,
+  "tracemalloc_growth": 1145604,
+  "tracemalloc_peak": 1364871
+}

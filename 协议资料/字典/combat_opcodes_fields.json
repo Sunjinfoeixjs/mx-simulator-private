@@ -1,0 +1,276 @@
+{
+ "C2SWarAttack": {
+  "function": "C2SWarAttack",
+  "opcode": 160,
+  "opcode_const": "C2S_WAR_ATTACK",
+  "total_bytes": 1,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:id"
+   }
+  ]
+ },
+ "C2SWarPerform": {
+  "function": "C2SWarPerform",
+  "opcode": 161,
+  "opcode_const": "C2S_WAR_PERFORM",
+  "total_bytes": 3,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:id"
+   },
+   {
+    "kind": "I",
+    "size": 2,
+    "value": "param:perform"
+   }
+  ]
+ },
+ "C2SWarSpecial": {
+  "function": "C2SWarSpecial",
+  "opcode": 162,
+  "opcode_const": "C2S_WAR_SPECIAL",
+  "total_bytes": 3,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:id"
+   },
+   {
+    "kind": "I",
+    "size": 2,
+    "value": "param:sid"
+   }
+  ]
+ },
+ "C2SWarDefend": {
+  "function": "C2SWarDefend",
+  "opcode": 163,
+  "opcode_const": "C2S_WAR_DEFEND",
+  "total_bytes": 0,
+  "fields": []
+ },
+ "C2SWarEscape": {
+  "function": "C2SWarEscape",
+  "opcode": 164,
+  "opcode_const": "C2S_WAR_ESCAPE",
+  "total_bytes": 0,
+  "fields": []
+ },
+ "C2SWarItem": {
+  "function": "C2SWarItem",
+  "opcode": 165,
+  "opcode_const": "C2S_WAR_ITEM",
+  "total_bytes": 5,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:id"
+   },
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:item"
+   }
+  ]
+ },
+ "C2SWarSummon": {
+  "function": "C2SWarSummon",
+  "opcode": 166,
+  "opcode_const": "C2S_WAR_SUMMON",
+  "total_bytes": 5,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:op"
+   },
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:id"
+   }
+  ]
+ },
+ "C2SWarProtect": {
+  "function": "C2SWarProtect",
+  "opcode": 167,
+  "opcode_const": "C2S_WAR_PROTECT",
+  "total_bytes": 1,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:id"
+   }
+  ]
+ },
+ "C2SWarSummAttack": {
+  "function": "C2SWarSummAttack",
+  "opcode": 168,
+  "opcode_const": "C2S_WAR_SUMM_ATTACK",
+  "total_bytes": 2,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:id"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:target"
+   }
+  ]
+ },
+ "C2SWarSummPerform": {
+  "function": "C2SWarSummPerform",
+  "opcode": 169,
+  "opcode_const": "C2S_WAR_SUMM_PERFORM",
+  "total_bytes": 3,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:target"
+   },
+   {
+    "kind": "I",
+    "size": 2,
+    "value": "param:perform"
+   }
+  ]
+ },
+ "C2SWarSummGuard": {
+  "function": "C2SWarSummGuard",
+  "opcode": 170,
+  "opcode_const": "C2S_WAR_SUMM_GUARD",
+  "total_bytes": 1,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:id"
+   }
+  ]
+ },
+ "C2SWarSummItem": {
+  "function": "C2SWarSummItem",
+  "opcode": 171,
+  "opcode_const": "C2S_WAR_SUMM_ITEM",
+  "total_bytes": 6,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:id"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:target"
+   },
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:item"
+   }
+  ]
+ },
+ "C2SWarSummProtect": {
+  "function": "C2SWarSummProtect",
+  "opcode": 172,
+  "opcode_const": "C2S_WAR_SUMM_PROTECT",
+  "total_bytes": 2,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:id"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:target"
+   }
+  ]
+ },
+ "C2SWarCatch": {
+  "function": "C2SWarCatch",
+  "opcode": 173,
+  "opcode_const": "C2S_WAR_CATCH",
+  "total_bytes": 1,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:id"
+   }
+  ]
+ },
+ "C2SWarSummEscape": {
+  "function": "C2SWarSummEscape",
+  "opcode": 174,
+  "opcode_const": "C2S_WAR_SUMM_ESCAPE",
+  "total_bytes": 1,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:id"
+   }
+  ]
+ },
+ "C2SSendSign": {
+  "function": "C2SSendSign",
+  "opcode": 175,
+  "opcode_const": "C2S_WAR_TEAM",
+  "total_bytes": 0,
+  "fields": [
+   {
+    "kind": "S",
+    "size": "N:len",
+    "value": "param:msg"
+   }
+  ]
+ },
+ "C2SLookWarrior": {
+  "function": "C2SLookWarrior",
+  "opcode": 176,
+  "opcode_const": "C2S_WAR_LOOK",
+  "total_bytes": 1,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:order"
+   }
+  ]
+ },
+ "C2SWarLook": {
+  "function": "C2SWarLook",
+  "opcode": 176,
+  "opcode_const": "C2S_WAR_LOOK",
+  "total_bytes": 1,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:id"
+   }
+  ]
+ },
+ "C2SChild": {
+  "function": "C2SChild",
+  "opcode": 177,
+  "opcode_const": "C2S_WAR_SUMMONCHILD",
+  "total_bytes": 0,
+  "fields": []
+ }
+}

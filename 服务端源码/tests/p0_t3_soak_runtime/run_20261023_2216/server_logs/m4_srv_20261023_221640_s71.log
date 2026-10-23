@@ -1,0 +1,16 @@
+[s1/127.0.0.1] [22:16:40] ① S2C Hello 已发
+[s1/127.0.0.1] [22:16:40] ② Hello PASS ✓（16 ed 4b）
+[s1/127.0.0.1] [22:16:40] ③ C2S opcode=1 body=60B: 00 0a 2b 00 70 30 73 6f 61 6b 5f 61 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 61 62 63 64
+[s1/127.0.0.1] [22:16:40]    >>> 登录: p0soak_a
+[p0soak_a] [22:16:40]    （已载入角色存档 role_p0soak_a.json）
+[p0soak_a] [22:16:40]    已回 AccountInfo(1)+RoleInfo
+[p0soak_a] [22:16:40] ③ C2S opcode=2 body=4B: 01 00 00 00
+[p0soak_a] [22:16:40]    >>> 选角进入 id=1 name=角色_p0soak_a
+[p0soak_a] [22:16:40]    → 场景 永泽城(1001)：SceneM + AddNpc×8 + GotoM(46,41) + 随行宠物
+[p0soak_a] [22:16:40]    + 宠物 SummonInfo/SummonSkill/SummonKey ×1（出战 id=1001）
+[p0soak_a] [22:16:40]    进世界：PropInit + Resist/Power + 养成同步 + 招式8 + 场景 永泽城(1001) + GotoM
+[p0soak_a] [22:16:40]    + 背包 ItemAdd×10（背包 pos=20.. 战斗栏 pos=100..）
+[p0soak_a] [22:16:40] ③ C2S opcode=54 body=6B: 2e 00 29 00 01 02
+[p0soak_a] [22:16:40]    >>> 移动 (46,41)→(45,40) [第 34 次]
+[p0soak_a] [22:16:40]    💾 已存档（位置 45,40，HP 400，背包 10 件，变更 37 键）
+[p0soak_a] [22:16:40]    （连接结束）

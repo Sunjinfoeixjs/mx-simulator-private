@@ -1,0 +1,78 @@
+{
+ "px": 45,
+ "py": 40,
+ "move_count": 5,
+ "hero_hp": 300,
+ "hero_res": {
+  "m_MP": 100,
+  "m_FP": 85,
+  "m_At": 100,
+  "m_Df": 96,
+  "m_Dp": 100
+ },
+ "items": {
+  "2001": {
+   "shape": 22100,
+   "key": 0,
+   "qty": 5,
+   "pos": 20,
+   "infoext": ""
+  },
+  "2002": {
+   "shape": 12,
+   "key": 0,
+   "qty": 10,
+   "pos": 21,
+   "infoext": ""
+  },
+  "2003": {
+   "shape": 10411,
+   "key": 0,
+   "qty": 3,
+   "pos": 22,
+   "infoext": ""
+  },
+  "2004": {
+   "shape": 25045,
+   "key": 0,
+   "qty": 2,
+   "pos": 23,
+   "infoext": ""
+  },
+  "2005": {
+   "shape": 72132,
+   "key": 0,
+   "qty": 1,
+   "pos": 24,
+   "infoext": ""
+  },
+  "2006": {
+   "shape": 70942,
+   "key": 0,
+   "qty": 1,
+   "pos": 25,
+   "infoext": ""
+  },
+  "2007": {
+   "shape": 12,
+   "key": 0,
+   "qty": 5,
+   "pos": 100,
+   "infoext": ""
+  },
+  "2008": {
+   "shape": 10411,
+   "key": 0,
+   "qty": 3,
+   "pos": 101,
+   "infoext": ""
+  }
+ },
+ "pet_hp": 330,
+ "coins": 50000,
+ "iid_seq": 9000,
+ "mapid": 1001,
+ "tasks": {},
+ "exp": 0,
+ "next_exp": 1000
+}

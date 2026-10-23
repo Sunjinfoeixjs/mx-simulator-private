@@ -1,0 +1,994 @@
+{
+ "source": [
+  "《梦想世界2013资料全库》客户端数据/_docx_text.txt",
+  "https://mx.yzz.cn/ 叶子猪·梦想世界新手指导 流派招式精修大全详解（2013-11-14）",
+  "https://mx.yzz.cn/ 叶子猪·玩家必看 梦想世界召唤兽技能介绍（2014-11-05）"
+ ],
+ "evidence": "A：官方资料全库表格 × 客户端 magicdata 招式名逐条比对；网上（叶子猪 2013-11-14）片段与资料逐字一致",
+ "note": "每流派 10 招；儒家在资料里拆成「法儒 / 术儒」两张表 → 共 12 张表（总纲正文写 11 流派）",
+ "schools": [
+  "剑法",
+  "笔法",
+  "拳招",
+  "刀招",
+  "枪招",
+  "暗器",
+  "佛家",
+  "道家",
+  "法儒",
+  "术儒",
+  "巫术",
+  "阴阳"
+ ],
+ "count": 120,
+ "in_client": 117,
+ "moves": [
+  {
+   "school": "剑法",
+   "name": "流水行云",
+   "max_level": 3,
+   "effect": "每精修等级使增加闪避的效果在原有基础上追加5%；每精修等级提升10威力、2%速率",
+   "line": 9186,
+   "in_client": true
+  },
+  {
+   "school": "剑法",
+   "name": "抛砖引玉",
+   "max_level": 3,
+   "effect": "每精修等级使当前回合的反击次数在原有基础上+1；每精修等级提升15威力",
+   "line": 9190,
+   "in_client": true
+  },
+  {
+   "school": "剑法",
+   "name": "先发制人",
+   "max_level": 5,
+   "effect": "每精修等级提升4威力、2%速率",
+   "line": 9194,
+   "in_client": true
+  },
+  {
+   "school": "剑法",
+   "name": "白蛇吐信",
+   "max_level": 5,
+   "effect": "每精修等级使命中目标后使其中毒的概率在原有基础上追加4%；每精修等级提升5威力",
+   "line": 9198,
+   "in_client": true
+  },
+  {
+   "school": "剑法",
+   "name": "后发制人",
+   "max_level": 3,
+   "effect": "每精修等级提升15威力、3%效率",
+   "line": 9202,
+   "in_client": true
+  },
+  {
+   "school": "剑法",
+   "name": "针锋相对",
+   "max_level": 4,
+   "effect": "每精修等级附加命中目标后扣除其干扰点+1的效果；每精修等级提升10威力、1%速率",
+   "line": 9206,
+   "in_client": true
+  },
+  {
+   "school": "剑法",
+   "name": "昙花一现",
+   "max_level": 5,
+   "effect": "每精修等级使原有的防御提高效果追加5%；每精修等级提升3威力、1%速率",
+   "line": 9210,
+   "in_client": true
+  },
+  {
+   "school": "剑法",
+   "name": "一剑天下",
+   "max_level": 4,
+   "effect": "每精修等级使扣除目标力道值的效果在原有基础上加乘20%；每精修等级提升9威力",
+   "line": 9214,
+   "in_client": true
+  },
+  {
+   "school": "剑法",
+   "name": "天夺其魄",
+   "max_level": 4,
+   "effect": "每精修等级附加命中目标后扣除所有类型控制点各+1效果；每精修等级提升5威力",
+   "line": 9218,
+   "in_client": true
+  },
+  {
+   "school": "剑法",
+   "name": "人生如梦",
+   "max_level": 4,
+   "effect": "每精修等级使扣除目标魔法值的效果在原有基础上加乘15%；每精修等级提升9威力",
+   "line": 9222,
+   "in_client": true
+  },
+  {
+   "school": "笔法",
+   "name": "天枢执首",
+   "max_level": 4,
+   "effect": "每精修等级使提高速度的效果在原有基础上追加5%；每精修等级提升8威力",
+   "line": 9231,
+   "in_client": true
+  },
+  {
+   "school": "笔法",
+   "name": "穿云点苍",
+   "max_level": 5,
+   "effect": "每精修等级提升10威力，降低1%速率",
+   "line": 9235,
+   "in_client": true
+  },
+  {
+   "school": "笔法",
+   "name": "天璇转斗",
+   "max_level": 4,
+   "effect": "每精修等级使原有的使用气血限制减少10%；每精修等级提升10威力",
+   "line": 9239,
+   "in_client": true
+  },
+  {
+   "school": "笔法",
+   "name": "天玑含韵",
+   "max_level": 3,
+   "effect": "每精修等级使增加闪避的效果在原有基础上追加6%；每精修等级提升5威力",
+   "line": 9243,
+   "in_client": true
+  },
+  {
+   "school": "笔法",
+   "name": "天权附雅",
+   "max_level": 5,
+   "effect": "每精修等级使命中目标后使其中毒的概率在原有基础上追加4%；每精修等级提升5威力",
+   "line": 9247,
+   "in_client": true
+  },
+  {
+   "school": "笔法",
+   "name": "化繁为简",
+   "max_level": 3,
+   "effect": "每精修等级使扣除目标力道和魔法值的效果在原有基础上各增加10点",
+   "line": 9251,
+   "in_client": true
+  },
+  {
+   "school": "笔法",
+   "name": "玉衡化煞",
+   "max_level": 4,
+   "effect": "每精修等级附加命中目标后扣除攻击点数+1.5的效果；每精修等级提升10威力",
+   "line": 9255,
+   "in_client": true
+  },
+  {
+   "school": "笔法",
+   "name": "开阳双仪",
+   "max_level": 3,
+   "effect": "每精修等级将第2次攻击时的攻击能力在原有基础上追加10%；每精修等级提升7威力，1%效率",
+   "line": 9259,
+   "in_client": true
+  },
+  {
+   "school": "笔法",
+   "name": "刹那芳华",
+   "max_level": 5,
+   "effect": "每精修等级使受伤害降低的效果在原有基础上追加5%；每精修等级提升5威力，1%速率",
+   "line": 9263,
+   "in_client": true
+  },
+  {
+   "school": "笔法",
+   "name": "文心画胆",
+   "max_level": 4,
+   "effect": "每精修等级提升5威力、2%速率，精修达到4级时，如果选择的攻击目标使用力敌招式，命中则让对方无法使用该力敌招（对百级招式无效），持续3回合",
+   "line": 9267,
+   "in_client": true
+  },
+  {
+   "school": "拳招",
+   "name": "云开雾散",
+   "max_level": 4,
+   "effect": "每精修等级使增加闪避的效果在原有基础上追加5%；每精修等级提升15威力",
+   "line": 9276,
+   "in_client": true
+  },
+  {
+   "school": "拳招",
+   "name": "拨云见日",
+   "max_level": 3,
+   "effect": "每精修等级提升20威力",
+   "line": 9280,
+   "in_client": true
+  },
+  {
+   "school": "拳招",
+   "name": "封经闭脉",
+   "max_level": 5,
+   "effect": "每精修等级提升1%速率；每精修等级提升5威力",
+   "line": 9284,
+   "in_client": true
+  },
+  {
+   "school": "拳招",
+   "name": "分筋错骨",
+   "max_level": 3,
+   "effect": "每精修等级使命中目标后的封印成功率追加5%；每精修等级提升10威力",
+   "line": 9288,
+   "in_client": true
+  },
+  {
+   "school": "拳招",
+   "name": "银瓶乍破",
+   "max_level": 4,
+   "effect": "每精修等级使扣除自身的气血量在原有基础上减乘10%；每精修等级提升15威力",
+   "line": 9292,
+   "in_client": true
+  },
+  {
+   "school": "拳招",
+   "name": "劈石破玉",
+   "max_level": 5,
+   "effect": "每精修等级使命中目标后降低其防御力的效果在原有基础上追加4%；每精修等级提升10威力，增加2%速率",
+   "line": 9296,
+   "in_client": true
+  },
+  {
+   "school": "拳招",
+   "name": "破绽百出",
+   "max_level": 3,
+   "effect": "每精修等级使增加闪避的效果在原有基础上2%，并且每回合最大反击次数+1；每精修等级提升8威力",
+   "line": 9300,
+   "in_client": true
+  },
+  {
+   "school": "拳招",
+   "name": "魂飞魄散",
+   "max_level": 5,
+   "effect": "每精修等级附加命中后扣除所有控制点数各+1的效果",
+   "line": 9304,
+   "in_client": true
+  },
+  {
+   "school": "拳招",
+   "name": "落叶知秋",
+   "max_level": 3,
+   "effect": "每精修等级提升10威力",
+   "line": 9308,
+   "in_client": true
+  },
+  {
+   "school": "拳招",
+   "name": "森罗万象",
+   "max_level": 5,
+   "effect": "每精修等级提升增加1%效率；提升10威力",
+   "line": 9312,
+   "in_client": true
+  },
+  {
+   "school": "刀招",
+   "name": "空穴来风",
+   "max_level": 4,
+   "effect": "每精修等级使增加闪避的效果在原有基础上追加5%；每精修等级提升10威力",
+   "line": 9321,
+   "in_client": true
+  },
+  {
+   "school": "刀招",
+   "name": "摇影斩",
+   "max_level": 4,
+   "effect": "每精修等级使增加速度的效果在原有基础上追加5%；每精修等级提升12威力",
+   "line": 9325,
+   "in_client": false,
+   "candidates": [
+    "幽影斩"
+   ]
+  },
+  {
+   "school": "刀招",
+   "name": "以逸待劳",
+   "max_level": 4,
+   "effect": "每精修等级提升命中率5%，最大反击次数+1；每精修等级提升30威力",
+   "line": 9329,
+   "in_client": true
+  },
+  {
+   "school": "刀招",
+   "name": "银河落九天",
+   "max_level": 5,
+   "effect": "每精修等级提升15威力、1%效率；每精修等级增加力敌抗性2%",
+   "line": 9333,
+   "in_client": true
+  },
+  {
+   "school": "刀招",
+   "name": "幽影斩",
+   "max_level": 5,
+   "effect": "每精修等级使命中目标后使其中毒的概率在原有基础上追加4%；每精修等级提升5威力",
+   "line": 9337,
+   "in_client": true
+  },
+  {
+   "school": "刀招",
+   "name": "望梅止渴",
+   "max_level": 4,
+   "effect": "每精修等级使命中目标后按伤害百分比恢复自身气血的比例值在原有基础上追加4%；每精修等级提升15威力",
+   "line": 9341,
+   "in_client": true
+  },
+  {
+   "school": "刀招",
+   "name": "拖泥带水",
+   "max_level": 3,
+   "effect": "每精修等级增加9威力，附加命中目标后降低其速度追加5%的效果，持续2回合",
+   "line": 9345,
+   "in_client": true
+  },
+  {
+   "school": "刀招",
+   "name": "耀阳闪",
+   "max_level": 4,
+   "effect": "每精修等级提升命中率4%；每精修等级提升12威力",
+   "line": 9349,
+   "in_client": true
+  },
+  {
+   "school": "刀招",
+   "name": "碎星斩月",
+   "max_level": 4,
+   "effect": "精修等级达到4级时，如果被仙系法术封印，则可以破除仙系封印效果攻击目标，同时对其他系别封印招式的抗封率减少12%，每次破除封印状态后下回合无法使用任何武器及法术招式、特技和普通攻击，每级精修等级提升10威力",
+   "line": 9353,
+   "in_client": true
+  },
+  {
+   "school": "刀招",
+   "name": "魔影斩",
+   "max_level": 3,
+   "effect": "每精修1级增加10%的无系别抗封率，同时其他系别抗封率略微减少",
+   "line": 9357,
+   "in_client": false,
+   "candidates": [
+    "幽影斩"
+   ]
+  },
+  {
+   "school": "枪招",
+   "name": "踏雪寻梅",
+   "max_level": 4,
+   "effect": "每精修等级使增加闪避的效果在原有基础上追加5%；每精修等级提升9威力",
+   "line": 9366,
+   "in_client": false,
+   "candidates": []
+  },
+  {
+   "school": "枪招",
+   "name": "追心刺",
+   "max_level": 4,
+   "effect": "每精修等级提升命中率5%；每精修等级增加效率1%、提升10威力",
+   "line": 9370,
+   "in_client": true
+  },
+  {
+   "school": "枪招",
+   "name": "疾风骤雨",
+   "max_level": 4,
+   "effect": "每精修等级提升1%速率",
+   "line": 9374,
+   "in_client": true
+  },
+  {
+   "school": "枪招",
+   "name": "分天割幕",
+   "max_level": 5,
+   "effect": "每精修等级使命中后降低目标防御的效果在原有基础上追加3%；每精修等级提升5威力",
+   "line": 9378,
+   "in_client": true
+  },
+  {
+   "school": "枪招",
+   "name": "灵蛇出洞",
+   "max_level": 5,
+   "effect": "每精修等级使命中目标后使其中毒的概率在原有基础上追加4%；每精修等级提升5威力",
+   "line": 9382,
+   "in_client": true
+  },
+  {
+   "school": "枪招",
+   "name": "追魂刺",
+   "max_level": 3,
+   "effect": "每精修等级使命中目标后附加“禁止复活”状态的概率在原有基础上追加3%；每精修等级提升10威力",
+   "line": 9386,
+   "in_client": true
+  },
+  {
+   "school": "枪招",
+   "name": "三环套日",
+   "max_level": 5,
+   "effect": "每精修等级增加在使用三环套日后不会进入眩晕状态的概率1%",
+   "line": 9390,
+   "in_client": true
+  },
+  {
+   "school": "枪招",
+   "name": "直捣黄龙",
+   "max_level": 3,
+   "effect": "每精修等级使扣除目标攻击点的效果在原有基础上+2；每精修等级提升10威力",
+   "line": 9394,
+   "in_client": true
+  },
+  {
+   "school": "枪招",
+   "name": "混沌归元",
+   "max_level": 4,
+   "effect": "每精修等级使扣除目标所有类型控制点的效果在原有基础上增加各+1；每精修等级提升10威力",
+   "line": 9398,
+   "in_client": true
+  },
+  {
+   "school": "枪招",
+   "name": "横扫千军",
+   "max_level": 3,
+   "effect": "精修等级达到3级时，作用目标数+1；每精修等级提升15威力",
+   "line": 9402,
+   "in_client": true
+  },
+  {
+   "school": "暗器",
+   "name": "投石问路",
+   "max_level": 3,
+   "effect": "每精修等级增加查看成功几率3%，提升12威力",
+   "line": 9411,
+   "in_client": true
+  },
+  {
+   "school": "暗器",
+   "name": "捕风捉影",
+   "max_level": 4,
+   "effect": "每精修等级提升速率1%，提升9威力",
+   "line": 9415,
+   "in_client": true
+  },
+  {
+   "school": "暗器",
+   "name": "含沙射影",
+   "max_level": 5,
+   "effect": "每精修等级提升对攻击目标造成的伤害增加2%，提升2威力",
+   "line": 9419,
+   "in_client": true
+  },
+  {
+   "school": "暗器",
+   "name": "五毒断魂",
+   "max_level": 5,
+   "effect": "每精修等级提升矿物毒的伤害5%，提升2威力",
+   "line": 9423,
+   "in_client": true
+  },
+  {
+   "school": "暗器",
+   "name": "无孔不入",
+   "max_level": 4,
+   "effect": "每精修等级提升9威力",
+   "line": 9427,
+   "in_client": true
+  },
+  {
+   "school": "暗器",
+   "name": "百步穿杨",
+   "max_level": 3,
+   "effect": "每精修等级提升1%的速率，提升2威力",
+   "line": 9431,
+   "in_client": true
+  },
+  {
+   "school": "暗器",
+   "name": "天衣无缝",
+   "max_level": 3,
+   "effect": "每精修等级提升防御在原有基础上增加5%，提升速率2%，3威力",
+   "line": 9435,
+   "in_client": true
+  },
+  {
+   "school": "暗器",
+   "name": "一枝独秀",
+   "max_level": 5,
+   "effect": "每精修等级增加使目标失控的几率1%，提升1%速率，5威力",
+   "line": 9439,
+   "in_client": true
+  },
+  {
+   "school": "暗器",
+   "name": "钉头七箭",
+   "max_level": 3,
+   "effect": "每精修等级增加效率2%，7威力",
+   "line": 9443,
+   "in_client": true
+  },
+  {
+   "school": "暗器",
+   "name": "烟雨断肠",
+   "max_level": 5,
+   "effect": "每精修等级提升动物毒的伤害5%，提升2威力",
+   "line": 9447,
+   "in_client": true
+  },
+  {
+   "school": "佛家",
+   "name": "推气过宫",
+   "max_level": 5,
+   "effect": "每精修等级增加治疗量50气血",
+   "line": 9456,
+   "in_client": true
+  },
+  {
+   "school": "佛家",
+   "name": "天甘玉露",
+   "max_level": 5,
+   "effect": "每精修等级增加治疗量35气血",
+   "line": 9460,
+   "in_client": true
+  },
+  {
+   "school": "佛家",
+   "name": "百喻不悟",
+   "max_level": 3,
+   "effect": "每精修等级使目标中毒的概率在原有基础上追加4%",
+   "line": 9464,
+   "in_client": true
+  },
+  {
+   "school": "佛家",
+   "name": "起死回生",
+   "max_level": 3,
+   "effect": "每精修等级增加目标被复活后的气血量60点",
+   "line": 9468,
+   "in_client": true
+  },
+  {
+   "school": "佛家",
+   "name": "慈悲为怀",
+   "max_level": 5,
+   "effect": "每精修等级使治疗结果在原有基础上加乘4%",
+   "line": 9472,
+   "in_client": true
+  },
+  {
+   "school": "佛家",
+   "name": "毕竟空",
+   "max_level": 4,
+   "effect": "每精修等级增加治疗量15气血",
+   "line": 9476,
+   "in_client": true
+  },
+  {
+   "school": "佛家",
+   "name": "恒河沙",
+   "max_level": 4,
+   "effect": "每2精修等级增加持续时间1回合",
+   "line": 9480,
+   "in_client": true
+  },
+  {
+   "school": "佛家",
+   "name": "娑罗双",
+   "max_level": 3,
+   "effect": "每精修等级提升2%速率；回复目标的血量现在基础上追加30点",
+   "line": 9484,
+   "in_client": true
+  },
+  {
+   "school": "佛家",
+   "name": "不可得",
+   "max_level": 5,
+   "effect": "每精修等级增加治疗量40气血",
+   "line": 9488,
+   "in_client": true
+  },
+  {
+   "school": "佛家",
+   "name": "子午心灯",
+   "max_level": 3,
+   "effect": "每精修等级使降低伤害的效果在原有基础上追加3%",
+   "line": 9492,
+   "in_client": true
+  },
+  {
+   "school": "道家",
+   "name": "禁鬼决",
+   "max_level": 5,
+   "effect": "每精修等级追加普通抗性2%；每精修等级提升1%速率、提升5威力",
+   "line": 9501,
+   "in_client": true
+  },
+  {
+   "school": "道家",
+   "name": "辟鬼符",
+   "max_level": 5,
+   "effect": "每精修等级提升10%的概率在命中鬼魂性质目标后使其附加“驱鬼”状态3回合；每精修等级追加灵巧和普通抗性各2.5%；每精修等级提升12威力",
+   "line": 9505,
+   "in_client": true
+  },
+  {
+   "school": "道家",
+   "name": "秽土转生",
+   "max_level": 5,
+   "effect": "每精修等级使召唤兽在复活时恢复的气血量在原有基础上加乘8%；每精修等级提升1%速率",
+   "line": 9509,
+   "in_client": true
+  },
+  {
+   "school": "道家",
+   "name": "太上正一咒",
+   "max_level": 3,
+   "effect": "每精修等级提升15威力，最大精修等级4",
+   "line": 9513,
+   "in_client": true
+  },
+  {
+   "school": "道家",
+   "name": "紫气真君咒",
+   "max_level": 3,
+   "effect": "每精修等级使扣除目标力道值和魔法值效果在原有基础上各追加5点",
+   "line": 9517,
+   "in_client": true
+  },
+  {
+   "school": "道家",
+   "name": "煞鬼目",
+   "max_level": 4,
+   "effect": "每精修等级追加普通抗性4%；每精修等级提升10威力",
+   "line": 9521,
+   "in_client": true
+  },
+  {
+   "school": "道家",
+   "name": "北帝决",
+   "max_level": 4,
+   "effect": "每精修等级使目标接受药物和法术治疗效果提高的效果在原有基础上追加5%；每精修等级提升1%速率",
+   "line": 9525,
+   "in_client": true
+  },
+  {
+   "school": "道家",
+   "name": "鬼王伏法",
+   "max_level": 3,
+   "effect": "精修等级达到3级时，作用目标数+1；每精修等级提升12威力",
+   "line": 9529,
+   "in_client": true
+  },
+  {
+   "school": "道家",
+   "name": "踏风符",
+   "max_level": 3,
+   "effect": "每精修等级使增加闪避的效果在原有基础上追加3%",
+   "line": 9533,
+   "in_client": true
+  },
+  {
+   "school": "道家",
+   "name": "箴言符",
+   "max_level": 5,
+   "effect": "每精修等级提升8威力，1%效率",
+   "line": 9537,
+   "in_client": true
+  },
+  {
+   "school": "法儒",
+   "name": "青出于蓝",
+   "max_level": 4,
+   "effect": "每精修等级追加灵巧抗性3%；每精修等级提升2%效率",
+   "line": 9546,
+   "in_client": true
+  },
+  {
+   "school": "法儒",
+   "name": "君子喻义",
+   "max_level": 4,
+   "effect": "每精修等级追加固定伤害值80",
+   "line": 9550,
+   "in_client": true
+  },
+  {
+   "school": "法儒",
+   "name": "静以修身",
+   "max_level": 5,
+   "effect": "每精修等级使命中目标后吸取的力道值在原有基础上加乘5%；每精修等级使因吸取目标力道值成功而导致的自己气血恢复量在原有基础上加乘10%",
+   "line": 9554,
+   "in_client": true
+  },
+  {
+   "school": "法儒",
+   "name": "灵气决",
+   "max_level": 3,
+   "effect": "精修等级达到3级时，持续回合数+1；每精修等级增加每回合治疗量50气血",
+   "line": 9558,
+   "in_client": true
+  },
+  {
+   "school": "法儒",
+   "name": "仁者乐山",
+   "max_level": 3,
+   "effect": "精修等级达到3级时，持续回合数+1",
+   "line": 9562,
+   "in_client": true
+  },
+  {
+   "school": "法儒",
+   "name": "仁至义尽",
+   "max_level": 4,
+   "effect": "每精修等级使治疗结果在原有基础上加乘15%",
+   "line": 9566,
+   "in_client": true
+  },
+  {
+   "school": "法儒",
+   "name": "中庸为道",
+   "max_level": 3,
+   "effect": "每精修等级提升25威力，追加力敌抗性2%",
+   "line": 9570,
+   "in_client": true
+  },
+  {
+   "school": "法儒",
+   "name": "天人合一",
+   "max_level": 4,
+   "effect": "每精修等级使环境变为“晴”的概率+2%，每级提升5威力",
+   "line": 9574,
+   "in_client": true
+  },
+  {
+   "school": "法儒",
+   "name": "智者乐水",
+   "max_level": 4,
+   "effect": "每精修等级使环境变为“雨”的概率+2%，每级提升5威力",
+   "line": 9578,
+   "in_client": true
+  },
+  {
+   "school": "法儒",
+   "name": "仁以治国",
+   "max_level": 5,
+   "effect": "每精修等级在“火”环境中伤害追加3%，每级提升8威力，等级为5级时作用目标为5人",
+   "line": 9582,
+   "in_client": true
+  },
+  {
+   "school": "术儒",
+   "name": "静以修身",
+   "max_level": 5,
+   "effect": "每精修等级使命中目标后吸取的力道值在原有基础上加乘5%；每精修等级使因吸取目标力道值成功而导致的自己气血恢复量在原有基础上加乘10%",
+   "line": 9591,
+   "in_client": true
+  },
+  {
+   "school": "术儒",
+   "name": "灵气决",
+   "max_level": 3,
+   "effect": "精修等级达到3级时，持续回合数+1；每精修等级增加每回合治疗量50气血",
+   "line": 9595,
+   "in_client": true
+  },
+  {
+   "school": "术儒",
+   "name": "止戈为武",
+   "max_level": 5,
+   "effect": "每精修等级提升10%的概率在封印成功后让施法者自己的负面状态持续回合数-1；状态持续回合数最小=0",
+   "line": 9599,
+   "in_client": true
+  },
+  {
+   "school": "术儒",
+   "name": "仁者乐山",
+   "max_level": 3,
+   "effect": "精修等级达到3级时，持续回合数+1",
+   "line": 9603,
+   "in_client": true
+  },
+  {
+   "school": "术儒",
+   "name": "非礼勿动",
+   "max_level": 5,
+   "effect": "每精修等级提升10%的概率在封印成功后让施法者自己的负面状态持续回合数-1；状态持续回合数最小=0",
+   "line": 9607,
+   "in_client": true
+  },
+  {
+   "school": "术儒",
+   "name": "仁至义尽",
+   "max_level": 4,
+   "effect": "每精修等级使治疗结果在原有基础上加乘15%",
+   "line": 9611,
+   "in_client": true
+  },
+  {
+   "school": "术儒",
+   "name": "和为贵",
+   "max_level": 4,
+   "effect": "每精修等级提升12%的概率在封印成功后让施法者自己的负面状态持续回合数-1；状态持续回合数最小=0",
+   "line": 9615,
+   "in_client": true
+  },
+  {
+   "school": "术儒",
+   "name": "去糟存精",
+   "max_level": 5,
+   "effect": "每精修等级提升对目标魔法的吸取值在原来的基础上追加4%；自己魔法值的恢复量在原来基础上追加10%",
+   "line": 9619,
+   "in_client": true
+  },
+  {
+   "school": "术儒",
+   "name": "孝以齐家",
+   "max_level": 3,
+   "effect": "每精修等级使目标受到的法术伤害损伤效果降低3%",
+   "line": 9623,
+   "in_client": true
+  },
+  {
+   "school": "术儒",
+   "name": "波澜不惊",
+   "max_level": 3,
+   "effect": "每精修等级使目标防御值增加的效果在原来的基础上追加3%",
+   "line": 9627,
+   "in_client": true
+  },
+  {
+   "school": "巫术",
+   "name": "闪光术",
+   "max_level": 3,
+   "effect": "每精修等级使降低目标命中率的效果在原有基础上追加5%",
+   "line": 9636,
+   "in_client": true
+  },
+  {
+   "school": "巫术",
+   "name": "蝮蛇蛊",
+   "max_level": 4,
+   "effect": "每精修等级使目标中毒的概率在原有基础上追加3%；每精修等级追加普通抗性3%；每精修等级提升6威力",
+   "line": 9640,
+   "in_client": true
+  },
+  {
+   "school": "巫术",
+   "name": "扰魂决",
+   "max_level": 4,
+   "effect": "每精修等级使目标中毒的概率在原有基础上追加4%；每精修等级提升15威力",
+   "line": 9644,
+   "in_client": true
+  },
+  {
+   "school": "巫术",
+   "name": "刀盾召唤阵",
+   "max_level": 5,
+   "effect": "每精修等级使召唤出的兔勇士气血在原有基础上加成10%",
+   "line": 9648,
+   "in_client": true
+  },
+  {
+   "school": "巫术",
+   "name": "霜凝蛊",
+   "max_level": 4,
+   "effect": "每精修等级使为目标附加速度降低的状态的概率在原有基础上追加2%；速度降低效果在原有基础上追加2%；每精修等级提升12威力",
+   "line": 9652,
+   "in_client": true
+  },
+  {
+   "school": "巫术",
+   "name": "草魄蛊",
+   "max_level": 3,
+   "effect": "每精修等级使被变为毛草团的召唤兽所能造成的伤害结果在原有基础上减乘15%；每精修等级提升3%速率",
+   "line": 9656,
+   "in_client": true
+  },
+  {
+   "school": "巫术",
+   "name": "喷炎咒",
+   "max_level": 3,
+   "effect": "每精修等级追加灵巧抗性3%；每精修等级提升22威力",
+   "line": 9660,
+   "in_client": true
+  },
+  {
+   "school": "巫术",
+   "name": "魔灵召唤阵",
+   "max_level": 5,
+   "effect": "每精修等级使召唤出的兔天使气血在原有基础上加成10%",
+   "line": 9664,
+   "in_client": true
+  },
+  {
+   "school": "巫术",
+   "name": "溢能咒",
+   "max_level": 5,
+   "effect": "每精修等级追加普通抗性2%；每精修等级提升5威力；1%速率",
+   "line": 9668,
+   "in_client": true
+  },
+  {
+   "school": "巫术",
+   "name": "天魔乱舞",
+   "max_level": 4,
+   "effect": "每精修等级使目标受到异常状态的几率在现有基础上追加5%，每精修等级提升5威力，2%速率",
+   "line": 9672,
+   "in_client": true
+  },
+  {
+   "school": "阴阳",
+   "name": "两仪调和",
+   "max_level": 4,
+   "effect": "每精修等级追加固定伤害值80",
+   "line": 9681,
+   "in_client": true
+  },
+  {
+   "school": "阴阳",
+   "name": "清心寡欲",
+   "max_level": 3,
+   "effect": "每精修等级追加命中率1%，但不会使命中结果超过80%；每精修等级追加降低目标灵力的效果",
+   "line": 9685,
+   "in_client": true
+  },
+  {
+   "school": "阴阳",
+   "name": "错神乱智",
+   "max_level": 4,
+   "effect": "每精修等级追加命中率1%，但不会使命中结果超过80%",
+   "line": 9689,
+   "in_client": true
+  },
+  {
+   "school": "阴阳",
+   "name": "水火既济",
+   "max_level": 4,
+   "effect": "每精修等级追加对敌命中率1.5%，但不会使命中结果超过80%；每精修等级使目标承受法术伤害及接受法术药物治疗结果减少的效果在原有基础上加乘5%；精修等级=2时，持续回合数+1；精修等级=4时，持续回合数再次+1",
+   "line": 9693,
+   "in_client": true
+  },
+  {
+   "school": "阴阳",
+   "name": "虚空禁锢",
+   "max_level": 5,
+   "effect": "每精修等级追加命中率1%，但不会使命中结果超过80%",
+   "line": 9697,
+   "in_client": true
+  },
+  {
+   "school": "阴阳",
+   "name": "幻雾朦胧",
+   "max_level": 4,
+   "effect": "每精修等级追加命中率1.5%，但不会使命中结果超过80%",
+   "line": 9701,
+   "in_client": true
+  },
+  {
+   "school": "阴阳",
+   "name": "魔感灵动",
+   "max_level": 4,
+   "effect": "每精修等级追加对敌命中率1.5%，但不会使命中结果超过80%；每精修等级使目标承受法术伤害及接受法术药物治疗结果增加的效果在原有基础上加乘5%；精修等级=2时，持续回合数+1；精修等级=4时，持续回合数再次+1",
+   "line": 9705,
+   "in_client": true
+  },
+  {
+   "school": "阴阳",
+   "name": "龙象纯阳",
+   "max_level": 5,
+   "effect": "每精修等级使治疗结果在原有基础上加乘5%；精修等级=5时，作用目标数+1",
+   "line": 9709,
+   "in_client": true
+  },
+  {
+   "school": "阴阳",
+   "name": "精疲力竭",
+   "max_level": 3,
+   "effect": "每精修等级使降低目标命中率的效果在原有基础上追加3%",
+   "line": 9713,
+   "in_client": true
+  },
+  {
+   "school": "阴阳",
+   "name": "枯木盘根",
+   "max_level": 4,
+   "effect": "每精修等级使降低目标速度的效果追加15点；精修等级=4时，作用目标数+1",
+   "line": 9717,
+   "in_client": true
+  }
+ ]
+}

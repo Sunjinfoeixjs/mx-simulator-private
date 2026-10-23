@@ -1,0 +1,89 @@
+{
+ "source": [
+  "https://doyo.cn/article/6865（江湖志 1-8 关怪物血量）",
+  "https://mxsj.52pk.com/jingyan/5500606_2.shtml / _4.shtml（天界之路 boss 血量）"
+ ],
+ "confidence": "半真值：攻略作者实测/目测，血量是「左右」口径，不保证精确",
+ "entries": [
+  {
+   "name": "兔战士",
+   "hp": 1800,
+   "where": "江湖志第1关",
+   "source": "https://doyo.cn/article/6865（江湖志 1-8 关怪物血量）"
+  },
+  {
+   "name": "绿晶蜥",
+   "hp": 2000,
+   "where": "江湖志第2关",
+   "source": "https://doyo.cn/article/6865（江湖志 1-8 关怪物血量）"
+  },
+  {
+   "name": "小魔女",
+   "hp": 2200,
+   "where": "江湖志第3关",
+   "source": "https://doyo.cn/article/6865（江湖志 1-8 关怪物血量）"
+  },
+  {
+   "name": "牛妖",
+   "hp": 2600,
+   "where": "江湖志第4关",
+   "source": "https://doyo.cn/article/6865（江湖志 1-8 关怪物血量）"
+  },
+  {
+   "name": "桃花仙子",
+   "hp": 2900,
+   "where": "江湖志第5关",
+   "source": "https://doyo.cn/article/6865（江湖志 1-8 关怪物血量）"
+  },
+  {
+   "name": "兔天使",
+   "hp": 3000,
+   "where": "江湖志第6关",
+   "source": "https://doyo.cn/article/6865（江湖志 1-8 关怪物血量）"
+  },
+  {
+   "name": "翼虎",
+   "hp": 3000,
+   "where": "江湖志第7关",
+   "source": "https://doyo.cn/article/6865（江湖志 1-8 关怪物血量）"
+  },
+  {
+   "name": "死亡骑士",
+   "hp": null,
+   "where": "江湖志第8关",
+   "source": "https://doyo.cn/article/6865（江湖志 1-8 关怪物血量）",
+   "note": "原文「不详」"
+  },
+  {
+   "name": "三杀兽·牙",
+   "hp": 7000,
+   "where": "天界之路·力量之兽",
+   "source": "https://mxsj.52pk.com/jingyan/5500606_2.shtml / _4.shtml（天界之路 boss 血量）"
+  },
+  {
+   "name": "牙·兽",
+   "hp": 6000,
+   "where": "天界之路·小怪",
+   "source": "https://mxsj.52pk.com/jingyan/5500606_2.shtml / _4.shtml（天界之路 boss 血量）"
+  },
+  {
+   "name": "三杀兽·角",
+   "hp": null,
+   "where": "天界之路·智慧之兽",
+   "source": "https://mxsj.52pk.com/jingyan/5500606_2.shtml / _4.shtml（天界之路 boss 血量）",
+   "note": "原文未给血量（「生命与伙伴同在」）"
+  },
+  {
+   "name": "三杀兽·鳞",
+   "hp": 15000,
+   "where": "天界之路·勇气之兽",
+   "source": "https://mxsj.52pk.com/jingyan/5500606_2.shtml / _4.shtml（天界之路 boss 血量）"
+  },
+  {
+   "name": "鳞·兽",
+   "hp": 10000,
+   "where": "天界之路·小怪",
+   "source": "https://mxsj.52pk.com/jingyan/5500606_2.shtml / _4.shtml（天界之路 boss 血量）"
+  }
+ ]
+}

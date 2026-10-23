@@ -1,0 +1,399 @@
+{
+ "source": "https://mxsj.52pk.com/xinqing/5424202.shtml / 5424203.shtml（玩家实测配方）",
+ "confidence": "玩家实测（非官方）：产物/比例可信度中；4 个材料名在客户端 itemdata 中查无此名（疑为攻略错字），标 UNRESOLVED",
+ "count": 13,
+ "recipes": [
+  {
+   "product": "凝神散",
+   "materials": [
+    {
+     "name": "隔山香",
+     "qty": 5,
+     "shape": 21230,
+     "status": "OK"
+    },
+    {
+     "name": "四叶草",
+     "qty": 2,
+     "shape": 21220,
+     "status": "OK"
+    },
+    {
+     "name": "当归",
+     "qty": 3,
+     "shape": 21216,
+     "status": "OK"
+    }
+   ],
+   "note": "品质18 气血540 魔法81",
+   "source": "https://mxsj.52pk.com/xinqing/5424202.shtml / 5424203.shtml（玩家实测配方）",
+   "status": "OK",
+   "missing": []
+  },
+  {
+   "product": "小还丹",
+   "materials": [
+    {
+     "name": "柴胡",
+     "qty": 1,
+     "shape": 21226,
+     "status": "OK"
+    },
+    {
+     "name": "甘草",
+     "qty": 4,
+     "shape": 21233,
+     "status": "OK"
+    },
+    {
+     "name": "沙棘豆",
+     "qty": 3,
+     "shape": 21228,
+     "status": "OK"
+    }
+   ],
+   "note": "品质15 气血585",
+   "source": "https://mxsj.52pk.com/xinqing/5424202.shtml / 5424203.shtml（玩家实测配方）",
+   "status": "OK",
+   "missing": []
+  },
+  {
+   "product": "舒筋活络丸",
+   "materials": [
+    {
+     "name": "柴胡",
+     "qty": 1,
+     "shape": 21226,
+     "status": "OK"
+    },
+    {
+     "name": "灵芝草",
+     "qty": 3,
+     "shape": 21231,
+     "status": "OK"
+    },
+    {
+     "name": "牛藤",
+     "qty": 3,
+     "shape": null,
+     "status": "UNRESOLVED",
+     "candidates": [
+      "血藤",
+      "牵机藤",
+      "千金藤",
+      "三叶藤"
+     ]
+    }
+   ],
+   "note": "品质15 气血525 力道78",
+   "source": "https://mxsj.52pk.com/xinqing/5424202.shtml / 5424203.shtml（玩家实测配方）",
+   "status": "UNRESOLVED",
+   "missing": [
+    "牛藤"
+   ]
+  },
+  {
+   "product": "舒筋活络丸",
+   "materials": [
+    {
+     "name": "护心草",
+     "qty": 3,
+     "shape": 21234,
+     "status": "OK"
+    },
+    {
+     "name": "灵芝草",
+     "qty": 3,
+     "shape": 21231,
+     "status": "OK"
+    },
+    {
+     "name": "牛藤",
+     "qty": 3,
+     "shape": null,
+     "status": "UNRESOLVED",
+     "candidates": [
+      "血藤",
+      "牵机藤",
+      "千金藤",
+      "三叶藤"
+     ]
+    }
+   ],
+   "note": "同产物另一组合",
+   "source": "https://mxsj.52pk.com/xinqing/5424202.shtml / 5424203.shtml（玩家实测配方）",
+   "status": "UNRESOLVED",
+   "missing": [
+    "牛藤"
+   ]
+  },
+  {
+   "product": "铁血归元丹",
+   "materials": [
+    {
+     "name": "护心草",
+     "qty": 2,
+     "shape": 21234,
+     "status": "OK"
+    },
+    {
+     "name": "灵芝草",
+     "qty": 3,
+     "shape": 21231,
+     "status": "OK"
+    },
+    {
+     "name": "牛藤",
+     "qty": 2,
+     "shape": null,
+     "status": "UNRESOLVED",
+     "candidates": [
+      "血藤",
+      "牵机藤",
+      "千金藤",
+      "三叶藤"
+     ]
+    }
+   ],
+   "note": "品质15 气血915",
+   "source": "https://mxsj.52pk.com/xinqing/5424202.shtml / 5424203.shtml（玩家实测配方）",
+   "status": "UNRESOLVED",
+   "missing": [
+    "牛藤"
+   ]
+  },
+  {
+   "product": "铁血",
+   "materials": [
+    {
+     "name": "当归",
+     "qty": 5,
+     "shape": 21216,
+     "status": "OK"
+    },
+    {
+     "name": "何首乌",
+     "qty": 5,
+     "shape": 21217,
+     "status": "OK"
+    },
+    {
+     "name": "杜仲",
+     "qty": 5,
+     "shape": 21218,
+     "status": "OK"
+    }
+   ],
+   "note": "第二篇",
+   "source": "https://mxsj.52pk.com/xinqing/5424202.shtml / 5424203.shtml（玩家实测配方）",
+   "status": "OK",
+   "missing": []
+  },
+  {
+   "product": "定心",
+   "materials": [
+    {
+     "name": "千金藤",
+     "qty": 3,
+     "shape": 21202,
+     "status": "OK"
+    },
+    {
+     "name": "过山龙",
+     "qty": 3,
+     "shape": 21207,
+     "status": "OK"
+    },
+    {
+     "name": "血藤",
+     "qty": 3,
+     "shape": 14203,
+     "status": "OK"
+    }
+   ],
+   "note": "第二篇",
+   "source": "https://mxsj.52pk.com/xinqing/5424202.shtml / 5424203.shtml（玩家实测配方）",
+   "status": "OK",
+   "missing": []
+  },
+  {
+   "product": "回命",
+   "materials": [
+    {
+     "name": "苍术",
+     "qty": 3,
+     "shape": 21219,
+     "status": "OK"
+    },
+    {
+     "name": "满山红",
+     "qty": 5,
+     "shape": 21229,
+     "status": "OK"
+    },
+    {
+     "name": "舒筋草",
+     "qty": 4,
+     "shape": 21215,
+     "status": "OK"
+    }
+   ],
+   "note": "第二篇",
+   "source": "https://mxsj.52pk.com/xinqing/5424202.shtml / 5424203.shtml（玩家实测配方）",
+   "status": "OK",
+   "missing": []
+  },
+  {
+   "product": "大力",
+   "materials": [
+    {
+     "name": "知母",
+     "qty": 3,
+     "shape": null,
+     "status": "UNRESOLVED",
+     "candidates": []
+    },
+    {
+     "name": "何首乌",
+     "qty": 3,
+     "shape": 21217,
+     "status": "OK"
+    },
+    {
+     "name": "甘草",
+     "qty": 3,
+     "shape": 21233,
+     "status": "OK"
+    }
+   ],
+   "note": "第二篇",
+   "source": "https://mxsj.52pk.com/xinqing/5424202.shtml / 5424203.shtml（玩家实测配方）",
+   "status": "UNRESOLVED",
+   "missing": [
+    "知母"
+   ]
+  },
+  {
+   "product": "聚神",
+   "materials": [
+    {
+     "name": "华山参",
+     "qty": 3,
+     "shape": 21210,
+     "status": "OK"
+    },
+    {
+     "name": "血藤",
+     "qty": 3,
+     "shape": 14203,
+     "status": "OK"
+    },
+    {
+     "name": "灵芝草",
+     "qty": 3,
+     "shape": 21231,
+     "status": "OK"
+    }
+   ],
+   "note": "第二篇",
+   "source": "https://mxsj.52pk.com/xinqing/5424202.shtml / 5424203.shtml（玩家实测配方）",
+   "status": "OK",
+   "missing": []
+  },
+  {
+   "product": "疑神",
+   "materials": [
+    {
+     "name": "护心草",
+     "qty": 10,
+     "shape": 21234,
+     "status": "OK"
+    },
+    {
+     "name": "舒筋草",
+     "qty": 10,
+     "shape": 21215,
+     "status": "OK"
+    },
+    {
+     "name": "华山参",
+     "qty": 10,
+     "shape": 21210,
+     "status": "OK"
+    }
+   ],
+   "note": "第二篇",
+   "source": "https://mxsj.52pk.com/xinqing/5424202.shtml / 5424203.shtml（玩家实测配方）",
+   "status": "OK",
+   "missing": []
+  },
+  {
+   "product": "金辉",
+   "materials": [
+    {
+     "name": "干草",
+     "qty": 10,
+     "shape": 70184,
+     "status": "OK"
+    },
+    {
+     "name": "千金藤",
+     "qty": 10,
+     "shape": 21202,
+     "status": "OK"
+    },
+    {
+     "name": "半血莲",
+     "qty": 10,
+     "shape": null,
+     "status": "UNRESOLVED",
+     "candidates": [
+      "半边莲",
+      "雪莲",
+      "金边莲",
+      "送子青莲",
+      "观音莲"
+     ]
+    }
+   ],
+   "note": "第二篇",
+   "source": "https://mxsj.52pk.com/xinqing/5424202.shtml / 5424203.shtml（玩家实测配方）",
+   "status": "UNRESOLVED",
+   "missing": [
+    "半血莲"
+   ]
+  },
+  {
+   "product": "返生",
+   "materials": [
+    {
+     "name": "杀刺豆",
+     "qty": 10,
+     "shape": null,
+     "status": "UNRESOLVED",
+     "candidates": [
+      "沙棘豆"
+     ]
+    },
+    {
+     "name": "血藤",
+     "qty": 10,
+     "shape": 14203,
+     "status": "OK"
+    },
+    {
+     "name": "过山龙",
+     "qty": 10,
+     "shape": 21207,
+     "status": "OK"
+    }
+   ],
+   "note": "第二篇",
+   "source": "https://mxsj.52pk.com/xinqing/5424202.shtml / 5424203.shtml（玩家实测配方）",
+   "status": "UNRESOLVED",
+   "missing": [
+    "杀刺豆"
+   ]
+  }
+ ]
+}

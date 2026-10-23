@@ -1,0 +1,29 @@
+// x64dbg 动态 trace 脚本 —— 0x43cc50 加密轮 VM 执行追踪（方案：动态 trace）
+// ==========================================================
+// 目标：记录 VMProtect 虚拟化加密轮（0x43cc50 → 0x9A26C6）的
+//       入口参数（明文）+ 执行轨迹（EIP 序列）+ 出口结果（密文）
+//
+// 用法：
+//   1. x64dbg 附加游戏（原版 mxmain.dll，加密开启）
+//   2. 手动断点：mxmain.dll+0x3CC50（跳板，断点对话框 Log 填下面日志模板）
+//   3. 客户端登录 → 触发 → 记下输入参数
+//   4. F7 进入 VM 区段（EIP→0x9A26C6）
+//   5. 在本脚本标签页加载运行（开始记录 EIP 轨迹，默认 5000 步）
+//   6. 脚本停止后：右键 EIP 所在内存区 → dump VM 字节码 256B 发回分析
+//
+// 断点日志模板（mxmain.dll+0x3CC50 的 Log 字段）：
+//   IN ecx={p:ecx} buf={p:d:[esp+4]} len={p:d:[esp+8]} plain={l:[esp+4]}
+
+var i
+mov i, 0
+log "=== VM TRACE 开始 ==="
+log "EIP入口: eip={p:eip} esi={p:esi} edi={p:edi} ebx={p:ebx}"
+trace_start:
+  log "{p:eip}: {l:eip}"          // 记录 EIP + 指令字节
+  sti                             // Step Into
+  inc i
+  cmp i, 5000
+  jne trace_start
+log "=== VM TRACE 结束（5000 步）==="
+// 停止后建议：对照日志开头几条 mov 指令找 VM 字节码指针，
+// 在 Dump 窗口右键跟随 ESI/EDI/EBX 指向的内存并 dump 256 字节

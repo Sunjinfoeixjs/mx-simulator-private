@@ -1,0 +1,18 @@
+历史版本说明（_refs）
+========================
+
+1. opcode 映射历史版本
+   - 文件：opcode_map_verified.json / opcode_map_final.json / opcode_map_complete.json
+   - 位置：C:\Users\Administrator\WorkBuddy\2026-10-13-01-47-23\（未复制入本目录）
+   - 说明：上述文件为 P0 过程中的历史版本，其 std_code 数值与最终权威映射
+     tools\opmap\opmap.py（OBS2STD）存在多处不一致（例如 IMPORT_STAR：历史版 68 vs 最终版 85）。
+   - 权威依据：tools\opmap\opmap.py + reports\P0_操作码映射表_还原报告.md
+     （三重验证：100% 指令覆盖 / 0 违规 / 100% 跳转边界命中，阈值 0x5E，104→85 映射）
+   - 归档 README 亦声明"以 P0 报告为准"。
+
+2. Ghidra 工程损坏记录
+   - 2026-10-13-06-40-48\mxmain_re\proj\mxmain.gpr 为 0 字节（工程损坏，70MB .rep 无法 GUI 打开）。
+   - mxmain.dll 全量反编译已归档至本目录 dll\（decompiled_all.c，MD5 117e2adba2ea7cc38f55d2ca780af732）。
+   - 需要重新分析时用 C:\Tools\ghidra_12.1.4_PUBLIC headless + dll\ghidra_scripts\ 现成脚本。
+
+3. 本目录不含任何旧版映射文件；如发现引用旧版 opcode_map_*.json，请以 tools\opmap\opmap.py 为准。

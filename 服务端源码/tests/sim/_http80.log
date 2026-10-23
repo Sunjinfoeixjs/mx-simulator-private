@@ -1,0 +1,39 @@
+[2026-10-18 04:15:18] ==== _http80 启动 127.0.0.1:80（缓存 6 个 txt）====
+[2026-10-18 04:15:47] REQ GET /server7.txt  from=127.0.0.1  UA='Python-urllib/3.13'
+[2026-10-18 04:15:47]   -> 200 server7_local.bin (4430 bytes)
+[2026-10-18 04:17:04] REQ GET /newupdate.txt  from=127.0.0.1  UA='DY_GAME_UPDATER'
+[2026-10-18 04:17:04]   -> 200 replay newupdate.txt (8540 bytes)
+[2026-10-18 04:17:05] REQ GET /version.txt  from=127.0.0.1  UA='DY_GAME_UPDATER'
+[2026-10-18 04:17:05]   -> 200 replay version.txt (8 bytes)
+[2026-10-18 04:22:37] REQ GET /server7.txt  from=127.0.0.1  UA='curl/8.0.1'
+[2026-10-18 04:22:37]   -> 200 server7_local.bin (4430 bytes)
+[2026-10-18 04:22:53] REQ GET /newupdate.txt  from=127.0.0.1  UA='DY_GAME_UPDATER'
+[2026-10-18 04:22:53]   -> 200 replay newupdate.txt (8540 bytes)
+[2026-10-18 04:22:54] REQ GET /version.txt  from=127.0.0.1  UA='DY_GAME_UPDATER'
+[2026-10-18 04:22:54]   -> 200 replay version.txt (8 bytes)
+[2026-10-18 04:31:44] REQ GET /newupdate.txt  from=127.0.0.1  UA='DY_GAME_UPDATER'
+[2026-10-18 04:31:44]   -> 200 replay newupdate.txt (8540 bytes)
+[2026-10-18 04:31:45] REQ GET /version.txt  from=127.0.0.1  UA='DY_GAME_UPDATER'
+[2026-10-18 04:31:45]   -> 200 replay version.txt (8 bytes)
+[2026-10-18 04:40:42] ==== _http80 启动 127.0.0.1:80（缓存 6 个 txt）====
+[2026-10-18 04:41:38] REQ GET /server7.txt  from=127.0.0.1  UA='curl/8.0.1'
+[2026-10-18 04:41:38]   -> 200 server7_local.bin (4430 bytes)
+[2026-10-18 04:42:00] REQ GET /newupdate.txt  from=127.0.0.1  UA='DY_GAME_UPDATER'
+[2026-10-18 04:42:00]   -> 200 replay newupdate.txt (8540 bytes)
+[2026-10-18 04:42:01] REQ GET /version.txt  from=127.0.0.1  UA='DY_GAME_UPDATER'
+[2026-10-18 04:42:01]   -> 200 replay version.txt (8 bytes)
+[2026-10-18 04:44:21] REQ GET /newupdate.txt  from=127.0.0.1  UA='DY_GAME_UPDATER'
+[2026-10-18 04:44:21]   -> 200 replay newupdate.txt (8540 bytes)
+[2026-10-18 04:44:22] REQ GET /version.txt  from=127.0.0.1  UA='DY_GAME_UPDATER'
+[2026-10-18 04:44:22]   -> 200 replay version.txt (8 bytes)
+[2026-10-18 04:46:51] REQ GET /news.txt  from=127.0.0.1  UA=''
+[2026-10-18 04:46:51]   -> 200 replay news.txt (1384 bytes)
+[2026-10-18 04:54:55] ==== _http80 启动 127.0.0.1:80（缓存 6 个 txt）====
+[2026-10-18 04:56:28] REQ GET /newupdate.txt  from=127.0.0.1  UA='DY_GAME_UPDATER'
+[2026-10-18 04:56:28]   -> 200 replay newupdate.txt (8540 bytes)
+[2026-10-18 04:56:29] REQ GET /version.txt  from=127.0.0.1  UA='DY_GAME_UPDATER'
+[2026-10-18 04:56:29]   -> 200 replay version.txt (8 bytes)
+[2026-10-18 05:00:30] REQ GET /newupdate.txt  from=127.0.0.1  UA='DY_GAME_UPDATER'
+[2026-10-18 05:00:30]   -> 200 replay newupdate.txt (8540 bytes)
+[2026-10-18 05:00:31] REQ GET /version.txt  from=127.0.0.1  UA='DY_GAME_UPDATER'
+[2026-10-18 05:00:31]   -> 200 replay version.txt (8 bytes)

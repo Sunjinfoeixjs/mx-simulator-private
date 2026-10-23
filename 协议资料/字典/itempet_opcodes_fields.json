@@ -1,0 +1,1078 @@
+{
+ "C2SBuyIB": {
+  "function": "C2SBuyIB",
+  "opcode": 23,
+  "opcode_const": "C2S_PLAYER_IB",
+  "module": "netgoodsserver",
+  "total_bytes": 6,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "23"
+   },
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:sid"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:amount"
+   }
+  ]
+ },
+ "C2SBuyIB2": {
+  "function": "C2SBuyIB2",
+  "opcode": 23,
+  "opcode_const": "C2S_PLAYER_IB",
+  "module": "netgoodsserver",
+  "total_bytes": 3,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "24"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:ipos"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:amount"
+   }
+  ]
+ },
+ "C2SOpenIB": {
+  "function": "C2SOpenIB",
+  "opcode": 23,
+  "opcode_const": "C2S_PLAYER_IB",
+  "module": "netgoodsserver",
+  "total_bytes": 0,
+  "fields": []
+ },
+ "C2SItemGet": {
+  "function": "C2SItemGet",
+  "opcode": 32,
+  "opcode_const": "C2S_ITEM_GET",
+  "module": "netitem",
+  "total_bytes": 4,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:id"
+   }
+  ]
+ },
+ "C2SItemDrag": {
+  "function": "C2SItemDrag",
+  "opcode": 33,
+  "opcode_const": "C2S_ITEM_DRAG",
+  "module": "netitem",
+  "total_bytes": 6,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:id"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:source"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:dest"
+   }
+  ]
+ },
+ "C2SItemUse": {
+  "function": "C2SItemUse",
+  "opcode": 34,
+  "opcode_const": "C2S_ITEM_USE",
+  "module": "netitem",
+  "total_bytes": 8,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:id"
+   },
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "0"
+   }
+  ]
+ },
+ "C2SItemsUse": {
+  "function": "C2SItemsUse",
+  "opcode": 34,
+  "opcode_const": "C2S_ITEM_USE",
+  "module": "netitem",
+  "total_bytes": 4,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:id"
+   }
+  ]
+ },
+ "C2SItemSummonUse": {
+  "function": "C2SItemSummonUse",
+  "opcode": 34,
+  "opcode_const": "C2S_ITEM_USE",
+  "module": "netitem",
+  "total_bytes": 9,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:item_id"
+   },
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:summon_id"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:flag"
+   }
+  ]
+ },
+ "C2SItemString": {
+  "function": "C2SItemString",
+  "opcode": 35,
+  "opcode_const": "C2S_ITEM_STRING",
+  "module": "netitem",
+  "total_bytes": 5,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:id"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:flag"
+   }
+  ]
+ },
+ "C2SItemFullUse": {
+  "function": "C2SItemFullUse",
+  "opcode": 36,
+  "opcode_const": "C2S_ITEM_FULL_USE",
+  "module": "netitem",
+  "total_bytes": 5,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:id"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:full_type"
+   }
+  ]
+ },
+ "C2SAnswerBind": {
+  "function": "C2SAnswerBind",
+  "opcode": 37,
+  "opcode_const": "C2S_ANSWER_BIND",
+  "module": "netitem",
+  "total_bytes": 4,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:id"
+   }
+  ]
+ },
+ "C2SPutItem": {
+  "function": "C2SPutItem",
+  "opcode": 89,
+  "opcode_const": "C2S_ITEMSHOP",
+  "module": "netitemshop",
+  "total_bytes": 9,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "1"
+   },
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:id"
+   },
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:price"
+   }
+  ]
+ },
+ "C2SGetItem": {
+  "function": "C2SGetItem",
+  "opcode": 89,
+  "opcode_const": "C2S_ITEMSHOP",
+  "module": "netitemshop",
+  "total_bytes": 2,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "2"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:pos"
+   }
+  ]
+ },
+ "C2SModifyPrice": {
+  "function": "C2SModifyPrice",
+  "opcode": 89,
+  "opcode_const": "C2S_ITEMSHOP",
+  "module": "netitemshop",
+  "total_bytes": 6,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "3"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:pos"
+   },
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:price"
+   }
+  ]
+ },
+ "C2SGetShopList": {
+  "function": "C2SGetShopList",
+  "opcode": 89,
+  "opcode_const": "C2S_ITEMSHOP",
+  "module": "netitemshop",
+  "total_bytes": 1,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "4"
+   }
+  ]
+ },
+ "C2SGetShopIntro": {
+  "function": "C2SGetShopIntro",
+  "opcode": 89,
+  "opcode_const": "C2S_ITEMSHOP",
+  "module": "netitemshop",
+  "total_bytes": 9,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "5"
+   },
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:pid"
+   },
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:idx"
+   }
+  ]
+ },
+ "C2SLookShop": {
+  "function": "C2SLookShop",
+  "opcode": 89,
+  "opcode_const": "C2S_ITEMSHOP",
+  "module": "netitemshop",
+  "total_bytes": 9,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "6"
+   },
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:pid"
+   },
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:idx"
+   }
+  ]
+ },
+ "C2SGetItemInfo": {
+  "function": "C2SGetItemInfo",
+  "opcode": 89,
+  "opcode_const": "C2S_ITEMSHOP",
+  "module": "netitemshop",
+  "total_bytes": 2,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "7"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:pos"
+   }
+  ]
+ },
+ "C2SBuyItem": {
+  "function": "C2SBuyItem",
+  "opcode": 89,
+  "opcode_const": "C2S_ITEMSHOP",
+  "module": "netitemshop",
+  "total_bytes": 11,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "8"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:pos"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:amount"
+   },
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:shape"
+   },
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:price"
+   }
+  ]
+ },
+ "C2SSaving": {
+  "function": "C2SSaving",
+  "opcode": 89,
+  "opcode_const": "C2S_ITEMSHOP",
+  "module": "netitemshop",
+  "total_bytes": 5,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "9"
+   },
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:cash"
+   }
+  ]
+ },
+ "C2SDraw": {
+  "function": "C2SDraw",
+  "opcode": 89,
+  "opcode_const": "C2S_ITEMSHOP",
+  "module": "netitemshop",
+  "total_bytes": 5,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "10"
+   },
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:cash"
+   }
+  ]
+ },
+ "C2SSwithItem": {
+  "function": "C2SSwithItem",
+  "opcode": 89,
+  "opcode_const": "C2S_ITEMSHOP",
+  "module": "netitemshop",
+  "total_bytes": 3,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "15"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:pos"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:pos1"
+   }
+  ]
+ },
+ "C2SLock": {
+  "function": "C2SLock",
+  "opcode": 89,
+  "opcode_const": "C2S_ITEMSHOP",
+  "module": "netitemshop",
+  "total_bytes": 1,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "16"
+   }
+  ]
+ },
+ "C2SUnLock": {
+  "function": "C2SUnLock",
+  "opcode": 89,
+  "opcode_const": "C2S_ITEMSHOP",
+  "module": "netitemshop",
+  "total_bytes": 1,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "17"
+   }
+  ]
+ },
+ "C2SSetIntro": {
+  "function": "C2SSetIntro",
+  "opcode": 89,
+  "opcode_const": "C2S_ITEMSHOP",
+  "module": "netitemshop",
+  "total_bytes": 1,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "11"
+   },
+   {
+    "kind": "S",
+    "size": "N:len",
+    "value": "param:intro"
+   }
+  ]
+ },
+ "C2SSetAdFee": {
+  "function": "C2SSetAdFee",
+  "opcode": 89,
+  "opcode_const": "C2S_ITEMSHOP",
+  "module": "netitemshop",
+  "total_bytes": 5,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "12"
+   },
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:fee"
+   }
+  ]
+ },
+ "C2SChangeType": {
+  "function": "C2SChangeType",
+  "opcode": 89,
+  "opcode_const": "C2S_ITEMSHOP",
+  "module": "netitemshop",
+  "total_bytes": 2,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "13"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:itype"
+   },
+   {
+    "kind": "S",
+    "size": "N:len",
+    "value": "param:name"
+   }
+  ]
+ },
+ "C2SSaveSign": {
+  "function": "C2SSaveSign",
+  "opcode": 89,
+  "opcode_const": "C2S_ITEMSHOP",
+  "module": "netitemshop",
+  "total_bytes": 10,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "18"
+   },
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "(param:sign subscr 0)"
+   },
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "(param:sign subscr 1)"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:focus"
+   }
+  ]
+ },
+ "C2SSendShopIdx": {
+  "function": "C2SSendShopIdx",
+  "opcode": 89,
+  "opcode_const": "C2S_ITEMSHOP",
+  "module": "netitemshop",
+  "total_bytes": 5,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "19"
+   },
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:idx"
+   }
+  ]
+ },
+ "C2SPetRefine": {
+  "function": "C2SPetRefine",
+  "opcode": 69,
+  "opcode_const": "C2S_PET_REFINE",
+  "module": "netpet",
+  "total_bytes": 11,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:type"
+   },
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:id1"
+   },
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:id2"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:variant"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:mode"
+   }
+  ]
+ },
+ "C2SSummonFree": {
+  "function": "C2SSummonFree",
+  "opcode": 128,
+  "opcode_const": "C2S_SUMM_FREE",
+  "module": "netpet",
+  "total_bytes": 4,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:pid"
+   }
+  ]
+ },
+ "C2SSummonView": {
+  "function": "C2SSummonView",
+  "opcode": 129,
+  "opcode_const": "C2S_SUMM_VIEW",
+  "module": "netpet",
+  "total_bytes": 4,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:pid"
+   }
+  ]
+ },
+ "C2SRename": {
+  "function": "C2SRename",
+  "opcode": 130,
+  "opcode_const": "C2S_SUMM_RENAME",
+  "module": "netpet",
+  "total_bytes": 4,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:pid"
+   },
+   {
+    "kind": "S",
+    "size": "N:len",
+    "value": "param:name"
+   }
+  ]
+ },
+ "C2SSetFight": {
+  "function": "C2SSetFight",
+  "opcode": 131,
+  "opcode_const": "C2S_SUMM_SET_FIGHT",
+  "module": "netpet",
+  "total_bytes": 4,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:pid"
+   }
+  ]
+ },
+ "C2SSummonPut": {
+  "function": "C2SSummonPut",
+  "opcode": 132,
+  "opcode_const": "C2S_SUMM_PUT",
+  "module": "netpet",
+  "total_bytes": 4,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:pid"
+   }
+  ]
+ },
+ "C2SSummonTake": {
+  "function": "C2SSummonTake",
+  "opcode": 133,
+  "opcode_const": "C2S_SUMM_TAKE",
+  "module": "netpet",
+  "total_bytes": 4,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:pid"
+   }
+  ]
+ },
+ "C2SAddPoint": {
+  "function": "C2SAddPoint",
+  "opcode": 134,
+  "opcode_const": "C2S_SUMM_ADDPOINT",
+  "module": "netpet",
+  "total_bytes": 5,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:pid"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:attr"
+   }
+  ]
+ },
+ "C2SSHMove": {
+  "function": "C2SSHMove",
+  "opcode": 71,
+  "opcode_const": "C2S_STOREHOUSE",
+  "module": "netstorehouse",
+  "total_bytes": 3,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "4"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:pos1"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:pos2"
+   }
+  ]
+ },
+ "C2SPushSH": {
+  "function": "C2SPushSH",
+  "opcode": 71,
+  "opcode_const": "C2S_STOREHOUSE",
+  "module": "netstorehouse",
+  "total_bytes": 8,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "1"
+   },
+   {
+    "kind": "I",
+    "size": 4,
+    "value": "param:itemid"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:amount"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:pos"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:page"
+   }
+  ]
+ },
+ "C2SPopSH": {
+  "function": "C2SPopSH",
+  "opcode": 71,
+  "opcode_const": "C2S_STOREHOUSE",
+  "module": "netstorehouse",
+  "total_bytes": 4,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "2"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:pos1"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:amount"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:pos2"
+   }
+  ]
+ },
+ "C2SSHItemString": {
+  "function": "C2SSHItemString",
+  "opcode": 71,
+  "opcode_const": "C2S_STOREHOUSE",
+  "module": "netstorehouse",
+  "total_bytes": 2,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "3"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:pos"
+   }
+  ]
+ },
+ "C2SSHSetPwd": {
+  "function": "C2SSHSetPwd",
+  "opcode": 71,
+  "opcode_const": "C2S_STOREHOUSE",
+  "module": "netstorehouse",
+  "total_bytes": 41,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "5"
+   },
+   {
+    "kind": "S",
+    "size": 20,
+    "value": "param:oldpwd"
+   },
+   {
+    "kind": "S",
+    "size": 20,
+    "value": "param:newpwd"
+   }
+  ]
+ },
+ "C2SSHPay": {
+  "function": "C2SSHPay",
+  "opcode": 71,
+  "opcode_const": "C2S_STOREHOUSE",
+  "module": "netstorehouse",
+  "total_bytes": 2,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "6"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:pay_mode"
+   }
+  ]
+ },
+ "C2SUnlock": {
+  "function": "C2SUnlock",
+  "opcode": 71,
+  "opcode_const": "C2S_STOREHOUSE",
+  "module": "netstorehouse",
+  "total_bytes": 21,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "7"
+   },
+   {
+    "kind": "S",
+    "size": 20,
+    "value": "param:pwd"
+   }
+  ]
+ },
+ "C2SSHClearPwd": {
+  "function": "C2SSHClearPwd",
+  "opcode": 71,
+  "opcode_const": "C2S_STOREHOUSE",
+  "module": "netstorehouse",
+  "total_bytes": 1,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "8"
+   }
+  ]
+ },
+ "C2SEnterSH": {
+  "function": "C2SEnterSH",
+  "opcode": 71,
+  "opcode_const": "C2S_STOREHOUSE",
+  "module": "netstorehouse",
+  "total_bytes": 21,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "10"
+   },
+   {
+    "kind": "S",
+    "size": 20,
+    "value": "param:name"
+   }
+  ]
+ },
+ "C2SRentSH": {
+  "function": "C2SRentSH",
+  "opcode": 71,
+  "opcode_const": "C2S_STOREHOUSE",
+  "module": "netstorehouse",
+  "total_bytes": 44,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "11"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:mode"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:pay_mode"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:isbig"
+   },
+   {
+    "kind": "S",
+    "size": 20,
+    "value": "param:name"
+   },
+   {
+    "kind": "S",
+    "size": 20,
+    "value": "param:pwd"
+   }
+  ]
+ },
+ "C2SReNameSH": {
+  "function": "C2SReNameSH",
+  "opcode": 71,
+  "opcode_const": "C2S_STOREHOUSE",
+  "module": "netstorehouse",
+  "total_bytes": 21,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "9"
+   },
+   {
+    "kind": "S",
+    "size": 20,
+    "value": "param:name"
+   }
+  ]
+ },
+ "C2SUpGradeStoreHouse": {
+  "function": "C2SUpGradeStoreHouse",
+  "opcode": 71,
+  "opcode_const": "C2S_STOREHOUSE",
+  "module": "netstorehouse",
+  "total_bytes": 1,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "25"
+   }
+  ]
+ },
+ "C2SOpenStoreHouse": {
+  "function": "C2SOpenStoreHouse",
+  "opcode": 71,
+  "opcode_const": "C2S_STOREHOUSE",
+  "module": "netstorehouse",
+  "total_bytes": 2,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "30"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:mode"
+   }
+  ]
+ },
+ "C2SNormalToInsure": {
+  "function": "C2SNormalToInsure",
+  "opcode": 71,
+  "opcode_const": "C2S_STOREHOUSE",
+  "module": "netstorehouse",
+  "total_bytes": 1,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "31"
+   }
+  ]
+ },
+ "C2SInsureToNormal": {
+  "function": "C2SInsureToNormal",
+  "opcode": 71,
+  "opcode_const": "C2S_STOREHOUSE",
+  "module": "netstorehouse",
+  "total_bytes": 1,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "32"
+   }
+  ]
+ },
+ "C2SArrange": {
+  "function": "C2SArrange",
+  "opcode": 71,
+  "opcode_const": "C2S_STOREHOUSE",
+  "module": "netstorehouse",
+  "total_bytes": 3,
+  "fields": [
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "33"
+   },
+   {
+    "kind": "I",
+    "size": "param:data",
+    "value": "N:len"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:src"
+   },
+   {
+    "kind": "I",
+    "size": 1,
+    "value": "param:dest"
+   }
+  ]
+ }
+}

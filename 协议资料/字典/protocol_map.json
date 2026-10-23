@@ -1,0 +1,2316 @@
+{
+ "meta": {
+  "game": "梦想世界 (Dream World) 2013 客户端",
+  "source": "net.py (Claw scripts/) + mxmain.dll 原生层",
+  "c2s_count": 123,
+  "s2c_count": 160,
+  "note": "C2S/GS2C = 客户端→服务端 opcode 整数值; S2C = 服务端→客户端回调路由(模块.函数)"
+ },
+ "c2s_opcodes": {
+  "C2S_LOGIN_ACCOUNT_ENTER": {
+   "opcode": 1,
+   "module": "netlogin"
+  },
+  "C2S_LOGIN_PLAYER_ENTER": {
+   "opcode": 2,
+   "module": "netlogin"
+  },
+  "C2S_LOGIN_PLAYER_ADD": {
+   "opcode": 3,
+   "module": "netlogin"
+  },
+  "C2S_LOGIN_QUEUE": {
+   "opcode": 4,
+   "module": "netlogin"
+  },
+  "C2S_ACCOUNT_MANAGE": {
+   "opcode": 5,
+   "module": "netlogin"
+  },
+  "C2S_PING": {
+   "opcode": 8,
+   "module": "netlogin"
+  },
+  "C2S_LOGIN_LOCALPW": {
+   "opcode": 9,
+   "module": "netlogin"
+  },
+  "C2S_RESULT": {
+   "opcode": 10,
+   "module": "netlogin"
+  },
+  "C2S_DuoYiTong": {
+   "opcode": 11,
+   "module": "net"
+  },
+  "C2S_Mobile": {
+   "opcode": 12,
+   "module": "nethero"
+  },
+  "C2S_BACLLIST": {
+   "opcode": 14,
+   "module": "netlogin"
+  },
+  "C2S_TIME": {
+   "opcode": 15,
+   "module": "net"
+  },
+  "C2S_PROP_POINT": {
+   "opcode": 16,
+   "module": "nethero"
+  },
+  "C2S_PROP_LEVELUP": {
+   "opcode": 17,
+   "module": "nethero"
+  },
+  "C2S_PROP_SWITCH": {
+   "opcode": 18,
+   "module": "netchat"
+  },
+  "C2S_DIY_MAGIC": {
+   "opcode": 19,
+   "module": "nethero"
+  },
+  "C2S_PLAYER_PHOTO": {
+   "opcode": 20,
+   "module": "netplayer"
+  },
+  "C2S_PLAYER_LOOK": {
+   "opcode": 22,
+   "module": "netplayer"
+  },
+  "C2S_PLAYER_IB": {
+   "opcode": 23,
+   "module": "netgoodsserver",
+   "module_all": [
+    "netgoodsserver",
+    "netplayer"
+   ]
+  },
+  "GS2C_PLAYER_IB": {
+   "opcode": 24,
+   "module": "netplayer"
+  },
+  "C2S_ITEM_GET": {
+   "opcode": 32,
+   "module": "netitem"
+  },
+  "C2S_ITEM_DRAG": {
+   "opcode": 33,
+   "module": "netitem"
+  },
+  "C2S_ITEM_USE": {
+   "opcode": 34,
+   "module": "netitem"
+  },
+  "C2S_ITEM_STRING": {
+   "opcode": 35,
+   "module": "netitem"
+  },
+  "C2S_ITEM_FULL_USE": {
+   "opcode": 36,
+   "module": "netitem"
+  },
+  "C2S_ANSWER_BIND": {
+   "opcode": 37,
+   "module": "netitem"
+  },
+  "C2S_ITEM_LOCK": {
+   "opcode": 38,
+   "module": "netplayer"
+  },
+  "C2S_GET_TASK": {
+   "opcode": 48,
+   "module": "nettask"
+  },
+  "C2S_GIVEUP_TASK": {
+   "opcode": 49,
+   "module": "nettask"
+  },
+  "C2S_FRIEND": {
+   "opcode": 50,
+   "module": "netfriend"
+  },
+  "C2S_HERO_CLOSE": {
+   "opcode": 51,
+   "module": "netplayer"
+  },
+  "C2S_HERO_SALE": {
+   "opcode": 52,
+   "module": "netplayer"
+  },
+  "C2S_GET_SALE_HIS": {
+   "opcode": 53,
+   "module": "netplayer"
+  },
+  "C2S_MAP_MOVE": {
+   "opcode": 54,
+   "module": "nethero"
+  },
+  "C2S_MAP_SYN_DIREMOTE": {
+   "opcode": 55,
+   "module": "netmap"
+  },
+  "C2S_BOOTH_ADD": {
+   "opcode": 56,
+   "module": "net"
+  },
+  "C2S_PLAYER_TRADE": {
+   "opcode": 64,
+   "module": "netplayer"
+  },
+  "C2S_HERO_BLOCK": {
+   "opcode": 66,
+   "module": "nethero"
+  },
+  "C2S_CHANGE_TITLE": {
+   "opcode": 67,
+   "module": "nethero"
+  },
+  "C2S_CHANGE_SHORTCUT": {
+   "opcode": 68,
+   "module": "nethero"
+  },
+  "C2S_PET_REFINE": {
+   "opcode": 69,
+   "module": "netpet"
+  },
+  "C2S_HOUSE": {
+   "opcode": 70,
+   "module": "room"
+  },
+  "C2S_STOREHOUSE": {
+   "opcode": 71,
+   "module": "netstorehouse"
+  },
+  "C2S_PLAYER_TEAM": {
+   "opcode": 72,
+   "module": "netteam"
+  },
+  "C2S_PLAYER_DRUG": {
+   "opcode": 73,
+   "module": "nethero"
+  },
+  "C2S_GROUP_STOCK": {
+   "opcode": 74,
+   "module": "netgroup"
+  },
+  "C2S_STOCK_OPERATE": {
+   "opcode": 75,
+   "module": "netgroup"
+  },
+  "C2S_COOK": {
+   "opcode": 76,
+   "module": "nethero"
+  },
+  "C2S_CLOSE_MINIGAME": {
+   "opcode": 77,
+   "module": "netliving"
+  },
+  "C2S_PRODUCE": {
+   "opcode": 78,
+   "module": "netliving"
+  },
+  "C2S_FACTORY": {
+   "opcode": 79,
+   "module": "netliving"
+  },
+  "C2S_DISTRICT": {
+   "opcode": 80,
+   "module": "netdistrict"
+  },
+  "C2S_GROUP": {
+   "opcode": 81,
+   "module": "netgroup"
+  },
+  "C2S_RESIDENT": {
+   "opcode": 83,
+   "module": "netresident"
+  },
+  "C2S_NEWSPAPER": {
+   "opcode": 84,
+   "module": "netcountry"
+  },
+  "C2S_FORUM": {
+   "opcode": 85,
+   "module": "netforum"
+  },
+  "C2S_SERVICE": {
+   "opcode": 87,
+   "module": "nethero"
+  },
+  "C2S_OPENUI": {
+   "opcode": 88,
+   "module": "netchat",
+   "module_all": [
+    "netchat",
+    "nethero",
+    "netnpc",
+    "netsecurity",
+    "netstate",
+    "netwing"
+   ]
+  },
+  "C2S_ITEMSHOP": {
+   "opcode": 89,
+   "module": "netitemshop"
+  },
+  "C2S_NPC_LOOK": {
+   "opcode": 96,
+   "module": "netnpc"
+  },
+  "C2S_NPC_COMMAND": {
+   "opcode": 97,
+   "module": "netnpc"
+  },
+  "C2S_NPC_ANSWER": {
+   "opcode": 98,
+   "module": "netnpc"
+  },
+  "C2S_NPC_BUY": {
+   "opcode": 99,
+   "module": "netnpc"
+  },
+  "C2S_NPC_TASK": {
+   "opcode": 100,
+   "module": "netnpc"
+  },
+  "C2S_NPC_GETDETAILS": {
+   "opcode": 101,
+   "module": "netnpc"
+  },
+  "C2S_NPC_MAKE": {
+   "opcode": 102,
+   "module": "netnpc"
+  },
+  "C2S_NPC_LEARN_SKILL": {
+   "opcode": 103,
+   "module": "netnpc"
+  },
+  "C2S_NPC_GETCOST": {
+   "opcode": 104,
+   "module": "netnpc"
+  },
+  "C2S_NPC_GIVE": {
+   "opcode": 105,
+   "module": "netnpc"
+  },
+  "C2S_NPC_SELL": {
+   "opcode": 106,
+   "module": "netnpc"
+  },
+  "C2S_PLAYER_KILL": {
+   "opcode": 107,
+   "module": "nethero"
+  },
+  "C2S_NPC_RBCLICK": {
+   "opcode": 108,
+   "module": "netnpc"
+  },
+  "C2S_NPC_TRADECENTER": {
+   "opcode": 112,
+   "module": "netnpc"
+  },
+  "C2S_NPC_CHOOSE_ITEM": {
+   "opcode": 113,
+   "module": "netnpc"
+  },
+  "C2S_NPC_PETADOPT": {
+   "opcode": 114,
+   "module": "netpet"
+  },
+  "C2S_NPC_INPUT": {
+   "opcode": 115,
+   "module": "netnpc"
+  },
+  "C2S_DIANKA": {
+   "opcode": 116,
+   "module": "netplayer"
+  },
+  "C2S_CONJURE": {
+   "opcode": 125,
+   "module": "netpet"
+  },
+  "C2S_NPC_CHOOSE_ITEM_NUM": {
+   "opcode": 127,
+   "module": "netnpc"
+  },
+  "C2S_SUMM_FREE": {
+   "opcode": 128,
+   "module": "netpet"
+  },
+  "C2S_SUMM_VIEW": {
+   "opcode": 129,
+   "module": "netpet"
+  },
+  "C2S_SUMM_RENAME": {
+   "opcode": 130,
+   "module": "netpet"
+  },
+  "C2S_SUMM_SET_FIGHT": {
+   "opcode": 131,
+   "module": "netpet"
+  },
+  "C2S_SUMM_PUT": {
+   "opcode": 132,
+   "module": "netpet"
+  },
+  "C2S_SUMM_TAKE": {
+   "opcode": 133,
+   "module": "netpet"
+  },
+  "C2S_SUMM_ADDPOINT": {
+   "opcode": 134,
+   "module": "netpet"
+  },
+  "C2S_GETINFO_SUMMON": {
+   "opcode": 144,
+   "module": "nethero"
+  },
+  "C2S_GETINFO_ITEM": {
+   "opcode": 145,
+   "module": "nethero"
+  },
+  "C2S_MAIL_GET": {
+   "opcode": 146,
+   "module": "netmail"
+  },
+  "C2S_GET_CHILD_INFO": {
+   "opcode": 147,
+   "module": "nethero"
+  },
+  "C2S_PLAYER_PRIVATE": {
+   "opcode": 148,
+   "module": "netchat"
+  },
+  "C2S_PLAYER_CHAT": {
+   "opcode": 149,
+   "module": "netchat"
+  },
+  "C2S_GETPLAYERNOTIFY": {
+   "opcode": 150,
+   "module": "nethero"
+  },
+  "C2S_PLAYER_WIZARD": {
+   "opcode": 151,
+   "module": "netchat"
+  },
+  "C2S_VER": {
+   "opcode": 152,
+   "module": "netlogin"
+  },
+  "C2S_PLAYER_CMD": {
+   "opcode": 153,
+   "module": "netchat"
+  },
+  "C2S_EMS": {
+   "opcode": 154,
+   "module": "netmail"
+  },
+  "C2S_GETITEMINFOEXT": {
+   "opcode": 156,
+   "module": "nethero"
+  },
+  "C2S_ACHIEVE": {
+   "opcode": 157,
+   "module": "netachieve"
+  },
+  "C2S_ACHIEVE_BADGE": {
+   "opcode": 158,
+   "module": "netachieve"
+  },
+  "C2S_WAR_ATTACK": {
+   "opcode": 160,
+   "module": "netwar"
+  },
+  "C2S_WAR_PERFORM": {
+   "opcode": 161,
+   "module": "netwar"
+  },
+  "C2S_WAR_SPECIAL": {
+   "opcode": 162,
+   "module": "netwar"
+  },
+  "C2S_WAR_DEFEND": {
+   "opcode": 163,
+   "module": "netwar"
+  },
+  "C2S_WAR_ESCAPE": {
+   "opcode": 164,
+   "module": "netwar"
+  },
+  "C2S_WAR_ITEM": {
+   "opcode": 165,
+   "module": "netwar"
+  },
+  "C2S_WAR_SUMMON": {
+   "opcode": 166,
+   "module": "netwar"
+  },
+  "C2S_WAR_PROTECT": {
+   "opcode": 167,
+   "module": "netwar"
+  },
+  "C2S_WAR_SUMM_ATTACK": {
+   "opcode": 168,
+   "module": "netwar"
+  },
+  "C2S_WAR_SUMM_PERFORM": {
+   "opcode": 169,
+   "module": "netwar"
+  },
+  "C2S_WAR_SUMM_GUARD": {
+   "opcode": 170,
+   "module": "netwar"
+  },
+  "C2S_WAR_SUMM_ITEM": {
+   "opcode": 171,
+   "module": "netwar"
+  },
+  "C2S_WAR_SUMM_PROTECT": {
+   "opcode": 172,
+   "module": "netwar"
+  },
+  "C2S_WAR_CATCH": {
+   "opcode": 173,
+   "module": "netwar"
+  },
+  "C2S_WAR_SUMM_ESCAPE": {
+   "opcode": 174,
+   "module": "netwar"
+  },
+  "GS2C_CLIENTUI": {
+   "opcode": 174,
+   "module": "net"
+  },
+  "C2S_WAR_TEAM": {
+   "opcode": 175,
+   "module": "netwar"
+  },
+  "C2S_WAR_LOOK": {
+   "opcode": 176,
+   "module": "netwar"
+  },
+  "C2S_WAR_SUMMONCHILD": {
+   "opcode": 177,
+   "module": "netwar"
+  },
+  "GS2C_ZHIDAO": {
+   "opcode": 181,
+   "module": "net"
+  },
+  "C2S_NPC_TJTRADECENTER": {
+   "opcode": 181,
+   "module": "nettjtradecenter"
+  },
+  "C2S_NPC_FACTORY_OP": {
+   "opcode": 182,
+   "module": "netliving"
+  },
+  "C2S_COMMON": {
+   "opcode": 192,
+   "module": "netcommon"
+  }
+ },
+ "c2s_by_category": {
+  "NPC": {
+   "C2S_NPC_LOOK": 96,
+   "C2S_NPC_COMMAND": 97,
+   "C2S_NPC_ANSWER": 98,
+   "C2S_NPC_BUY": 99,
+   "C2S_NPC_TASK": 100,
+   "C2S_NPC_GETDETAILS": 101,
+   "C2S_NPC_MAKE": 102,
+   "C2S_NPC_LEARN_SKILL": 103,
+   "C2S_NPC_GETCOST": 104,
+   "C2S_NPC_GIVE": 105,
+   "C2S_NPC_SELL": 106,
+   "C2S_NPC_RBCLICK": 108,
+   "C2S_NPC_TRADECENTER": 112,
+   "C2S_NPC_CHOOSE_ITEM": 113,
+   "C2S_NPC_INPUT": 115,
+   "C2S_NPC_CHOOSE_ITEM_NUM": 127
+  },
+  "交易": {
+   "C2S_NPC_TJTRADECENTER": 181
+  },
+  "仓库": {
+   "C2S_STOREHOUSE": 71
+  },
+  "任务": {
+   "C2S_GET_TASK": 48,
+   "C2S_GIVEUP_TASK": 49
+  },
+  "其他": {
+   "C2S_DuoYiTong": 11,
+   "C2S_TIME": 15,
+   "C2S_BOOTH_ADD": 56,
+   "C2S_DISTRICT": 80,
+   "C2S_ITEMSHOP": 89,
+   "GS2C_CLIENTUI": 174,
+   "GS2C_ZHIDAO": 181
+  },
+  "商城/物品": {
+   "C2S_PLAYER_IB": 23
+  },
+  "国家/报纸": {
+   "C2S_NEWSPAPER": 84
+  },
+  "地图": {
+   "C2S_MAP_SYN_DIREMOTE": 55
+  },
+  "宠物": {
+   "C2S_PET_REFINE": 69,
+   "C2S_NPC_PETADOPT": 114,
+   "C2S_CONJURE": 125,
+   "C2S_SUMM_FREE": 128,
+   "C2S_SUMM_VIEW": 129,
+   "C2S_SUMM_RENAME": 130,
+   "C2S_SUMM_SET_FIGHT": 131,
+   "C2S_SUMM_PUT": 132,
+   "C2S_SUMM_TAKE": 133,
+   "C2S_SUMM_ADDPOINT": 134
+  },
+  "成就": {
+   "C2S_ACHIEVE": 157,
+   "C2S_ACHIEVE_BADGE": 158
+  },
+  "战斗": {
+   "C2S_WAR_ATTACK": 160,
+   "C2S_WAR_PERFORM": 161,
+   "C2S_WAR_SPECIAL": 162,
+   "C2S_WAR_DEFEND": 163,
+   "C2S_WAR_ESCAPE": 164,
+   "C2S_WAR_ITEM": 165,
+   "C2S_WAR_SUMMON": 166,
+   "C2S_WAR_PROTECT": 167,
+   "C2S_WAR_SUMM_ATTACK": 168,
+   "C2S_WAR_SUMM_PERFORM": 169,
+   "C2S_WAR_SUMM_GUARD": 170,
+   "C2S_WAR_SUMM_ITEM": 171,
+   "C2S_WAR_SUMM_PROTECT": 172,
+   "C2S_WAR_CATCH": 173,
+   "C2S_WAR_SUMM_ESCAPE": 174,
+   "C2S_WAR_TEAM": 175,
+   "C2S_WAR_LOOK": 176,
+   "C2S_WAR_SUMMONCHILD": 177
+  },
+  "户籍": {
+   "C2S_RESIDENT": 83
+  },
+  "房屋": {
+   "C2S_HOUSE": 70
+  },
+  "物品": {
+   "C2S_ITEM_GET": 32,
+   "C2S_ITEM_DRAG": 33,
+   "C2S_ITEM_USE": 34,
+   "C2S_ITEM_STRING": 35,
+   "C2S_ITEM_FULL_USE": 36,
+   "C2S_ANSWER_BIND": 37
+  },
+  "生活/生产": {
+   "C2S_CLOSE_MINIGAME": 77,
+   "C2S_PRODUCE": 78,
+   "C2S_FACTORY": 79,
+   "C2S_NPC_FACTORY_OP": 182
+  },
+  "登录/账号": {
+   "C2S_LOGIN_ACCOUNT_ENTER": 1,
+   "C2S_LOGIN_PLAYER_ENTER": 2,
+   "C2S_LOGIN_PLAYER_ADD": 3,
+   "C2S_LOGIN_QUEUE": 4,
+   "C2S_ACCOUNT_MANAGE": 5,
+   "C2S_PING": 8,
+   "C2S_LOGIN_LOCALPW": 9,
+   "C2S_RESULT": 10,
+   "C2S_BACLLIST": 14,
+   "C2S_VER": 152
+  },
+  "社交": {
+   "C2S_FRIEND": 50
+  },
+  "系统/UI": {
+   "C2S_COMMON": 192
+  },
+  "组队": {
+   "C2S_PLAYER_TEAM": 72
+  },
+  "群组/股票": {
+   "C2S_GROUP_STOCK": 74,
+   "C2S_STOCK_OPERATE": 75,
+   "C2S_GROUP": 81
+  },
+  "聊天": {
+   "C2S_PROP_SWITCH": 18,
+   "C2S_OPENUI": 88,
+   "C2S_PLAYER_PRIVATE": 148,
+   "C2S_PLAYER_CHAT": 149,
+   "C2S_PLAYER_WIZARD": 151,
+   "C2S_PLAYER_CMD": 153
+  },
+  "角色/属性": {
+   "C2S_Mobile": 12,
+   "C2S_PROP_POINT": 16,
+   "C2S_PROP_LEVELUP": 17,
+   "C2S_DIY_MAGIC": 19,
+   "C2S_MAP_MOVE": 54,
+   "C2S_HERO_BLOCK": 66,
+   "C2S_CHANGE_TITLE": 67,
+   "C2S_CHANGE_SHORTCUT": 68,
+   "C2S_PLAYER_DRUG": 73,
+   "C2S_COOK": 76,
+   "C2S_SERVICE": 87,
+   "C2S_PLAYER_KILL": 107,
+   "C2S_GETINFO_SUMMON": 144,
+   "C2S_GETINFO_ITEM": 145,
+   "C2S_GET_CHILD_INFO": 147,
+   "C2S_GETPLAYERNOTIFY": 150,
+   "C2S_GETITEMINFOEXT": 156
+  },
+  "角色/玩家": {
+   "C2S_PLAYER_PHOTO": 20,
+   "C2S_PLAYER_LOOK": 22,
+   "GS2C_PLAYER_IB": 24,
+   "C2S_ITEM_LOCK": 38,
+   "C2S_HERO_CLOSE": 51,
+   "C2S_HERO_SALE": 52,
+   "C2S_GET_SALE_HIS": 53,
+   "C2S_PLAYER_TRADE": 64,
+   "C2S_DIANKA": 116
+  },
+  "论坛": {
+   "C2S_FORUM": 85
+  },
+  "邮件": {
+   "C2S_MAIL_GET": 146,
+   "C2S_EMS": 154
+  }
+ },
+ "s2c_routes": [
+  {
+   "module": "netlogin",
+   "handler": "S2CHello",
+   "tag": null
+  },
+  {
+   "module": "netlogin",
+   "handler": "S2CLoginAccountInfo",
+   "tag": null
+  },
+  {
+   "module": "netlogin",
+   "handler": "S2CLoginRoleInfo",
+   "tag": null
+  },
+  {
+   "module": "netlogin",
+   "handler": "S2CLoginRoleEnter",
+   "tag": null
+  },
+  {
+   "module": "netlogin",
+   "handler": "S2CLoginQueue",
+   "tag": null
+  },
+  {
+   "module": "netlogin",
+   "handler": "S2CLoginPlayerAdd",
+   "tag": null
+  },
+  {
+   "module": "netlogin",
+   "handler": "S2CAccountManage",
+   "tag": null
+  },
+  {
+   "module": "netlogin",
+   "handler": "S2CLoginMessage",
+   "tag": null
+  },
+  {
+   "module": "netlogin",
+   "handler": "S2CLoginError",
+   "tag": null
+  },
+  {
+   "module": "netlogin",
+   "handler": "S2CLoginLocalPW",
+   "tag": null
+  },
+  {
+   "module": "netlogin",
+   "handler": "S2CLoginDelRole",
+   "tag": null
+  },
+  {
+   "module": "netcommon",
+   "handler": "S2CCommon",
+   "tag": null
+  },
+  {
+   "module": "blacklist",
+   "handler": "S2CBlacklist",
+   "tag": null
+  },
+  {
+   "module": "mxgw",
+   "handler": "S2CTime",
+   "tag": null
+  },
+  {
+   "module": "nethero",
+   "handler": "S2CPropInit",
+   "tag": null
+  },
+  {
+   "module": "nethero",
+   "handler": "S2CPropChange",
+   "tag": 1
+  },
+  {
+   "module": "nethero",
+   "handler": "S2CPropResist",
+   "tag": null
+  },
+  {
+   "module": "nethero",
+   "handler": "S2CPropPower",
+   "tag": null
+  },
+  {
+   "module": "netplayer",
+   "handler": "S2CPropPhoto",
+   "tag": null
+  },
+  {
+   "module": "nethero",
+   "handler": "S2CPropSwitch",
+   "tag": null
+  },
+  {
+   "module": "nethero",
+   "handler": "S2CPropRepute",
+   "tag": null
+  },
+  {
+   "module": "nethero",
+   "handler": "S2CPropXinfa",
+   "tag": null
+  },
+  {
+   "module": "nethero",
+   "handler": "S2CPlayerCash",
+   "tag": null
+  },
+  {
+   "module": "nethero",
+   "handler": "S2CPropAdvXinfa",
+   "tag": null
+  },
+  {
+   "module": "nettask",
+   "handler": "S2CJuqingStatus",
+   "tag": null
+  },
+  {
+   "module": "netmail",
+   "handler": "S2CDeathInfo",
+   "tag": null
+  },
+  {
+   "module": "banword",
+   "handler": "S2CBandWord",
+   "tag": null
+  },
+  {
+   "module": "netitem",
+   "handler": "S2CItemKey",
+   "tag": null
+  },
+  {
+   "module": "netitem",
+   "handler": "S2CItemAdd",
+   "tag": 1
+  },
+  {
+   "module": "netitem",
+   "handler": "S2CItemDel",
+   "tag": 1
+  },
+  {
+   "module": "netitem",
+   "handler": "S2CItemQuantity",
+   "tag": 1
+  },
+  {
+   "module": "netitem",
+   "handler": "S2CItemPos",
+   "tag": 1
+  },
+  {
+   "module": "netitem",
+   "handler": "S2CAskBind",
+   "tag": null
+  },
+  {
+   "module": "netitem",
+   "handler": "S2CItemString",
+   "tag": null
+  },
+  {
+   "module": "netplayer",
+   "handler": "S2CItemLock",
+   "tag": null
+  },
+  {
+   "module": "netmail",
+   "handler": "S2CEms",
+   "tag": null
+  },
+  {
+   "module": "netrolesale",
+   "handler": "S2CRoleSale",
+   "tag": null
+  },
+  {
+   "module": "netmail",
+   "handler": "S2CChargeHistory",
+   "tag": null
+  },
+  {
+   "module": "netpet",
+   "handler": "S2CSummonInfo",
+   "tag": 1
+  },
+  {
+   "module": "netpet",
+   "handler": "S2CSummonSkill",
+   "tag": 1
+  },
+  {
+   "module": "netpet",
+   "handler": "S2CSetFight",
+   "tag": 1
+  },
+  {
+   "module": "netpet",
+   "handler": "S2CPropView",
+   "tag": null
+  },
+  {
+   "module": "netpet",
+   "handler": "S2CPropState",
+   "tag": 1
+  },
+  {
+   "module": "netpet",
+   "handler": "S2CSummonKey",
+   "tag": 1
+  },
+  {
+   "module": "netpet",
+   "handler": "S2CSummEquip",
+   "tag": 1
+  },
+  {
+   "module": "marriage",
+   "handler": "S2CMarriage",
+   "tag": null
+  },
+  {
+   "module": "nethero",
+   "handler": "S2CMobile",
+   "tag": null
+  },
+  {
+   "module": "netplayer",
+   "handler": "S2CSaleHistory",
+   "tag": null
+  },
+  {
+   "module": "nethero",
+   "handler": "S2CSkillLevel",
+   "tag": null
+  },
+  {
+   "module": "netplayer",
+   "handler": "S2CPlayerInfo",
+   "tag": null
+  },
+  {
+   "module": "nethero",
+   "handler": "S2CDesignAdd",
+   "tag": null
+  },
+  {
+   "module": "nethero",
+   "handler": "S2CDesignDel",
+   "tag": null
+  },
+  {
+   "module": "netfriend",
+   "handler": "S2CFriendAdd",
+   "tag": null
+  },
+  {
+   "module": "netfriend",
+   "handler": "S2CFriendDel",
+   "tag": null
+  },
+  {
+   "module": "netfriend",
+   "handler": "S2CFriend",
+   "tag": null
+  },
+  {
+   "module": "nettask",
+   "handler": "S2CTaskAdd",
+   "tag": null
+  },
+  {
+   "module": "nettask",
+   "handler": "S2CTaskRemove",
+   "tag": null
+  },
+  {
+   "module": "netstate",
+   "handler": "S2CStateAdd",
+   "tag": null
+  },
+  {
+   "module": "netstate",
+   "handler": "S2CStateRemove",
+   "tag": null
+  },
+  {
+   "module": "nethero",
+   "handler": "S2CBlock",
+   "tag": null
+  },
+  {
+   "module": "netpet",
+   "handler": "S2CPetRefine",
+   "tag": null
+  },
+  {
+   "module": "room",
+   "handler": "S2CHouse",
+   "tag": null
+  },
+  {
+   "module": "netstorehouse",
+   "handler": "S2CStoreHouse",
+   "tag": null
+  },
+  {
+   "module": "netteam",
+   "handler": "S2CPlayerTeam",
+   "tag": null
+  },
+  {
+   "module": "netplayer",
+   "handler": "S2CPlayerOnSale",
+   "tag": null
+  },
+  {
+   "module": "netgroup",
+   "handler": "S2CGroup",
+   "tag": null
+  },
+  {
+   "module": "netmap",
+   "handler": "S2CMapDel",
+   "tag": null
+  },
+  {
+   "module": "netmap",
+   "handler": "S2CMapTrack",
+   "tag": null
+  },
+  {
+   "module": "netliving",
+   "handler": "S2CProduce",
+   "tag": null
+  },
+  {
+   "module": "netliving",
+   "handler": "S2CMiniGame",
+   "tag": null
+  },
+  {
+   "module": "netopenui",
+   "handler": "S2COpenUI",
+   "tag": null
+  },
+  {
+   "module": "netliving",
+   "handler": "S2CFactory",
+   "tag": null
+  },
+  {
+   "module": "district",
+   "handler": "S2CDistrict",
+   "tag": null
+  },
+  {
+   "module": "netresident",
+   "handler": "S2CResident",
+   "tag": null
+  },
+  {
+   "module": "netplayer",
+   "handler": "S2CDianka",
+   "tag": null
+  },
+  {
+   "module": "netplayer",
+   "handler": "S2CPlayerTrade",
+   "tag": null
+  },
+  {
+   "module": "netgroup",
+   "handler": "S2CStock",
+   "tag": null
+  },
+  {
+   "module": "netmap",
+   "handler": "S2CMapSceneM",
+   "tag": null
+  },
+  {
+   "module": "netmap",
+   "handler": "S2CMapGotoM",
+   "tag": null
+  },
+  {
+   "module": "netmap",
+   "handler": "S2CMapAddPlayer",
+   "tag": null
+  },
+  {
+   "module": "netmap",
+   "handler": "S2CMapAddNpc",
+   "tag": null
+  },
+  {
+   "module": "netmap",
+   "handler": "S2CMapAddGoods",
+   "tag": null
+  },
+  {
+   "module": "netmap",
+   "handler": "S2CMapRefreshNpcSign",
+   "tag": null
+  },
+  {
+   "module": "netmap",
+   "handler": "S2CMapEffect",
+   "tag": null
+  },
+  {
+   "module": "netmap",
+   "handler": "S2CMapTeam",
+   "tag": null
+  },
+  {
+   "module": "netmap",
+   "handler": "S2CMapAddon",
+   "tag": null
+  },
+  {
+   "module": "netmap",
+   "handler": "S2CMapSummon",
+   "tag": null
+  },
+  {
+   "module": "netmap",
+   "handler": "S2CChangeShape",
+   "tag": null
+  },
+  {
+   "module": "netmap",
+   "handler": "S2CMapStore",
+   "tag": null
+  },
+  {
+   "module": "netmap",
+   "handler": "S2CMapHide",
+   "tag": null
+  },
+  {
+   "module": "mask",
+   "handler": "S2CADDMASK",
+   "tag": null
+  },
+  {
+   "module": "netwar",
+   "handler": "S2CWarStart",
+   "tag": 16
+  },
+  {
+   "module": "netwar",
+   "handler": "S2CWarEnd",
+   "tag": 18
+  },
+  {
+   "module": "netwar",
+   "handler": "S2CWarTurn",
+   "tag": 18
+  },
+  {
+   "module": "netwar",
+   "handler": "S2CWarAdd",
+   "tag": 18
+  },
+  {
+   "module": "netwar",
+   "handler": "S2CWarDel",
+   "tag": 18
+  },
+  {
+   "module": "netwar",
+   "handler": "S2CWarAttackNormal",
+   "tag": 18
+  },
+  {
+   "module": "netwar",
+   "handler": "S2CWarAttackNormalEnd",
+   "tag": 18
+  },
+  {
+   "module": "netwar",
+   "handler": "S2CWarAttackConverg",
+   "tag": 18
+  },
+  {
+   "module": "netwar",
+   "handler": "S2CWarProtect",
+   "tag": 18
+  },
+  {
+   "module": "netwar",
+   "handler": "S2CWarPerform",
+   "tag": 18
+  },
+  {
+   "module": "netwar",
+   "handler": "S2CWarWState",
+   "tag": 18
+  },
+  {
+   "module": "netwar",
+   "handler": "S2CWarAddon",
+   "tag": 18
+  },
+  {
+   "module": "netwar",
+   "handler": "S2CWarHPPercent",
+   "tag": 18
+  },
+  {
+   "module": "netwar",
+   "handler": "S2CWarONACT",
+   "tag": 18
+  },
+  {
+   "module": "netwar",
+   "handler": "S2CWarPlayerChat",
+   "tag": 18
+  },
+  {
+   "module": "netwar",
+   "handler": "S2CWarSummon",
+   "tag": 18
+  },
+  {
+   "module": "netwar",
+   "handler": "S2CWarSummonCatch",
+   "tag": 18
+  },
+  {
+   "module": "netwar",
+   "handler": "S2CWarWeather",
+   "tag": 18
+  },
+  {
+   "module": "netwar",
+   "handler": "S2CWarSign",
+   "tag": 16
+  },
+  {
+   "module": "netwar",
+   "handler": "S2CWarChildSkill",
+   "tag": 16
+  },
+  {
+   "module": "netwar",
+   "handler": "S2CWarCalledPet",
+   "tag": 16
+  },
+  {
+   "module": "netwar",
+   "handler": "S2CChangeAction",
+   "tag": 18
+  },
+  {
+   "module": "netnpc",
+   "handler": "S2CNpcChat",
+   "tag": null
+  },
+  {
+   "module": "netnpc",
+   "handler": "S2CNpcItemChoose",
+   "tag": null
+  },
+  {
+   "module": "netnpc",
+   "handler": "S2CNpcBuyList",
+   "tag": null
+  },
+  {
+   "module": "netnpc",
+   "handler": "S2CNpcSellList",
+   "tag": null
+  },
+  {
+   "module": "netnpc",
+   "handler": "S2CNpcLearnList",
+   "tag": null
+  },
+  {
+   "module": "netnpc",
+   "handler": "S2CNpcTrade",
+   "tag": null
+  },
+  {
+   "module": "netnpc",
+   "handler": "S2CNpcDetails",
+   "tag": null
+  },
+  {
+   "module": "netnpc",
+   "handler": "S2CNpcChatExt",
+   "tag": 16
+  },
+  {
+   "module": "netnpc",
+   "handler": "S2CNpcInput",
+   "tag": null
+  },
+  {
+   "module": "netnpc",
+   "handler": "S2CNpcMake",
+   "tag": null
+  },
+  {
+   "module": "netnpc",
+   "handler": "S2CNpcMakeCost",
+   "tag": null
+  },
+  {
+   "module": "netnpc",
+   "handler": "S2CNpcItemBill",
+   "tag": null
+  },
+  {
+   "module": "netnpc",
+   "handler": "S2CNpcTradeCenter",
+   "tag": null
+  },
+  {
+   "module": "netnpc",
+   "handler": "S2CNpcChatJuQing",
+   "tag": null
+  },
+  {
+   "module": "netnpc",
+   "handler": "S2CNpcLearnPerformList",
+   "tag": null
+  },
+  {
+   "module": "netnpc",
+   "handler": "S2CMakeCompleteNotify",
+   "tag": null
+  },
+  {
+   "module": "nethero",
+   "handler": "S2CSummonInfo",
+   "tag": null
+  },
+  {
+   "module": "nethero",
+   "handler": "S2CItemInfo",
+   "tag": null
+  },
+  {
+   "module": "nethero",
+   "handler": "S2CPlayerNotify",
+   "tag": null
+  },
+  {
+   "module": "nethero",
+   "handler": "S2CNotifyExt",
+   "tag": 19
+  },
+  {
+   "module": "netchat",
+   "handler": "S2CSysNotify",
+   "tag": 19
+  },
+  {
+   "module": "netmail",
+   "handler": "S2CMail",
+   "tag": null
+  },
+  {
+   "module": "netchat",
+   "handler": "S2CPlayerChat",
+   "tag": 16
+  },
+  {
+   "module": "netchat",
+   "handler": "S2CWarNotify",
+   "tag": 3
+  },
+  {
+   "module": "netchat",
+   "handler": "S2CNotify",
+   "tag": 19
+  },
+  {
+   "module": "mxv",
+   "handler": "S2CVer",
+   "tag": null
+  },
+  {
+   "module": "netmap",
+   "handler": "S2CAddTempNpc",
+   "tag": null
+  },
+  {
+   "module": "netmap",
+   "handler": "S2CFBNpc",
+   "tag": null
+  },
+  {
+   "module": "netchildinfo",
+   "handler": "S2CChildInfo",
+   "tag": null
+  },
+  {
+   "module": "nethero",
+   "handler": "S2CSummonInfo6",
+   "tag": null
+  },
+  {
+   "module": "netcountry",
+   "handler": "S2CNewspaper",
+   "tag": null
+  },
+  {
+   "module": "netforum",
+   "handler": "S2CForum",
+   "tag": null
+  },
+  {
+   "module": "nethero",
+   "handler": "S2CServiceAnswer",
+   "tag": null
+  },
+  {
+   "module": "netitemshop",
+   "handler": "S2CItemShop",
+   "tag": null
+  },
+  {
+   "module": "netdreamknow",
+   "handler": "S2CGetDreamKnow",
+   "tag": null
+  },
+  {
+   "module": "netchild",
+   "handler": "S2CChild",
+   "tag": null
+  },
+  {
+   "module": "netbaike",
+   "handler": "S2CBaike",
+   "tag": null
+  },
+  {
+   "module": "netblog",
+   "handler": "S2CBlog",
+   "tag": null
+  },
+  {
+   "module": "netnpc",
+   "handler": "S2CNpcItemDiscount",
+   "tag": null
+  },
+  {
+   "module": "netrichgood",
+   "handler": "S2COpenUpload",
+   "tag": null
+  },
+  {
+   "module": "netrelation",
+   "handler": "S2COpenTeach",
+   "tag": null
+  },
+  {
+   "module": "nettjtradecenter",
+   "handler": "S2CTJTradeCenter",
+   "tag": null
+  },
+  {
+   "module": "netliving",
+   "handler": "S2CFactoryList",
+   "tag": null
+  },
+  {
+   "module": "nethero",
+   "handler": "S2CItemTCInfo",
+   "tag": null
+  },
+  {
+   "module": "netachieve",
+   "handler": "S2CAchieve",
+   "tag": null
+  },
+  {
+   "module": "dlgcalendar",
+   "handler": "S2CTime",
+   "tag": null
+  },
+  {
+   "module": "netachieve",
+   "handler": "S2CAchieveBadge",
+   "tag": null
+  }
+ ],
+ "s2c_by_category": {
+  "角色/宠物": [
+   {
+    "module": "nethero",
+    "handler": "S2CPlayerCash",
+    "tag": null
+   },
+   {
+    "module": "netrolesale",
+    "handler": "S2CRoleSale",
+    "tag": null
+   },
+   {
+    "module": "netpet",
+    "handler": "S2CSummonInfo",
+    "tag": 1
+   },
+   {
+    "module": "netpet",
+    "handler": "S2CSummonSkill",
+    "tag": 1
+   },
+   {
+    "module": "netpet",
+    "handler": "S2CSummonKey",
+    "tag": 1
+   },
+   {
+    "module": "netpet",
+    "handler": "S2CSummEquip",
+    "tag": 1
+   },
+   {
+    "module": "netplayer",
+    "handler": "S2CPlayerInfo",
+    "tag": null
+   },
+   {
+    "module": "netpet",
+    "handler": "S2CPetRefine",
+    "tag": null
+   },
+   {
+    "module": "netteam",
+    "handler": "S2CPlayerTeam",
+    "tag": null
+   },
+   {
+    "module": "netplayer",
+    "handler": "S2CPlayerOnSale",
+    "tag": null
+   },
+   {
+    "module": "netplayer",
+    "handler": "S2CPlayerTrade",
+    "tag": null
+   },
+   {
+    "module": "netmap",
+    "handler": "S2CMapAddPlayer",
+    "tag": null
+   },
+   {
+    "module": "netmap",
+    "handler": "S2CMapSummon",
+    "tag": null
+   },
+   {
+    "module": "netmap",
+    "handler": "S2CChangeShape",
+    "tag": null
+   },
+   {
+    "module": "netwar",
+    "handler": "S2CWarPlayerChat",
+    "tag": 18
+   },
+   {
+    "module": "netwar",
+    "handler": "S2CWarSummon",
+    "tag": 18
+   },
+   {
+    "module": "netwar",
+    "handler": "S2CWarSummonCatch",
+    "tag": 18
+   },
+   {
+    "module": "netwar",
+    "handler": "S2CWarChildSkill",
+    "tag": 16
+   },
+   {
+    "module": "netwar",
+    "handler": "S2CWarCalledPet",
+    "tag": 16
+   },
+   {
+    "module": "nethero",
+    "handler": "S2CSummonInfo",
+    "tag": null
+   },
+   {
+    "module": "nethero",
+    "handler": "S2CPlayerNotify",
+    "tag": null
+   },
+   {
+    "module": "netchat",
+    "handler": "S2CPlayerChat",
+    "tag": 16
+   },
+   {
+    "module": "netchildinfo",
+    "handler": "S2CChildInfo",
+    "tag": null
+   },
+   {
+    "module": "nethero",
+    "handler": "S2CSummonInfo6",
+    "tag": null
+   },
+   {
+    "module": "netchild",
+    "handler": "S2CChild",
+    "tag": null
+   }
+  ],
+  "其他": [
+   {
+    "module": "netlogin",
+    "handler": "S2CHello",
+    "tag": null
+   },
+   {
+    "module": "netcommon",
+    "handler": "S2CCommon",
+    "tag": null
+   },
+   {
+    "module": "nettask",
+    "handler": "S2CJuqingStatus",
+    "tag": null
+   },
+   {
+    "module": "netmail",
+    "handler": "S2CDeathInfo",
+    "tag": null
+   },
+   {
+    "module": "banword",
+    "handler": "S2CBandWord",
+    "tag": null
+   },
+   {
+    "module": "netitem",
+    "handler": "S2CAskBind",
+    "tag": null
+   },
+   {
+    "module": "netmail",
+    "handler": "S2CEms",
+    "tag": null
+   },
+   {
+    "module": "netmail",
+    "handler": "S2CChargeHistory",
+    "tag": null
+   },
+   {
+    "module": "netpet",
+    "handler": "S2CSetFight",
+    "tag": 1
+   },
+   {
+    "module": "nethero",
+    "handler": "S2CSkillLevel",
+    "tag": null
+   },
+   {
+    "module": "nethero",
+    "handler": "S2CDesignAdd",
+    "tag": null
+   },
+   {
+    "module": "nethero",
+    "handler": "S2CDesignDel",
+    "tag": null
+   },
+   {
+    "module": "nethero",
+    "handler": "S2CBlock",
+    "tag": null
+   },
+   {
+    "module": "netliving",
+    "handler": "S2CMiniGame",
+    "tag": null
+   },
+   {
+    "module": "mask",
+    "handler": "S2CADDMASK",
+    "tag": null
+   },
+   {
+    "module": "netwar",
+    "handler": "S2CChangeAction",
+    "tag": 18
+   },
+   {
+    "module": "netblog",
+    "handler": "S2CBlog",
+    "tag": null
+   },
+   {
+    "module": "netrichgood",
+    "handler": "S2COpenUpload",
+    "tag": null
+   },
+   {
+    "module": "netrelation",
+    "handler": "S2COpenTeach",
+    "tag": null
+   }
+  ],
+  "地图/移动": [
+   {
+    "module": "nettask",
+    "handler": "S2CTaskRemove",
+    "tag": null
+   },
+   {
+    "module": "netstate",
+    "handler": "S2CStateRemove",
+    "tag": null
+   },
+   {
+    "module": "room",
+    "handler": "S2CHouse",
+    "tag": null
+   },
+   {
+    "module": "netmap",
+    "handler": "S2CMapDel",
+    "tag": null
+   },
+   {
+    "module": "netmap",
+    "handler": "S2CMapTrack",
+    "tag": null
+   },
+   {
+    "module": "netliving",
+    "handler": "S2CProduce",
+    "tag": null
+   },
+   {
+    "module": "netliving",
+    "handler": "S2CFactory",
+    "tag": null
+   },
+   {
+    "module": "district",
+    "handler": "S2CDistrict",
+    "tag": null
+   },
+   {
+    "module": "netresident",
+    "handler": "S2CResident",
+    "tag": null
+   },
+   {
+    "module": "netmap",
+    "handler": "S2CMapSceneM",
+    "tag": null
+   },
+   {
+    "module": "netmap",
+    "handler": "S2CMapGotoM",
+    "tag": null
+   },
+   {
+    "module": "netmap",
+    "handler": "S2CMapAddNpc",
+    "tag": null
+   },
+   {
+    "module": "netmap",
+    "handler": "S2CMapRefreshNpcSign",
+    "tag": null
+   },
+   {
+    "module": "netmap",
+    "handler": "S2CMapEffect",
+    "tag": null
+   },
+   {
+    "module": "netmap",
+    "handler": "S2CMapTeam",
+    "tag": null
+   },
+   {
+    "module": "netmap",
+    "handler": "S2CMapAddon",
+    "tag": null
+   },
+   {
+    "module": "netmap",
+    "handler": "S2CMapStore",
+    "tag": null
+   },
+   {
+    "module": "netmap",
+    "handler": "S2CMapHide",
+    "tag": null
+   },
+   {
+    "module": "netliving",
+    "handler": "S2CFactoryList",
+    "tag": null
+   }
+  ],
+  "系统/UI": [
+   {
+    "module": "nethero",
+    "handler": "S2CPropInit",
+    "tag": null
+   },
+   {
+    "module": "nethero",
+    "handler": "S2CPropChange",
+    "tag": 1
+   },
+   {
+    "module": "nethero",
+    "handler": "S2CPropResist",
+    "tag": null
+   },
+   {
+    "module": "nethero",
+    "handler": "S2CPropPower",
+    "tag": null
+   },
+   {
+    "module": "netplayer",
+    "handler": "S2CPropPhoto",
+    "tag": null
+   },
+   {
+    "module": "nethero",
+    "handler": "S2CPropSwitch",
+    "tag": null
+   },
+   {
+    "module": "nethero",
+    "handler": "S2CPropRepute",
+    "tag": null
+   },
+   {
+    "module": "nethero",
+    "handler": "S2CPropXinfa",
+    "tag": null
+   },
+   {
+    "module": "nethero",
+    "handler": "S2CPropAdvXinfa",
+    "tag": null
+   },
+   {
+    "module": "netpet",
+    "handler": "S2CPropView",
+    "tag": null
+   },
+   {
+    "module": "netpet",
+    "handler": "S2CPropState",
+    "tag": 1
+   },
+   {
+    "module": "netstate",
+    "handler": "S2CStateAdd",
+    "tag": null
+   },
+   {
+    "module": "netopenui",
+    "handler": "S2COpenUI",
+    "tag": null
+   },
+   {
+    "module": "netnpc",
+    "handler": "S2CMakeCompleteNotify",
+    "tag": null
+   },
+   {
+    "module": "nethero",
+    "handler": "S2CNotifyExt",
+    "tag": 19
+   },
+   {
+    "module": "netchat",
+    "handler": "S2CSysNotify",
+    "tag": 19
+   },
+   {
+    "module": "netchat",
+    "handler": "S2CNotify",
+    "tag": 19
+   },
+   {
+    "module": "nethero",
+    "handler": "S2CServiceAnswer",
+    "tag": null
+   }
+  ],
+  "战斗": [
+   {
+    "module": "netwar",
+    "handler": "S2CWarStart",
+    "tag": 16
+   },
+   {
+    "module": "netwar",
+    "handler": "S2CWarEnd",
+    "tag": 18
+   },
+   {
+    "module": "netwar",
+    "handler": "S2CWarTurn",
+    "tag": 18
+   },
+   {
+    "module": "netwar",
+    "handler": "S2CWarAdd",
+    "tag": 18
+   },
+   {
+    "module": "netwar",
+    "handler": "S2CWarDel",
+    "tag": 18
+   },
+   {
+    "module": "netwar",
+    "handler": "S2CWarAttackNormal",
+    "tag": 18
+   },
+   {
+    "module": "netwar",
+    "handler": "S2CWarAttackNormalEnd",
+    "tag": 18
+   },
+   {
+    "module": "netwar",
+    "handler": "S2CWarProtect",
+    "tag": 18
+   },
+   {
+    "module": "netwar",
+    "handler": "S2CWarPerform",
+    "tag": 18
+   },
+   {
+    "module": "netwar",
+    "handler": "S2CWarWState",
+    "tag": 18
+   },
+   {
+    "module": "netwar",
+    "handler": "S2CWarAddon",
+    "tag": 18
+   },
+   {
+    "module": "netwar",
+    "handler": "S2CWarHPPercent",
+    "tag": 18
+   },
+   {
+    "module": "netwar",
+    "handler": "S2CWarONACT",
+    "tag": 18
+   },
+   {
+    "module": "netwar",
+    "handler": "S2CWarWeather",
+    "tag": 18
+   },
+   {
+    "module": "netwar",
+    "handler": "S2CWarSign",
+    "tag": 16
+   },
+   {
+    "module": "netnpc",
+    "handler": "S2CNpcLearnPerformList",
+    "tag": null
+   },
+   {
+    "module": "netchat",
+    "handler": "S2CWarNotify",
+    "tag": 3
+   }
+  ],
+  "登录/账号": [
+   {
+    "module": "netlogin",
+    "handler": "S2CLoginAccountInfo",
+    "tag": null
+   },
+   {
+    "module": "netlogin",
+    "handler": "S2CLoginRoleInfo",
+    "tag": null
+   },
+   {
+    "module": "netlogin",
+    "handler": "S2CLoginRoleEnter",
+    "tag": null
+   },
+   {
+    "module": "netlogin",
+    "handler": "S2CLoginQueue",
+    "tag": null
+   },
+   {
+    "module": "netlogin",
+    "handler": "S2CLoginPlayerAdd",
+    "tag": null
+   },
+   {
+    "module": "netlogin",
+    "handler": "S2CAccountManage",
+    "tag": null
+   },
+   {
+    "module": "netlogin",
+    "handler": "S2CLoginMessage",
+    "tag": null
+   },
+   {
+    "module": "netlogin",
+    "handler": "S2CLoginError",
+    "tag": null
+   },
+   {
+    "module": "netlogin",
+    "handler": "S2CLoginLocalPW",
+    "tag": null
+   },
+   {
+    "module": "netlogin",
+    "handler": "S2CLoginDelRole",
+    "tag": null
+   },
+   {
+    "module": "blacklist",
+    "handler": "S2CBlacklist",
+    "tag": null
+   },
+   {
+    "module": "mxgw",
+    "handler": "S2CTime",
+    "tag": null
+   },
+   {
+    "module": "nethero",
+    "handler": "S2CMobile",
+    "tag": null
+   },
+   {
+    "module": "netwar",
+    "handler": "S2CWarAttackConverg",
+    "tag": 18
+   },
+   {
+    "module": "mxv",
+    "handler": "S2CVer",
+    "tag": null
+   },
+   {
+    "module": "dlgcalendar",
+    "handler": "S2CTime",
+    "tag": null
+   }
+  ],
+  "物品/仓库": [
+   {
+    "module": "netitem",
+    "handler": "S2CItemKey",
+    "tag": null
+   },
+   {
+    "module": "netitem",
+    "handler": "S2CItemAdd",
+    "tag": 1
+   },
+   {
+    "module": "netitem",
+    "handler": "S2CItemDel",
+    "tag": 1
+   },
+   {
+    "module": "netitem",
+    "handler": "S2CItemQuantity",
+    "tag": 1
+   },
+   {
+    "module": "netitem",
+    "handler": "S2CItemPos",
+    "tag": 1
+   },
+   {
+    "module": "netitem",
+    "handler": "S2CItemString",
+    "tag": null
+   },
+   {
+    "module": "netplayer",
+    "handler": "S2CItemLock",
+    "tag": null
+   },
+   {
+    "module": "netstorehouse",
+    "handler": "S2CStoreHouse",
+    "tag": null
+   },
+   {
+    "module": "netplayer",
+    "handler": "S2CDianka",
+    "tag": null
+   },
+   {
+    "module": "netmap",
+    "handler": "S2CMapAddGoods",
+    "tag": null
+   },
+   {
+    "module": "netnpc",
+    "handler": "S2CNpcItemChoose",
+    "tag": null
+   },
+   {
+    "module": "netnpc",
+    "handler": "S2CNpcItemBill",
+    "tag": null
+   },
+   {
+    "module": "nethero",
+    "handler": "S2CItemInfo",
+    "tag": null
+   },
+   {
+    "module": "netitemshop",
+    "handler": "S2CItemShop",
+    "tag": null
+   },
+   {
+    "module": "netnpc",
+    "handler": "S2CNpcItemDiscount",
+    "tag": null
+   },
+   {
+    "module": "nethero",
+    "handler": "S2CItemTCInfo",
+    "tag": null
+   }
+  ],
+  "社交": [
+   {
+    "module": "marriage",
+    "handler": "S2CMarriage",
+    "tag": null
+   },
+   {
+    "module": "netfriend",
+    "handler": "S2CFriendAdd",
+    "tag": null
+   },
+   {
+    "module": "netfriend",
+    "handler": "S2CFriendDel",
+    "tag": null
+   },
+   {
+    "module": "netfriend",
+    "handler": "S2CFriend",
+    "tag": null
+   },
+   {
+    "module": "netnpc",
+    "handler": "S2CNpcChat",
+    "tag": null
+   },
+   {
+    "module": "netnpc",
+    "handler": "S2CNpcChatExt",
+    "tag": 16
+   },
+   {
+    "module": "netnpc",
+    "handler": "S2CNpcChatJuQing",
+    "tag": null
+   },
+   {
+    "module": "netmail",
+    "handler": "S2CMail",
+    "tag": null
+   },
+   {
+    "module": "netcountry",
+    "handler": "S2CNewspaper",
+    "tag": null
+   },
+   {
+    "module": "netforum",
+    "handler": "S2CForum",
+    "tag": null
+   }
+  ],
+  "交易/经济": [
+   {
+    "module": "netplayer",
+    "handler": "S2CSaleHistory",
+    "tag": null
+   },
+   {
+    "module": "netgroup",
+    "handler": "S2CGroup",
+    "tag": null
+   },
+   {
+    "module": "netgroup",
+    "handler": "S2CStock",
+    "tag": null
+   },
+   {
+    "module": "netnpc",
+    "handler": "S2CNpcBuyList",
+    "tag": null
+   },
+   {
+    "module": "netnpc",
+    "handler": "S2CNpcSellList",
+    "tag": null
+   },
+   {
+    "module": "netnpc",
+    "handler": "S2CNpcTrade",
+    "tag": null
+   },
+   {
+    "module": "netnpc",
+    "handler": "S2CNpcTradeCenter",
+    "tag": null
+   },
+   {
+    "module": "nettjtradecenter",
+    "handler": "S2CTJTradeCenter",
+    "tag": null
+   }
+  ],
+  "NPC": [
+   {
+    "module": "netnpc",
+    "handler": "S2CNpcLearnList",
+    "tag": null
+   },
+   {
+    "module": "netnpc",
+    "handler": "S2CNpcDetails",
+    "tag": null
+   },
+   {
+    "module": "netnpc",
+    "handler": "S2CNpcInput",
+    "tag": null
+   },
+   {
+    "module": "netnpc",
+    "handler": "S2CNpcMake",
+    "tag": null
+   },
+   {
+    "module": "netnpc",
+    "handler": "S2CNpcMakeCost",
+    "tag": null
+   },
+   {
+    "module": "netmap",
+    "handler": "S2CAddTempNpc",
+    "tag": null
+   },
+   {
+    "module": "netmap",
+    "handler": "S2CFBNpc",
+    "tag": null
+   }
+  ],
+  "任务/活动": [
+   {
+    "module": "nettask",
+    "handler": "S2CTaskAdd",
+    "tag": null
+   },
+   {
+    "module": "netdreamknow",
+    "handler": "S2CGetDreamKnow",
+    "tag": null
+   },
+   {
+    "module": "netbaike",
+    "handler": "S2CBaike",
+    "tag": null
+   },
+   {
+    "module": "netachieve",
+    "handler": "S2CAchieve",
+    "tag": null
+   },
+   {
+    "module": "netachieve",
+    "handler": "S2CAchieveBadge",
+    "tag": null
+   }
+  ]
+ }
+}

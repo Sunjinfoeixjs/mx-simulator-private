@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>梦想世界 模拟服 · GM 调试面板</title>
+<style>
+  :root { --bg:#0f1320; --card:#1a2030; --line:#2a3346; --txt:#e6ebf5; --mut:#8b97ad;
+         --acc:#5b9dff; --ok:#39d98a; --warn:#ffb454; --bad:#ff6b6b; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--txt);
+         font:14px/1.5 -apple-system,"Segoe UI",Roboto,"Microsoft YaHei",sans-serif; }
+  header { padding:14px 20px; background:linear-gradient(90deg,#172033,#0f1320);
+           border-bottom:1px solid var(--line); display:flex; align-items:center; gap:12px; }
+  header h1 { font-size:16px; margin:0; font-weight:600; }
+  header .dot { width:9px; height:9px; border-radius:50%; background:var(--bad); }
+  header .dot.on { background:var(--ok); }
+  header .meta { margin-left:auto; color:var(--mut); font-size:12px; }
+  main { padding:18px; display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+         gap:16px; max-width:1180px; margin:0 auto; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; }
+  .card h2 { margin:0 0 12px; font-size:14px; color:var(--acc); font-weight:600;
+             display:flex; align-items:center; gap:8px; }
+  .row { display:flex; align-items:center; gap:10px; margin:8px 0; }
+  .row label { width:78px; color:var(--mut); flex:none; }
+  .row input { flex:1; min-width:0; background:#0e1422; border:1px solid var(--line);
+               color:var(--txt); border-radius:7px; padding:7px 9px; }
+  .row input:focus { outline:none; border-color:var(--acc); }
+  button { background:var(--acc); color:#06101f; border:0; border-radius:7px;
+           padding:7px 13px; font-weight:600; cursor:pointer; }
+  button.ghost { background:transparent; color:var(--txt); border:1px solid var(--line); }
+  button:hover { filter:brightness(1.08); }
+  .bar { height:10px; background:#0e1422; border-radius:6px; overflow:hidden; flex:1;
+         border:1px solid var(--line); }
+  .bar > i { display:block; height:100%; background:linear-gradient(90deg,#39d98a,#5b9dff); }
+  .bar.hp > i { background:linear-gradient(90deg,#ff6b6b,#ffb454); }
+  .kv { display:flex; justify-content:space-between; color:var(--mut); margin:3px 0; }
+  .kv b { color:var(--txt); font-weight:600; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th,td { text-align:left; padding:5px 6px; border-bottom:1px solid var(--line); }
+  th { color:var(--mut); font-weight:500; }
+  .pill { font-size:11px; padding:2px 8px; border-radius:20px; background:#0e1422;
+          border:1px solid var(--line); color:var(--mut); }
+  .pill.on { color:var(--ok); border-color:#1d4d39; }
+  .pill.warn { color:var(--bad); border-color:#5a2c2c; background:#24151a; }
+  .actions { display:flex; gap:8px; flex-wrap:wrap; }
+  .hint { color:var(--mut); font-size:12px; margin-top:6px; }
+  .toast { position:fixed; bottom:18px; left:50%; transform:translateX(-50%);
+           background:#222b40; border:1px solid var(--line); padding:9px 16px;
+           border-radius:8px; opacity:0; transition:.25s; pointer-events:none; }
+  .toast.show { opacity:1; }
+  /* ── 特性状态卡片（2026-10-20）──
+     用色阶而不是单色：缺口（not_implemented/preview_only）必须比「模拟参数」
+     更扎眼。preview_only 又比 not_implemented 更隐蔽（UI 给了数字但不兑现），
+     所以给它最重的红框。 */
+  .feat { display:flex; flex-direction:column; gap:6px; }
+  .feat .item { display:flex; align-items:flex-start; gap:8px; padding:6px 8px;
+                border-radius:8px; background:#0e1422; border:1px solid var(--line);
+                border-left:3px solid var(--line); }
+  .feat .item .t { flex:1; min-width:0; }
+  .feat .item .t b { font-weight:600; }
+  .feat .item .t .d { color:var(--mut); font-size:12px; margin-top:1px; }
+  .feat .item .code { color:#6b7a94; font-size:11px; font-family:ui-monospace,Consolas,monospace; }
+  .feat .item.s-not_implemented { border-left-color:var(--bad); }
+  .feat .item.s-preview_only    { border-left-color:var(--bad); background:#1e1218; }
+  .feat .item.s-partial         { border-left-color:var(--warn); }
+  .feat .item.s-simulated       { border-left-color:var(--acc); }
+  .feat .item.s-ignored_no_counterpart { border-left-color:#54627a; opacity:.72; }
+  /* display_only：数值与下发都有，但客户端没有消费入口。既不是缺口（不红）
+     也不是已实现（不绿）——用低饱和蓝灰，与 ignored 的灰区分开。 */
+  .feat .item.s-display_only    { border-left-color:#4a6f8c; opacity:.82; }
+  .feat .item.s-implemented     { border-left-color:var(--ok); }
+  .feat .empty { color:var(--mut); font-size:12px; }
+</style>
+</head>
+<body>
+<header>
+  <span class="dot" id="connDot"></span>
+  <h1>梦想世界 模拟服 · GM 调试面板</h1>
+  <span class="meta" id="meta">连接状态：检测中…</span>
+</header>
+
+<main>
+  <section class="card">
+    <h2>👤 角色</h2>
+    <div class="row"><label>生命 HP</label>
+      <div class="bar hp"><i id="hpBar" style="width:100%"></i></div>
+      <input id="hp" type="number" style="width:74px"></div>
+    <div id="resBars"></div>
+    <div class="row"><label>金钱</label><input id="coins" type="number"><button id="bCoins">设定</button></div>
+    <div class="row"><label>坐标 X</label><input id="px" type="number" style="width:84px">
+      <label style="width:auto">Y</label><input id="py" type="number" style="width:84px">
+      <button id="bPos">传送</button></div>
+    <div class="row"><label>切图</label>
+      <select id="mapSel" style="flex:1"></select>
+      <button id="bMapGo">跳转</button></div>
+    <div class="hint" id="mapHint">孤岛 🔒 只能靠 GM 切图进入（无普通路径连通）。</div>
+    <div class="row"><label>战斗</label>
+      <button class="ghost" id="bWarStart">强制遇怪</button>
+      <button class="ghost" id="bWarWin">一键胜利</button></div>
+    <div class="actions" style="margin-top:6px">
+      <button id="bHeal">全回复</button>
+      <button class="ghost" id="bRefresh">刷新下发</button>
+      <button class="ghost" id="bSave">存档</button>
+    </div>
+    <div class="hint">修改即时下发协议帧；未连客户端时仅改服务端状态。</div>
+  </section>
+
+  <section class="card">
+    <h2>🐾 宠物</h2>
+    <div class="row"><label>宠物HP</label>
+      <div class="bar hp"><i id="petBar" style="width:100%"></i></div>
+      <input id="petHp" type="number" style="width:74px"></div>
+    <div class="kv"><span>状态</span><span id="petState" class="pill">—</span></div>
+    <div class="kv"><span>战斗中</span><span id="warState" class="pill">否</span></div>
+    <div class="hint">宠物 HP 仅在战斗内会即时刷新血条；平时仅存服务端。</div>
+  </section>
+
+  <section class="card">
+    <h2>🎒 背包</h2>
+    <table><thead><tr><th>ID</th><th>造型</th><th>数量</th><th>名称</th><th></th></tr></thead>
+      <tbody id="invBody"></tbody></table>
+    <div class="row" style="margin-top:10px">
+      <input id="addShape" placeholder="造型shape" type="number" style="flex:1.1">
+      <input id="addQty" placeholder="数量" type="number" value="1" style="flex:.7">
+      <input id="addName" placeholder="名称" style="flex:1.2"></div>
+    <button id="bAdd" style="margin-top:6px">＋ 加入背包</button>
+  </section>
+
+  <section class="card" style="grid-column:1 / -1">
+    <h2>📋 特性状态 <span class="pill" id="featCount">—</span></h2>
+    <div class="hint" style="margin:0 0 10px">代码事实表 <code>FEATURE_STATUS</code>：
+      客户端有入口、协议有 opcode，但服务端<b>没做</b>或<b>只做了模拟</b>的地方。
+      缺口排在最前，已实现垫底。<code>只在预览报数</code>= UI 给了数字但不兑现，最容易被当成 bug。</div>
+    <div class="feat" id="featList"><div class="empty">加载中…</div></div>
+  </section>
+
+  <section class="card">
+    <h2>📜 任务编辑 <span class="pill" id="taskPill">—</span></h2>
+    <div class="kv"><span>当前任务</span><b id="taskName">—</b></div>
+    <div class="kv"><span>状态</span><span id="taskState">—</span></div>
+    <div class="kv"><span>进度</span><span id="taskProg">—</span></div>
+    <div class="row"><label>进度</label>
+      <input id="taskP" type="number" min="0" max="3" value="0" style="width:74px">
+      <button id="bTaskP" class="ghost">设定</button></div>
+    <div class="row"><label>状态</label>
+      <select id="taskS" style="flex:1">
+        <option value="0">无（移除）</option>
+        <option value="1">进行中</option>
+        <option value="2">已完成</option>
+      </select>
+      <button id="bTaskS" class="ghost">设定</button></div>
+    <div class="actions" style="margin-top:6px">
+      <button id="bTaskComplete">★ 一键交任务（真实奖励链）</button>
+    </div>
+    <div class="hint">「一键交任务」走玩家同一条奖励链：金钱 +500 / 经验 +200 / 幻灵珠。</div>
+  </section>
+  <section class="card">
+    <h2>⚔ 遇怪设置</h2>
+    <div class="kv"><span>当前敌人</span><b id="enemyN">0</b></div>
+    <div class="row"><label>每 N 步</label>
+      <input id="enc" type="number" min="0" style="width:90px">
+      <button id="bEnc">设定</button></div>
+    <div class="hint">0 = 关闭遇怪（纯探索）。</div>
+  </section>
+
+  <section class="card" id="battleCard">
+    <h2>⚙ 战斗调试 <span class="pill" id="bdWar">—</span></h2>
+    <div class="hint" style="margin:0 0 8px">
+      数值分两层：<b>战斗值</b>＝reverse 标定 0..255（伤害公式用，复现录像 50/48/20）；
+      <b>显示值</b>＝petfightdata 真值公式 0..65535（客户端面板）。
+      改这里的参数不碰存档；reload 配置会恢复。</div>
+    <table><thead><tr><th>单位</th><th>战斗值 A/D/P/Lt</th><th>显示值 攻/防/速/法防</th></tr></thead>
+      <tbody>
+        <tr><td>主角</td><td id="bdHeroCD">—</td><td>—</td></tr>
+        <tr><td id="bdPetName">宠物</td><td id="bdPetCD">—</td><td id="bdPetD">—</td></tr>
+        <tr><td id="bdEnemyName">敌方</td><td id="bdEnemyCD">—</td><td id="bdEnemyD">—</td></tr>
+      </tbody></table>
+    <div class="kv" style="margin-top:8px"><span>伤害模型</span><b id="bdModel">—</b></div>
+    <div class="kv"><span>快照（主角/宠物/敌方）</span><b id="bdSnap">—</b></div>
+
+    <div class="row" style="margin-top:10px"><label>控制点</label>
+      <input id="bdCpAtk" type="number" min="0" max="255" title="攻击点" style="width:64px">
+      <input id="bdCpDef" type="number" min="0" max="255" title="防御点" style="width:64px">
+      <input id="bdCpDis" type="number" min="0" max="255" title="干扰点" style="width:64px">
+      <button id="bCp" class="ghost">设定</button></div>
+    <div class="kv"><span>当前点数</span><b id="bdCpCur">—</b></div>
+
+    <div class="row"><label>逃跑强制</label>
+      <select id="bdEscMode" style="flex:1">
+        <option value="auto">按公式（名义 <span id="bdEscRate">—</span>）</option>
+        <option value="success">必定成功</option>
+        <option value="fail">必定失败（敌方白打一回合）</option>
+        <option value="prob">按概率…</option>
+      </select>
+      <input id="bdEscPct" type="number" min="0" max="100" value="80" style="width:70px">
+      <button id="bEsc" class="ghost">设定</button></div>
+    <div class="kv"><span>最近判定</span><b id="bdEscLast">—</b></div>
+
+    <div class="row"><label>宠物等级</label>
+      <input id="bdPetLv" type="number" min="1" max="120" style="width:80px">
+      <button id="bPetLv" class="ghost">真值重算</button></div>
+    <div class="row"><label>敌方等级</label>
+      <input id="bdEnemyLv" type="number" min="1" max="120" style="width:80px">
+      <button id="bEnemyLv" class="ghost">等级重算</button></div>
+
+    <table style="margin-top:8px"><thead><tr><th>本战单位</th><th>HP</th><th>速度</th><th>造型</th></tr></thead>
+      <tbody id="bdUnits"><tr><td colspan="4" style="color:var(--mut)">不在战斗中</td></tr></tbody></table>
+    <div class="hint">控制点初始 30/30/30（对NPC，资料库半真值）；逃跑失败 → 敌方白打一回合。</div>
+  </section>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const Api = (p, body) => fetch('/api/'+p, {
+  method: body ? 'POST' : 'GET',
+  headers:{'Content-Type':'application/json'},
+  body: body ? JSON.stringify(body) : undefined
+}).then(r => r.json());
+
+let S = null;
+const $ = id => document.getElementById(id);
+function toast(msg){ const t=$('toast'); t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),1600); }
+
+async function apply(p, body){ const r = await Api(p, body); if(r.ok) toast('已下发：'+p);
+  else toast('失败：'+(r.error||'未知')); await load(); }
+
+function render(s){
+  S = s;
+  $('connDot').className = 'dot' + (s.connected ? ' on' : '');
+  $('meta').textContent = s.connected ? '已连接游戏客户端 · 3134' : '未连接客户端（仅改服务端）';
+  $('hp').value = s.hero_hp;
+  $('hpBar').style.width = (100*s.hero_hp/s.hero_hp_max)+'%';
+  $('coins').value = s.coins;
+  $('px').value = s.px; $('py').value = s.py;
+  $('petHp').value = s.pet_hp;
+  $('petBar').style.width = (100*s.pet_hp/s.pet_hp_max)+'%';
+  $('petState').textContent = s.pet_alive ? '存活' : '倒地';
+  $('petState').className = 'pill' + (s.pet_alive ? ' on' : '');
+  $('warState').textContent = s.in_war ? '是' : '否';
+  $('warState').className = 'pill' + (s.in_war ? ' on' : '');
+  $('enemyN').textContent = s.enemy_count;
+  // 当前地图（让下拉选中态与孤岛提示跟随）
+  if (MAPS.length) {
+    const sel = $('mapSel');
+    const opt = sel.querySelector('option[value="' + s.mapid + '"]');
+    if (opt) opt.selected = true;
+  }
+  $('mapHint').textContent = s.map_island
+    ? '🔒 当前处于孤岛（只能靠 GM 切图离开）'
+    : '孤岛 🔒 只能靠 GM 切图进入（无普通路径连通）';
+  renderTask(s);
+  $('enc').value = s.encounter_every;
+  // 资源条
+  const rb = $('resBars'); rb.innerHTML = '';
+  const labels = {m_MP:'法力',m_FP:'愤怒',m_At:'攻资',m_Df:'防资',m_Dp:'扰资'};
+  for(const k of ['m_MP','m_FP','m_At','m_Df','m_Dp']){
+    const v = s.hero_res[k]; const max = k==='m_MP'||k==='m_FP' ? 100 : 100;
+    const row = document.createElement('div'); row.className='row';
+    row.innerHTML = `<label>${labels[k]}</label><div class="bar"><i style="width:${Math.min(100,100*v/max)}%"></i></div>`+
+                    `<input type="number" value="${v}" data-k="${k}" style="width:64px" class="resIn">`;
+    rb.appendChild(row);
+  }
+  rb.querySelectorAll('.resIn').forEach(inp=>{
+    inp.addEventListener('change', ()=> apply('resource',{name:inp.dataset.k, value:+inp.value}));
+  });
+  // 背包
+  const tb = $('invBody'); tb.innerHTML='';
+  s.items.forEach(it=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML = `<td>${it.iid}</td><td>${it.shape}</td><td>${it.qty}</td><td>${it.name||''}</td>`+
+      `<td><button class="ghost" data-i="${it.iid}">删</button></td>`;
+    tb.appendChild(tr);
+  });
+  tb.querySelectorAll('button[data-i]').forEach(b=>{
+    b.onclick=()=>apply('item/del',{iid:+b.dataset.i});
+  });
+}
+
+/* ── 特性状态卡片：拉一次 /api/features 渲染，之后只在内容变化时重绘 ──
+   ★ 不放进 load() 的 1.2s 轮询里：这张表是**代码事实**，一个会话里不会变。
+     每 1.2s 重绘一次纯属浪费，而且会把用户正在读的地方刷没。
+   ★ 也不做前端排序/文案映射：rows 已由服务端排好序、拼好 desc，
+     前端一插嘴就是第二份规则，迟早跟服务端漂移。 */
+let featSig = '';
+function renderFeatures(d){
+  const rows = (d && d.rows) || [];
+  const sig = JSON.stringify(rows.map(r => [r.key, r.status]));
+  const cnt = $('featCount');
+  if (cnt) {
+    const gap = rows.filter(r => r.status === 'not_implemented' || r.status === 'preview_only').length;
+    cnt.textContent = rows.length + ' 项 · 缺口 ' + gap;
+    cnt.className = 'pill' + (gap ? ' warn' : ' on');
+    cnt.title = '缺口 = not_implemented + preview_only';
+  }
+  if (sig === featSig) return;          // 没变就不重画
+  featSig = sig;
+  const box = $('featList');
+  if (!box) return;
+  if (!rows.length) { box.innerHTML = '<div class="empty">没有登记任何特性</div>'; return; }
+  box.innerHTML = rows.map(r =>
+    '<div class="item s-' + r.status + '" title="' + (r.desc || '') + '">' +
+      '<div class="t"><b>' + (r.title || r.key) + '</b>' +
+        ' <span class="code">' + r.key + '</span>' +
+        '<div class="d">' + (r.desc || '') + '</div></div>' +
+    '</div>').join('');
+}
+async function loadFeatures(){
+  try { renderFeatures(await Api('features')); }
+  catch(e) { const b = $('featList'); if (b) b.innerHTML = '<div class="empty">特性表加载失败（' + e + '）</div>'; }
+}
+
+async function load(){ try{ const s = await Api('state'); render(s); }catch(e){} }
+
+$('bCoins').onclick = ()=> apply('coins',{value:+$('coins').value});
+$('bPos').onclick   = ()=> apply('pos',{x:+$('px').value, y:+$('py').value});
+/* ── 切图：60 图全量下拉（含孤岛标注），开机拉一次清单 ── */
+let MAPS = [];
+async function loadMaps(){
+  try {
+    const d = await Api('maps');
+    MAPS = d.maps || [];
+    const sel = $('mapSel');
+    sel.innerHTML = MAPS.map(mp =>
+      '<option value="' + mp.mapid + '"' + (mp.current ? ' selected' : '') + '>'
+      + mp.mapid + ' ' + mp.name + (mp.island ? ' 🔒孤岛' : '') + '</option>').join('');
+  } catch(e) { /* 清单拉不到不阻塞 */ }
+}
+$('bMapGo').onclick = ()=> {
+  const mid = +$('mapSel').value;
+  if (mid) apply('map',{mapid: mid});
+};
+
+/* ── 任务编辑：渲染当前任务 + 按钮 ── */
+const TASK_NEED = 3;
+function renderTask(s){
+  const tasks = s.tasks || {};
+  const t = tasks[1];          // 新手任务 tid=1
+  const pill = $('taskPill');
+  const stMap = {0:'无',1:'进行中',2:'已完成'};
+  if (!t) {
+    $('taskName').textContent = '（未接取）';
+    $('taskState').textContent = '无';
+    $('taskProg').textContent = '—';
+    pill.textContent = '无任务'; pill.className = 'pill';
+    return;
+  }
+  $('taskName').textContent = '新手任务（tid=1）';
+  $('taskState').textContent = stMap[t.state] || t.state;
+  $('taskProg').textContent = t.progress + '/' + TASK_NEED;
+  pill.textContent = '进度 ' + t.progress + '/' + TASK_NEED;
+  pill.className = 'pill' + (t.state === 2 ? ' on' : (t.state === 1 ? ' warn' : ''));
+  $('taskP').value = t.progress;
+  $('taskS').value = String(t.state);
+}
+$('bTaskP').onclick = ()=> apply('task/progress',{value:+$('taskP').value});
+$('bTaskS').onclick = ()=> apply('task/state',{value:+$('taskS').value});
+$('bTaskComplete').onclick = ()=> apply('task/complete',{});
+$('bWarStart').onclick = ()=> apply('war/start',{});
+$('bWarWin').onclick   = ()=> apply('war/win',{});
+$('bHeal').onclick  = ()=> apply('heal',{});
+$('bRefresh').onclick=()=> apply('refresh',{});
+$('bSave').onclick  = ()=> apply('save',{});
+$('hp').addEventListener('change', ()=> apply('hp',{value:+$('hp').value}));
+$('petHp').addEventListener('change', ()=> apply('pet',{value:+$('petHp').value}));
+$('bEnc').onclick   = ()=> apply('encounter',{every:+$('enc').value});
+$('bAdd').onclick   = ()=> apply('item/add',{shape:+$('addShape').value, qty:+$('addQty').value||1, name:$('addName').value||'GM物品'});
+
+/* ── 战斗调试卡片（2026-10-21）：/api/battle 低频轮询渲染 ──
+   数据源与可视化调试台同一内核方法 gm_battle_dict，别在这写第二份规则。 */
+let BD = null;
+function renderBattle(b){
+  BD = b;
+  const warPill = $('bdWar');
+  warPill.textContent = b.in_war ? '战斗中' : '未开战';
+  warPill.className = 'pill' + (b.in_war ? ' warn' : '');
+  $('bdHeroCD').textContent = `${b.hero.at}/${b.hero.df}/${b.hero.dp}/Lt${b.hero.level}`;
+  $('bdPetName').textContent = `${b.pet.name}(${b.pet.factor_name})`;
+  $('bdPetCD').textContent  = `${b.pet.combat.at}/${b.pet.combat.df}/${b.pet.combat.dp}/Lt${b.pet.level}`;
+  const d = b.pet.display;
+  $('bdPetD').textContent = `${d.at}/${d.df}/${d.speed}/${d.magdef}`;
+  $('bdEnemyName').textContent = `${b.enemy.name} Lv${b.enemy.level}`;
+  $('bdEnemyCD').textContent = `${b.enemy.at}/${b.enemy.df}/${b.enemy.dp}/Lt${b.hero.level}`;
+  $('bdEnemyD').textContent = '—';   // 敌方无 TWORD 显示层：客户端不收敌方攻防/血量字段
+  const m = b.dmg;
+  $('bdModel').textContent = `${m.model} gain=${m.gain} floor=${m.floor} p_div=${m.p_div} ${m.mode}/${m.rounding}`;
+  const s = b.snapshots;
+  $('bdSnap').textContent = `${s.attack_dmg} / ${s.pet_damage} / ${s.enemy_attack_dmg}`;
+  // 控制点
+  if (document.activeElement !== $('bdCpAtk')) $('bdCpAtk').value = b.control_points.init.atk;
+  if (document.activeElement !== $('bdCpDef')) $('bdCpDef').value = b.control_points.init.def;
+  if (document.activeElement !== $('bdCpDis')) $('bdCpDis').value = b.control_points.init.dis;
+  const c = b.control_points.current;
+  $('bdCpCur').textContent = `攻${c.atk} 防${c.def} 扰${c.dis}`;
+  // 逃跑
+  $('bdEscRate').textContent = Math.round(b.escape.nominal_rate*100) + '%';
+  const sel = $('bdEscMode');
+  const f = b.escape.force;
+  if (f === 'success') sel.value = 'success';
+  else if (f === 'fail') sel.value = 'fail';
+  else if (typeof f === 'number') { sel.value = 'prob'; $('bdEscPct').value = Math.round(f*100); }
+  else sel.value = 'auto';
+  const l = b.escape.last;
+  $('bdEscLast').textContent = l && l.time
+    ? `${l.time}：${l.success?'成功':'失败'}（率${Math.round(l.rate*100)}%${l.forced?'·强制'+l.forced:''}）`
+    : '—';
+  // 等级输入（不打扰输入中）
+  if (document.activeElement !== $('bdPetLv')) $('bdPetLv').value = b.pet.level;
+  if (document.activeElement !== $('bdEnemyLv')) $('bdEnemyLv').value = b.enemy.level;
+  // 本战单位
+  const tb = $('bdUnits');
+  if (!b.units || !b.units.length) {
+    tb.innerHTML = '<tr><td colspan="4" style="color:var(--mut)">不在战斗中</td></tr>';
+  } else {
+    tb.innerHTML = b.units.map(u =>
+      `<tr><td>${u.name}#${u.wid}</td><td>${u.hp}</td><td>${u.speed==null?'—':u.speed}</td><td>${u.shape}</td></tr>`).join('');
+  }
+}
+async function loadBattle(){ try{ renderBattle(await Api('battle')); }catch(e){} }
+$('bCp').onclick = ()=> apply('battle/cp',
+  {atk:+$('bdCpAtk').value, def:+$('bdCpDef').value, dis:+$('bdCpDis').value});
+$('bEsc').onclick = ()=>{
+  const mo = $('bdEscMode').value;
+  apply('battle/escape', {mode: mo === 'prob' ? (+$('bdEscPct').value/100) : mo});
+};
+$('bPetLv').onclick   = ()=> apply('battle/petlevel',{level:+$('bdPetLv').value});
+$('bEnemyLv').onclick = ()=> apply('battle/enemylevel',{level:+$('bdEnemyLv').value});
+
+loadFeatures();
+setInterval(loadFeatures, 60000);
+loadMaps();   // 兜底：表是代码事实，60s 一次足够（内容没变不重绘）
+load();
+setInterval(load, 1200);
+loadBattle();
+setInterval(loadBattle, 1200);
+</script>
+</body>
+</html>

@@ -1,0 +1,806 @@
+{
+ "source": [
+  "《梦想世界2013资料全库》（客户端数据/_docx_text.txt）（场景表）× 客户端 monsterdata.py",
+  "https://mx.yzz.cn/call/2010,100673.shtml（叶子猪端游资料站·召唤兽分布·场景表，2010-01-15）"
+ ],
+ "note": "场景等级不是怪物等级（资料原文）；每场数量/权重/HP 不可得",
+ "scenes": [
+  {
+   "mapid": 1004,
+   "scene": "清溪平原",
+   "scene_level": 25,
+   "monsters": [
+    {
+     "name": "飞贼",
+     "shape": 2110
+    },
+    {
+     "name": "绿晶蜥",
+     "shape": 2240
+    },
+    {
+     "name": "兔战士",
+     "shape": 2190
+    }
+   ]
+  },
+  {
+   "mapid": 1005,
+   "scene": "天水平原",
+   "scene_level": 15,
+   "monsters": [
+    {
+     "name": "青蛙怪",
+     "shape": 2081
+    },
+    {
+     "name": "小兔子",
+     "shape": 2040
+    },
+    {
+     "name": "小蜜蜂",
+     "shape": 2030
+    }
+   ]
+  },
+  {
+   "mapid": 1006,
+   "scene": "新月平原",
+   "scene_level": 20,
+   "monsters": [
+    {
+     "name": "小山猪",
+     "shape": 2060
+    },
+    {
+     "name": "金花鼠",
+     "shape": 2070
+    },
+    {
+     "name": "刺猬",
+     "shape": 2050
+    }
+   ]
+  },
+  {
+   "mapid": 1010,
+   "scene": "香叶丛林",
+   "scene_level": 20,
+   "monsters": [
+    {
+     "name": "小山猪",
+     "shape": 2060
+    },
+    {
+     "name": "金花鼠",
+     "shape": 2070
+    },
+    {
+     "name": "刺猬",
+     "shape": 2050
+    }
+   ]
+  },
+  {
+   "mapid": 1011,
+   "scene": "绿湾林地",
+   "scene_level": 25,
+   "monsters": [
+    {
+     "name": "飞贼",
+     "shape": 2110
+    },
+    {
+     "name": "绿晶蜥",
+     "shape": 2240
+    },
+    {
+     "name": "兔战士",
+     "shape": 2190
+    }
+   ]
+  },
+  {
+   "mapid": 1012,
+   "scene": "萤火森林",
+   "scene_level": 40,
+   "monsters": [
+    {
+     "name": "小魔女",
+     "shape": 2250
+    },
+    {
+     "name": "小魔头",
+     "shape": 2260
+    },
+    {
+     "name": "骷髅",
+     "shape": 2270
+    }
+   ]
+  },
+  {
+   "mapid": 1016,
+   "scene": "荒羽半岛",
+   "scene_level": 25,
+   "monsters": [
+    {
+     "name": "飞贼",
+     "shape": 2110
+    },
+    {
+     "name": "绿晶蜥",
+     "shape": 2240
+    },
+    {
+     "name": "兔战士",
+     "shape": 2190
+    }
+   ]
+  },
+  {
+   "mapid": 1017,
+   "scene": "天苍高地",
+   "scene_level": 20,
+   "monsters": [
+    {
+     "name": "小山猪",
+     "shape": 2060
+    },
+    {
+     "name": "金花鼠",
+     "shape": 2070
+    },
+    {
+     "name": "刺猬",
+     "shape": 2050
+    }
+   ]
+  },
+  {
+   "mapid": 1018,
+   "scene": "太息林地",
+   "scene_level": 20,
+   "monsters": [
+    {
+     "name": "强盗",
+     "shape": 2100
+    },
+    {
+     "name": "山贼",
+     "shape": 2120
+    },
+    {
+     "name": "蛇",
+     "shape": 2090
+    }
+   ]
+  },
+  {
+   "mapid": 1022,
+   "scene": "落日海湾",
+   "scene_level": 20,
+   "monsters": [
+    {
+     "name": "小山猪",
+     "shape": 2060
+    },
+    {
+     "name": "金花鼠",
+     "shape": 2070
+    },
+    {
+     "name": "刺猬",
+     "shape": 2050
+    }
+   ]
+  },
+  {
+   "mapid": 1023,
+   "scene": "幻境海岸",
+   "scene_level": 30,
+   "monsters": [
+    {
+     "name": "小猫女",
+     "shape": 2160
+    },
+    {
+     "name": "鱼美人",
+     "shape": 2180
+    },
+    {
+     "name": "大螃蟹",
+     "shape": 2170
+    }
+   ]
+  },
+  {
+   "mapid": 1024,
+   "scene": "流光岛",
+   "scene_level": 25,
+   "monsters": [
+    {
+     "name": "飞贼",
+     "shape": 2110
+    },
+    {
+     "name": "绿晶蜥",
+     "shape": 2240
+    },
+    {
+     "name": "兔战士",
+     "shape": 2190
+    }
+   ]
+  },
+  {
+   "mapid": 1028,
+   "scene": "长风岛",
+   "scene_level": 3,
+   "monsters": [
+    {
+     "name": "毛草团",
+     "shape": 2010
+    },
+    {
+     "name": "小乌龟",
+     "shape": 2020
+    }
+   ]
+  },
+  {
+   "mapid": 1029,
+   "scene": "疾风谷",
+   "scene_level": 60,
+   "monsters": [
+    {
+     "name": "魔蝎",
+     "shape": 2390
+    },
+    {
+     "name": "巨蟒",
+     "shape": 2400
+    },
+    {
+     "name": "烈火鸟",
+     "shape": 2380
+    }
+   ]
+  },
+  {
+   "mapid": 1030,
+   "scene": "寒月森林",
+   "scene_level": 65,
+   "monsters": [
+    {
+     "name": "古树精",
+     "shape": 2410
+    },
+    {
+     "name": "魔蜘蛛",
+     "shape": 2430
+    },
+    {
+     "name": "青蛙侠客",
+     "shape": 2460
+    },
+    {
+     "name": "闪电侠",
+     "shape": 2770
+    },
+    {
+     "name": "小荷仙",
+     "shape": 2780
+    }
+   ]
+  },
+  {
+   "mapid": 1031,
+   "scene": "影狼原",
+   "scene_level": 70,
+   "monsters": [
+    {
+     "name": "翼虎",
+     "shape": 2420
+    },
+    {
+     "name": "影狼",
+     "shape": 2490
+    },
+    {
+     "name": "狼人",
+     "shape": 2220
+    }
+   ]
+  },
+  {
+   "mapid": 1032,
+   "scene": "碎梦岭",
+   "scene_level": 75,
+   "monsters": [
+    {
+     "name": "死亡骑士",
+     "shape": 2440
+    },
+    {
+     "name": "镰刀僵尸",
+     "shape": 2450
+    }
+   ]
+  },
+  {
+   "mapid": 1033,
+   "scene": "金绿沙洲",
+   "scene_level": 80,
+   "monsters": [
+    {
+     "name": "神兵",
+     "shape": 2470
+    },
+    {
+     "name": "神使",
+     "shape": 2480
+    }
+   ]
+  },
+  {
+   "mapid": 1034,
+   "scene": "修罗森林",
+   "scene_level": 85,
+   "monsters": [
+    {
+     "name": "霜月狼",
+     "shape": 2210
+    },
+    {
+     "name": "狼勇士",
+     "shape": 2500
+    },
+    {
+     "name": "吸血鬼",
+     "shape": 2520
+    }
+   ]
+  },
+  {
+   "mapid": 1035,
+   "scene": "落雪冰原",
+   "scene_level": 90,
+   "monsters": [
+    {
+     "name": "白龙",
+     "shape": 2510
+    },
+    {
+     "name": "大力鬼王",
+     "shape": 2530
+    },
+    {
+     "name": "虎头怪",
+     "shape": 2540
+    }
+   ]
+  },
+  {
+   "mapid": 1036,
+   "scene": "珊瑚迷宫",
+   "scene_level": 5,
+   "monsters": [
+    {
+     "name": "毛草团",
+     "shape": 2010
+    },
+    {
+     "name": "小乌龟",
+     "shape": 2020
+    }
+   ]
+  },
+  {
+   "mapid": 1039,
+   "scene": "灵石塔一层",
+   "scene_level": 25,
+   "monsters": [
+    {
+     "name": "狼",
+     "shape": 2130
+    },
+    {
+     "name": "鬼火",
+     "shape": 2140
+    },
+    {
+     "name": "刃虎",
+     "shape": 2230
+    }
+   ]
+  },
+  {
+   "mapid": 1040,
+   "scene": "灵石塔二层",
+   "scene_level": 30,
+   "monsters": [
+    {
+     "name": "士兵",
+     "shape": 2150
+    },
+    {
+     "name": "狼人",
+     "shape": 2220
+    },
+    {
+     "name": "兔祭司",
+     "shape": 2200
+    }
+   ]
+  },
+  {
+   "mapid": 1041,
+   "scene": "灵石塔三层",
+   "scene_level": 35,
+   "monsters": [
+    {
+     "name": "兔战士",
+     "shape": 2190
+    },
+    {
+     "name": "兔祭司",
+     "shape": 2200
+    },
+    {
+     "name": "绿晶蜥",
+     "shape": 2240
+    }
+   ]
+  },
+  {
+   "mapid": 1042,
+   "scene": "灵石塔四层",
+   "scene_level": 40,
+   "monsters": [
+    {
+     "name": "狼人",
+     "shape": 2220
+    },
+    {
+     "name": "刃虎",
+     "shape": 2230
+    },
+    {
+     "name": "骷髅",
+     "shape": 2270
+    }
+   ]
+  },
+  {
+   "mapid": 1043,
+   "scene": "古木祭坛一层",
+   "scene_level": 45,
+   "monsters": [
+    {
+     "name": "大草团",
+     "shape": 2300
+    },
+    {
+     "name": "牛妖",
+     "shape": 2310
+    },
+    {
+     "name": "大脚鸟",
+     "shape": 2290
+    }
+   ]
+  },
+  {
+   "mapid": 1044,
+   "scene": "古木祭坛二层",
+   "scene_level": 50,
+   "monsters": [
+    {
+     "name": "影狼",
+     "shape": 2490
+    },
+    {
+     "name": "树精灵",
+     "shape": 2320
+    },
+    {
+     "name": "森林仙子",
+     "shape": 2330
+    }
+   ]
+  },
+  {
+   "mapid": 1045,
+   "scene": "古木祭坛三层",
+   "scene_level": 55,
+   "monsters": [
+    {
+     "name": "森林仙子",
+     "shape": 2330
+    },
+    {
+     "name": "守护仙子",
+     "shape": 2340
+    },
+    {
+     "name": "桃花仙子",
+     "shape": 2080
+    }
+   ]
+  },
+  {
+   "mapid": 1046,
+   "scene": "古木祭坛四层",
+   "scene_level": 60,
+   "monsters": [
+    {
+     "name": "兔勇士",
+     "shape": 2350
+    },
+    {
+     "name": "兔天使",
+     "shape": 2360
+    }
+   ]
+  },
+  {
+   "mapid": 1047,
+   "scene": "灵石塔五层",
+   "scene_level": 45,
+   "monsters": [
+    {
+     "name": "骷髅",
+     "shape": 2270
+    },
+    {
+     "name": "僵尸",
+     "shape": 2280
+    },
+    {
+     "name": "大脚鸟",
+     "shape": 2290
+    }
+   ]
+  },
+  {
+   "mapid": 1048,
+   "scene": "古木祭坛五层",
+   "scene_level": 65,
+   "monsters": [
+    {
+     "name": "怒熊",
+     "shape": 2370
+    },
+    {
+     "name": "烈火鸟",
+     "shape": 2380
+    },
+    {
+     "name": "兔勇士",
+     "shape": 2350
+    }
+   ]
+  },
+  {
+   "mapid": 1049,
+   "scene": "沙漠迷宫一层",
+   "scene_level": 85,
+   "monsters": [
+    {
+     "name": "虎头怪",
+     "shape": 2540
+    },
+    {
+     "name": "雪凤凰",
+     "shape": 2550
+    },
+    {
+     "name": "小丑",
+     "shape": 2790
+    }
+   ]
+  },
+  {
+   "mapid": 1050,
+   "scene": "沙漠迷宫二层",
+   "scene_level": 90,
+   "monsters": [
+    {
+     "name": "寒冰巨人",
+     "shape": 2560
+    },
+    {
+     "name": "水晶女妖",
+     "shape": 2570
+    }
+   ]
+  },
+  {
+   "mapid": 1051,
+   "scene": "沙漠迷宫三层",
+   "scene_level": 95,
+   "monsters": [
+    {
+     "name": "雪凤凰",
+     "shape": 2550
+    },
+    {
+     "name": "寒冰巨人",
+     "shape": 2560
+    },
+    {
+     "name": "水晶女妖",
+     "shape": 2570
+    }
+   ]
+  },
+  {
+   "mapid": 1052,
+   "scene": "兔神殿遗址",
+   "scene_level": 95,
+   "monsters": [
+    {
+     "name": "木乃伊",
+     "shape": 2580
+    },
+    {
+     "name": "兔神官",
+     "shape": 2590
+    }
+   ]
+  },
+  {
+   "mapid": 1053,
+   "scene": "兔坦卡门陵墓",
+   "scene_level": 100,
+   "monsters": [
+    {
+     "name": "亡灵力士",
+     "shape": 2600
+    },
+    {
+     "name": "兔神官",
+     "shape": 2590
+    },
+    {
+     "name": "牛魔督军",
+     "shape": 2610
+    }
+   ]
+  },
+  {
+   "mapid": 1073,
+   "scene": "灵风塔一层",
+   "scene_level": 25,
+   "monsters": [
+    {
+     "name": "狼",
+     "shape": 2130
+    },
+    {
+     "name": "鬼火",
+     "shape": 2140
+    },
+    {
+     "name": "刃虎",
+     "shape": 2230
+    }
+   ]
+  },
+  {
+   "mapid": 1074,
+   "scene": "灵风塔二层",
+   "scene_level": 30,
+   "monsters": [
+    {
+     "name": "士兵",
+     "shape": 2150
+    },
+    {
+     "name": "狼人",
+     "shape": 2220
+    },
+    {
+     "name": "兔祭司",
+     "shape": 2200
+    }
+   ]
+  },
+  {
+   "mapid": 1075,
+   "scene": "灵风塔三层",
+   "scene_level": 35,
+   "monsters": [
+    {
+     "name": "兔战士",
+     "shape": 2190
+    },
+    {
+     "name": "兔祭司",
+     "shape": 2200
+    },
+    {
+     "name": "绿晶蜥",
+     "shape": 2240
+    }
+   ]
+  },
+  {
+   "mapid": 1158,
+   "scene": "初云峡谷",
+   "scene_level": 115,
+   "monsters": [
+    {
+     "name": "狐美人",
+     "shape": 2630
+    },
+    {
+     "name": "炎魔",
+     "shape": 2660
+    },
+    {
+     "name": "灯神",
+     "shape": 2650
+    }
+   ]
+  },
+  {
+   "mapid": 1159,
+   "scene": "初云平原",
+   "scene_level": 125,
+   "monsters": [
+    {
+     "name": "炎魔",
+     "shape": 2660
+    },
+    {
+     "name": "女武神",
+     "shape": 2640
+    },
+    {
+     "name": "灯神",
+     "shape": 2650
+    }
+   ]
+  },
+  {
+   "mapid": 1176,
+   "scene": "魔晶要塞",
+   "scene_level": 135,
+   "monsters": [
+    {
+     "name": "魔晶龙",
+     "shape": 2670
+    },
+    {
+     "name": "腾云兽",
+     "shape": 2680
+    },
+    {
+     "name": "幽魂",
+     "shape": 2690
+    }
+   ]
+  },
+  {
+   "mapid": 1177,
+   "scene": "圣痕峡谷",
+   "scene_level": 145,
+   "monsters": [
+    {
+     "name": "腾云兽",
+     "shape": 2680
+    },
+    {
+     "name": "幽魂",
+     "shape": 2690
+    },
+    {
+     "name": "地狱犬",
+     "shape": 2700
+    }
+   ]
+  }
+ ]
+}

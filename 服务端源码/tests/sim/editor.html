@@ -1,0 +1,622 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>模拟服数据可视化编辑器</title>
+<style>
+  :root{
+    --bg:#14171c; --panel:#1c2128; --panel2:#222833; --line:#2e3641;
+    --fg:#d7dde5; --dim:#8b97a8; --acc:#4aa3ff; --ok:#3fb950; --warn:#d29922; --err:#f85149;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0}
+  body{background:var(--bg);color:var(--fg);font:13px/1.5 "Microsoft YaHei",Consolas,monospace;display:flex;flex-direction:column}
+  header{display:flex;align-items:center;gap:10px;padding:8px 12px;background:var(--panel);border-bottom:1px solid var(--line);flex:0 0 auto}
+  header h1{font-size:14px;margin:0 12px 0 0;font-weight:600;letter-spacing:1px}
+  header .path{color:var(--dim);font-size:11px}
+  .grow{flex:1}
+  button{background:var(--panel2);color:var(--fg);border:1px solid var(--line);border-radius:4px;padding:5px 11px;cursor:pointer;font:inherit}
+  button:hover{border-color:var(--acc);color:#fff}
+  button.primary{background:#1d4e86;border-color:#2f6ea8}
+  button.primary:hover{background:#265d9c}
+  button.danger{border-color:#5c2b2b;color:#ffb4b4}
+  button:disabled{opacity:.45;cursor:not-allowed}
+  main{flex:1;display:flex;min-height:0}
+  nav{display:flex;flex:0 0 auto;gap:2px;padding:6px 12px 0;background:var(--panel);border-bottom:1px solid var(--line)}
+  nav a{padding:6px 14px;border-radius:4px 4px 0 0;color:var(--dim);cursor:pointer;border:1px solid transparent;border-bottom:none;font-size:13px}
+  nav a.on{background:var(--bg);color:#fff;border-color:var(--line)}
+  .wrap{flex:1;display:flex;min-height:0}
+  .side{width:250px;flex:0 0 auto;background:var(--panel);border-right:1px solid var(--line);overflow:auto}
+  .side.right{border-right:none;border-left:1px solid var(--line);width:330px}
+  .center{flex:1;min-width:0;display:flex;flex-direction:column}
+  .pad{padding:10px 12px}
+  h3{margin:0 0 8px;font-size:12px;color:var(--dim);text-transform:uppercase;letter-spacing:1px}
+  label{display:block;margin:8px 0 3px;color:var(--dim);font-size:12px}
+  input,select,textarea{width:100%;background:#12161b;border:1px solid var(--line);border-radius:4px;color:var(--fg);padding:5px 7px;font:inherit}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--acc)}
+  .row{display:flex;gap:8px}.row>*{flex:1;min-width:0}
+  .item{padding:7px 10px;border:1px solid var(--line);border-radius:4px;margin-bottom:5px;cursor:pointer;background:var(--panel2)}
+  .item.on{border-color:var(--acc);background:#1b2c42}
+  .item .t{font-weight:600}
+  .item .s{color:var(--dim);font-size:11px}
+  canvas{flex:1;display:block;background:#0d1117;cursor:crosshair}
+  .toolbar{display:flex;gap:6px;align-items:center;padding:6px 10px;background:var(--panel);border-bottom:1px solid var(--line);flex:0 0 auto;font-size:12px;color:var(--dim)}
+  .msg{padding:5px 10px;font-size:12px;border-bottom:1px solid var(--line);flex:0 0 auto;min-height:26px}
+  .msg.ok{color:var(--ok)}.msg.err{color:var(--err)}.msg.warn{color:var(--warn)}
+  table{width:100%;border-collapse:collapse;font-size:12px}
+  td,th{border-bottom:1px solid var(--line);padding:4px 6px;text-align:left}
+  th{color:var(--dim);font-weight:normal}
+  .hint{color:var(--dim);font-size:11px;margin-top:6px}
+  .chip{display:inline-block;padding:1px 6px;border:1px solid var(--line);border-radius:10px;margin:2px 3px 2px 0;font-size:11px}
+  .chk{display:inline-flex;align-items:center;gap:4px;margin:2px 8px 2px 0;font-size:12px}
+  .chk input{width:auto}
+  .hidden{display:none}
+  .kbd{border:1px solid var(--line);border-radius:3px;padding:0 4px;font-size:11px}
+</style>
+</head>
+<body>
+<header>
+  <h1>模拟服数据可视化编辑器</h1>
+  <span class="path" id="pathInfo"></span>
+  <span class="grow"></span>
+  <span class="path" id="dirty"></span>
+  <button id="btnSave" class="primary">保存配置</button>
+  <button id="btnReset">还原内置默认</button>
+  <button id="btnDelete" class="danger">删除配置文件</button>
+</header>
+<nav>
+  <a data-tab="world" class="on">世界地图</a>
+  <a data-tab="battle">战斗调参</a>
+  <a data-tab="role">角色存档</a>
+  <a data-tab="live">实时状态</a>
+</nav>
+<div class="msg" id="msg">加载中…</div>
+<main>
+  <!-- 世界地图 -->
+  <div class="wrap" id="tab-world">
+    <div class="side">
+      <div class="pad">
+        <h3>地图列表</h3>
+        <div id="mapList"></div>
+        <button id="btnAddMap" style="width:100%;margin-top:6px">+ 新增地图</button>
+        <div class="hint">点击选中地图；右键地图名可重命名。</div>
+      </div>
+    </div>
+    <div class="center">
+      <div class="toolbar">
+        <button id="btnAddNpc">+ NPC</button>
+        <button id="btnAddExit">+ 出口</button>
+        <span class="grow"></span>
+        <span>缩放 <span id="zoomTxt">100%</span></span>
+        <button id="btnFit">适配视图</button>
+        <span class="hint">拖拽标记移动 · 滚轮缩放 · 空格/中键拖动平移 · 单击选中</span>
+      </div>
+      <canvas id="cv"></canvas>
+    </div>
+    <div class="side right">
+      <div class="pad">
+        <h3>地图属性</h3>
+        <div id="mapProps"></div>
+        <h3 style="margin-top:14px">传送连通（links）</h3>
+        <div id="linksBox"></div>
+        <h3 style="margin-top:14px">选中对象</h3>
+        <div id="objProps"><div class="hint">在画布上单击标记以编辑</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 战斗调参 -->
+  <div class="wrap hidden" id="tab-battle">
+    <div class="side right" style="width:420px;border-left:none">
+      <div class="pad">
+        <h3>角色</h3>
+        <div class="row"><div><label>主角 HP 上限(hero_hp)</label><input type="number" data-b="hero_hp"></div>
+        <div><label>主角速度(hero_speed)</label><input type="number" data-b="hero_speed"></div></div>
+        <h3 style="margin-top:14px">敌方</h3>
+        <div class="row"><div><label>单位数(enemy_count)</label><input type="number" data-b="enemy_count"></div>
+        <div><label>造型 shape(enemy_shape)</label><input type="number" data-b="enemy_shape"></div></div>
+        <label>名称(enemy_name)</label><input data-b="enemy_name">
+        <div class="row"><div><label>单个 HP(enemy_hp)</label><input type="number" data-b="enemy_hp"></div>
+        <div><label>对主角伤害(enemy_attack_dmg)</label><input type="number" data-b="enemy_attack_dmg"></div></div>
+        <div class="row"><div><label>速度基准(enemy_speed_base)</label><input type="number" data-b="enemy_speed_base"></div>
+        <div><label>速度递减(enemy_speed_step)</label><input type="number" data-b="enemy_speed_step"></div></div>
+        <h3 style="margin-top:14px">玩家出手</h3>
+        <div class="row"><div><label>普攻伤害(attack_dmg)</label><input type="number" data-b="attack_dmg"></div>
+        <div><label>回合超时秒(turn_timeout)</label><input type="number" data-b="turn_timeout"></div></div>
+        <h3 style="margin-top:14px">敌方招式</h3>
+        <div class="row"><div><label>触发概率(0~1)</label><input type="number" step="0.05" min="0" max="1" data-b="enemy_skill_chance"></div>
+        <div><label>招式 id 列表(逗号分隔)</label><input id="skillList"></div></div>
+        <h3 style="margin-top:14px">遭遇</h3>
+        <label>每 N 次移动遇怪(encounter.every，0=关闭)</label><input type="number" id="encEvery">
+      </div>
+    </div>
+  </div>
+
+  <!-- 角色存档 -->
+  <div class="wrap hidden" id="tab-role">
+    <div class="side right" style="width:420px;border-left:none">
+      <div class="pad">
+        <h3>存档可写字段</h3>
+        <div class="row"><div><label>X(px)</label><input type="number" id="r_px"></div>
+        <div><label>Y(py)</label><input type="number" id="r_py"></div></div>
+        <div class="row"><div><label>地图 id(mapid)</label><input type="number" id="r_mapid"></div>
+        <div><label>金币(coins)</label><input type="number" id="r_coins"></div></div>
+        <div class="row"><div><label>主角 HP(hero_hp)</label><input type="number" id="r_hero_hp"></div>
+        <div><label>宠物 HP(pet_hp)</label><input type="number" id="r_pet_hp"></div></div>
+        <button id="btnSaveRole" class="primary" style="margin-top:12px">写入存档</button>
+        <button id="btnSyncLive" style="margin-top:12px">热同步到模拟服</button>
+        <div class="hint">写入存档后需重启模拟服生效；「热同步」需模拟服以 --web 启动。</div>
+        <h3 style="margin-top:16px">存档全貌（只读）</h3>
+        <div id="roleRaw" class="hint"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 实时状态 -->
+  <div class="wrap hidden" id="tab-live">
+    <div class="side right" style="width:520px;border-left:none">
+      <div class="pad">
+        <h3>模拟服状态（GM API）</h3>
+        <div id="liveRaw" class="hint">未连接</div>
+        <h3 style="margin-top:16px">快捷操作</h3>
+        <div class="row"><div><label>设 HP</label><input type="number" id="lv_hp" value="400"></div>
+        <div><label>设金币</label><input type="number" id="lv_coins" value="1000"></div></div>
+        <div class="row"><div><label>设 X</label><input type="number" id="lv_x" value="45"></div>
+        <div><label>设 Y</label><input type="number" id="lv_y" value="40"></div></div>
+        <div class="row"><div><label>遇怪间隔</label><input type="number" id="lv_enc" value="5"></div>
+        <div><label>&nbsp;</label><button id="btnHeal" style="width:100%">满血满资源</button></div></div>
+        <div class="row" style="margin-top:8px">
+          <button id="btnSetHp">应用 HP</button>
+          <button id="btnSetCoins">应用金币</button>
+          <button id="btnSetPos">应用坐标</button>
+          <button id="btnSetEnc">应用遇怪</button>
+        </div>
+        <button id="btnLiveRefresh" style="margin-top:8px">刷新状态</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+'use strict';
+var S = {cfg:null, maps:[], selMap:0, sel:-1, dirty:false, view:{k:1,ox:0,oy:0}, meta:null};
+var $ = function(id){return document.getElementById(id)};
+var cv = $('cv'), ctx = cv.getContext('2d');
+
+function msg(t, cls){ var m=$('msg'); m.textContent=t; m.className='msg'+(cls?' '+cls:''); }
+function markDirty(v){ S.dirty=v; $('dirty').textContent = v ? '● 有未保存修改' : ''; }
+
+/* ---------- API ---------- */
+function api(path, method, body){
+  return fetch(path, {method:method||'GET',
+    headers:{'Content-Type':'application/json'},
+    body: body===undefined?undefined:JSON.stringify(body)})
+    .then(function(r){return r.json().catch(function(){return {}});});
+}
+
+/* ---------- 加载 ---------- */
+function boot(){
+  api('/api/meta').then(function(m){
+    S.meta=m;
+    $('pathInfo').textContent = '配置 ' + m.config_path + (m.config_exists?'':'（未生成）') +
+      ' · 存档 ' + m.save_path;
+  });
+  loadConfig();
+  loadRole();
+  refreshLive();
+}
+
+function loadConfig(){
+  api('/api/config').then(function(r){
+    S.cfg = r.config; S.maps = S.cfg.world.maps;
+    S.selMap = 0; S.sel = null;
+    if(r.errors && r.errors.length){ msg('配置有校验问题：'+r.errors.join('；'), 'err'); }
+    else if(r.generated){ msg('未发现 world_config.json，已按内置默认生成预览（点「保存配置」落盘）', 'warn'); }
+    else { msg('配置已加载：' + (S.cfg.updated||''), 'ok'); }
+    renderAll();
+  });
+}
+
+function saveConfig(){
+  api('/api/config','POST',S.cfg).then(function(r){
+    if(r.ok){ S.cfg=r.config; S.maps=S.cfg.world.maps; markDirty(false);
+      msg('已保存到 world_config.json；重启模拟服生效。','ok'); renderAll(); }
+    else { msg('保存失败：'+(r.errors||[]).join('；'),'err'); }
+  });
+}
+function resetConfig(){
+  if(!confirm('用内置默认值覆盖当前配置？')) return;
+  api('/api/config/reset','POST',{}).then(function(r){
+    if(r.ok){ S.cfg=r.config; S.maps=S.cfg.world.maps; S.sel = null; markDirty(false);
+      msg('已还原为内置默认值。','ok'); renderAll(); }
+    else msg('还原失败：'+(r.errors||[]).join('；'),'err');
+  });
+}
+function deleteConfig(){
+  if(!confirm('删除 world_config.json？模拟服将回到内置默认世界数据。')) return;
+  api('/api/config/delete','POST',{}).then(function(r){
+    S.cfg=r.config; S.maps=S.cfg.world.maps; markDirty(false);
+    msg('配置文件已删除，模拟服将使用内置默认。','warn'); renderAll();
+  });
+}
+
+/* ---------- 角色存档 ---------- */
+function loadRole(){
+  api('/api/role').then(function(r){
+    var d = r.role || {};
+    var setf=function(id,k){ var el=$(id); el.value = (d[k]===undefined?'':d[k]); };
+    setf('r_px','px'); setf('r_py','py'); setf('r_mapid','mapid');
+    setf('r_coins','coins'); setf('r_hero_hp','hero_hp'); setf('r_pet_hp','pet_hp');
+    $('roleRaw').textContent = (r.role? JSON.stringify({items:(r.role.items||{}) && Object.keys(r.role.items).length+' 件', tasks:Object.keys(r.role.tasks||{}).length+' 个', exp:r.role.exp, next_exp:r.role.next_exp}, null, 1) : '（无存档）');
+  });
+}
+function saveRole(){
+  var patch={px:$('r_px').value, py:$('r_py').value, mapid:$('r_mapid').value,
+             coins:$('r_coins').value, hero_hp:$('r_hero_hp').value, pet_hp:$('r_pet_hp').value};
+  api('/api/role','POST',patch).then(function(r){
+    if(r.ok){ msg('存档已写入（重启模拟服生效）。','ok'); loadRole(); }
+    else msg('存档写入失败：'+(r.errors||[]).join('；'),'err');
+  });
+}
+function live(action, body){
+  return api('/api/live/'+action,'POST',body||{}).then(function(r){
+    if(r.error){ msg('GM 调用失败：'+r.error,'err'); return r; }
+    msg('已应用：'+action,'ok'); renderLive(r.state||r); return r;
+  });
+}
+
+/* ---------- 实时状态 ---------- */
+function refreshLive(){
+  api('/api/live').then(function(r){
+    if(r.error){ $('liveRaw').textContent='模拟服未运行或 GM 面板未开启（'+((S.meta&&S.meta.live_url)||'')+'）'; }
+    renderLive(r);
+  });
+}
+function renderLive(st){
+  if(!st || st.error) return;
+  try{ $('liveRaw').textContent = JSON.stringify(st, null, 1).slice(0,1800); }catch(e){}
+}
+
+/* ---------- 渲染：地图列表 ---------- */
+function renderMaps(){
+  var box=$('mapList'); box.innerHTML='';
+  S.maps.forEach(function(m,i){
+    var d=document.createElement('div');
+    d.className='item'+(i===S.selMap?' on':'');
+    d.innerHTML='<div class="t">'+esc(m.name)+' <span class="s">#'+m.mapid+'</span></div>'+
+                '<div class="s">NPC '+m.npcs.length+' · 出口 '+m.exits.length+'</div>';
+    d.onclick=function(){ S.selMap=i; S.sel = null; renderAll(); };
+    d.oncontextmenu=function(ev){ ev.preventDefault();
+      var n=prompt('重命名地图', m.name); if(n){ m.name=n; mapTouched(); } };
+    box.appendChild(d);
+  });
+}
+function renderMapProps(){
+  var m=S.maps[S.selMap]; if(!m){ $('mapProps').innerHTML=''; return; }
+  $('mapProps').innerHTML =
+    '<label>名称</label><input id="mp_name">'+
+    '<div class="row"><div><label>小地图 id</label><input type="number" id="mp_mini"></div>'+
+    '<div><label>mapid</label><input type="number" id="mp_id"></div></div>'+
+    '<div class="row"><div><label>出生 X</label><input type="number" id="mp_sx"></div>'+
+    '<div><label>出生 Y</label><input type="number" id="mp_sy"></div></div>';
+  $('mp_name').value=m.name; $('mp_mini').value=m.minimap; $('mp_id').value=m.mapid;
+  $('mp_sx').value=m.spawn[0]; $('mp_sy').value=m.spawn[1];
+  $('mp_name').oninput=function(){ m.name=this.value; mapTouched(); };
+  $('mp_mini').oninput=function(){ m.minimap=num(this.value); mapTouched(); };
+  $('mp_id').onchange=function(){ m.mapid=num(this.value); mapTouched(); };
+  $('mp_sx').oninput=function(){ m.spawn[0]=num(this.value); draw(); };
+  $('mp_sy').oninput=function(){ m.spawn[1]=num(this.value); draw(); };
+}
+function renderLinks(){
+  var m=S.maps[S.selMap]; if(!m){ $('linksBox').innerHTML=''; return; }
+  var h='';
+  S.maps.forEach(function(o){
+    var on = m.links.indexOf(o.mapid)>=0;
+    h+='<label class="chk"><input type="checkbox" data-lk="'+o.mapid+'"'+(on?' checked':'')+'>'+esc(o.name)+'</label>';
+  });
+  $('linksBox').innerHTML = h;
+  Array.prototype.forEach.call($('linksBox').querySelectorAll('input'), function(cb){
+    cb.onchange=function(){
+      var id=num(this.getAttribute('data-lk'));
+      if(this.checked){ if(m.links.indexOf(id)<0) m.links.push(id); }
+      else { m.links=m.links.filter(function(v){return v!==id}); }
+      mapTouched();
+    };
+  });
+}
+function renderObjProps(){
+  var m=S.maps[S.selMap], box=$('objProps');
+  if(!m || !S.sel){ box.innerHTML='<div class="hint">在画布上单击标记以编辑</div>'; return; }
+  var sel=S.sel; // {t:'npc'|'exit', i:idx}
+  if(sel.t==='npc'){
+    var n=m.npcs[sel.i];
+    box.innerHTML='<div class="s">NPC</div>'+
+      '<div class="row"><div><label>NPC id</label><input type="number" id="o_id"></div>'+
+      '<div><label>造型 shape</label><input type="number" id="o_shape"></div></div>'+
+      '<label>名字</label><input id="o_name">'+
+      '<div class="row"><div><label>X</label><input type="number" id="o_x"></div>'+
+      '<div><label>Y</label><input type="number" id="o_y"></div></div>'+
+      '<button class="danger" id="o_del" style="margin-top:10px">删除该 NPC</button>';
+    $('o_id').value=n[0]; $('o_shape').value=n[1]; $('o_name').value=n[4];
+    $('o_x').value=n[2]; $('o_y').value=n[3];
+    $('o_id').oninput=function(){ n[0]=num(this.value); mapTouched(); };
+    $('o_shape').oninput=function(){ n[1]=num(this.value); mapTouched(); };
+    $('o_name').oninput=function(){ n[4]=this.value; mapTouched(); };
+    $('o_x').oninput=function(){ n[2]=num(this.value); draw(); };
+    $('o_y').oninput=function(){ n[3]=num(this.value); draw(); };
+    $('o_del').onclick=function(){ m.npcs.splice(sel.i,1); S.sel = null; mapTouched(); };
+  } else {
+    var e=m.exits[sel.i];
+    var opts=''; S.maps.forEach(function(o){ opts+='<option'+(o.name===e[0]?' selected':'')+'>'+esc(o.name)+'</option>'; });
+    box.innerHTML='<div class="s">出口 / 传送点</div>'+
+      '<label>目标场景</label><select id="o_to">'+opts+'</select>'+
+      '<div class="row"><div><label>X</label><input type="number" id="o_x"></div>'+
+      '<div><label>Y</label><input type="number" id="o_y"></div></div>'+
+      '<button class="danger" id="o_del" style="margin-top:10px">删除该出口</button>';
+    $('o_to').onchange=function(){ e[0]=this.value; mapTouched(); };
+    $('o_x').value=e[1]; $('o_y').value=e[2];
+    $('o_x').oninput=function(){ e[1]=num(this.value); draw(); };
+    $('o_y').oninput=function(){ e[2]=num(this.value); draw(); };
+    $('o_del').onclick=function(){ m.exits.splice(sel.i,1); S.sel = null; mapTouched(); };
+  }
+}
+
+/* ---------- 渲染：战斗 ---------- */
+function renderBattle(){
+  if(!S.cfg) return;
+  var b=S.cfg.battle;
+  Array.prototype.forEach.call(document.querySelectorAll('[data-b]'), function(el){
+    var k=el.getAttribute('data-b'); el.value=b[k];
+    el.oninput=function(){
+      var v=this.value;
+      var isFloat = (k==='enemy_skill_chance');
+      var isInt = ['enemy_count','enemy_shape','enemy_hp','attack_dmg','enemy_attack_dmg',
+                   'enemy_speed_base','enemy_speed_step','hero_speed','turn_timeout','hero_hp'].indexOf(k)>=0;
+      var isStr = (k==='enemy_name');
+      b[k] = isStr ? v : (isFloat ? parseFloat(v)||0 : (isInt ? num(v) : v));
+      markDirty(true);
+    };
+  });
+  $('skillList').value=(b.enemy_skills||[]).join(',');
+  $('skillList').oninput=function(){
+    b.enemy_skills=this.value.split(',').map(function(s){return num(s.trim())}).filter(function(v){return v>0});
+    markDirty(true);
+  };
+  $('encEvery').value=S.cfg.encounter.every;
+  $('encEvery').oninput=function(){ S.cfg.encounter.every=num(this.value); markDirty(true); };
+}
+
+/* ---------- 画布 ---------- */
+var bounds={x0:0,y0:0,x1:400,y1:180};
+function computeBounds(){
+  var m=S.maps[S.selMap]; if(!m) return;
+  var xs=[m.spawn[0]], ys=[m.spawn[1]];
+  m.npcs.forEach(function(n){xs.push(n[2]);ys.push(n[3])});
+  m.exits.forEach(function(e){xs.push(e[1]);ys.push(e[2])});
+  var pad=15;
+  bounds.x0=Math.max(0,Math.min.apply(null,xs)-pad);
+  bounds.y0=Math.max(0,Math.min.apply(null,ys)-pad);
+  bounds.x1=Math.max.apply(null,xs)+pad;
+  bounds.y1=Math.max.apply(null,ys)+pad;
+  if(bounds.x1-bounds.x0<60){bounds.x1=bounds.x0+60}
+  if(bounds.y1-bounds.y0<40){bounds.y1=bounds.y0+40}
+}
+function fit(){
+  var w=cv.width, h=cv.height;
+  var sx=w/(bounds.x1-bounds.x0), sy=h/(bounds.y1-bounds.y0);
+  var k=Math.min(sx,sy)*0.92;
+  S.view.k=k;
+  S.view.ox=(w-k*(bounds.x1-bounds.x0))/2 - k*bounds.x0;
+  S.view.oy=(h-k*(bounds.y1-bounds.y0))/2 - k*bounds.y0;
+  $('zoomTxt').textContent=Math.round(k*100)+'%';
+  draw();
+}
+function toScreen(x,y){ return [S.view.ox+S.view.k*x, S.view.oy+S.view.k*y]; }
+function toWorld(px,py){ return [(px-S.view.ox)/S.view.k, (py-S.view.oy)/S.view.k]; }
+
+function draw(){
+  if(!cv.width) return;
+  var m=S.maps[S.selMap];
+  ctx.setTransform(1,0,0,1,0,0);
+  ctx.clearRect(0,0,cv.width,cv.height);
+  ctx.fillStyle='#0d1117'; ctx.fillRect(0,0,cv.width,cv.height);
+  if(!m) return;
+  var k=S.view.k;
+  // 网格
+  var step=10; while(step*k<26) step*=2;
+  ctx.strokeStyle='#1b2430'; ctx.lineWidth=1;
+  for(var x=Math.floor(bounds.x0/step)*step; x<=bounds.x1; x+=step){
+    var a=toScreen(x,bounds.y0), b2=toScreen(x,bounds.y1);
+    ctx.beginPath(); ctx.moveTo(a[0],a[1]); ctx.lineTo(b2[0],b2[1]); ctx.stroke();
+  }
+  for(var y=Math.floor(bounds.y0/step)*step; y<=bounds.y1; y+=step){
+    var c=toScreen(bounds.x0,y), d=toScreen(bounds.x1,y);
+    ctx.beginPath(); ctx.moveTo(c[0],c[1]); ctx.lineTo(d[0],d[1]); ctx.stroke();
+  }
+  // 刻度
+  ctx.fillStyle='#4a5566'; ctx.font='10px Consolas';
+  for(var x2=Math.floor(bounds.x0/step)*step; x2<=bounds.x1; x2+=step*2){
+    var p=toScreen(x2,bounds.y0); ctx.fillText(x2, p[0]+2, 11);
+  }
+  for(var y2=Math.floor(bounds.y0/step)*step; y2<=bounds.y1; y2+=step*2){
+    var q=toScreen(bounds.x0,y2); ctx.fillText(y2, 3, q[1]-2);
+  }
+  // 出生点 / 出口 / NPC —— 绘制的同时登记命中框（圆点 + 文字标签），
+  // 使「点标签文字」也能选中/拖动（只认小圆点会让用户点不中）。
+  S.marks = [];
+  var sp=toScreen(m.spawn[0],m.spawn[1]);
+  dot(sp[0],sp[1],6,'#3fb950');
+  mark(sp[0],sp[1], label('出生点', sp[0]+9, sp[1]+4, '#3fb950'), 'spawn', -1);
+  // 出口
+  m.exits.forEach(function(e,i){
+    var p=toScreen(e[1],e[2]);
+    dot(p[0],p[1],6,'#d29922');
+    mark(p[0],p[1], label('→'+e[0], p[0]+9, p[1]+4, '#d29922'), 'exit', i);
+    if(S.sel&&S.sel.t==='exit'&&S.sel.i===i) ring(p[0],p[1],11,'#d29922');
+  });
+  // NPC
+  m.npcs.forEach(function(n,i){
+    var p=toScreen(n[2],n[3]);
+    dot(p[0],p[1],6,'#4aa3ff');
+    mark(p[0],p[1], label(n[4]+' (#'+n[0]+')', p[0]+9, p[1]+4, '#8ab6e6'), 'npc', i);
+    if(S.sel&&S.sel.t==='npc'&&S.sel.i===i) ring(p[0],p[1],11,'#4aa3ff');
+  });
+  // 当前地图名
+  ctx.fillStyle='#d7dde5'; ctx.font='12px "Microsoft YaHei"';
+  ctx.fillText('场景：'+m.name+'  (mapid '+m.mapid+')', 10, cv.height-10);
+}
+function dot(x,y,r,c){ ctx.fillStyle=c; ctx.beginPath(); ctx.arc(x,y,r,0,7); ctx.fill(); }
+function ring(x,y,r,c){ ctx.strokeStyle=c; ctx.lineWidth=2; ctx.beginPath(); ctx.arc(x,y,r,0,7); ctx.stroke(); }
+function label(t,x,y,c){ ctx.fillStyle=c; ctx.font='11px "Microsoft YaHei"'; ctx.fillText(t,x,y); return ctx.measureText(t).width; }
+/* 登记一个可点击标记：圆点中心 (x,y) + 文字标签右边界 x2 */
+function mark(x,y,labelW,t,i){ S.marks.push({t:t,i:i,x:x,y:y,x2:x+9+(labelW||0)}); }
+
+/* 命中判定：优先用**已绘制**的命中框（圆点 13px 内，或落在文字标签框内），
+   不再只认圆点 —— 这是「点得到」的关键。 */
+function hitTest(px,py){
+  var marks=S.marks||[], best=null, bd=1e9;
+  for(var k=0;k<marks.length;k++){
+    var mk=marks[k];
+    var d=Math.sqrt((px-mk.x)*(px-mk.x)+(py-mk.y)*(py-mk.y));
+    var inLabel = (px>=mk.x-4 && px<=mk.x2+4 && py>=mk.y-13 && py<=mk.y+6);
+    if((d<13 || inLabel) && d<bd){ bd=d; best={t:mk.t,i:mk.i}; }
+  }
+  return best;
+}
+
+var drag=null, panning=false;
+cv.addEventListener('mousedown', function(ev){
+  var r=cv.getBoundingClientRect();
+  var px=ev.clientX-r.left, py=ev.clientY-r.top;
+  if(ev.button===1 || ev.buttons===4 || ev.shiftKey && ev.button===0){
+    panning=true; drag={pan:[px,py,S.view.ox,S.view.oy]}; return;
+  }
+  var hit=hitTest(px,py);
+  if(hit){
+    if(hit.t==='spawn'){ S.sel=null; }
+    else { S.sel=hit; }
+    var w=toWorld(px,py);
+    drag={hit:hit, off:null, w:w};
+    if(hit.t==='npc'){ drag.off=[w[0]-S.maps[S.selMap].npcs[hit.i][2], w[1]-S.maps[S.selMap].npcs[hit.i][3]]; }
+    if(hit.t==='exit'){ drag.off=[w[0]-S.maps[S.selMap].exits[hit.i][1], w[1]-S.maps[S.selMap].exits[hit.i][2]]; }
+    renderObjProps(); draw();          // ★ 必须重绘：否则选中高亮圆环不显示
+  } else { S.sel=null; renderObjProps(); draw(); }
+});
+/* click 回落：DOM 合成点击（自动化测试 element.click()）不会派发 mousedown，
+   这里补一次选中判定。真实鼠标交互仍以 mousedown 为准（拖拽需要按住）。 */
+cv.addEventListener('click', function(ev){
+  var r=cv.getBoundingClientRect();
+  var px=ev.clientX-r.left, py=ev.clientY-r.top;
+  if(px<0 || py<0 || px>cv.width || py>cv.height) return;   // 合成点击坐标 (0,0) 直接忽略
+  var hit=hitTest(px,py);
+  S.sel = (hit && hit.t!=='spawn') ? hit : null;
+  renderObjProps(); draw();
+});
+cv.addEventListener('mousemove', function(ev){
+  if(!drag) return;
+  var r=cv.getBoundingClientRect();
+  var px=ev.clientX-r.left, py=ev.clientY-r.top;
+  if(drag.pan){ S.view.ox=drag.pan[2]+(px-drag.pan[0]); S.view.oy=drag.pan[3]+(py-drag.pan[1]); draw(); return; }
+  var w=toWorld(px,py), m=S.maps[S.selMap];
+  if(drag.hit.t==='npc'){ var n=m.npcs[drag.hit.i];
+    n[2]=Math.round(w[0]-drag.off[0]); n[3]=Math.round(w[1]-drag.off[1]); }
+  if(drag.hit.t==='exit'){ var e=m.exits[drag.hit.i];
+    e[1]=Math.round(w[0]-drag.off[0]); e[2]=Math.round(w[1]-drag.off[1]); }
+  if(drag.hit.t==='spawn'){ m.spawn[0]=Math.round(w[0]); m.spawn[1]=Math.round(w[1]); }
+  markDirty(true); draw(); renderObjProps();
+});
+window.addEventListener('mouseup', function(){ drag=null; panning=false;
+  if(S.cfg) S.cfg.world.start_map = (S.selMap>=0? S.maps[S.selMap].mapid : S.cfg.world.start_map); });
+cv.addEventListener('wheel', function(ev){
+  ev.preventDefault();
+  var r=cv.getBoundingClientRect();
+  var px=ev.clientX-r.left, py=ev.clientY-r.top;
+  var w=toWorld(px,py);
+  var k=S.view.k*(ev.deltaY<0?1.1:0.9);
+  k=Math.max(0.15, Math.min(20,k));
+  S.view.k=k;
+  S.view.ox=px-k*w[0]; S.view.oy=py-k*w[1];
+  $('zoomTxt').textContent=Math.round(k*100)+'%';
+  draw();
+}, {passive:false});
+
+/* ---------- 增删 ---------- */
+function addNpc(){
+  var m=S.maps[S.selMap];
+  var maxid=0; m.npcs.forEach(function(n){ if(n[0]>maxid) maxid=n[0]; });
+  m.npcs.push([Math.max(maxid+1,1000), 1013,
+    Math.round((bounds.x0+bounds.x1)/2), Math.round((bounds.y0+bounds.y1)/2), '新NPC']);
+  S.sel={t:'npc',i:m.npcs.length-1};
+  mapTouched();
+}
+function addExit(){
+  var m=S.maps[S.selMap];
+  var other=''; S.maps.forEach(function(o){ if(!other && o.mapid!==m.mapid) other=o.name; });
+  m.exits.push([other, Math.round((bounds.x0+bounds.x1)/2), Math.round((bounds.y0+bounds.y1)/2)]);
+  S.sel={t:'exit',i:m.exits.length-1};
+  mapTouched();
+}
+function addMap(){
+  var maxid=0; S.maps.forEach(function(m){ if(m.mapid>maxid) maxid=m.mapid; });
+  S.maps.push({mapid:maxid+1, name:'新场景'+S.maps.length, minimap:maxid+1,
+    spawn:[45,40], npcs:[], exits:[], links:[]});
+  S.selMap=S.maps.length-1; S.sel = null;
+  mapTouched();
+}
+function mapTouched(){ markDirty(true); computeBounds(); renderAll(); }
+
+/* ---------- 总渲染 ---------- */
+function renderAll(){
+  renderMaps(); renderMapProps(); renderLinks(); renderObjProps();
+  renderBattle();
+  computeBounds();
+  if(!S._fitted){ S._fitted=true; resize(); fit(); } else { draw(); }
+}
+
+function resize(){
+  var r=cv.getBoundingClientRect();
+  cv.width=Math.max(200, Math.floor(r.width));
+  cv.height=Math.max(200, Math.floor(r.height));
+  draw();
+}
+window.addEventListener('resize', function(){ resize(); });
+
+/* ---------- 工具 ---------- */
+function num(v){ var n=parseInt(v,10); return isNaN(n)?0:n; }
+function esc(s){ return String(s).replace(/[&<>"]/g, function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]}); }
+
+/* ---------- 事件绑定 ---------- */
+$('btnSave').onclick=saveConfig;
+$('btnReset').onclick=resetConfig;
+$('btnDelete').onclick=deleteConfig;
+$('btnAddMap').onclick=addMap;
+$('btnAddNpc').onclick=addNpc;
+$('btnAddExit').onclick=addExit;
+$('btnFit').onclick=fit;
+$('btnSaveRole').onclick=saveRole;
+$('btnLiveRefresh').onclick=refreshLive;
+$('btnHeal').onclick=function(){ live('heal',{}); };
+$('btnSetHp').onclick=function(){ live('hp',{value:num($('lv_hp').value)}); };
+$('btnSetCoins').onclick=function(){ live('coins',{value:num($('lv_coins').value)}); };
+$('btnSetPos').onclick=function(){ live('pos',{x:num($('lv_x').value), y:num($('lv_y').value)}); };
+$('btnSetEnc').onclick=function(){ live('encounter',{every:num($('lv_enc').value)}); };
+$('btnSyncLive').onclick=function(){
+  live('hp',{value:num($('r_hero_hp').value)});
+  live('pos',{x:num($('r_px').value), y:num($('r_py').value)});
+};
+Array.prototype.forEach.call(document.querySelectorAll('nav a'), function(a){
+  a.onclick=function(){
+    Array.prototype.forEach.call(document.querySelectorAll('nav a'), function(x){x.classList.remove('on')});
+    a.classList.add('on');
+    ['world','battle','role','live'].forEach(function(t){
+      $('tab-'+t).classList.toggle('hidden', t!==a.getAttribute('data-tab'));
+    });
+    if(a.getAttribute('data-tab')==='world'){ resize(); draw(); }
+  };
+});
+window.addEventListener('beforeunload', function(e){ if(S.dirty){ e.preventDefault(); e.returnValue=''; } });
+
+boot();
+</script>
+</body>
+</html>

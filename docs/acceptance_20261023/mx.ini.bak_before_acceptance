@@ -1,0 +1,13 @@
+[Interface]
+skillshortkey=1,1,0,0
+[1]
+bosskey=0
+[Game]
+serverini=local.ini
+fullscreen=0
+refreshnews=1792270011.480000
+refreshserver=1792761340.414999
+[Login]
+lastserver=电信3区 本地测试服
+lastarea=0
+accountlist=abcd123

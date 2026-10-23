@@ -1,0 +1,226 @@
+{
+ "source": [
+  "《梦想世界2013资料全库》（客户端数据/_docx_text.txt）",
+  "https://mxsj.52pk.com/jingyan/6146254.shtml（52pk·剧情任务一览表）"
+ ],
+ "confidence": "真值（表结构/触发NPC/场景/等级门槛/剧情点）；剧情流程细节另见攻略",
+ "count": 24,
+ "quests": [
+  {
+   "no": 1,
+   "name": "村长的委托",
+   "npc": "老村长",
+   "map": "清风村",
+   "require": "≥10级，加入了国籍",
+   "story_point": 0,
+   "source": "《梦想世界2013资料全库》（客户端数据/_docx_text.txt）"
+  },
+  {
+   "no": 2,
+   "name": "游历四国",
+   "npc": "钱梦庵",
+   "map": "明月镇",
+   "require": "≥20级",
+   "story_point": 2,
+   "source": "《梦想世界2013资料全库》（客户端数据/_docx_text.txt）"
+  },
+  {
+   "no": 3,
+   "name": "失落的银爵",
+   "npc": "主教",
+   "map": "海底神殿",
+   "require": "≥30级，国籍：加洛",
+   "story_point": 3,
+   "source": "《梦想世界2013资料全库》（客户端数据/_docx_text.txt）"
+  },
+  {
+   "no": 4,
+   "name": "哭泣的森林",
+   "npc": "护林长老",
+   "map": "香叶城",
+   "require": "≥30级，国籍：天宁",
+   "story_point": 3,
+   "source": "《梦想世界2013资料全库》（客户端数据/_docx_text.txt）"
+  },
+  {
+   "no": 5,
+   "name": "文武的考验",
+   "npc": "汪太公",
+   "map": "永泽城",
+   "require": "≥30级，国籍：南遥",
+   "story_point": 3,
+   "source": "《梦想世界2013资料全库》（客户端数据/_docx_text.txt）"
+  },
+  {
+   "no": 6,
+   "name": "勇者的宝玉",
+   "npc": "巴容儿",
+   "map": "天苍城",
+   "require": "≥30级，国籍：清岚",
+   "story_point": 3,
+   "source": "《梦想世界2013资料全库》（客户端数据/_docx_text.txt）"
+  },
+  {
+   "no": 7,
+   "name": "并雄的四国",
+   "npc": "金大有",
+   "map": "明月镇",
+   "require": "≥35级",
+   "story_point": 3,
+   "source": "《梦想世界2013资料全库》（客户端数据/_docx_text.txt）"
+  },
+  {
+   "no": 8,
+   "name": "兔族的来客",
+   "npc": "朱能",
+   "map": "芳草镇",
+   "require": "≥40级",
+   "story_point": 3,
+   "source": "《梦想世界2013资料全库》（客户端数据/_docx_text.txt）"
+  },
+  {
+   "no": 9,
+   "name": "北方的狼族",
+   "npc": "赵捕头",
+   "map": "云雀谷",
+   "require": "≥45级",
+   "story_point": 3,
+   "source": "《梦想世界2013资料全库》（客户端数据/_docx_text.txt）"
+  },
+  {
+   "no": 10,
+   "name": "忘却的遗迹",
+   "npc": "龙蛇老人",
+   "map": "海底神殿",
+   "require": "≥50级",
+   "story_point": 3,
+   "source": "《梦想世界2013资料全库》（客户端数据/_docx_text.txt）"
+  },
+  {
+   "no": 11,
+   "name": "未知的力量",
+   "npc": "巫道人",
+   "map": "古木神庙",
+   "require": "≥55级",
+   "story_point": 3,
+   "source": "《梦想世界2013资料全库》（客户端数据/_docx_text.txt）"
+  },
+  {
+   "no": 12,
+   "name": "天空的彼端",
+   "npc": "金大有",
+   "map": "明月镇",
+   "require": "≥60级",
+   "story_point": 3,
+   "source": "《梦想世界2013资料全库》（客户端数据/_docx_text.txt）"
+  },
+  {
+   "no": 13,
+   "name": "远方的呼啸",
+   "npc": "狼武使者",
+   "map": "天苍城",
+   "require": "≥65级",
+   "story_point": 3,
+   "source": "《梦想世界2013资料全库》（客户端数据/_docx_text.txt）"
+  },
+  {
+   "no": 14,
+   "name": "命运的脚步",
+   "npc": "战锋·星月",
+   "map": "碎梦岭",
+   "require": "≥70级",
+   "story_point": 3,
+   "source": "《梦想世界2013资料全库》（客户端数据/_docx_text.txt）"
+  },
+  {
+   "no": 15,
+   "name": "寂静的黑暗",
+   "npc": "龙蛇老人",
+   "map": "海底神殿",
+   "require": "≥75级，完成剧情10、11、12、13、14",
+   "story_point": 1,
+   "source": "《梦想世界2013资料全库》（客户端数据/_docx_text.txt）"
+  },
+  {
+   "no": 16,
+   "name": "太阳神的启示",
+   "npc": "吴教头",
+   "map": "永泽城",
+   "require": "≥80级",
+   "story_point": 2,
+   "source": "《梦想世界2013资料全库》（客户端数据/_docx_text.txt）"
+  },
+  {
+   "no": 17,
+   "name": "沙漠的尘埃",
+   "npc": "烈阳锋·血牙",
+   "map": "夜幕镇",
+   "require": "≥90级，完成以上所有剧情",
+   "story_point": 1,
+   "source": "《梦想世界2013资料全库》（客户端数据/_docx_text.txt）"
+  },
+  {
+   "no": 18,
+   "name": "冰封的大地",
+   "npc": "薇薇安·赤瞳",
+   "map": "黎明镇",
+   "require": "≥100级，完成以上所有剧情",
+   "story_point": 2,
+   "source": "《梦想世界2013资料全库》（客户端数据/_docx_text.txt）"
+  },
+  {
+   "no": 19,
+   "name": "天界之路",
+   "npc": "天乾",
+   "map": "夜幕镇",
+   "require": "≥90",
+   "story_point": 0,
+   "source": "《梦想世界2013资料全库》（客户端数据/_docx_text.txt）"
+  },
+  {
+   "no": 20,
+   "name": "神秘之地",
+   "npc": "蒙面怪客",
+   "map": "天空要塞",
+   "require": "≥110",
+   "story_point": 2,
+   "source": "《梦想世界2013资料全库》（客户端数据/_docx_text.txt）"
+  },
+  {
+   "no": 21,
+   "name": "魔界之门",
+   "npc": "神羿",
+   "map": "初云平原",
+   "require": "≥105",
+   "story_point": 0,
+   "source": "《梦想世界2013资料全库》（客户端数据/_docx_text.txt）"
+  },
+  {
+   "no": 22,
+   "name": "低沉的乌云",
+   "npc": "天乾",
+   "map": "夜幕镇",
+   "require": "≥120并完成以上所有剧情",
+   "story_point": 0,
+   "source": "《梦想世界2013资料全库》（客户端数据/_docx_text.txt）"
+  },
+  {
+   "no": 23,
+   "name": "奇迹的方舟",
+   "npc": "神武尊",
+   "map": "天空要塞",
+   "require": "≥125（或飞升后≥120）并完成之前所有剧情",
+   "story_point": 0,
+   "source": "https://mxsj.52pk.com/jingyan/6146254.shtml（52pk·剧情任务一览表）"
+  },
+  {
+   "no": 24,
+   "name": "黎明的曙光",
+   "npc": "神武尊",
+   "map": "梵天古城",
+   "require": "≥130（或飞升后≥125）并完成之前所有剧情",
+   "story_point": 0,
+   "source": "https://mxsj.52pk.com/jingyan/6146254.shtml（52pk·剧情任务一览表）"
+  }
+ ]
+}

@@ -1,0 +1,186 @@
+==== MX 产物校验报告 v3  2026-10-16 ====
+运行环境: Python 3.8.10（lib2to3 Py2 文法 + uncompyle6 3.9.3 复算）
+
+==== 1) 库存对账 ====
+src/*.py              = 483
+src/*.pyc             = 484
+scripts/*.py(marshal) = 484（递归）
+decoded/*.bin         = 485（递归）
+manifest/raw/         = 485
+manifest/pyc/         = 139（src/*.pyc 为权威，此项非关键路径）
+
+有 .pyc 无 .py（未还原）= 1  ['dialog/dlgsysopt']
+有 .py 无 .pyc（多余）  = 0  []
+pyc 魔数分布           = {'d1f20d0a': 484}（唯一 => round-trip 完整）
+
+==== 2) 清单对账（uncompyle6_ok_b6.json，465 模块） ====
+manifest 声明: modules=465 lines=308596 bytes=20839530
+manifest patches = ['u6_patch26 P1 旧式字典字面量', 'u6_patch26 P2 裸 yield 表达式', 'u6_patch26 P3 裸 yield 作语句', 'opmap: 0xDB/0xDC/0xDD = CALL_FUNCTION_VAR/KW/VAR_KW']
+原样完全一致          = 0 / 465
+CRLF 归一化后一致     = 0（+行数口径差1的 369）
+与 manifest 声明不符   = 96（见下方定性：manifest 为旧管线快照）
+manifest 有但磁盘缺失 = 0
+B7 补写记录            = 6 个，全部落盘 = True
+磁盘 - manifest - B7补写 = 12（B7 主线批次，logs/_regen_all.txt）
+
+==== 3) 质量闸门 ====
+编码分布               = {'utf-8': 483}
+空文件(0B)             = 0
+过小(<3行)             = 0
+颠倒赋值 None=/数字=    = 0
+语句粘连(4+空格)       = 369（其中 yield 粘连 F2 = 236）
+形如 x = 1|8           = 325（P5 误判形态，需人工复核，非语法错误）
+---- 裸 yield 缺陷形态（u6_patch26 P3 打印规则残留） ----
+F1 第0列 yield         = 73 处
+F2 yield 粘连          = 236 处
+    [F1] friend.py:141
+    [F1] friend.py:242
+    [F1] goods.py:598
+    [F1] goods.py:819
+    [F1] guage.py:46
+    [F1] gwtest.py:119
+    [F2] gwtest.py:515
+    [F2] gwtest.py:517
+    [F2] hero.py:742
+    [F2] history_encrypt.py:72
+    [F2] interface.py:317
+    [F2] interface.py:370
+
+==== 4) 语法校验（lib2to3 Py2 文法，全量解析） ====
+解析成功 = 401 / 483
+解析失败 = 82 个文件（全部名单如下）
+    dialog/dlgriderefine.py
+    dialog/dlgtradecenter.py
+    friend.py
+    goods.py
+    guage.py
+    gwtest.py
+    hero.py
+    history_encrypt.py
+    interface.py
+    item.py
+    key.py
+    lib/ConfigParser.py
+    lib/base64.py
+    lib/copy.py
+    lib/copy_reg.py
+    lib/linecache.py
+    lib/os.py
+    lib/random.py
+    lib/re.py
+    lib/sre_compile.py
+    lib/sre_parse.py
+    lib/warnings.py
+    lineup.py
+    login/loginin.py
+    login/mainpage.py
+    login/modifyinfo.py
+    login/netlogin.py
+    login/selectrole.py
+    login/selectserver.py
+    main.py
+    mainmenu.py
+    map.py
+    mapani.py
+    marriage.py
+    misc.py
+    mxkill.py
+    mxy.py
+    mxy1.py
+    netachieve.py
+    netchat.py
+    netcontestbeauty.py
+    netcountry.py
+    netdreamknow.py
+    netfindfriend.py
+    netfindteam.py
+    netforum.py
+    netfriend.py
+    netgoodsserver.py
+    netgroup.py
+    nethero.py
+    netitemshop.py
+    netliving.py
+    netmap.py
+    netnpc.py
+    netopenui.py
+    netpet.py
+    netplayer.py
+    netrelation.py
+    netresident.py
+    netrolesale.py
+    netshop.py
+    netstate.py
+    netstorehouse.py
+    nettask.py
+    nettjtradecenter.py
+    newspaper.py
+    npc.py
+    outlink.py
+    playerphoto.py
+    popmenu.py
+    ride.py
+    room.py
+    seawar.py
+    skillbar.py
+    task.py
+    teamui.py
+    testwar.py
+    walker.py
+    warnotify.py
+    warui.py
+    world.py
+    zoomui.py
+
+其中含 F1/F2 yield 形态 = 79；其余 3 个为同族次生形态（块内语句丢缩进至第0列 / if 体丢失 / yield 表达式截断粘连），已在探针中逐一读源确认：
+    dialog/dlgriderefine.py
+    dialog/dlgtradecenter.py
+    lib/warnings.py
+
+==== 5) manifest 偏差定性（重新解编译 vs 磁盘，逐字节） ====
+SimpleXml.py: 磁盘 == 重新解编译 ? True（5830 字节）
+avatar/avatar.py: 磁盘 == 重新解编译 ? True（55810 字节）
+chatoutput.py: 磁盘 == 重新解编译 ? True（34010 字节）
+结论：磁盘产物与当前 uncompyle6 3.9.3 + u6_patch26 管线逐字节自洽；
+      manifest 声明值（465 模块行/字节）为旧管线快照，96 个文件已漂移，内容无损坏。
+      建议：用当前管线重跑 _gen_manifest.py 刷新 manifest，而非改动磁盘产物。
+
+==== 6) 链路对账（计数闭环） ====
+说明：decoded 用 NNNN_HASH.bin 命名、scripts 用模块名，命名体系不同，按计数对账。
+decoded 485 == manifest/raw 485            : True
+scripts 484 == src/*.pyc 484               : True
+decoded - scripts = 1（即 #165 未命名条目）: True
+
+==== 7) 总量核对 ====
+磁盘 .py 行数合计   = 328604
+磁盘 .py 字节合计   = 21858354 (20.8 MB)
+manifest 声明(465)  = lines 308596 / bytes 20839530
+B7 追加 18 个文件后磁盘 483；增量 = 行 20008 / 字节 1018824
+
+==== 总结论 ====
+  [PASS] 磁盘 .py = 483 / .pyc = 484
+  [PASS] 未还原 = 仅 dialog/dlgsysopt
+  [PASS] 无多余 .py
+  [PASS] manifest 465 模块全部落盘
+  [PASS] B7 补写 6 个全部落盘
+  [PASS] pyc 魔数唯一（round-trip 完整）
+  [PASS] 无空文件 / 无 <3 行残缺
+  [PASS] 颠倒赋值 = 0
+  [PASS] 磁盘内容与当前解编译管线自洽（抽样逐字节复现）
+  [PASS] 链路计数闭环（485/484/484）
+  [FAIL] 语法有效性（lib2to3 全过）
+
+总体判定: 10/11 项通过
+唯一未过项：语法有效性 —— 82/483（17.0%）个还原文件无法通过 Py2 文法解析，
+全部归因于 u6_patch26 P3（裸 yield 作语句）打印规则未处理缩进/换行：
+  F1 第0列 yield 73 处；F2 yield 粘连 236 处；次生形态（丢缩进/体丢失/截断）3 文件。
+
+修复方案（两种，可组合）：
+  A. 输出后处理（快、可验证）：F2 在 yield 后 4+ 空格处拆两行；
+     F1/次生形态按 tokenize 缩进栈将丢缩进行复位到所属块；
+     个案（dlgtradecenter if 体丢失、warnings.py:71 截断）人工对照字节码。
+  B. 根治：修 u6_patch26 P3 打印函数的缩进/换行处理，重跑受影响 82 文件
+     （+dialog/dlgsysopt），完成后以 lib2to3 全量解析为验收闸门。
+另建议：manifest 用当前管线重生成（_gen_manifest.py），消除 96 文件漂移。
+
+耗时 81.2s

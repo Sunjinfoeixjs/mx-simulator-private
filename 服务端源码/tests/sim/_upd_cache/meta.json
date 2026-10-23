@@ -1,0 +1,26 @@
+{
+ "newupdate.txt": {
+  "ctype": "text/plain; charset=uft-8",
+  "len": 8540
+ },
+ "news.txt": {
+  "ctype": "text/plain; charset=uft-8",
+  "len": 1384
+ },
+ "service.txt": {
+  "ctype": "text/plain; charset=uft-8",
+  "len": 0
+ },
+ "tips.txt": {
+  "ctype": "text/plain; charset=uft-8",
+  "len": 2
+ },
+ "version.txt": {
+  "ctype": "text/plain; charset=uft-8",
+  "len": 8
+ },
+ "bulletin.txt": {
+  "ctype": "text/plain; charset=uft-8",
+  "len": 98
+ }
+}

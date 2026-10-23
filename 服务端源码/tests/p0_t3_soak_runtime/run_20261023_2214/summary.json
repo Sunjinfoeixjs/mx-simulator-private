@@ -1,0 +1,19 @@
+{
+  "bytes_drained": 25760,
+  "cycles": 40,
+  "duplicate_checks": 4,
+  "elapsed_sec": 52.062,
+  "error": "OverflowError(\"can't convert negative int to unsigned\")",
+  "final_owners": 0,
+  "final_sessions": 0,
+  "requested_sec": 1800,
+  "save_paths": [
+    "C:\\Users\\Administrator\\MX\\服务端源码\\tests\\p0_t3_soak_runtime\\run_20261023_2214\\save\\role_p0soak_a.json",
+    "C:\\Users\\Administrator\\MX\\服务端源码\\tests\\p0_t3_soak_runtime\\run_20261023_2214\\save\\role_p0soak_b.json"
+  ],
+  "start_epoch": 1792764797.0498538,
+  "status": "FAIL",
+  "tracemalloc_current": 908833,
+  "tracemalloc_growth": 908833,
+  "tracemalloc_peak": 1145308
+}

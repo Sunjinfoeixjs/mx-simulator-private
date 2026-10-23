@@ -1,0 +1,165 @@
+# S2C 服务端→客户端 路由完整清单
+# 共 160 个路由，全部为 S2C 处理函数
+# 格式: tag | 模块.处理函数 | 子系统
+# tag: None=默认, 18=战斗实时, 1=物品/宠物变更, 16=战斗播报, 19=系统通知, 3=杂项战报
+#================================================================
+   1  nethero.S2CPropChange        系统/UI
+   1  netitem.S2CItemAdd           物品/仓库
+   1  netitem.S2CItemDel           物品/仓库
+   1  netitem.S2CItemPos           物品/仓库
+   1  netitem.S2CItemQuantity      物品/仓库
+   1  netpet.S2CPropState          系统/UI
+   1  netpet.S2CSetFight           其他
+   1  netpet.S2CSummEquip          角色/宠物
+   1  netpet.S2CSummonInfo         角色/宠物
+   1  netpet.S2CSummonKey          角色/宠物
+   1  netpet.S2CSummonSkill        角色/宠物
+   3  netchat.S2CWarNotify         战斗
+  16  netchat.S2CPlayerChat        角色/宠物
+  16  netnpc.S2CNpcChatExt         社交
+  16  netwar.S2CWarCalledPet       角色/宠物
+  16  netwar.S2CWarChildSkill      角色/宠物
+  16  netwar.S2CWarSign            战斗
+  16  netwar.S2CWarStart           战斗
+  18  netwar.S2CChangeAction       其他
+  18  netwar.S2CWarAdd             战斗
+  18  netwar.S2CWarAddon           战斗
+  18  netwar.S2CWarAttackConverg   登录/账号
+  18  netwar.S2CWarAttackNormal    战斗
+  18  netwar.S2CWarAttackNormalEnd 战斗
+  18  netwar.S2CWarDel             战斗
+  18  netwar.S2CWarEnd             战斗
+  18  netwar.S2CWarHPPercent       战斗
+  18  netwar.S2CWarONACT           战斗
+  18  netwar.S2CWarPerform         战斗
+  18  netwar.S2CWarPlayerChat      角色/宠物
+  18  netwar.S2CWarProtect         战斗
+  18  netwar.S2CWarSummon          角色/宠物
+  18  netwar.S2CWarSummonCatch     角色/宠物
+  18  netwar.S2CWarTurn            战斗
+  18  netwar.S2CWarWState          战斗
+  18  netwar.S2CWarWeather         战斗
+  19  netchat.S2CNotify            系统/UI
+  19  netchat.S2CSysNotify         系统/UI
+  19  nethero.S2CNotifyExt         系统/UI
+      banword.S2CBandWord          其他
+      blacklist.S2CBlacklist       登录/账号
+      district.S2CDistrict         地图/移动
+      dlgcalendar.S2CTime          登录/账号
+      marriage.S2CMarriage         社交
+      mask.S2CADDMASK              其他
+      mxgw.S2CTime                 登录/账号
+      mxv.S2CVer                   登录/账号
+      netachieve.S2CAchieve        任务/活动
+      netachieve.S2CAchieveBadge   任务/活动
+      netbaike.S2CBaike            任务/活动
+      netblog.S2CBlog              其他
+      netchild.S2CChild            角色/宠物
+      netchildinfo.S2CChildInfo    角色/宠物
+      netcommon.S2CCommon          其他
+      netcountry.S2CNewspaper      社交
+      netdreamknow.S2CGetDreamKnow 任务/活动
+      netforum.S2CForum            社交
+      netfriend.S2CFriend          社交
+      netfriend.S2CFriendAdd       社交
+      netfriend.S2CFriendDel       社交
+      netgroup.S2CGroup            交易/经济
+      netgroup.S2CStock            交易/经济
+      nethero.S2CBlock             其他
+      nethero.S2CDesignAdd         其他
+      nethero.S2CDesignDel         其他
+      nethero.S2CItemInfo          物品/仓库
+      nethero.S2CItemTCInfo        物品/仓库
+      nethero.S2CMobile            登录/账号
+      nethero.S2CPlayerCash        角色/宠物
+      nethero.S2CPlayerNotify      角色/宠物
+      nethero.S2CPropAdvXinfa      系统/UI
+      nethero.S2CPropInit          系统/UI
+      nethero.S2CPropPower         系统/UI
+      nethero.S2CPropRepute        系统/UI
+      nethero.S2CPropResist        系统/UI
+      nethero.S2CPropSwitch        系统/UI
+      nethero.S2CPropXinfa         系统/UI
+      nethero.S2CServiceAnswer     系统/UI
+      nethero.S2CSkillLevel        其他
+      nethero.S2CSummonInfo        角色/宠物
+      nethero.S2CSummonInfo6       角色/宠物
+      netitem.S2CAskBind           其他
+      netitem.S2CItemKey           物品/仓库
+      netitem.S2CItemString        物品/仓库
+      netitemshop.S2CItemShop      物品/仓库
+      netliving.S2CFactory         地图/移动
+      netliving.S2CFactoryList     地图/移动
+      netliving.S2CMiniGame        其他
+      netliving.S2CProduce         地图/移动
+      netlogin.S2CAccountManage    登录/账号
+      netlogin.S2CHello            其他
+      netlogin.S2CLoginAccountInfo 登录/账号
+      netlogin.S2CLoginDelRole     登录/账号
+      netlogin.S2CLoginError       登录/账号
+      netlogin.S2CLoginLocalPW     登录/账号
+      netlogin.S2CLoginMessage     登录/账号
+      netlogin.S2CLoginPlayerAdd   登录/账号
+      netlogin.S2CLoginQueue       登录/账号
+      netlogin.S2CLoginRoleEnter   登录/账号
+      netlogin.S2CLoginRoleInfo    登录/账号
+      netmail.S2CChargeHistory     其他
+      netmail.S2CDeathInfo         其他
+      netmail.S2CEms               其他
+      netmail.S2CMail              社交
+      netmap.S2CAddTempNpc         NPC
+      netmap.S2CChangeShape        角色/宠物
+      netmap.S2CFBNpc              NPC
+      netmap.S2CMapAddGoods        物品/仓库
+      netmap.S2CMapAddNpc          地图/移动
+      netmap.S2CMapAddPlayer       角色/宠物
+      netmap.S2CMapAddon           地图/移动
+      netmap.S2CMapDel             地图/移动
+      netmap.S2CMapEffect          地图/移动
+      netmap.S2CMapGotoM           地图/移动
+      netmap.S2CMapHide            地图/移动
+      netmap.S2CMapRefreshNpcSign  地图/移动
+      netmap.S2CMapSceneM          地图/移动
+      netmap.S2CMapStore           地图/移动
+      netmap.S2CMapSummon          角色/宠物
+      netmap.S2CMapTeam            地图/移动
+      netmap.S2CMapTrack           地图/移动
+      netnpc.S2CMakeCompleteNotify 系统/UI
+      netnpc.S2CNpcBuyList         交易/经济
+      netnpc.S2CNpcChat            社交
+      netnpc.S2CNpcChatJuQing      社交
+      netnpc.S2CNpcDetails         NPC
+      netnpc.S2CNpcInput           NPC
+      netnpc.S2CNpcItemBill        物品/仓库
+      netnpc.S2CNpcItemChoose      物品/仓库
+      netnpc.S2CNpcItemDiscount    物品/仓库
+      netnpc.S2CNpcLearnList       NPC
+      netnpc.S2CNpcLearnPerformList 战斗
+      netnpc.S2CNpcMake            NPC
+      netnpc.S2CNpcMakeCost        NPC
+      netnpc.S2CNpcSellList        交易/经济
+      netnpc.S2CNpcTrade           交易/经济
+      netnpc.S2CNpcTradeCenter     交易/经济
+      netopenui.S2COpenUI          系统/UI
+      netpet.S2CPetRefine          角色/宠物
+      netpet.S2CPropView           系统/UI
+      netplayer.S2CDianka          物品/仓库
+      netplayer.S2CItemLock        物品/仓库
+      netplayer.S2CPlayerInfo      角色/宠物
+      netplayer.S2CPlayerOnSale    角色/宠物
+      netplayer.S2CPlayerTrade     角色/宠物
+      netplayer.S2CPropPhoto       系统/UI
+      netplayer.S2CSaleHistory     交易/经济
+      netrelation.S2COpenTeach     其他
+      netresident.S2CResident      地图/移动
+      netrichgood.S2COpenUpload    其他
+      netrolesale.S2CRoleSale      角色/宠物
+      netstate.S2CStateAdd         系统/UI
+      netstate.S2CStateRemove      地图/移动
+      netstorehouse.S2CStoreHouse  物品/仓库
+      nettask.S2CJuqingStatus      其他
+      nettask.S2CTaskAdd           任务/活动
+      nettask.S2CTaskRemove        地图/移动
+      netteam.S2CPlayerTeam        角色/宠物
+      nettjtradecenter.S2CTJTradeCenter 交易/经济
+      room.S2CHouse                地图/移动

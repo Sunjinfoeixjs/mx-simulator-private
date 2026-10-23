@@ -1,0 +1,5 @@
+[2026-10-18 04:15:18] go action=add admin=True hosts_len=1
+[2026-10-18 04:15:18] 已备份 -> C:\Windows\System32\drivers\etc\hosts.mx_bak
+[2026-10-18 04:15:18] 已追加: 127.0.0.1 mxupdate.duoyi.com
+[2026-10-18 04:15:18] 验证: enrty_present=True
+[2026-10-18 04:15:18] hosts 尾部: '\n127.0.0.1 mxupdate.duoyi.com\r\n'

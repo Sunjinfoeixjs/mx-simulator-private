@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>《梦想世界2013》可视化调试台</title>
+<style>
+  :root{
+    --bg:#14171c; --panel:#1c2128; --panel2:#222833; --line:#2e3641;
+    --fg:#d7dde5; --dim:#8b97a8; --acc:#4aa3ff; --ok:#3fb950; --warn:#d29922; --err:#f85149;
+    --c2s:#4aa3ff; --s2c:#3fb950; --inj:#a371f7;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0}
+  body{background:var(--bg);color:var(--fg);font:12.5px/1.5 "Microsoft YaHei",Consolas,monospace;display:flex;flex-direction:column}
+  header{display:flex;align-items:center;gap:10px;padding:7px 12px;background:var(--panel);border-bottom:1px solid var(--line);flex:0 0 auto;flex-wrap:wrap}
+  header h1{font-size:13.5px;margin:0 10px 0 0;font-weight:600;letter-spacing:.5px}
+  .meta{color:var(--dim);font-size:11.5px}
+  .meta b{color:var(--fg);font-weight:600}
+  .grow{flex:1}
+  button{background:var(--panel2);color:var(--fg);border:1px solid var(--line);border-radius:4px;padding:4px 10px;cursor:pointer;font:inherit;white-space:nowrap}
+  button:hover{border-color:var(--acc)}
+  button.primary{background:#1d4e86;border-color:#2f6ea8}
+  button.primary:hover{background:#265d9c}
+  button.danger{border-color:#5c2b2b;color:#ffb4b4}
+  button.on{border-color:var(--acc);background:#1b2c42;color:#fff}
+  button:disabled{opacity:.45;cursor:not-allowed}
+  input,select,textarea{background:#12161b;border:1px solid var(--line);border-radius:4px;color:var(--fg);padding:4px 6px;font:inherit}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--acc)}
+  nav{display:flex;gap:2px;padding:5px 12px 0;background:var(--panel);border-bottom:1px solid var(--line);flex:0 0 auto}
+  nav a{padding:5px 14px;border-radius:4px 4px 0 0;color:var(--dim);cursor:pointer;border:1px solid transparent;border-bottom:none}
+  nav a.on{background:var(--bg);color:#fff;border-color:var(--line)}
+  .msg{padding:4px 12px;font-size:11.5px;border-bottom:1px solid var(--line);flex:0 0 auto;min-height:24px;color:var(--dim)}
+  .msg.ok{color:var(--ok)} .msg.err{color:var(--err)} .msg.warn{color:var(--warn)}
+  main{flex:1;display:flex;min-height:0}
+  .tab{flex:1;display:none;min-height:0}
+  .tab.on{display:flex}
+  .side{width:400px;flex:0 0 auto;display:flex;flex-direction:column;border-right:1px solid var(--line);min-height:0}
+  .side.right{border-right:none;border-left:1px solid var(--line);width:330px;overflow:auto}
+  .center{flex:1;min-width:0;display:flex;flex-direction:column;min-height:0}
+  .bar{display:flex;gap:6px;align-items:center;padding:5px 8px;background:var(--panel);border-bottom:1px solid var(--line);flex:0 0 auto;flex-wrap:wrap}
+  .bar label{color:var(--dim);font-size:11.5px;display:inline-flex;align-items:center;gap:4px}
+  .list{flex:1;overflow:auto;min-height:0}
+  .row{display:grid;grid-template-columns:52px 46px 1fr 44px;gap:6px;padding:3px 8px;border-bottom:1px solid #1e242c;cursor:pointer;align-items:baseline}
+  .row:hover{background:#1b2129}
+  .row.on{background:#1b2c42;outline:1px solid var(--acc)}
+  .row .ts{color:var(--dim);font-size:11px}
+  .row .op{font-weight:600}
+  .row .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .row .sz{color:var(--dim);text-align:right;font-size:11px}
+  .row .sm{grid-column:3 / span 2;color:var(--dim);font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .d-c2s{color:var(--c2s)} .d-s2c{color:var(--s2c)}
+  .row.unknown{background:#2a1719}
+  .row.unknown .nm{color:var(--err)}
+  .row.noimpl{background:#2a2318}
+  .row.nofit .nm{color:var(--warn)}
+  .row.dropped{background:#3a1d1d;opacity:.85}
+  .row.injected{background:#241d33}
+  .row.hl{box-shadow:inset 3px 0 0 var(--acc)}
+  /* ★ 真实链路标红（2026-10-20）：GM 开战/胜利那条命令连发的整段帧序列。
+     用红色不是「错误」，而是「这是因果链，顺序读下来就是客户端的处理顺序」——
+     帧序即契约，顺序错了客户端就卡「请等待」/地图全空。左缘红条 + 淡红底，
+     不压过 unknown 的红字（那才是真缺陷）。 */
+  .row.warcmd{background:#2e1a1c;box-shadow:inset 3px 0 0 #ff6b6b}
+  .row.warcmd .nm{color:#ffb4b4}
+  .row.warcmd .sz{color:#e08a8a}
+  .tag.chain{color:#ff8080;border-color:#7a3131;background:#3a1f21}
+  .tag{display:inline-block;padding:0 4px;border:1px solid var(--line);border-radius:3px;font-size:10px;color:var(--dim);margin-left:4px}
+  .tag.err{color:var(--err);border-color:#5c2b2b}
+  .tag.warn{color:var(--warn);border-color:#5c4a2b}
+  .tag.ok{color:var(--ok);border-color:#2b5c35}
+  .tag.acc{color:var(--acc);border-color:#2b4a5c}
+  .tag.inj{color:var(--inj);border-color:#3d2b5c}
+  .detail{flex:1;overflow:auto;min-height:0;padding:8px 10px}
+  .kv{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;align-items:center}
+  h4{margin:10px 0 5px;font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:1px}
+  table{width:100%;border-collapse:collapse;font-size:11.5px}
+  td,th{border-bottom:1px solid #232a33;padding:3px 5px;text-align:left;vertical-align:top}
+  th{color:var(--dim);font-weight:normal;position:sticky;top:0;background:var(--bg)}
+  td.n{color:var(--dim);text-align:right;width:26px}
+  td.k{color:var(--inj);width:54px}
+  td.f{color:var(--fg);width:120px}
+  td.v{color:#ffd479;word-break:break-all}
+  td.h{color:var(--dim);font-size:10.5px;word-break:break-all}
+  .hex{font-size:11px;line-height:1.45;white-space:pre;overflow:auto;background:#0f1216;border:1px solid var(--line);border-radius:4px;padding:6px}
+  .hex .o{color:var(--dim)} .hex .b{color:#9fd0ff} .hex .a{color:#7d8b99}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:5px;padding:8px 10px;margin:0 0 8px}
+  .card h4{margin:0 0 6px}
+  .grid2{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;font-size:11.5px}
+  .grid2 .l{color:var(--dim)}
+  .sp{flex:1}
+  .hint{color:var(--dim);font-size:11px;margin:4px 0}
+  canvas{display:block;background:#0d1117;width:100%;height:100%}
+  .canvasbox{flex:1;position:relative;min-height:0}
+  .legend{position:absolute;right:8px;top:8px;background:rgba(20,23,28,.9);border:1px solid var(--line);border-radius:4px;padding:6px 8px;font-size:11px;line-height:1.7}
+  .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
+  .bar2{height:14px;background:var(--panel2);border-radius:7px;overflow:hidden;display:flex;border:1px solid var(--line)}
+  .bar2 i{display:block;height:100%}
+  .lbl{display:flex;justify-content:space-between;align-items:baseline;margin:6px 0 4px}
+  .lbl b{font-size:12.5px}
+  .centerbox{padding:10px 12px;overflow:auto}
+  .wrap2{display:flex;min-height:0;flex:1}
+  .chips{display:flex;gap:4px;flex-wrap:wrap;padding:5px 8px;background:var(--panel);border-bottom:1px solid var(--line)}
+  .chips button{padding:2px 8px;font-size:11.5px}
+  .scroll{overflow:auto;min-height:0;flex:1}
+  .row2{display:grid;grid-template-columns:46px 30px 1fr 92px 56px;gap:6px;padding:2px 8px;border-bottom:1px solid #1e242c;font-size:11.5px;align-items:baseline}
+  .row2:hover{background:#1b2129}
+  .row2.hit{background:#16241c}
+  .row2.bad{background:#2a1719}
+/* ★ 单机无对手方（ignored_no_counterpart）：标灰表示「不是缺口，不必补」。
+   刻意不用红色系——红色会让人以为是缺陷；灰色是「此路不通，别再走」。 */
+.row2.ignored{opacity:.5}
+.row2.ignored:hover{opacity:.85}
+  .row2 .ct{text-align:right;color:var(--dim)}
+  .row2 .ct b{color:var(--fg)}
+  .il{display:flex;align-items:center;gap:6px;justify-content:space-between;line-height:1.9}
+  button.mini{padding:0 6px;font-size:11px;line-height:1.6}
+  /* ── 战斗视图 ── */
+  .unit{border:1px solid var(--line);border-radius:5px;padding:5px 7px;margin:4px 0;background:#191e25}
+  .unit.dead{opacity:.42}
+  .unit .un{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+  .unit .un b{color:var(--fg)}
+  .unit .un .id{color:var(--dim);font-size:11px;font-family:Consolas,monospace}
+  .unit .kv{color:var(--dim);font-size:11px;font-family:Consolas,monospace;margin-top:2px}
+  .hpbar{height:6px;background:#21262d;border-radius:3px;overflow:hidden;margin-top:4px}
+  .hpfill{height:100%;background:var(--ok)}
+  .hpfill.low{background:var(--warn)}
+  .hpfill.crit{background:var(--err)}
+  .tl{font-family:Consolas,monospace;font-size:11.5px;line-height:1.75;cursor:pointer;padding:1px 5px;border-radius:3px;white-space:pre-wrap}
+  .tl:hover{background:#1b2129}
+  .tl .k{display:inline-block;min-width:62px;color:var(--dim)}
+  .tl.start .k,.tl.add .k{color:var(--ok)}
+  .tl.turn .k{color:var(--acc)}
+  .tl.wstate .k{color:var(--warn)}
+  .tl.end .k,.tl.del .k{color:var(--err)}
+  /* ── 业务事件（任务链 / 经济）── */
+  .evrow{display:flex;gap:7px;padding:2px 6px;border-bottom:1px solid #1e242c;
+         font-size:11.5px;align-items:baseline;flex-wrap:wrap}
+  .evrow:hover{background:#1b2129}
+  .evrow .t{color:var(--dim);font-family:Consolas,monospace;font-size:11px}
+  .evrow .k{font-family:Consolas,monospace;font-size:11px;min-width:112px}
+  .evrow .m{color:var(--fg);flex:1;min-width:120px}
+  .evrow .kvwrap{display:flex;gap:6px;flex-wrap:wrap}
+  .evrow .kv{color:var(--dim);font-family:Consolas,monospace;font-size:10.5px}
+  /* 分类配色：任务=蓝 经济=金 物品=青 战斗=红 工艺=紫 世界=灰 */
+  .evrow.q .k{color:var(--acc)} .evrow.e .k{color:var(--warn)}
+  .evrow.i .k{color:#4ec9b0}     .evrow.w .k{color:var(--err)}
+  .evrow.c .k{color:#c586c0}     .evrow.m .k{color:var(--dim)}
+  /* 经济流水：四列对齐，收绿支红（与 A 股相反的红绿无关心，这里只看正负号） */
+  .ledger{display:grid;grid-template-columns:66px 74px 74px 1fr;gap:8px;
+          padding:2px 10px;border-bottom:1px solid #1e242c;font-size:11.5px;align-items:baseline}
+  .ledger:hover{background:#1b2129}
+  .ledger .t{color:var(--dim);font-family:Consolas,monospace;font-size:11px}
+  .ledger .delta{font-family:Consolas,monospace;text-align:right;font-weight:600}
+  .ledger .delta.in{color:var(--ok)}
+  .ledger .delta.out{color:var(--err)}
+  .ledger .after{font-family:Consolas,monospace;text-align:right;color:var(--dim)}
+  .ledger .why{color:var(--fg)}
+</style>
+</head>
+<body>
+<header>
+  <h1>可视化调试台</h1>
+  <span class="meta">内核 <b id="hKernel">—</b></span>
+  <span class="meta">协议字典 <b id="hProto">—</b></span>
+  <span class="meta">帧 <b id="hFrames">0</b></span>
+  <span class="meta">SSE <b id="hSse">连接中…</b></span>
+  <span class="meta" id="hDropWrap" title="环形缓冲淘汰 / 批推溢出：界面上的帧不是全部历史"
+        style="display:none">丢帧 <b id="hDrop" style="color:var(--warn)">0</b></span>
+  <span class="sp"></span>
+  <button id="btnPause">暂停</button>
+  <button id="btnClear" class="danger">清空</button>
+  <button id="btnExport" class="primary">导出会话</button>
+</header>
+<nav>
+  <a data-tab="stream" class="on">帧流</a>
+  <a data-tab="map">地图</a>
+  <a data-tab="war">战斗</a>
+  <a data-tab="quest">任务链</a>
+  <a data-tab="econ">经济</a>
+  <a data-tab="cover">协议覆盖</a>
+  <a data-tab="gm">状态 / GM</a>
+</nav>
+<div class="msg" id="msg">正在连接内核…</div>
+
+<main>
+<!-- ══════════════════ 帧流 ══════════════════ -->
+<div class="tab on" id="tab-stream">
+  <div class="side">
+    <div class="bar">
+      <button id="fAll" class="on">全部</button>
+      <button id="fC2S">C2S</button>
+      <button id="fS2C">S2C</button>
+      <input id="q" placeholder="搜索 op / 名称 / 摘要" style="flex:1;min-width:80px">
+      <input id="opq" placeholder="op:100,101,151" style="width:118px" title="按 opcode 精确过滤（逗号/空格分隔）；Esc 清除">
+      <button id="btnOpPreset" title="实验预设：NPC 对话·商店·任务·详情 全链路（再点一次清除）">实验</button>
+      <span class="meta" id="fCount" title="当前过滤命中 / 前端缓存帧数"></span>
+      <label><input type="checkbox" id="onlyBad"> 只看异常</label>
+      <label title="只看 GM 开战/胜利等命令触发的真实链路帧（标红的那几段）"><input type="checkbox" id="onlyChain"> 只看链路</label>
+      <button id="btnFollow" class="on" title="自动滚到最新">⇩</button>
+    </div>
+    <div class="list" id="list"></div>
+  </div>
+  <div class="center">
+    <div class="detail" id="detail"><div class="hint">在左侧点选一帧查看逐字段解码与 hex。</div></div>
+  </div>
+  <div class="side right">
+    <div class="card"><h4>世界</h4><div class="grid2" id="wWorld"></div></div>
+    <div class="card"><h4>角色状态</h4><div class="grid2" id="wState"></div></div>
+    <div class="card"><h4>背包</h4><div id="wItems" class="hint">—</div></div>
+    <div class="card">
+      <h4>帧注入 / 丢帧</h4>
+      <div class="hint">注入是进程内直发：S2C 立刻回到客户端，C2S 由内核下次 recv 读走。</div>
+      <div style="display:flex;gap:5px;margin:5px 0">
+        <select id="injDir" style="flex:1"><option value="S2C">S2C 下行</option><option value="C2S">C2S 上行</option></select>
+        <input id="injOp" placeholder="opcode" style="width:74px">
+      </div>
+      <textarea id="injHex" rows="3" placeholder="payload hex，如 2d 00 28 00" style="width:100%"></textarea>
+      <div style="display:flex;gap:5px;margin-top:5px">
+        <button id="btnInject" class="primary" style="flex:1">注入</button>
+        <button id="btnDrop">丢弃下一帧</button>
+      </div>
+      <div class="hint">选中左侧某帧后点「注入」会自动填入该帧 op 与 hex（当模板用）。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ 地图 ══════════════════ -->
+<div class="tab" id="tab-map">
+  <div class="side">
+    <div class="bar">
+      <select id="mapSel" style="flex:1"></select>
+      <button id="btnFit">适应</button>
+      <label><input type="checkbox" id="follow" checked> 跟随</label>
+    </div>
+    <div class="list" style="padding:10px">
+      <div class="card"><h4>当前位置</h4><div class="grid2" id="mHere"></div></div>
+      <div class="card"><h4>地图出口</h4><div id="mExits" class="hint">—</div></div>
+      <div class="card"><h4>NPC（配置）</h4><div id="mNpcs" class="hint">—</div></div>
+      <div class="card"><h4>NPC（实测下发）</h4><div id="mNpcsLive" class="hint">—</div></div>
+    </div>
+  </div>
+  <div class="center">
+    <div class="canvasbox">
+      <canvas id="cv"></canvas>
+      <div class="legend">
+        <div><span class="dot" style="background:#4aa3ff"></span>玩家</div>
+        <div><span class="dot" style="background:#ffd479"></span>NPC</div>
+        <div><span class="dot" style="background:#3fb950"></span>出口</div>
+        <div><span class="dot" style="background:#f85149"></span>敌方单位</div>
+        <div><span class="dot" style="background:#8b97a8"></span>移动轨迹</div>
+        <div style="color:#8b97a8">滚轮缩放 · 拖拽平移</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ 战斗 ══════════════════ -->
+<div class="tab" id="tab-war">
+  <div class="side">
+    <div class="bar">
+      <b style="font-size:12px">战斗单位</b>
+      <span class="grow"></span>
+      <span class="meta" id="warHead">未进入战斗</span>
+    </div>
+    <div class="list" style="padding:10px">
+      <div class="card">
+        <h4>战斗概览</h4>
+        <div class="grid2" id="warInfo"></div>
+        <div class="hint">WarWState(123) 位域按 <b>MSB-first</b> 解：bit7-4 hurt · bit3-2 life
+          （<b>2=死亡</b>，只有它客户端才播死亡动画）· bit1-0 ward；hp_chg 有符号，
+          本服约定<b>正数=扣血</b>。</div>
+      </div>
+      <div class="card"><h4>我方单位</h4><div id="warAlly">—</div></div>
+      <div class="card"><h4>敌方单位</h4><div id="warFoe">—</div></div>
+    </div>
+  </div>
+  <div class="center">
+    <div class="bar">
+      <b style="font-size:12px">动作时间线</b>
+      <span class="grow"></span>
+      <span class="meta" id="warCount">0 条</span>
+    </div>
+    <div class="list" style="padding:6px 10px" id="warLog"></div>
+  </div>
+</div>
+
+<!-- ══════════════════ 任务链 ══════════════════ -->
+<div class="tab" id="tab-quest">
+  <div class="side" style="width:360px">
+    <div class="bar"><b style="font-size:12px">当前主线</b><span class="sp"></span>
+      <span class="meta" id="qHead">—</span></div>
+    <div class="list" style="padding:10px">
+      <div class="card"><h4>任务卡</h4><div class="grid2" id="qCard"></div></div>
+      <div class="card"><h4>步骤清单</h4><div id="qSteps" class="hint">—</div></div>
+      <div class="card"><h4>剧情点 / 已完成</h4><div class="grid2" id="qDone"></div></div>
+      <div class="card">
+        <h4>为什么看不到这个页签的内容</h4>
+        <div class="hint">
+          这一页的数据源是<b>业务事件总线</b>（sim/bus.py），不是帧流。
+          「接取/推进/完成/放弃」以及<b>被拒绝</b>（等级不够、物品不足）都在这里 ——
+          拒绝路径<b>一帧都不发</b>，所以在帧流页里是隐形的。
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="center">
+    <div class="bar">
+      <b style="font-size:12px">任务事件流</b>
+      <span class="grow"></span>
+      <label><input type="checkbox" id="qOnlyReject"> 只看被拒</label>
+      <button id="btnQuestClear">清空</button>
+      <span class="meta" id="qCount">0 条</span>
+    </div>
+    <div class="list" style="padding:6px 10px" id="qLog"></div>
+  </div>
+</div>
+
+<!-- ══════════════════ 经济 ══════════════════ -->
+<div class="tab" id="tab-econ">
+  <div class="side" style="width:360px">
+    <div class="bar"><b style="font-size:12px">收支汇总</b><span class="sp"></span>
+      <span class="meta" id="eHead">—</span></div>
+    <div class="list" style="padding:10px">
+      <div class="card"><h4>金币</h4><div class="grid2" id="eCoins"></div></div>
+      <div class="card"><h4>经验</h4><div class="grid2" id="eExp"></div></div>
+      <div class="card"><h4>帧批合并</h4><div class="grid2" id="eBatch"></div></div>
+      <div class="card">
+        <h4>这一页在看什么</h4>
+        <div class="hint">
+          每一笔金币/经验变动都带 <b>delta（正=收，负=支）</b>、<b>after（变动后余额）</b>
+          与 <b>reason（原因）</b>。帧流里对应的只是一串 PropChange(17)，
+          光看下标和数值是拼不出「为什么钱少了 200」的。
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="center">
+    <div class="bar">
+      <b style="font-size:12px">经济流水</b>
+      <span class="grow"></span>
+      <select id="eKind" style="width:130px">
+        <option value="">全部</option>
+        <option value="econ.coins">金币</option>
+        <option value="econ.exp">经验</option>
+      </select>
+      <button id="btnEconClear">清空</button>
+      <span class="meta" id="eCount">0 条</span>
+    </div>
+    <div class="list" style="padding:0" id="eLog"></div>
+  </div>
+</div>
+
+<!-- ══════════════════ 协议覆盖 ══════════════════ -->
+<div class="tab" id="tab-cover" style="flex-direction:column">
+  <div class="centerbox" style="flex:0 0 auto">
+    <div class="card">
+      <h4>本会话协议覆盖</h4>
+      <div class="lbl"><span class="meta">C2S 上行</span><b id="covC2S">—</b></div>
+      <div class="bar2" id="barC2S"></div>
+      <div class="lbl" style="margin-top:10px"><span class="meta">S2C 下行</span><b id="covS2C">—</b></div>
+      <div class="bar2" id="barS2C"></div>
+      <div class="hint" id="covHint"></div>
+    </div>
+  </div>
+  <div class="chips">
+    <select id="covDir" style="width:110px"><option value="C2S">C2S 上行</option><option value="S2C">S2C 下行</option></select>
+    <button data-cf="all" class="on">全部</button>
+    <button data-cf="seen">已出现</button>
+    <button data-cf="unseen">未出现</button>
+    <button data-cf="bad">未实现 / 无路由</button>
+    <button data-cf="nodef" title="客户端会发、但字典缺字段定义 —— 出现时只能看 hex。与「服务端未实现」是两个独立维度">字典缺定义</button>
+    <input id="covQ" placeholder="搜索名称 / opcode" style="flex:1;min-width:120px">
+    <span class="meta" id="covCount"></span>
+  </div>
+  <div class="scroll"><div id="covList"></div></div>
+</div>
+
+<!-- ══════════════════ 状态 / GM ══════════════════ -->
+<div class="tab" id="tab-gm">
+  <div class="side" style="width:340px">
+    <div class="bar"><b style="font-size:12px">GM 动作</b><span class="sp"></span><span class="meta" id="gmLive">—</span></div>
+    <div class="list" style="padding:10px">
+      <div class="card">
+        <h4>数值</h4>
+        <div class="hint">HP（0..上限）</div>
+        <div style="display:flex;gap:5px"><input id="gmHp" type="number" style="flex:1"><button data-act="hp">设 HP</button></div>
+        <div class="hint">金钱</div>
+        <div style="display:flex;gap:5px"><input id="gmCoins" type="number" style="flex:1"><button data-act="coins">设金钱</button></div>
+        <div class="hint">战斗资源</div>
+        <div style="display:flex;gap:5px"><select id="gmRes" style="flex:1"></select><input id="gmResV" type="number" style="width:64px"><button data-act="resource">设</button></div>
+        <div class="hint">坐标（会立即下发 GotoM）</div>
+        <div style="display:flex;gap:5px"><input id="gmX" type="number" style="flex:1"><input id="gmY" type="number" style="flex:1"><button data-act="pos">传送</button></div>
+        <div class="hint">宠物 HP</div>
+        <div style="display:flex;gap:5px"><input id="gmPet" type="number" style="flex:1"><button data-act="pet">设</button></div>
+      </div>
+      <div class="card">
+        <h4>战斗（真实链路）</h4>
+        <div class="hint">走内核 <code>_start_war</code> / <code>_after_hero_action</code>，与打怪触发的是同一条代码路径；
+          发出的整段帧会在「帧流」里<b style="color:#ff8080">标红</b>，可直接核对顺序。</div>
+        <div style="display:flex;gap:5px;flex-wrap:wrap">
+          <button data-act="war_start" class="primary">强制开战</button>
+          <button data-act="war_win" class="primary">一键胜利</button>
+        </div>
+        <div class="hint">开战：WarStart→WarAdd×N→WarSummon→WarTurn ／ 胜利：WarDel×N→WarEnd→场景重同步→经验→掉落</div>
+      </div>
+      <div class="card">
+        <h4>随时可点</h4>
+        <div style="display:flex;gap:5px;flex-wrap:wrap">
+          <button data-act="heal" class="primary">满血满资源</button>
+          <button data-act="refresh">重发状态</button>
+          <button data-act="save">落盘存档</button>
+        </div>
+        <div class="hint">遇怪间隔（0 = 关闭）</div>
+        <div style="display:flex;gap:5px"><input id="gmEnc" type="number" value="5" style="flex:1"><button data-act="encounter">设</button></div>
+      </div>
+      <div class="card">
+        <h4>发道具</h4>
+        <div style="display:flex;gap:5px"><input id="gmShape" type="number" placeholder="shape" style="flex:1"><input id="gmQty" type="number" value="1" style="width:54px"><input id="gmName" placeholder="名称" style="flex:1"></div>
+        <button data-act="item_add" style="margin-top:5px;width:100%">进背包</button>
+      </div>
+      <div class="card">
+        <h4>控制台（真实内核路径）</h4>
+        <div class="hint">一行指令，走 <code>/api/gm/cmd</code> → <code>gm_command()</code> → 真实 gm_* 链路。例：<code>war win</code> <code>hp 100</code> <code>map 1002</code> <code>help</code></div>
+        <div style="display:flex;gap:5px"><input id="gmCmd" placeholder="war win / hp 100 / map 1002 / help ..." style="flex:1"><button id="btnGmCmd" class="primary">执行</button></div>
+        <pre id="gmCmdOut" style="margin-top:6px;max-height:170px;overflow:auto;white-space:pre-wrap;font-size:11px"></pre>
+      </div>
+    </div>
+  </div>
+  <div class="center">
+    <div class="bar"><b style="font-size:12px">实时状态</b><span class="sp"></span><span class="meta">每 2s 自动刷新（SSE）</span></div>
+    <div class="detail" id="gmState"><div class="hint">等待内核…</div></div>
+  </div>
+</div>
+</main>
+
+<script>
+'use strict';
+const $ = s => document.querySelector(s);
+const S = {
+  frames: [], byId: new Map(), last: 0, sel: null,
+  paused: false, dir: 'ALL', q: '', ops: [], onlyBad: false, onlyChain: false, follow: true,
+  stats: null, state: null, hello: null, maps: [], mapid: null,
+  trail: [], zoom: 1, pan: {x:0, y:0}, drag: null, rebuilt: 0,
+  generation: -1,                    // 会话代数：变化即代表缓冲被清空，须重置本地缓存
+  sseDropped: 0,                     // 批推溢出：两次 SSE 之间积压超 2000 被丢弃的帧数
+  evicted: 0,                        // 环形缓冲淘汰：服务端 ring_max 挤掉的历史帧数
+  table: { C2S: [], S2C: [] },       // 静态全表：开机拉一次，计数靠心跳合并
+  marks: [],                        // 真实链路段落（{lo,hi,label,kind}）：GM 开战/胜利后标红
+  markKinds: {},                    // 各类链路累计段数（服务端统计）
+  // ── 业务事件总线（2026-10-22）：任务链 / 经济页签 ──
+  // 与帧流平行的第二条时间线。帧是表现，事件是因果：拒绝路径一帧不发但有事件。
+  bus: [],                          // 全部事件（按 seq 升序）
+  busSeq: 0,                        // 已拉到的最大 seq
+  questOnlyReject: false,
+  econKind: ''                      // '' = 全部；'econ.coins' / 'econ.exp'
+};
+const MAX_BUS = 2000;               // 前端最多保留多少条事件
+const MAX_ROWS = 1500;          // 帧列表最多渲染多少行（越界丢最旧）
+const MAX_FRAMES = 4000;        // 前端保留多少帧对象
+
+function setMsg(t, k) { const e = $('#msg'); e.textContent = t; e.className = 'msg ' + (k || ''); }
+
+/* ── 标签切换（带 URL hash 路由：#war / #cover …）──
+   好处有三：刷新后停在同一页签；链接可以直接发给别人看某一页；
+   headless 截图工具能逐页签出图。 */
+function switchTab(name) {
+  const a = document.querySelector('nav a[data-tab="' + name + '"]');
+  if (!a) return;
+  document.querySelectorAll('nav a').forEach(x => x.classList.toggle('on', x === a));
+  document.querySelectorAll('.tab')
+    .forEach(t => t.classList.toggle('on', t.id === 'tab-' + name));
+  if (name === 'map') { resizeCanvas(); drawMap(); }
+  // replaceState 而非 pushState：切页签不该把浏览器后退键塞满
+  if (location.hash.slice(1) !== name) {
+    history.replaceState(null, '', '#' + name);
+  }
+}
+document.querySelectorAll('nav a').forEach(a => a.onclick = () => switchTab(a.dataset.tab));
+window.addEventListener('hashchange', () => switchTab(location.hash.slice(1)));
+
+/* ── 帧列表渲染（增量追加，不做整表重建） ── */
+function pass(f) {
+  if (S.dir !== 'ALL' && f.dir !== S.dir) return false;
+  if (S.ops.length && S.ops.indexOf(f.op) < 0) return false;
+  if (S.onlyBad && !(f.known === false || f.impl === false || f.fit === false || f.dropped)) return false;
+  if (S.onlyChain && !f.warcmd) return false;
+  if (S.q) {
+    const q = S.q.toLowerCase();
+    const _c = f.warcmd ? (' ' + ((chainOf(f.seq) || {}).label || '链路')) : '';
+    const hay = (f.op + ' ' + f.name + ' ' + (f.module||'') + ' ' + f.summary + ' ' + f.dir + _c).toLowerCase();
+    if (hay.indexOf(q) < 0) return false;
+  }
+  return true;
+}
+/* 帧属于哪条链路段落：段落区间由服务端 mark_range 事后回填（见 tap.mark_range）。
+   段落只有个位数，线性找足够；找不到时退回泛称，避免标签空白。 */
+function chainOf(seq) {
+  for (let i = S.marks.length - 1; i >= 0; i--) {
+    const m = S.marks[i];
+    if (seq >= m.lo && seq <= m.hi) return m;
+  }
+  return null;
+}
+function chainLabelOf(f) {
+  const m = chainOf(f.seq);
+  if (!m) return 'GM';
+  const span = (m.hi - m.lo + 1);
+  return m.label + ' #' + m.lo + '-' + m.hi + '（' + span + ' 帧）';
+}
+
+function rowCls(f) {
+  let c = 'row';
+  if (f.dir === 'C2S') c += ' d-c2s'; else c += ' d-s2c';
+  if (f.known === false) c += ' unknown';
+  else if (f.impl === false) c += ' noimpl';
+  else if (f.fit === false) c += ' nofit';
+  if (f.dropped) c += ' dropped';
+  if (f.injected) c += ' injected';
+  if (f.warcmd) c += ' warcmd';          // 真实链路（GM 开战/胜利）整段标红
+  if (S.ops.length && S.ops.indexOf(f.op) >= 0) c += ' hl';
+  return c;
+}
+function rowHTML(f) {
+  const tags = [];
+  if (f.known === false) tags.push('<span class="tag err">字典无此编码</span>');
+  if (f.impl === false) tags.push('<span class="tag warn">服务端未实现</span>');
+  if (f.fit === false && f.known !== false) tags.push('<span class="tag warn">布局不符</span>');
+  if (f.src === 'overlay') tags.push('<span class="tag ok">精确</span>');
+  if (f.dropped) tags.push('<span class="tag err">已丢弃</span>');
+  if (f.injected) tags.push('<span class="tag inj">注入</span>');
+  if (f.warcmd) tags.push('<span class="tag chain" title="GM 命令触发的真实链路：这些帧是内核同一条代码路径顺序发出的">真实链路·' + esc(chainLabelOf(f)) + '</span>');
+  if (f.n_layouts > 1) tags.push('<span class="tag acc">多形态×' + f.n_layouts + '</span>');
+  return '<div class="ts">' + f.ts + '</div>'
+       + '<div class="op">' + f.dir + ' ' + f.op + '</div>'
+       + '<div class="nm">' + esc(f.name) + tags.join('') + '</div>'
+       + '<div class="sz">' + f.size + 'B</div>'
+       + '<div class="sm">' + esc(f.summary || '') + '</div>';
+}
+function pushRow(f) {
+  if (S.paused) return;
+  if (!pass(f)) return;
+  const list = $('#list');
+  const d = document.createElement('div');
+  d.className = rowCls(f);
+  d.dataset.seq = f.seq;
+  d.innerHTML = rowHTML(f);
+  d.onclick = () => selectFrame(f.seq);
+  list.appendChild(d);
+  while (list.children.length > MAX_ROWS) list.removeChild(list.firstChild);
+  if (S.follow) list.scrollTop = list.scrollHeight;
+}
+function rebuildList() {
+  const list = $('#list');
+  list.innerHTML = '';
+  const src = S.frames.filter(pass).slice(-MAX_ROWS);
+  const frag = document.createDocumentFragment();
+  for (const f of src) {
+    const d = document.createElement('div');
+    d.className = rowCls(f); d.dataset.seq = f.seq; d.innerHTML = rowHTML(f);
+    d.onclick = () => selectFrame(f.seq);
+    frag.appendChild(d);
+  }
+  list.appendChild(frag);
+  if (S.follow) list.scrollTop = list.scrollHeight;
+  if (S.sel) {
+    const el = list.querySelector('[data-seq="' + S.sel.seq + '"]');
+    if (el && !el.classList.contains('on')) markSel(el);
+  }
+  updCount();
+}
+/* 过滤命中计数：改过滤条件 / 收到新帧后刷新（暂停时也要刷，否则计数会骗人） */
+function updCount() {
+  const el = $('#fCount');
+  if (!el) return;
+  if (!S.frames.length) { el.textContent = ''; return; }
+  let n = 0;
+  for (const f of S.frames) if (pass(f)) n++;
+  el.textContent = '命中 ' + n + ' / ' + S.frames.length;
+}
+/* 丢帧徽标：把「界面上不是全部历史」这件事显式化。
+   两个来源分开算、合并显示：
+     evicted     —— 服务端环形缓冲满，最老的帧被挤掉（长期）
+     sseDropped  —— 批推暂存超 2000，两次推送之间的积压被丢（瞬时）
+   都 >0 才显示，避免平时占地方。 */
+function updDropBadge() {
+  const wrap = $('#hDropWrap'), el = $('#hDrop');
+  if (!wrap || !el) return;
+  const total = (S.evicted || 0) + (S.sseDropped || 0);
+  if (total <= 0) { wrap.style.display = 'none'; return; }
+  wrap.style.display = '';
+  const parts = [];
+  if (S.evicted) parts.push('环形淘汰 ' + S.evicted);
+  if (S.sseDropped) parts.push('批推溢出 ' + S.sseDropped);
+  el.textContent = total;
+  wrap.title = parts.join(' / ') + ' —— 界面上的帧不是全部历史';
+}
+function markSel(el) {
+  const prev = $('#list .row.on');
+  if (prev) prev.classList.remove('on');
+  if (el) el.classList.add('on');
+}
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+/* ── 帧详情 ── */
+function selectFrame(seq) {
+  const f = S.byId.get(seq);
+  if (!f) return;
+  S.sel = f;
+  markSel($('#list .row[data-seq="' + seq + '"]'));
+  const rows = f.rows || [];
+  let h = '<div class="kv">'
+    + '<span class="tag ' + (f.dir === 'C2S' ? 'acc' : 'ok') + '">' + f.dir + '</span>'
+    + '<b>op ' + f.op + '</b><b>' + esc(f.name) + '</b>'
+    + (f.injected ? '<span class="tag inj">注入帧</span>' : '')
+    + '<span class="meta">' + esc(f.module || '') + '</span>'
+    + '<span class="meta">payload ' + f.size + 'B</span>'
+    + '<span class="tag ' + (f.src === 'overlay' ? 'ok' : (f.src === 'dict' ? 'acc' : 'err')) + '">'
+      + ({overlay:'精确布局', dict:'字典布局', none:'无布局'}[f.src] || f.src) + '</span>'
+    + (f.fit ? '<span class="tag ok">吃满</span>' : '<span class="tag warn">tail ' + f.tail_len + 'B</span>')
+    + (f.n_layouts > 1 ? '<span class="tag acc">候选 ' + f.n_layouts + ' 种 → #' + (f.layout + 1) + '</span>' : '')
+    + '<span class="meta">' + f.ts + '</span></div>';
+  if (f.note) h += '<div class="hint" style="color:var(--warn)">' + esc(f.note) + '</div>';
+  // 真实链路段落：把「这条命令一共发了哪些帧、当前是第几帧」摊开，
+  // 帧序就在眼前，不用去数左侧列表。
+  const _m = f.warcmd ? chainOf(f.seq) : null;
+  if (_m) {
+    h += '<div class="hint" style="color:#ff8080">真实链路 · ' + esc(_m.label)
+      + ' ｜ 区间 seq ' + _m.lo + '–' + _m.hi + '（' + (_m.hi - _m.lo + 1) + ' 帧）'
+      + ' ｜ 本帧是第 ' + (f.seq - _m.lo + 1) + ' 帧</div>';
+  }
+  if (!f.known) h += '<div class="hint" style="color:var(--err)">协议字典里没有这个 opcode：要么是字典覆盖不全，要么是本帧格式与既有实现不同。</div>';
+
+  h += '<h4>字段（' + rows.length + '）</h4>';
+  if (!rows.length) h += '<div class="hint">无字段定义，见下方 hex。</div>';
+  else {
+    h += '<table><thead><tr><th class="n">#</th><th class="k">类型</th><th class="f">字段</th><th>值</th><th>原始字节</th></tr></thead><tbody>';
+    for (const r of rows) {
+      h += '<tr><td class="n">' + r.i + '</td><td class="k">' + esc(r.kind) + esc(r.size ? ':' + r.size : '') + '</td>'
+         + '<td class="f">' + esc(r.name || '—') + (r.signed ? ' <span class="tag">signed</span>' : '') + '</td>'
+         + '<td class="v">' + esc(r.disp == null ? '' : r.disp) + '</td><td class="h">' + esc(r.hex || '') + '</td></tr>';
+    }
+    h += '</tbody></table>';
+  }
+  if (f.tail && f.tail_len) h += '<h4>未解释字节（' + f.tail_len + 'B）</h4><div class="hex">' + esc(f.tail) + '</div>';
+  h += '<h4>payload hex（' + f.hex_len + 'B）</h4>' + hexDump(f.hex, f.hex_len);
+  $('#detail').innerHTML = h;
+  // 顺手把 op / hex 填进注入面板，让「照着这一帧造一帧」成为两步操作
+  $('#injOp').value = f.op;
+  $('#injHex').value = (f.hex || '').trim();
+  $('#injDir').value = f.dir;
+}
+function hexDump(hexStr, len) {
+  const bytes = hexStr ? hexStr.trim().split(/\s+/) : [];
+  let out = '';
+  for (let i = 0; i < bytes.length; i += 16) {
+    const chunk = bytes.slice(i, i + 16);
+    const ascii = chunk.map(b => {
+      const v = parseInt(b, 16);
+      return (v >= 32 && v < 127) ? String.fromCharCode(v) : '.';
+    }).join('');
+    out += '<span class="o">' + String(i).padStart(4, '0') + '</span>  '
+         + '<span class="b">' + chunk.join(' ').padEnd(47) + '</span>  '
+         + '<span class="a">' + ascii + '</span>\n';
+  }
+  return '<div class="hex">' + out + (len > 256 ? '\n… 仅显示前 256B' : '') + '</div>';
+}
+
+/* ── 右栏：世界 / 状态 ── */
+function renderWorld(w) {
+  const g = (l, v) => '<span class="l">' + l + '</span><span>' + esc(v) + '</span>';
+  const war = warOf(w);
+  const wu = Object.values(war.units);
+  let h = g('地图', (w.mapname || '—') + (w.mapid != null ? ' (' + w.mapid + ')' : ''))
+        + g('坐标', (w.x != null ? w.x + ', ' + w.y : '—'))
+        + g('NPC', (w.npcs || []).length)
+        + g('战斗', war.active
+            ? '第 ' + war.round + ' 回合 · 在场 '
+              + wu.filter(u => !u.dead).length + '/' + wu.length
+            : '否');
+  $('#wWorld').innerHTML = h;
+}
+function renderState(s) {
+  if (!s) return;
+  S.state = s;                      // 任务链/经济页签从这里取 grade/story_point/coins/batch
+  const g = (l, v) => '<span class="l">' + l + '</span><span>' + esc(v) + '</span>';
+  let h = g('连接', s.connected ? '已连接' : '无客户端')
+        + g('HP', s.hero_hp + ' / ' + s.hero_hp_max)
+        + g('金钱', s.coins)
+        + g('坐标', s.px + ', ' + s.py)
+        + g('宠物', s.pet_hp + ' / ' + s.pet_hp_max + (s.pet_alive ? ' · 存活' : ' · 倒下'))
+        + g('战斗', s.in_war ? '进行中（敌 ' + s.enemy_count + '）' : '否')
+        + g('遇怪', s.encounter_every ? '每 ' + s.encounter_every + ' 步' : '关闭');
+  const res = s.hero_res || {};
+  h += g('资源', Object.keys(res).map(k => k + '=' + res[k]).join(' ') || '—');
+  $('#wState').innerHTML = h;
+  const items = s.items || [];
+  $('#wItems').innerHTML = items.length
+    ? items.map(i => '<div class="il"><span>iid' + i.iid + ' shape' + i.shape
+        + ' ×' + i.qty + ' ' + esc(i.name) + '</span>'
+        + '<button class="mini" data-del="' + i.iid + '">删</button></div>').join('')
+    : '（空）';
+  $('#wItems').querySelectorAll('[data-del]').forEach(b => b.onclick = async () => {
+    const r = await (await fetch('/api/action', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'item_del', iid: +b.dataset.del })
+    })).json();
+    setMsg(r.ok ? '已删除 iid' + b.dataset.del : '删除失败：' + (r.error || ''), r.ok ? 'ok' : 'err');
+    if (r.ok) renderState(r.state);
+  });
+  $('#gmState').innerHTML = '<pre style="white-space:pre-wrap;margin:0">'
+    + esc(JSON.stringify(s, null, 1)) + '</pre>';
+  if (items.length) $('#gmLive').textContent = '已连接';
+  else $('#gmLive').textContent = s.connected ? '已连接' : '无客户端';
+  // 经济页签的「当前余额 / 帧批统计」来自这份快照，跟着心跳刷新
+  renderEcon(); renderQuest();
+}
+function renderStats(st) {
+  S.stats = st;
+  // C2S 的分母必须是「客户端真的会发多少种」——客户端源码常量（net.py）。
+  // 用字典条数当分母会偏（实测 131 vs 136），百分比就没意义了。
+  const c2sSeen = st.seen.C2S;
+  const c2sAll = (st.space && st.space.C2S) || st.total_ops.C2S;
+  const s2cSeen = st.seen.S2C, s2cAll = st.total_ops.S2C;
+  $('#hFrames').textContent = st.frames;
+  $('#covC2S').textContent = c2sSeen + ' / ' + c2sAll + '  (' + pct(c2sSeen, c2sAll) + ')';
+  $('#covS2C').textContent = s2cSeen + ' / ' + s2cAll + '  (' + pct(s2cSeen, s2cAll) + ')';
+  $('#barC2S').innerHTML = '<i style="width:' + pct(c2sSeen, c2sAll) + ';background:var(--c2s)"></i>';
+  $('#barS2C').innerHTML = '<i style="width:' + pct(s2cSeen, s2cAll) + ';background:var(--s2c)"></i>';
+  const bad = (st.unknown_c2s || []).length;
+  $('#covHint').innerHTML = 'C2S 未实现 ' + bad + ' 个'
+    + '：' + ((st.unknown_c2s || []).map(o => (S.table.C2S || []).find(r => r.op === o))
+                .filter(Boolean).map(r => '<span class="tag warn">' + r.op + ' ' + esc(r.name) + '</span>').join('') || '（无）')
+    + '<br>S2C 无路由 ' + (st.unrouted_s2c || []).length + ' 个'
+    + '：' + ((st.unrouted_s2c || []).map(o => '<span class="tag err">' + o + '</span>').join('') || '（无）')
+    + '<br>分母 = 客户端上行常量 <b>' + c2sAll + '</b> 个（net.py 权威口径，非字典条数）'
+    + '：其中 <b>' + (st.c2s_nodef || []).length + '</b> 个字典缺字段定义（'
+    + ((st.c2s_nodef || []).map(o => '<span class="tag warn">' + o + '</span>').join('') || '无')
+    + '）· <b>' + (st.c2s_orphan || []).length + '</b> 个字典条目在客户端找不到常量（'
+    + ((st.c2s_orphan || []).map(o => '<span class="tag">' + o + '</span>').join('') || '无')
+    + '，疑似幻影）'
+    + '<br>丢帧 ' + st.dropped.C2S + '/' + st.dropped.S2C + ' · 注入 ' + st.injected.C2S + '/' + st.injected.S2C
+    + ' · S2C 精确布局 ' + (st.overlay_ops ? st.overlay_ops.S2C : 0) + ' 个'
+    + ' · 环形缓冲 ' + st.ring + '/' + st.ring_max;
+  renderWorld(st.world);
+  renderCoverList();
+  renderWar();
+}
+
+/* ── 战斗视图 ── */
+function warOf(w) {
+  return (w && w.war) || { active: false, round: 0, units: {}, log: [] };
+}
+const WAR_KIND = { start: '开战', add: '入场', del: '离场', turn: '回合',
+                   attack: '普攻', swing_end: '收招', perform: '招式',
+                   wstate: '结算', hp: '血条', end: '结束' };
+function unitCard(u) {
+  const p = u.hp_pct, bf = u.last_bf;
+  const cls = p == null ? '' : (p <= 25 ? ' crit' : p <= 60 ? ' low' : '');
+  let h = '<div class="unit' + (u.dead ? ' dead' : '') + '">'
+    + '<div class="un"><b>' + esc(u.name) + '</b><span class="id">id=' + u.id
+    + ' shape=' + (u.shape == null ? '—' : u.shape)
+    + (u.cls != null ? ' cls=' + u.cls : '') + '</span></div>'
+    + '<div class="kv">扣血 ' + u.dmg + ' · 回血 ' + u.heal + ' · 受击 ' + u.hits + ' 次'
+    + (u.dead ? ' · <b style="color:var(--err)">已死亡</b>' : '') + '</div>';
+  if (p != null) {
+    h += '<div class="hpbar"><div class="hpfill' + cls + '" style="width:'
+      + Math.max(0, Math.min(100, p)) + '%"></div></div>'
+      + '<div class="kv">血条 ' + p + '%</div>';
+  }
+  if (bf != null) {
+    // 位域由内核侧拆好（world.war.units[].last_hurt/life/ward），这里只显示。
+    // 曾经在这里二次拆 bf，且位序与内核相反 —— 同一事实两个真相，必然有一个错。
+    const d = (x) => (x == null ? '—' : x);
+    h += '<div class="kv">最近结算 hp_chg=' + u.last_chg + '（'
+      + (u.last_chg > 0 ? '扣血' : u.last_chg < 0 ? '回血' : '无变化') + '）· hurt='
+      + d(u.last_hurt) + ' life=' + d(u.last_life) + ' ward=' + d(u.last_ward)
+      + '</div>';
+  }
+  return h + '</div>';
+}
+function renderWar() {
+  if (!$('#tab-war')) return;
+  const war = warOf((S.stats || {}).world);
+  const units = Object.values(war.units);
+  const ally = units.filter(u => u.allied), foe = units.filter(u => !u.allied);
+  const aliveOf = a => a.filter(u => !u.dead).length;
+  $('#warHead').textContent = war.active
+    ? '第 ' + war.round + ' 回合 · 我方 ' + aliveOf(ally) + '/' + ally.length
+      + ' · 敌方 ' + aliveOf(foe) + '/' + foe.length
+    : (units.length ? '已结束（共 ' + war.round + ' 回合）' : '未进入战斗');
+  const g = (l, v) => '<span class="l">' + l + '</span><span>' + esc(v) + '</span>';
+  $('#warInfo').innerHTML =
+      g('场景', war.scene == null ? '—' : war.scene + '（+1001 → ' + (war.scene + 1001) + '）')
+    + g('wtype', war.wtype == null ? '—' : war.wtype)
+    + g('alineup', war.alineup == null ? '—' : war.alineup)
+    + g('elineup', war.elineup == null ? '—' : war.elineup)
+    + g('回合数', war.round)
+    + g('累计扣血', units.reduce((s, u) => s + (u.dmg || 0), 0));
+  $('#warAlly').innerHTML = ally.length ? ally.map(unitCard).join('') : '—';
+  $('#warFoe').innerHTML = foe.length ? foe.map(unitCard).join('') : '—';
+  const log = war.log || [];
+  $('#warCount').textContent = log.length + ' 条';
+  $('#warLog').innerHTML = log.length ? log.map(e =>
+    '<div class="tl ' + e.kind + '" data-seq="' + e.seq + '">'
+    + '<span class="k">' + (WAR_KIND[e.kind] || e.kind) + '</span>#' + e.seq + '  '
+    + esc(e.text) + '</div>').join('')
+    : '<div class="hint">尚无战斗帧。战斗中会依次出现 WarStart(112) / WarAdd(115) / '
+      + 'WarTurn(114) / WarAttackNormal(117) / WarPerform(122) / WarWState(123) / '
+      + 'WarHPPercent(125) / WarEnd(113)。点任意一条可跳到帧流里对应的那一帧。</div>';
+  const box = $('#warLog');
+  // 贴着底部时才自动跟随，免得用户翻看历史时被拽走
+  if (box.scrollHeight - box.scrollTop - box.clientHeight < 60) box.scrollTop = box.scrollHeight;
+  box.querySelectorAll('[data-seq]').forEach(el => el.onclick = () => {
+    document.querySelector('nav a[data-tab="stream"]').click();
+    if ($('#q').value) { $('#q').value = ''; S.q = ''; }
+    if ($('#opq').value) { $('#opq').value = ''; setOps(''); }   // 跳转目标可能不在当前 op 过滤里
+    if (S.onlyBad) { S.onlyBad = false; $('#onlyBad').checked = false; }
+    if (S.onlyChain) { S.onlyChain = false; $('#onlyChain').checked = false; }
+    if (S.dir !== 'ALL') {
+      S.dir = 'ALL';
+      document.querySelectorAll('#fAll,#fC2S,#fS2C')
+        .forEach(b => b.classList.toggle('on', b.id === 'fAll'));
+    }
+    rebuildList();
+    selectFrame(+el.dataset.seq);
+  });
+}
+function pct(a, b) { return b ? Math.round(a * 1000 / b) / 10 + '%' : '0%'; }
+
+/* ── 覆盖表 ── */
+let coverFilter = 'all';
+// 每行的两个来源命中情况：标签 + 悬浮说明。差异不藏，直接用颜色区分。
+const COV_SRC = {
+  'overlay':     ['ok',   '精',   '字典精确布局（逐字段对齐 build_*）'],
+  'client+dict': ['acc',  '客+典', '客户端常量 + 字典字段定义俱全'],
+  // 注意：这只是「字典解不出字段」，与「服务端没实现」是两个独立维度
+  // （op 8 C2S_PING 就是服务端已实现、字典却没条目）
+  'client':      ['warn', '客',   '客户端会发，但字典缺字段定义 —— 出现时只能看 hex，需补字典'],
+  'dict':        ['',     '典',   '字典有条目，但客户端找不到对应常量 —— 疑似幻影'],
+  'none':        ['err',  '无',   '收发里出现过，但字典完全未登记'],
+  // ★ 2026-10-20：单机无对手方，显式接收并忽略——**不是缺口**，标灰即可。
+  //   与「未实现」的区别：未实现是该做没做；这类是架构上就不需要做。
+  'ignored':     ['',     '忽',   '单机无对手方，显式接收并忽略（非缺口，不必补）']
+};
+
+/* 静态全表开机拉一次，之后只把心跳里的计数合进来——避免每 2 秒重推/重渲 300 行 */
+function coverRows(dir) {
+  const st = S.stats || {};
+  const counts = (st.counts && st.counts[dir]) || {};
+  const badOps = new Set(dir === 'C2S' ? (st.unknown_c2s || []) : (st.unrouted_s2c || []));
+  const rows = (S.table[dir] || []).map(r => Object.assign({}, r, {
+    count: +(counts[String(r.op)] || 0),
+    impl: dir === 'C2S' ? !badOps.has(r.op) : true
+  }));
+  // feature 字段由 /api/table 带下来（见 debugger.py），原样保留到渲染层
+  // 出现过但字典没登记：补进列表（最该先看的线索，不能因为「字典没有」就消失）
+  const known = new Set(rows.map(r => r.op));
+  const extra = (dir === 'C2S' ? (st.undict_c2s || []) : (st.unrouted_s2c || []))
+    .filter(op => !known.has(op));
+  for (const op of extra) {
+    rows.push({ op: op, name: '（字典未登记）', module: '', fields: 0, variants: 0,
+                src: 'none', impl: dir === 'C2S' ? !badOps.has(op) : true,
+                count: +(counts[String(op)] || 0) });
+  }
+  rows.sort((a, b) => a.op - b.op);
+  return rows;
+}
+function renderCoverList() {
+  const st = S.stats; if (!st) return;
+  const dir = $('#covDir').value;
+  const rows = coverRows(dir);
+  const q = $('#covQ').value.toLowerCase();
+  const badOps = new Set(dir === 'C2S' ? (st.unknown_c2s || []) : (st.unrouted_s2c || []));
+  let shown = 0, out = '';
+  for (const r of rows) {
+    const seen = r.count > 0, bad = badOps.has(r.op);
+    if (coverFilter === 'seen' && !seen) continue;
+    if (coverFilter === 'unseen' && seen) continue;
+    if (coverFilter === 'bad' && !bad) continue;
+    if (coverFilter === 'nodef' && r.src !== 'client') continue;
+    if (q && (String(r.op) + ' ' + r.name + ' ' + (r.module || '')).toLowerCase().indexOf(q) < 0) continue;
+    shown++;
+    const src = COV_SRC[r.src] || ['', r.src, ''];
+    // ★ 特性状态（2026-10-20）：ignored_no_counterpart → 整行标灰 + 「忽」标签。
+    //   这类 opcode 单机没有对手方，显式接收并忽略，**不是缺口**。
+    //   不标灰的话，覆盖页上一堆「未实现」里混着它们，会误导人去补。
+    const ignored = r.feature === 'ignored_no_counterpart';
+    const featTag = ignored
+      ? '<span class="tag" title="单机无对手方，显式接收并忽略（非缺口，不必补）"'
+        + ' style="opacity:.55">忽</span>'
+      : '';
+    out += '<div class="row2' + (seen ? ' hit' : '') + (bad ? ' bad' : '')
+      + (ignored ? ' ignored' : '') + '">'
+      + '<div>' + r.op + '</div>'
+      + '<div><span class="tag ' + src[0] + '" title="' + src[2] + '">' + src[1] + '</span>'
+      + featTag + '</div>'
+      + '<div>' + esc(r.name) + (r.variants > 1 ? '<span class="tag">×' + r.variants + '</span>' : '') + '</div>'
+      + '<div style="color:var(--dim)">' + esc(r.module || '—') + '</div>'
+      + '<div class="ct">' + (seen ? '<b>' + r.count + '</b>' : '—') + '</div></div>';
+  }
+  $('#covList').innerHTML = out || '<div class="hint" style="padding:8px">无匹配</div>';
+  $('#covCount').textContent = shown + ' / ' + rows.length;
+}
+$('#covDir').onchange = renderCoverList;
+$('#covQ').oninput = renderCoverList;
+document.querySelectorAll('[data-cf]').forEach(b => b.onclick = () => {
+  coverFilter = b.dataset.cf;
+  document.querySelectorAll('[data-cf]').forEach(x => x.classList.toggle('on', x === b));
+  renderCoverList();
+});
+
+/* ── 地图 ── */
+function currentMap() { return S.maps.find(m => m.mapid === S.mapid) || null; }
+function resizeCanvas() {
+  const cv = $('#cv'); const box = cv.parentElement;
+  const w = box.clientWidth, h = box.clientHeight, dpr = window.devicePixelRatio || 1;
+  cv.width = Math.max(1, Math.round(w * dpr)); cv.height = Math.max(1, Math.round(h * dpr));
+  cv.style.width = w + 'px'; cv.style.height = h + 'px';
+  const ctx = cv.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+function bounds() {
+  const pts = [];
+  const mp = currentMap();
+  if (mp) { (mp.npcs || []).forEach(n => pts.push([n[2], n[3]])); (mp.exits || []).forEach(e => pts.push([e[1], e[2]])); }
+  const w = (S.stats && S.stats.world) || {};
+  (w.npcs || []).forEach(n => pts.push([n.x, n.y]));
+  if (w.x != null) pts.push([w.x, w.y]);
+  S.trail.forEach(p => pts.push(p));
+  if (!pts.length) return { x0: 0, y0: 0, x1: 200, y1: 160 };
+  const xs = pts.map(p => p[0]), ys = pts.map(p => p[1]);
+  const x0 = Math.min(...xs) - 8, x1 = Math.max(...xs) + 8;
+  const y0 = Math.min(...ys) - 8, y1 = Math.max(...ys) + 8;
+  return { x0, y0, x1: Math.max(x1, x0 + 40), y1: Math.max(y1, y0 + 40) };
+}
+function drawMap() {
+  const cv = $('#cv'); if (!cv || !cv.width) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.clientWidth, H = cv.clientHeight;
+  ctx.clearRect(0, 0, W, H);
+  const b = bounds();
+  const sc = Math.min(W / (b.x1 - b.x0), H / (b.y1 - b.y0)) * S.zoom;
+  const ox = W / 2 - ((b.x0 + b.x1) / 2) * sc + S.pan.x;
+  const oy = H / 2 - ((b.y0 + b.y1) / 2) * sc + S.pan.y;
+  const px = x => ox + x * sc, py = y => oy + y * sc;
+
+  ctx.strokeStyle = '#1b222b'; ctx.lineWidth = 1;
+  const step = sc < 4 ? 20 : (sc < 10 ? 10 : 5);
+  for (let x = Math.floor(b.x0 / step) * step; x <= b.x1; x += step) {
+    ctx.beginPath(); ctx.moveTo(px(x), 0); ctx.lineTo(px(x), H); ctx.stroke();
+  }
+  for (let y = Math.floor(b.y0 / step) * step; y <= b.y1; y += step) {
+    ctx.beginPath(); ctx.moveTo(0, py(y)); ctx.lineTo(W, py(y)); ctx.stroke();
+  }
+  const mp = currentMap();
+  const w = (S.stats && S.stats.world) || {};
+  if (mp) {
+    for (const e of (mp.exits || [])) {
+      ctx.fillStyle = '#3fb950'; ctx.beginPath();
+      ctx.arc(px(e[1]), py(e[2]), Math.max(3, sc * .8), 0, 7); ctx.fill();
+      ctx.fillStyle = '#8b97a8'; ctx.font = '10px Consolas';
+      ctx.fillText(e[0], px(e[1]) + 5, py(e[2]) - 4);
+    }
+    for (const n of (mp.npcs || [])) {
+      ctx.fillStyle = '#ffd479'; ctx.beginPath();
+      ctx.arc(px(n[2]), py(n[3]), Math.max(2.5, sc * .7), 0, 7); ctx.fill();
+      ctx.fillStyle = '#c9b071'; ctx.font = '10px Consolas';
+      ctx.fillText(n[4], px(n[2]) + 5, py(n[3]) + 3);
+    }
+  }
+  if (S.trail.length > 1) {
+    ctx.strokeStyle = '#8b97a8'; ctx.lineWidth = 1.2; ctx.beginPath();
+    ctx.moveTo(px(S.trail[0][0]), py(S.trail[0][1]));
+    for (const p of S.trail) ctx.lineTo(px(p[0]), py(p[1]));
+    ctx.stroke();
+  }
+  // 战斗中单位不在地图坐标系里，只在框角标一行「战斗 N 单位」提示
+  const wunits = Object.values(warOf(w).units);
+  if (warOf(w).active) {
+    wunits.forEach((u, i) => {
+      ctx.fillStyle = u.allied ? '#3fb950' : '#f85149';
+      ctx.beginPath();
+      ctx.arc(px(b.x1 - 6 - i * 5), py(b.y0 + 6), 3, 0, 7); ctx.fill();
+    });
+  }
+  for (const n of (w.npcs || [])) {
+    ctx.strokeStyle = '#ffd479'; ctx.lineWidth = 1; ctx.beginPath();
+    ctx.arc(px(n.x), py(n.y), Math.max(3, sc * .9), 0, 7); ctx.stroke();
+  }
+  if (w.x != null) {
+    ctx.strokeStyle = '#4aa3ff'; ctx.lineWidth = 1.6;
+    const X = px(w.x), Y = py(w.y), r = Math.max(5, sc * 1.2);
+    ctx.beginPath(); ctx.arc(X, Y, r, 0, 7); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(X - r * 1.7, Y); ctx.lineTo(X + r * 1.7, Y);
+    ctx.moveTo(X, Y - r * 1.7); ctx.lineTo(X, Y + r * 1.7); ctx.stroke();
+    ctx.fillStyle = '#4aa3ff'; ctx.font = '11px Consolas';
+    ctx.fillText('(' + w.x + ',' + w.y + ')', X + r + 4, Y - r);
+  }
+}
+function renderMapPanels() {
+  const mp = currentMap();
+  const w = (S.stats && S.stats.world) || {};
+  const g = (l, v) => '<span class="l">' + l + '</span><span>' + esc(v) + '</span>';
+  $('#mHere').innerHTML = g('地图', (w.mapname || (mp ? mp.name : '—')) + (w.mapid != null ? ' (' + w.mapid + ')' : ''))
+    + g('小地图', w.minimap != null ? w.minimap : '—')
+    + g('坐标', w.x != null ? w.x + ', ' + w.y : '—')
+    + g('轨迹点', S.trail.length);
+  $('#mExits').innerHTML = mp && (mp.exits || []).length
+    ? mp.exits.map(e => e[0] + ' @(' + e[1] + ',' + e[2] + ')').join('<br>') : '（本图无出口配置）';
+  $('#mNpcs').innerHTML = mp && (mp.npcs || []).length
+    ? mp.npcs.map(n => esc(n[4]) + ' id' + n[0] + ' shape' + n[1] + ' @(' + n[2] + ',' + n[3] + ')').join('<br>')
+    : '（无）';
+  $('#mNpcsLive').innerHTML = (w.npcs || []).length
+    ? w.npcs.map(n => esc(n.name) + ' @(' + n.x + ',' + n.y + ')').join('<br>') : '（尚未收到 AddNpc）';
+}
+$('#mapSel').onchange = e => { S.mapid = +e.target.value; S.pan = {x:0,y:0}; S.zoom = 1; drawMap(); renderMapPanels(); };
+$('#btnFit').onclick = () => { S.pan = {x:0,y:0}; S.zoom = 1; drawMap(); };
+$('#follow').onchange = e => { S.follow = e.target.checked; if (S.follow) S.pan = {x:0,y:0}; drawMap(); };
+window.addEventListener('resize', () => { resizeCanvas(); drawMap(); });
+(function bindCanvas() {
+  const cv = $('#cv');
+  cv.addEventListener('wheel', e => {
+    e.preventDefault();
+    S.zoom = Math.max(0.2, Math.min(12, S.zoom * (e.deltaY < 0 ? 1.15 : 0.87)));
+    drawMap();
+  }, { passive: false });
+  cv.addEventListener('mousedown', e => { S.drag = { x: e.clientX, y: e.clientY, ox: S.pan.x, oy: S.pan.y }; });
+  window.addEventListener('mousemove', e => {
+    if (!S.drag) return;
+    S.pan.x = S.drag.ox + (e.clientX - S.drag.x);
+    S.pan.y = S.drag.oy + (e.clientY - S.drag.y);
+    drawMap();
+  });
+  window.addEventListener('mouseup', () => { S.drag = null; });
+})();
+
+/* ── 工具栏 ── */
+function setDir(d) {
+  S.dir = d;
+  ['fAll','fC2S','fS2C'].forEach(id => $('#' + id).classList.toggle('on',
+    (d === 'ALL' && id === 'fAll') || (d === 'C2S' && id === 'fC2S') || (d === 'S2C' && id === 'fS2C')));
+  rebuildList();
+}
+$('#fAll').onclick = () => setDir('ALL');
+$('#fC2S').onclick = () => setDir('C2S');
+$('#fS2C').onclick = () => setDir('S2C');
+$('#q').oninput = e => { S.q = e.target.value; rebuildList(); };
+/* opcode 精确过滤：逗号/空格分隔；Esc 清除；「实验」预设一键聚焦新分支全链路 */
+const OP_PRESET = '96,98,100,101,147,148,151,152,72';
+function setOps(v) {
+  S.ops = (String(v || '').match(/\d+/g) || []).map(Number);
+  $('#btnOpPreset').classList.toggle('on', S.ops.length > 0);
+  rebuildList();
+}
+$('#opq').oninput = e => setOps(e.target.value);
+$('#opq').onkeydown = e => { if (e.key === 'Escape') { e.target.value = ''; setOps(''); } };
+$('#btnOpPreset').onclick = () => {
+  const cur = $('#opq').value.replace(/\s+/g, '');
+  if (S.ops.length && cur === OP_PRESET) { $('#opq').value = ''; setOps(''); }   // 再点一次 = 清除
+  else { $('#opq').value = OP_PRESET; setOps(OP_PRESET); }
+};
+$('#onlyBad').onchange = e => { S.onlyBad = e.target.checked; rebuildList(); };
+$('#onlyChain').onchange = e => { S.onlyChain = e.target.checked; rebuildList(); };
+/* ── 任务链 / 经济 页签的交互 ── */
+$('#qOnlyReject').onchange = e => { S.questOnlyReject = e.target.checked; renderQuest(); };
+$('#btnQuestClear').onclick = () => { S.bus = S.bus.filter(x => ['quest', 'item'].indexOf(x.cat) < 0); renderQuest(); renderEcon(); };
+$('#eKind').onchange = e => { S.econKind = e.target.value; renderEcon(); };
+$('#btnEconClear').onclick = () => { S.bus = S.bus.filter(x => x.cat !== 'econ'); renderEcon(); renderQuest(); };
+$('#btnFollow').onclick = () => {
+  S.follow = !S.follow;
+  $('#btnFollow').classList.toggle('on', S.follow);
+  if (S.follow) { const l = $('#list'); l.scrollTop = l.scrollHeight; }
+};
+$('#btnPause').onclick = () => {
+  S.paused = !S.paused;
+  $('#btnPause').textContent = S.paused ? '继续' : '暂停';
+  $('#btnPause').classList.toggle('on', S.paused);
+  setMsg(S.paused ? '已暂停：SSE 仍在收，界面不追加新行' : '已继续', '');
+};
+$('#btnClear').onclick = async () => {
+  await fetch('/api/clear', { method: 'POST' });
+  S.frames = []; S.byId.clear(); S.trail = []; S.sel = null;
+  // 服务端 clear() 会把 _evicted 归零，前端跟着归零（批推计数是本地量，也重置）
+  S.evicted = 0; S.sseDropped = 0; updDropBadge();
+  $('#list').innerHTML = ''; $('#detail').innerHTML = '<div class="hint">已清空。点选一帧查看详情。</div>';
+  setMsg('已清空会话缓冲（不影响运行中的内核）', 'ok');
+};
+$('#btnExport').onclick = async () => {
+  const r = await (await fetch('/api/export')).json();
+  setMsg(r.ok ? '已导出 ' + r.frames + ' 帧 → ' + r.path + '（' + Math.round(r.size / 1024) + ' KB）'
+              : '导出失败', r.ok ? 'ok' : 'err');
+};
+$('#btnInject').onclick = async () => {
+  const r = await (await fetch('/api/inject', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ dir: $('#injDir').value, op: $('#injOp').value, hex: $('#injHex').value })
+  })).json();
+  setMsg(r.msg || r.error || '注入失败', r.ok ? 'ok' : 'err');
+};
+$('#btnDrop').onclick = async () => {
+  const r = await (await fetch('/api/drop', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ dir: $('#injDir').value })
+  })).json();
+  setMsg(r.msg || r.error || '失败', r.ok ? 'warn' : 'err');
+};
+$('#injDir').onchange = e => {
+  if (S.sel && e.target.value !== S.sel.dir) setMsg('当前选中帧是 ' + S.sel.dir + '，注入方向已不同（按需自行调整）', 'warn');
+};
+
+/* ── GM 动作 ── */
+document.querySelectorAll('[data-act]').forEach(b => b.onclick = async () => {
+  const act = b.dataset.act;
+  const payload = { action: act };
+  if (act === 'hp') payload.value = +$('#gmHp').value;
+  if (act === 'coins') payload.value = +$('#gmCoins').value;
+  if (act === 'resource') { payload.name = $('#gmRes').value; payload.value = +$('#gmResV').value; }
+  if (act === 'pos') { payload.x = +$('#gmX').value; payload.y = +$('#gmY').value; }
+  if (act === 'pet') payload.value = +$('#gmPet').value;
+  if (act === 'encounter') payload.every = +$('#gmEnc').value;
+  if (act === 'item_add') { payload.shape = +$('#gmShape').value; payload.qty = +$('#gmQty').value; payload.name = $('#gmName').value; }
+  const r = await (await fetch('/api/action', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
+  })).json();
+  // 链路动作（开战/胜利）的回包带 chain：{label, lo, hi, frames}。
+  // 拿到后立刻按区间重新着色——这些帧多半已经随 SSE 渲染出来了（本次请求期间就推过），
+  // 而 warcmd 位是**事后**打上的，已渲染的行不会自己变红。
+  if (r.chain) { await refreshMarks(); repaintMarks(); }
+  if (r.ok) {
+    renderState(r.state);
+    setMsg('GM「' + act + '」已执行'
+      + (r.chain ? '：链路 ' + r.chain.label + ' 第 ' + r.chain.lo + '-' + r.chain.hi + ' 帧已标红' : ''), 'ok');
+  }
+  else setMsg('GM「' + act + '」失败：' + (r.error || ''), 'err');
+});
+
+/* ── 控制台：一行指令走 /api/gm/cmd → 内核 gm_command 真实路径 ── */
+$('#btnGmCmd').onclick = async () => {
+  const line = $('#gmCmd').value.trim();
+  if (!line) return;
+  let s;
+  try {
+    const r = await (await fetch('/api/gm/cmd', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ line })
+    })).json();
+    // 控制台里的 war start / war win 也会带 chain 回包，同样立刻重新着色
+    if (r.chain) { await refreshMarks(); repaintMarks(); }
+    if (r.ok && r.help) s = r.help.trim();
+    else if (r.ok) s = '✓ ' + (r.msg || 'OK') + (r.result && Object.keys(r.result).length ? '\n  ' + JSON.stringify(r.result) : '');
+    else s = '✗ ' + (r.error || '失败');
+  } catch (e) {
+    s = '✗ 请求失败：' + e;
+  }
+  const out = $('#gmCmdOut');
+  out.textContent = (out.textContent + '\n> ' + line + '\n' + s).replace(/^\n/, '');
+  out.scrollTop = out.scrollHeight;
+};
+$('#gmCmd').addEventListener('keydown', e => { if (e.key === 'Enter') $('#btnGmCmd').click(); });
+
+/* ── 快捷键 ── */
+document.addEventListener('keydown', e => {
+  if (/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)) return;
+  if (e.key === ' ') { e.preventDefault(); $('#btnPause').click(); }
+  if (e.key === '/') { e.preventDefault(); $('#q').focus(); }
+});
+
+/* ══════════ 业务事件总线：任务链 / 经济 两个页签 ══════════
+   帧流回答「发了什么帧」，事件流回答「发生了什么业务」。
+   两者是同一时刻的两个视角，这里只做渲染，不做任何二次推断。 */
+const CAT_CLS = { quest: 'q', econ: 'e', item: 'i', war: 'w', craft: 'c', world: 'm' };
+
+function addBusEvents(list) {
+  if (!list || !list.length) return;
+  let grew = false;
+  for (const e of list) {
+    if (e.seq <= S.busSeq) continue;          // SSE 与 /api/bus 兜底拉取会重叠
+    S.bus.push(e); S.busSeq = e.seq; grew = true;
+  }
+  if (!grew) return;
+  if (S.bus.length > MAX_BUS) S.bus.splice(0, S.bus.length - MAX_BUS);
+  renderQuest(); renderEcon();
+}
+
+function busTime(t) {
+  const d = new Date(t * 1000);
+  return ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2)
+    + ':' + ('0' + d.getSeconds()).slice(-2);
+}
+
+/* 事件行：时间 | 分类 | 说明（+ 关键字段） */
+function busRow(e) {
+  const kv = [];
+  for (const k of Object.keys(e)) {
+    if (['seq', 't', 'cat', 'kind', 'msg'].indexOf(k) >= 0) continue;
+    const v = e[k];
+    if (v === null || v === undefined || v === '') continue;
+    kv.push('<span class="kv">' + k + '=' + String(v) + '</span>');
+  }
+  return '<div class="evrow ' + (CAT_CLS[e.cat] || '') + '">'
+    + '<span class="t">' + busTime(e.t) + '</span>'
+    + '<span class="k">' + e.kind + '</span>'
+    + '<span class="m">' + (e.msg || '') + '</span>'
+    + (kv.length ? '<span class="kvwrap">' + kv.join('') + '</span>' : '')
+    + '</div>';
+}
+
+/* ── 任务链页 ── */
+function renderQuest() {
+  const c = $('#qCount'); if (!c) return;
+  const all = S.bus.filter(e => ['quest', 'item'].indexOf(e.cat) >= 0);
+  const list = S.questOnlyReject ? all.filter(e => e.kind.indexOf('reject') >= 0) : all;
+  c.textContent = list.length + ' 条';
+  $('#qLog').innerHTML = list.length
+    ? list.slice().reverse().map(busRow).join('')
+    : '<div class="hint">还没有任务/物品事件。去点村长（或钱梦庵/主教）接一条主线。</div>';
+
+  // 任务卡：从最新一条 quest 事件 + 内核 state 拼出「当前走到哪一步」
+  const st = S.state || {};
+  const q = st.quests || {};
+  const last = all.slice().reverse().find(e => e.cat === 'quest');
+  const card = $('#qCard');
+  if (card) {
+    card.innerHTML = [
+      ['当前主线', q.active || '—'],
+      ['等级 / 门槛', (st.grade != null ? 'Lv' + st.grade : '—')],
+      ['剧情点', st.story_point != null ? st.story_point : '—'],
+      ['最近事件', last ? last.kind : '—'],
+      ['步骤', last && last.step != null
+        ? (last.step + (last.steps != null ? '/' + last.steps : '')) : '—'],
+      ['目标', last && last.target ? last.target : '—']
+    ].map(([k, v]) => '<div class="lbl"><span class="meta">' + k + '</span><b>' + v + '</b></div>').join('');
+  }
+  const done = $('#qDone');
+  if (done) {
+    done.innerHTML = [
+      ['剧情点', st.story_point != null ? st.story_point : '—'],
+      ['已完成主线', (q.done || []).length ? (q.done || []).join('、') : '—'],
+      ['拒绝次数', all.filter(e => e.kind.indexOf('reject') >= 0).length]
+    ].map(([k, v]) => '<div class="lbl"><span class="meta">' + k + '</span><b>' + v + '</b></div>').join('');
+  }
+  // 步骤清单：把 quest.step 事件按 qid 归并，画出走过的路径
+  const steps = all.filter(e => e.kind === 'quest.step');
+  const seen = new Map();
+  for (const e of steps) seen.set(e.qid, e);          // 每个 qid 只留最新一步
+  const qSteps = $('#qSteps');
+  if (qSteps) {
+    qSteps.innerHTML = seen.size
+      ? Array.from(seen.values()).map(e =>
+          '<div class="hint">主线 ' + e.qid + '「' + (e.name || '') + '」→ 第 '
+          + e.step + (e.steps != null ? '/' + e.steps : '') + ' 步：' + (e.target || '')
+          + '（' + (e.npc || '?') + ' @' + (e.mapid || '?') + '）</div>').join('')
+      : '<div class="hint">还没有步骤推进事件。</div>';
+  }
+  $('#qHead').textContent = q.active ? ('主线 ' + q.active) : '未接主线';
+}
+
+/* ── 经济页 ── */
+function renderEcon() {
+  const c = $('#eCount'); if (!c) return;
+  const all = S.bus.filter(e => e.cat === 'econ');
+  const list = S.econKind ? all.filter(e => e.kind === S.econKind) : all;
+  c.textContent = list.length + ' 条';
+
+  const rows = list.slice().reverse().map(e => {
+    const d = e.delta;
+    const sign = d == null ? '' : (d >= 0 ? '+' : '');
+    const cls = d == null ? '' : (d >= 0 ? 'in' : 'out');
+    return '<div class="ledger">'
+      + '<span class="t">' + busTime(e.t) + '</span>'
+      + '<span class="delta ' + cls + '">' + sign + (d == null ? '—' : d) + '</span>'
+      + '<span class="after">' + (e.after != null ? e.after : '—') + '</span>'
+      + '<span class="why">' + (e.reason || e.msg || '') + '</span>'
+      + '</div>';
+  });
+  $('#eLog').innerHTML = rows.length ? rows.join('')
+    : '<div class="hint" style="padding:10px">还没有金币/经验变动。打一场怪或买点东西试试。</div>';
+
+  const st = S.state || {};
+  const agg = (kind) => {
+    let i = 0, o = 0;
+    for (const e of all) {
+      if (e.kind !== kind || typeof e.delta !== 'number') continue;
+      if (e.delta >= 0) i += e.delta; else o += -e.delta;
+    }
+    return { in: i, out: o, net: i - o };
+  };
+  const coins = agg('econ.coins'), exp = agg('econ.exp');
+  const box = (id, a, cur) => {
+    const el = $(id); if (!el) return;
+    el.innerHTML = [
+      ['当前', cur != null ? cur : '—'],
+      ['收入', a.in], ['支出', a.out], ['净额', (a.net >= 0 ? '+' : '') + a.net]
+    ].map(([k, v]) => '<div class="lbl"><span class="meta">' + k + '</span><b>' + v + '</b></div>').join('');
+  };
+  box('#eCoins', coins, st.coins);
+  box('#eExp', exp, st.exp);
+
+  const b = st.batch || {};
+  const eb = $('#eBatch');
+  if (eb) {
+    eb.innerHTML = b.enabled
+      ? [['帧数', b.frames], ['写次数', b.writes], ['合并率', b.ratio + ' 帧/写'],
+         ['省下', b.saved + ' 次写'], ['积压', b.pending]]
+        .map(([k, v]) => '<div class="lbl"><span class="meta">' + k + '</span><b>' + v + '</b></div>').join('')
+      : '<div class="lbl"><span class="meta">状态</span><b>未启用（直调 handle 或未走 run()）</b></div>';
+  }
+  $('#eHead').textContent = b.enabled
+    ? ('帧 ' + b.frames + ' / 写 ' + b.writes) : '帧批未启用';
+}
+
+/* ── SSE ── */
+function connect() {
+  const es = new EventSource('/api/stream');
+  es.addEventListener('open', () => { $('#hSse').textContent = '已连接'; $('#hSse').style.color = 'var(--ok)'; });
+  es.addEventListener('error', () => {
+    $('#hSse').textContent = '重连中…'; $('#hSse').style.color = 'var(--warn)';
+  });
+  es.addEventListener('frames', ev => {
+    const _p = JSON.parse(ev.data);
+    // 兼容两种载荷：新格式 {frames:[...], sse_dropped:N} / 旧格式 [...]
+    const batch = Array.isArray(_p) ? _p : (_p.frames || []);
+    if (!Array.isArray(_p) && typeof _p.sse_dropped === 'number') {
+      S.sseDropped = _p.sse_dropped;
+      updDropBadge();
+    }
+    for (const f of batch) {
+      if (S.byId.has(f.seq)) continue;
+      S.frames.push(f); S.byId.set(f.seq, f);
+      if (f.seq > S.last) S.last = f.seq;
+      pushRow(f);
+    }
+    if (S.frames.length > MAX_FRAMES) {
+      const cut = S.frames.length - MAX_FRAMES;
+      for (const f of S.frames.splice(0, cut)) S.byId.delete(f.seq);
+    }
+    updCount();
+  });
+  es.addEventListener('bus', ev => { addBusEvents((JSON.parse(ev.data).events) || []); });
+  es.addEventListener('state', ev => renderState(JSON.parse(ev.data)));
+  es.addEventListener('stats', ev => {
+    const st = JSON.parse(ev.data);
+    // 环形缓冲淘汰数 + 批推溢出（服务端把两者都塞进 stats 心跳）
+    if (typeof st.evicted === 'number') S.evicted = st.evicted;
+    if (typeof st.sse_dropped === 'number') S.sseDropped = st.sse_dropped;
+    updDropBadge();
+    // 链路段落：服务端是**事后**回填的（见 tap.mark_range），这里接管区间表；
+    // 已渲染过的旧行不会自己变红 —— 靠 adoptMarks 发现新增段落时整表重绘。
+    adoptMarks(st.marks);
+    const prevMap = S.mapid;
+    // 代数变化 = 会话缓冲被清空过（本标签或别的标签），本地缓存的帧序号已失效
+    if (st.generation !== S.generation) {
+      S.generation = st.generation;
+      S.frames = []; S.byId.clear(); S.last = 0; S.trail = [];
+      S.evicted = 0; S.sseDropped = 0; updDropBadge();
+      $('#list').innerHTML = '';
+      $('#detail').innerHTML = '<div class="hint">会话已清空。点选一帧查看详情。</div>';
+      S.mapid = null;
+    }
+    renderStats(st);
+    // 轨迹直接取内核侧算好的 world 坐标（tap 已按各帧语义解析），不在前端二次解释
+    const w = st.world || {};
+    if (st.world.mapid && st.world.mapid !== prevMap) {
+      S.mapid = st.world.mapid; S.trail = []; buildMapSel(); S.pan = { x: 0, y: 0 }; S.zoom = 1;
+    }
+    if (w.x != null) {
+      const last = S.trail[S.trail.length - 1];
+      if (!last || last[0] !== w.x || last[1] !== w.y) S.trail.push([w.x, w.y]);
+      if (S.trail.length > 500) S.trail.splice(0, S.trail.length - 500);
+    }
+    if ($('#tab-map').classList.contains('on')) { renderMapPanels(); drawMap(); }
+  });
+}
+
+/* 拉一次链路段落表（GM 动作返回后调）。SSE 心跳也会推，但那是 0.3~2s 后的下一次；
+   这里同步拉一次是为了「点完立刻看到红色」，不靠心跳延迟。 */
+async function refreshMarks() {
+  try {
+    const d = await (await fetch('/api/marks')).json();
+    adoptMarks(d.marks || []);
+  } catch (e) { /* 拉不到不影响主流程 */ }
+}
+/* 接管服务端回填的链路段落。新增段落时把**该区间内的已渲染行**就地重绘成红色：
+   只重建这些行，不整表重建——整表重建会丢滚动位置与选中态（几千帧时很明显）。 */
+function adoptMarks(list) {
+  if (!Array.isArray(list)) return;
+  const before = S.marks.length;
+  S.marks = list;
+  if (list.length === before) return;                 // 无新增段落：什么都不用做
+  repaintMarks();
+}
+function repaintMarks() {
+  const rows = $('#list').children;
+  let dirty = 0;
+  for (const d of rows) {
+    const seq = +d.dataset.seq;
+    const f = S.byId.get(seq);
+    if (!f) continue;
+    const want = !!f.warcmd;
+    if (d.classList.contains('warcmd') === want) continue;
+    d.className = rowCls(f);
+    d.innerHTML = rowHTML(f);
+    dirty++;
+  }
+  if (dirty) updCount();
+}
+
+function buildMapSel() {
+  const sel = $('#mapSel');
+  const inCfg = S.maps.some(m => m.mapid === S.mapid);
+  let h = '';
+  if (!inCfg && S.mapid) h += '<option value="' + S.mapid + '" selected>' + (S.stats && S.stats.world.mapname || '?') + ' (' + S.mapid + ')</option>';
+  for (const m of S.maps) h += '<option value="' + m.mapid + '"' + (m.mapid === S.mapid ? ' selected' : '') + '>' + esc(m.name) + ' (' + m.mapid + ')</option>';
+  sel.innerHTML = h;
+}
+
+/* ── 启动 ── */
+(async function boot() {
+  const h = await (await fetch('/api/hello')).json();
+  S.hello = h;
+  $('#hKernel').textContent = h.kernel.host + ':' + h.kernel.port + '  seed ' + h.kernel.seed;
+  $('#hProto').textContent = h.proto_ok
+    ? 'C2S ' + h.tables.C2S + ' / S2C ' + h.tables.S2C + '（精确布局 ' + h.overlay + '）'
+    : '加载失败：' + h.proto_error;
+  $('#hProto').style.color = h.proto_ok ? '' : 'var(--err)';
+  S.maps = (await (await fetch('/api/maps')).json()).maps || [];
+  buildMapSel();
+  for (const d of ['C2S', 'S2C']) {
+    S.table[d] = (await (await fetch('/api/table?dir=' + d)).json()).rows || [];
+  }
+  const st = await (await fetch('/api/stats')).json();
+  if (typeof st.evicted === 'number') S.evicted = st.evicted;
+  updDropBadge();
+  renderStats(st);
+  // 历史帧：SSE 只推增量，刷新页面或新开标签得自己把环形缓冲里已有的拉回来。
+  // 不拉的话「刷新一下历史全没了」，而服务端其实还留着最近几千帧。
+  try {
+    const hist = await (await fetch('/api/frames')).json();
+    adoptMarks(hist.marks);
+    for (const f of hist.frames || []) {
+      if (S.byId.has(f.seq)) continue;
+      S.frames.push(f); S.byId.set(f.seq, f);
+      if (f.seq > S.last) S.last = f.seq;
+    }
+    if (S.frames.length > MAX_FRAMES) {
+      const cut = S.frames.length - MAX_FRAMES;
+      for (const f of S.frames.splice(0, cut)) S.byId.delete(f.seq);
+    }
+    rebuildList();
+  } catch (e) { /* 历史拉不到不影响实时流，忽略即可 */ }
+  const s = await (await fetch('/api/state')).json();
+  renderState(s);
+  // 业务事件：开机拉一次历史（SSE 只推增量，刷新后靠这里补齐）
+  try {
+    const b = await (await fetch('/api/bus?limit=500')).json();
+    addBusEvents(b.events || []);
+  } catch (e) { /* 拉不到不影响主流程 */ }
+  renderQuest(); renderEcon();
+  resizeCanvas(); drawMap(); renderMapPanels();
+  // GM 表单初值
+  if (s && !s.error) {
+    $('#gmHp').value = s.hero_hp; $('#gmCoins').value = s.coins;
+    $('#gmX').value = s.px; $('#gmY').value = s.py;
+    $('#gmPet').value = s.pet_hp; $('#gmEnc').value = s.encounter_every;
+    $('#gmRes').innerHTML = Object.keys(s.hero_res || {}).map(k => '<option>' + k + '</option>').join('');
+    $('#gmResV').value = s.hero_res ? Object.values(s.hero_res)[0] : 0;
+  }
+  setMsg('已就绪。左栏是实时帧流；异常帧（字典无编码 / 服务端未实现 / 布局不符）会高亮。'
+    + '「op:」输入框按 opcode 精确过滤，「实验」一键聚焦 NPC 对话·商店·任务·详情全链路。'
+    + (h.proto_ok ? '' : ' ⚠ 协议字典未加载，只能看 hex。'), h.proto_ok ? 'ok' : 'warn');
+  connect();
+  if (location.hash) switchTab(location.hash.slice(1));   // 支持 #war / #cover 直达
+})();
+</script>
+</body>
+</html>

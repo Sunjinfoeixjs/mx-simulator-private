@@ -1,0 +1,11 @@
+{
+  "bytes_drained": 233128,
+  "cycles": 362,
+  "duplicate_checks": 37,
+  "elapsed_sec": 486.105,
+  "owners": 0,
+  "sessions": 0,
+  "status": "RUNNING",
+  "tracemalloc_current": 2382104,
+  "tracemalloc_peak": 2501834
+}

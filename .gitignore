@@ -1,0 +1,46 @@
+# ── 运行时产物 ─────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+
+# ── 服务端运行日志与本地存档（体积大、每天变化）────────────
+服务端源码/logs/
+服务端源码/save/
+服务端源码/*.log
+协议资料/分析现场_*.7z
+
+# ── 验收/调试过程中的临时物 ───────────────────────────────
+docs/acceptance_*/run2/cmd.jsonl
+docs/acceptance_*/run2/res.jsonl
+docs/acceptance_*/run2/agent.log
+docs/acceptance_*/run2/save/*.lock
+docs/acceptance_*/run2/save/*.json
+docs/acceptance_*/save_iso/*.lock
+docs/acceptance_*/shots/_grid_*.png
+docs/acceptance_*/run2/shots/_grid_*.png
+docs/acceptance_*/run2/shots/_crop_*.png
+docs/acceptance_*/server.pid
+docs/acceptance_*/http.pid
+docs/acceptance_*/run2/*.pid
+
+# ── 第三方/外部素材（体积大，且不属于本项目源码）──────────
+# 客户端本体与解包数据：1.1 GB，属游戏原始资源，不入库
+客户端数据/
+# 反编译得到的客户端源码：70 MB，属第三方代码，仅作分析参考
+客户端源码/
+# 客户端安装目录的截图缓存
+_vidframes/
+_crypto_re/__pycache__/
+
+# ── 根目录一次性取证截图（早期手工排查留下的 *.png）────────
+/_*.png
+
+# ── P5-00 路径缺陷产物（错误嵌套目录）──────────────────────
+# 历史 242 份 m4_srv_*.log 是 P5-00 审计证据，已入库保留；
+# 此规则只阻止修复后新增日志再次落入错误路径。
+服务端源码/服务端源码/logs/
+# 测试运行时产生的 0 字节锁文件（非证据）
+服务端源码/tests/**/save/*.lock
