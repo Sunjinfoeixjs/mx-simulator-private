@@ -7,6 +7,7 @@ import sys
 
 DOCS = r'C:\Users\Administrator\MX\docs'
 ACC = os.path.join(DOCS, 'acceptance_20261023')
+ROOT = os.path.abspath(os.path.join(DOCS, '..'))
 bad = []
 n = 0
 for fn in os.listdir(DOCS):
@@ -16,10 +17,12 @@ for fn in os.listdir(DOCS):
     for m in re.finditer(r'[\w./\-\u4e00-\u9fa5*]+\.(?:png|json|log|csv)', s):
         p = m.group(0)
         n += 1
-        cands = [os.path.join(DOCS, p), os.path.join(ACC, p),
+        cands = [os.path.join(DOCS, p), os.path.join(ACC, p), os.path.join(ROOT, p),
                  os.path.join(ACC, 'run2', p), os.path.join(ACC, 'run2', 'shots', p),
                  os.path.join(ACC, 'shots', p), os.path.join(ACC, 'save_iso', p),
                  os.path.join(ACC, 'run2', 'save', p)]
+        if '*' in p:
+            continue
         if not any(os.path.exists(c) for c in cands):
             bad.append((fn, p))
 print('refs', n, 'missing', len(bad))

@@ -79,8 +79,22 @@ Fast 从 54 增至 55，是因为新增 `P0 异常恢复 _test_p0_crash_recovery
 
 新增测试后，文档一致性首次运行出现 1/3 失败，原因是测试清单计数仍写 62 且锚点索引未同步。这不是业务缺陷。本轮只更新测试文档计数/生成索引，不改核心行为；随后文档回归 3/3 PASS。失败测试没有被删除或吞掉。
 
-## 6. 未执行项
+## 6. 未执行项（第三轮状态，已在冻结轮补齐）
 
-- 原版客户端实机：NOT_RUN，当前会话没有可用 Windows GUI 控制面。
-- 至少 30 分钟隔离稳定性：NOT_RUN；只完成快速重连冒烟，不能外推长期稳定性。
+- 原版客户端实机：第三轮为 NOT_RUN（会话没有可用 Windows GUI 控制面）→ **冻结轮已执行并通过**，见 `P0_CLIENT_ACCEPTANCE.md`。
+- 至少 30 分钟隔离稳定性：第三轮为 NOT_RUN → **冻结轮已完成**，见 `P0_STABILITY.md`。
+
+## 7. 冻结前复跑（2026-10-24 02:30）
+
+| 项目 | 结果 |
+|---|---|
+| 命令 | `python _run_all.py`（工作目录 `服务端源码/tests/sim/tests`） |
+| 步骤 | **65 / 65 通过**，失败 0 |
+| 套件自报 | `steps_passed=65 steps_total=65 steps_failed=0 mode=full` |
+| 覆盖 | `coverage_numerator=134 coverage_denominator=134` |
+| 耗时 | 266.3 s |
+| 退出码 | 0 |
+| 日志 | `acceptance_20261023/run2/regression_freezerun.log` |
+
+本轮未改动服务端业务代码，复跑目的是确认「实机验收 + 稳定性取证」期间没有引入回归；结果与第三轮一致（全绿）。
 
