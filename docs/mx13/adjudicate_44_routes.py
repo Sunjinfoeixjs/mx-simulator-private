@@ -307,7 +307,12 @@ def main(check=False):
        HERE/"MX28_EVIDENCE_ADJUDICATION.md":md_out}
     for path, raw in outputs.items():
         if check:
-            require(path.exists() and path.read_bytes() == raw,
+            # Git for Windows (core.autocrlf=true) may rehydrate tracked
+            # text artifacts with CRLF. Normalize only line endings, never
+            # ignore content differences or frozen source SHA mismatches.
+            require(path.exists() and
+                    path.read_bytes().replace(b"\r\n", b"\n") ==
+                    raw.replace(b"\r\n", b"\n"),
                     "Generated artifact missing or stale: " + path.name)
         else:
             path.write_bytes(raw)
