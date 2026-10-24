@@ -34,11 +34,10 @@ import re
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SIM = r'C:\Users\Administrator\MX\服务端源码\sim'
-if not os.path.isdir(SIM):
-    # 本工作区布局：sim 在 服务端源码/tests/sim（见 _c2s_coverage / tap 的同款兜底）
-    SIM = r'C:\Users\Administrator\MX\服务端源码\tests\sim'
-CLIENT = r'C:\Users\Administrator\MX\客户端源码\src'
+PROJECT_ROOT = os.path.dirname(os.path.dirname(HERE))
+SIM = os.path.join(PROJECT_ROOT, '服务端源码', 'tests', 'sim')
+CLIENT = os.environ.get('MX_CLIENT_SRC', os.path.join(PROJECT_ROOT, '客户端源码', 'src'))
+CLIENT_ROOT = os.path.dirname(CLIENT)
 
 # 候选源文件（按 basename 索引）：报告里出现 `xxx.py:NNN` 时按 basename 找
 SRC_FILES = ['m4_server.py', 'tap.py', 'debugger.py', 'singleplayer.py',
@@ -49,15 +48,15 @@ SRC_FILES = ['m4_server.py', 'tap.py', 'debugger.py', 'singleplayer.py',
              'netnpc.py', 'netplayer.py', 'nettask.py', 'netwar.py',
              'netteam.py', 'netfriend.py', 'netchat.py']
 SRC_DIRS = [SIM, CLIENT, os.path.join(CLIENT, 'dialog'), os.path.join(CLIENT, 'core'),
-            r'C:\Users\Administrator\MX\客户端源码\scripts\dialog',
-            r'C:\Users\Administrator\MX\客户端源码\scripts\login',
+            os.path.join(CLIENT_ROOT, 'scripts', 'dialog'),
+            os.path.join(CLIENT_ROOT, 'scripts', 'login'),
             # 2026-10-20：符号体检还要覆盖测试与审计脚本——文档里常引用
             # `EXPECT_LOG` / `MANUAL_DUMMY` / `verify_exit_codes` 这类测试侧符号，
             # 不纳入会让它们全部误报成「源码中未找到」。
             os.path.join(SIM, 'tests'),                    # runner（sim/tests/_run_all）
             os.path.dirname(SIM),                          # 测试本体（本工作区：tests/*.py）
             os.path.join(os.path.dirname(SIM), 'tests'),   # 旧布局：tests 与 sim 平级
-            r'C:\Users\Administrator\MX\客户端源码\scripts',
+            os.path.join(CLIENT_ROOT, 'scripts'),
             HERE]
 
 # 像「合理锚点」的行：定义 / 分支 / 常量 / 赋值 / 关键调用（conn.sendall、self._x…）

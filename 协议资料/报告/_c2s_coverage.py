@@ -30,12 +30,10 @@ import os
 import re
 import sys
 
-SRC = r'C:\Users\Administrator\MX\客户端源码\src'
-SIM = r'C:\Users\Administrator\MX\服务端源码\sim'
-if not os.path.isdir(SIM):
-    # 本工作区布局：sim 被整体挪进 服务端源码/tests/sim（写死单一路径会让
-    # 「上行覆盖率」这一步在回归里恒红，且报错是 FileNotFoundError 而非可读提示）
-    SIM = r'C:\Users\Administrator\MX\服务端源码\tests\sim'
+HERE = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(os.path.dirname(HERE))
+SRC = os.environ.get('MX_CLIENT_SRC', os.path.join(PROJECT_ROOT, '客户端源码', 'src'))
+SIM = os.path.join(PROJECT_ROOT, '服务端源码', 'tests', 'sim')
 
 sys.path.insert(0, SIM)
 
