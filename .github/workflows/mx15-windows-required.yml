@@ -1,88 +1,60 @@
-name: MX15 Windows Required Gates
+name: MX15 Hosted Static Merge Gates
 
 on:
   pull_request:
-    branches: [main, master]
+    branches: [main]
   push:
-    branches: [main, master]
+    branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
 
-concurrency:
-  group: mx15-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
+# These hosted checks do not claim the external-client/P67 65-case
+# Windows full regression or the original-client GUI release gate passed.
 jobs:
-  trusted-repository:
-    name: mx15/trusted-repository
+  hosted-static:
+    name: mx15/hosted-static
     runs-on: ubuntu-latest
-    timeout-minutes: 3
+    timeout-minutes: 12
     steps:
-      - name: Deny public repositories and external forks
-        shell: bash
-        env:
-          REPOSITORY_PRIVATE: ${{ github.event.repository.private }}
-          EVENT_NAME: ${{ github.event_name }}
-          SOURCE_REPO: ${{ github.event.pull_request.head.repo.full_name }}
-          TARGET_REPO: ${{ github.repository }}
-        run: |
-          set -euo pipefail
-          if [[ "$REPOSITORY_PRIVATE" != "true" ]]; then
-            echo "::error::MX self-hosted runner is forbidden for public repositories."
-            exit 1
-          fi
-          if [[ "$EVENT_NAME" == "pull_request" && "$SOURCE_REPO" != "$TARGET_REPO" ]]; then
-            echo "::error::Fork PRs must not run on MX Windows self-hosted runners."
-            exit 1
-          fi
-          echo "Private, same-repository CI event: allowed."
-
-  windows-full:
-    name: mx15/windows-full
-    needs: trusted-repository
-    runs-on: [self-hosted, Windows, X64, mx-ci-windows]
-    timeout-minutes: 30
-    defaults:
-      run:
-        shell: pwsh
-    env:
-      PYTHONIOENCODING: utf-8
-      MX_CI_REPO_PRIVATE: ${{ github.event.repository.private }}
-      MX_CI_CLIENT_SRC: ${{ vars.MX_CI_CLIENT_SRC }}
-      MX_CI_P67_REPO: ${{ vars.MX_CI_P67_REPO }}
-    steps:
-      - name: Checkout trusted private MX repository
+      - name: Checkout repository and frozen P0 tag
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
           persist-credentials: false
-          path: MX-mx15
-
-      - name: Validate Windows runner and run MX15 gates
-        run: |
-          & (Join-Path $env:GITHUB_WORKSPACE 'MX-mx15/.github/scripts/run-mx15-windows.ps1') -RepoRoot (Join-Path $env:GITHUB_WORKSPACE 'MX-mx15')
-
-      - name: Upload non-sensitive gate reports
-        if: always()
-        uses: actions/upload-artifact@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          name: mx15-windows-gate-reports
-          if-no-files-found: warn
-          retention-days: 14
-          path: |
-            MX-mx15/docs/mx15/MX15_SELFTEST_RESULT.json
-            MX-mx15/docs/mx15/MX15_LINT_RESULT.json
-            MX-mx15/docs/mx15/MX15_INCREMENTAL_RESULT.json
-            MX-mx15/docs/mx15/MX15_FULL_RESULT.json
-
-      - name: Erase disposable private evidence and client copies
-        if: always()
+          python-version: '3.11'
+      - name: Verify P0, MX15 self-tests, strict JSON, and frozen dispatch
         run: |
-          $client = Join-Path $env:GITHUB_WORKSPACE 'MX-mx15/客户端源码'
-          $evidence = Join-Path $env:GITHUB_WORKSPACE 'MX-p67'
-          foreach ($item in @($client, $evidence)) {
-            if (Test-Path -LiteralPath $item) {
-              Remove-Item -LiteralPath $item -Force -Recurse -ErrorAction Stop
-            }
-          }
+          python -B -c "import importlib.util as u; s=u.spec_from_file_location('mx15','docs/mx15/mx15_quality_gates.py'); m=u.module_from_spec(s); s.loader.exec_module(m); assert m.p0_check().startswith('15dd282'); m.selftest(); m.strict_json_sweep(); m.dispatch_check(); m.mx12_mod().lint_dictionary(); print('MX15 hosted static checks PASS (not full regression)')"
+      - name: Run MX12 negative and schema unit tests
+        run: python -B '服务端源码/tests/_test_mx12_gate.py'
+
+  hosted-windows-static:
+    name: mx15/hosted-windows-static
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout repository and frozen P0 tag
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Cross-check static gates on hosted Windows
+        shell: pwsh
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          python -B -c "import importlib.util as u; s=u.spec_from_file_location('mx15','docs/mx15/mx15_quality_gates.py'); m=u.module_from_spec(s); s.loader.exec_module(m); assert m.p0_check().startswith('15dd282'); m.selftest(); m.strict_json_sweep(); m.dispatch_check(); m.mx12_mod().lint_dictionary(); print('MX15 hosted Windows static checks PASS (not 65-case full regression)')"
+      - name: Run MX12 unit tests on hosted Windows
+        shell: pwsh
+        env:
+          PYTHONIOENCODING: utf-8
+        run: python -B '服务端源码/tests/_test_mx12_gate.py'
