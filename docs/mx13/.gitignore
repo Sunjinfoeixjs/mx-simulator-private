@@ -1,2 +1,5 @@
 __pycache__/
 scenario_runtime/
+domains_runtime/
+crypto_runtime/
+native_gui_live/

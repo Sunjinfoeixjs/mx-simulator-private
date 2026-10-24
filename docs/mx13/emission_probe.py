@@ -66,6 +66,7 @@ class EmissionObserver:
                 tag=route["tag"] if route else None,
                 frame_bytes=len(frame),
                 frame_sha256=hashlib.sha256(frame).hexdigest(),
+                logical_payload_sha256=hashlib.sha256(frame[start:]).hexdigest(),
                 call_path=self._callpath()))
     def finalize(self):
         pending=sum(len(x) for x in self._streams.values())
