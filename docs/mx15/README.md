@@ -51,3 +51,14 @@ no remote repository or branch-protection rule was modified in this session.
 The required PR check runs selftest + lint + targeted incremental + full 65
 P0 tests and two independent singleplayer runs. The native GUI release gate
 remains separate and `NOT_TESTED`, not a merge PASS claim.
+
+## Local clean-worktree CI simulation — PASS (not a GitHub run)
+
+A fresh local clone plus independent pinned P67 Git clone and filtered client
+Python snapshot passed the Windows launcher chain: `selftest`, `lint`,
+`incremental`, `full` (65/65 PASS, independent singleplayer 2x PASS), exit 0.
+Source checkout: `346914a`; later commit `fe46e45` tightens the no-base-diff
+incremental selector and was statically checked, not rerun end-to-end.
+See `MX15_LOCAL_CI_SIMULATION_20261025.json` for sanitized provenance.
+No actual GitHub Runner job, remote PR check, or branch ruleset was run or
+activated, and native GUI parsing remains `NOT_TESTED`.
