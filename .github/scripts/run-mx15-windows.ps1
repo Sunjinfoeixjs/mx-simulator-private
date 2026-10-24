@@ -62,7 +62,7 @@ Assert-Condition (-not (Test-Path -LiteralPath $P67Checkout)) 'P67 checkout alre
 Assert-Condition (-not (Test-Path -LiteralPath $ClientDest)) 'Client destination already exists; refusing stale client files'
 
 Write-Host 'Creating disposable independent P67 clone in isolated job workspace'
-& $Git clone --local --no-hardlinks --no-checkout -- $P67Source $P67Checkout
+& $Git clone --quiet --local --no-hardlinks --no-checkout -- $P67Source $P67Checkout
 Assert-Condition ($LASTEXITCODE -eq 0) 'P67 cloning failed'
 & $Git -C $P67Checkout checkout --detach --quiet 7db4df1
 Assert-Condition ($LASTEXITCODE -eq 0) 'P67 fixed commit checkout failed'
