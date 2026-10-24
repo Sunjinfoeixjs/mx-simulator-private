@@ -54,3 +54,11 @@ python (Join-Path $root '服务端源码\tests\sim\tests\_run_all.py')
 ## 范围
 
 目前覆盖 P0 明文回环登录/战斗、任务/宠物/制作/交易提示，以及 XOR+LZSS 回环加密场景的物理发送边界，**不代表真实原版游戏 GUI 成功解析**。原生 GUI 解析回调、全部异步场景、剩余路由及原版 DLL 差分验证仍为后续独立验收项。不要用本工具更改原始 160 分母或游戏参数。
+
+## MX-28 verified cross-branch S2C emission (2026-10-25)
+
+- **Adjudicated physical sendall coverage: 44/160 = 27.50%**. This supersedes the 36/160 MX13-only measurement **only for successful physical transmission**, not for native GUI parsing or complete game behavior.
+- Test provenance is checked against P67's 10 original per-test JSON receipts and event streams, nine PASS and the excluded FAIL (`_test_singleplayer`, 67 frames). Six opcode-250 heartbeat frames and one failed send attempt are not in the route numerator.
+- To reproduce: `python docs/mx13/adjudicate_44_routes.py --check` from the MX-mx13 repository root, with the original MX-p67 worktree at the same parent level.
+- Evidence: `S2C_EMISSION_COVERAGE_ADJUDICATED.json` (160 decisions, P67 test receipts and SHA256), `S2C_ROUTE_ADJUDICATION_160.csv`, `MX28_EVIDENCE_ADJUDICATION.md`.
+- Independent source snapshots `S2C_EMISSION_COVERAGE_EXPANDED.json` (36) and P67 `S2C_EMISSION_COVERAGE.json` (38, PARTIAL) remain unmodified. **Original-client GUI parse remains NOT_TESTED.**
