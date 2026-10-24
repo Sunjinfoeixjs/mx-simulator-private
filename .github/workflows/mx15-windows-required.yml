@@ -10,15 +10,15 @@ on:
 permissions:
   contents: read
 
-# These hosted checks do not claim the external-client/P67 65-case
-# Windows full regression or the original-client GUI release gate passed.
+# No self-hosted runner, client binaries, private net.py, or P67 sources.
+# Success means static gate + 8 independent unit tests ONLY, not full 65.
 jobs:
   hosted-static:
     name: mx15/hosted-static
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
-      - name: Checkout repository and frozen P0 tag
+      - name: Checkout with P0 tag
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -27,18 +27,15 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Verify P0, MX15 self-tests, strict JSON, and frozen dispatch
-        run: |
-          python -B -c "import importlib.util as u; s=u.spec_from_file_location('mx15','docs/mx15/mx15_quality_gates.py'); m=u.module_from_spec(s); s.loader.exec_module(m); assert m.p0_check().startswith('15dd282'); m.selftest(); m.strict_json_sweep(); m.dispatch_check(); m.mx12_mod().lint_dictionary(); print('MX15 hosted static checks PASS (not full regression)')"
-      - name: Run MX12 negative and schema unit tests
-        run: python -B '服务端源码/tests/_test_mx12_gate.py'
+      - name: Frozen baseline, JSON, dispatch and snapshot-independent MX12 tests
+        run: python -B docs/mx15/hosted_static_gate.py
 
   hosted-windows-static:
     name: mx15/hosted-windows-static
     runs-on: windows-latest
     timeout-minutes: 15
     steps:
-      - name: Checkout repository and frozen P0 tag
+      - name: Checkout with P0 tag
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -47,14 +44,8 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Cross-check static gates on hosted Windows
+      - name: Frozen baseline, JSON, dispatch and snapshot-independent MX12 tests
         shell: pwsh
         env:
           PYTHONIOENCODING: utf-8
-        run: |
-          python -B -c "import importlib.util as u; s=u.spec_from_file_location('mx15','docs/mx15/mx15_quality_gates.py'); m=u.module_from_spec(s); s.loader.exec_module(m); assert m.p0_check().startswith('15dd282'); m.selftest(); m.strict_json_sweep(); m.dispatch_check(); m.mx12_mod().lint_dictionary(); print('MX15 hosted Windows static checks PASS (not 65-case full regression)')"
-      - name: Run MX12 unit tests on hosted Windows
-        shell: pwsh
-        env:
-          PYTHONIOENCODING: utf-8
-        run: python -B '服务端源码/tests/_test_mx12_gate.py'
+        run: python -B docs/mx15/hosted_static_gate.py
