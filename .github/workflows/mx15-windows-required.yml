@@ -1,0 +1,88 @@
+name: MX15 Windows Required Gates
+
+on:
+  pull_request:
+    branches: [main, master]
+  push:
+    branches: [main, master]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mx15-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  trusted-repository:
+    name: mx15/trusted-repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Deny public repositories and external forks
+        shell: bash
+        env:
+          REPOSITORY_PRIVATE: ${{ github.event.repository.private }}
+          EVENT_NAME: ${{ github.event_name }}
+          SOURCE_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+          TARGET_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          if [[ "$REPOSITORY_PRIVATE" != "true" ]]; then
+            echo "::error::MX self-hosted runner is forbidden for public repositories."
+            exit 1
+          fi
+          if [[ "$EVENT_NAME" == "pull_request" && "$SOURCE_REPO" != "$TARGET_REPO" ]]; then
+            echo "::error::Fork PRs must not run on MX Windows self-hosted runners."
+            exit 1
+          fi
+          echo "Private, same-repository CI event: allowed."
+
+  windows-full:
+    name: mx15/windows-full
+    needs: trusted-repository
+    runs-on: [self-hosted, Windows, X64, mx-ci-windows]
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: pwsh
+    env:
+      PYTHONIOENCODING: utf-8
+      MX_CI_REPO_PRIVATE: ${{ github.event.repository.private }}
+      MX_CI_CLIENT_SRC: ${{ vars.MX_CI_CLIENT_SRC }}
+      MX_CI_P67_REPO: ${{ vars.MX_CI_P67_REPO }}
+    steps:
+      - name: Checkout trusted private MX repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+          path: MX-mx15
+
+      - name: Validate Windows runner and run MX15 gates
+        run: |
+          & (Join-Path $env:GITHUB_WORKSPACE 'MX-mx15/.github/scripts/run-mx15-windows.ps1') -RepoRoot (Join-Path $env:GITHUB_WORKSPACE 'MX-mx15')
+
+      - name: Upload non-sensitive gate reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mx15-windows-gate-reports
+          if-no-files-found: warn
+          retention-days: 14
+          path: |
+            MX-mx15/docs/mx15/MX15_SELFTEST_RESULT.json
+            MX-mx15/docs/mx15/MX15_LINT_RESULT.json
+            MX-mx15/docs/mx15/MX15_INCREMENTAL_RESULT.json
+            MX-mx15/docs/mx15/MX15_FULL_RESULT.json
+
+      - name: Erase disposable private evidence and client copies
+        if: always()
+        run: |
+          $client = Join-Path $env:GITHUB_WORKSPACE 'MX-mx15/客户端源码'
+          $evidence = Join-Path $env:GITHUB_WORKSPACE 'MX-p67'
+          foreach ($item in @($client, $evidence)) {
+            if (Test-Path -LiteralPath $item) {
+              Remove-Item -LiteralPath $item -Force -Recurse -ErrorAction Stop
+            }
+          }

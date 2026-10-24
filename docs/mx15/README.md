@@ -39,3 +39,15 @@ python docs/mx15/mx15_quality_gates.py release
 ## 本轮验收边界
 
 MX-15 主要验收测试框架、JSON 门禁、回归严格性和证据质量；MX-25 原生 GUI 解析取证和 MX-27 原版 DLL XOR/LZSS 差分仍为独立任务。Git 分支提交本地，不自动合并到 P0 或其他工作树。
+
+## GitHub Windows self-hosted CI (deployment staged, not yet activated)
+
+The Windows Actions workflow, private-repository trust guard, disposable test-data loader,
+required-check ruleset template and administrator-gated apply script are in
+`.github/`. See `docs/mx15/GITHUB_WINDOWS_CI_DEPLOYMENT.md` for the safe
+installation sequence and true current blockers. These files require an
+identified **private MX repository** and a dedicated isolated Windows runner;
+no remote repository or branch-protection rule was modified in this session.
+The required PR check runs selftest + lint + targeted incremental + full 65
+P0 tests and two independent singleplayer runs. The native GUI release gate
+remains separate and `NOT_TESTED`, not a merge PASS claim.
