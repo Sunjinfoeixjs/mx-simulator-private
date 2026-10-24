@@ -104,9 +104,10 @@ if ($env:GITHUB_BASE_REF) {
     if ($LASTEXITCODE -ne 0) { $changed = @() }
 }
 if ($changed.Count -eq 0) {
-    # Conservatively run the old 55-case fast suite if the delta cannot be
-    # safely identified (e.g., direct push or no fetched base).
-    Invoke-Gate @('incremental')
+    # A newly-created local report can otherwise fool git status into
+    # selecting only the MX15 quality-gate selftests; never use that signal
+    # when GitHub has no trustworthy base diff. Force conservative fast mode.
+    Invoke-Gate @('incremental','--changed','__unknown_changes__')
 } else {
     Invoke-Gate (@('incremental','--changed') + @($changed))
 }
