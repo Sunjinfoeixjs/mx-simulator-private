@@ -24,7 +24,8 @@ import tempfile
 import threading
 import time
 
-sys.path.insert(0, r'C:\Users\Administrator\MX\服务端源码\sim')
+# Resolve this isolated checkout's test server, never a different worktree.
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'sim'))
 import m4_server as m                                   # noqa: E402
 import singleplayer as sp                               # noqa: E402
 from transport import make_memory_pair                  # noqa: E402
@@ -97,7 +98,7 @@ def check(cond, msg):
 
 
 # ────────────────────────── 场景 ─────────────────────────
-def play_to_battle(c, steps):
+def play_to_battle(c, steps, srv):
     """Hello → 登录 → 建角 → 进世界 → 移动至遇怪。返回遇怪时读到的 opcode 序列。"""
     op, data = recv_s2c(c)
     check(op == 1 and len(data) == 6, ('Hello', op, data.hex()))
@@ -121,6 +122,22 @@ def play_to_battle(c, steps):
     check(seen.count(65) >= 2, ('招式帧不足', seen))
     steps.append('进世界(%d帧)' % len(seen))
 
+    # Since per-map encounters were introduced, starter town 1001 never
+    # auto-starts WarStart. Move to a genuine wild map via the public
+    # test-only GM interface; keep the normal C2S move -> encounter path.
+    check(m.ENCOUNTER_PER_MAP, 'per-map encounter policy unexpectedly disabled')
+    check(srv.mapid == m.START_MAP_ID and not srv._encounter_allowed_here(),
+          'starter city must not randomly encounter enemies')
+    wild_map = 1028
+    check(wild_map in m.ENCOUNTER_BY_MAP and wild_map in m.MAPS,
+          'expected beginner wild map unavailable')
+    changed = srv.gm_goto_map(wild_map, 45, 40)
+    check(changed.get('pushed') and srv._encounter_allowed_here(),
+          ('wild encounter preparation failed', changed))
+    op, data, new_scene = drain_until(c, {97})
+    check(op == 97 and 96 in new_scene, ('wild scene not delivered', new_scene))
+    steps.append('wild map 1028 via test GM teleport (city encounters disabled)')
+
     for i in range(1, ENCOUNTER_EVERY + 1):
         send_c2s(c, 54, move_body(45 + i, 40))
         # 每次移动先回 Track(86)；最后一次移动在 Track 之后紧接遇怪序列
@@ -139,10 +156,10 @@ def play_to_battle(c, steps):
     raise AssertionError('走完 %d 次移动仍未遇怪' % ENCOUNTER_EVERY)
 
 
-def scenario_protocol(port, steps):
+def scenario_protocol(port, steps, srv):
     """真实回环 TCP：完整协议闭环 + 单连接拒绝。"""
     c = socket.create_connection(('127.0.0.1', port), timeout=5)
-    war_seen = play_to_battle(c, steps)
+    war_seen = play_to_battle(c, steps, srv)
     check(112 in war_seen, ('未见 WarStart(112)', war_seen))
     check(115 in war_seen, ('未见 WarAdd(115)', war_seen))
     check(114 in war_seen, ('未见 WarTurn(114)', war_seen))
@@ -158,6 +175,19 @@ def scenario_protocol(port, steps):
     op, data, seen = drain_until(c, {114, 113})
     check(op in (114, 113), ('宠物行动后未推进战斗回合', seen))
     steps.append('宠物手动攻击→回合推进')
+
+    # Finish a remaining wild encounter using the existing test-only GM
+    # interface, then return to the starter city before city NPC assertions.
+    # Never disable per-map encounter policy to force a fight inside town.
+    if srv.in_war:
+        done = srv.gm_war_win()
+        check(done.get('ok'), ('wild battle cleanup failed', done))
+    back = srv.gm_goto_map(m.START_MAP_ID, 45, 40)
+    check(back.get('pushed') and srv.mapid == m.START_MAP_ID,
+          ('return to starter city failed', back))
+    op, data, city_scene = drain_until(c, {97})
+    check(op == 97 and 96 in city_scene, ('city scene not delivered', city_scene))
+    steps.append('return to starter city after wild battle')
 
     # NPC 对话
     send_c2s(c, 96, struct.pack('<I', 1000))
@@ -249,9 +279,12 @@ def scenario_headless(steps):
         op, data, seen = drain_until(client_end, {97})
         check(16 in seen and 96 in seen and 99 in seen, ('headless 进世界', seen))
 
+        # Signal end-of-input first. Do not close server_end while its
+        # sendall() loop is still emitting the remaining world/pet/item frames.
         client_end.close()
-        server_end.close()
         t.join(timeout=5)
+        check(not t.is_alive(), 'InMemoryConn server thread did not exit')
+        server_end.close()
         steps.append('InMemoryConn 全流程（零 socket）')
         return True
     finally:
@@ -402,7 +435,7 @@ def run():
         steps.append('serve_background→127.0.0.1:%d' % port)
 
         # B + C
-        scenario_protocol(port, steps)
+        scenario_protocol(port, steps, srv)
 
         # D. 断开落档 → 新内核按同目录读档
         scenario_persistence(port, steps)

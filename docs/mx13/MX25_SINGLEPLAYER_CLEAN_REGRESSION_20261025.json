@@ -1,0 +1,34 @@
+{
+  "task": "MX-25/MX-28-singleplayer",
+  "outcome": "PASS",
+  "description": "Current isolated P0 test checkout: genuine wild encounter, city return, NPC, persistence, local HTTP and memory transport",
+  "test_source_sha256": "eb223c93718694f99575d443f8189e5691c3da0251ce4b8fe9ce7dbeac2a272f",
+  "repeat": 2,
+  "runs": [
+    {
+      "run": 1,
+      "status": "PASS",
+      "exit_code": 0,
+      "all_25_assertions_passed": true,
+      "unhandled_traceback": false,
+      "stdout_sha256": "f880b24f66e0d6b45ad3a50a29b88231af02ef03491d82d9481ba5f245c96fa3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "elapsed_seconds": 3.99
+    },
+    {
+      "run": 2,
+      "status": "PASS",
+      "exit_code": 0,
+      "all_25_assertions_passed": true,
+      "unhandled_traceback": false,
+      "stdout_sha256": "830e41951f9c8941d825115cb7eb2998c7989bf5b85d2f97bd7cea659e87d2ec",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "elapsed_seconds": 3.97
+    }
+  ],
+  "note": "stdout/stderr (including synthetic login inputs) are not stored",
+  "full_regression_is_separate": true,
+  "accepted_S2C_sendall_routes_unchanged": 44,
+  "native_GUI_parse": "NOT_TESTED",
+  "recorded_utc": "2026-10-24T17:21:02.078336+00:00"
+}

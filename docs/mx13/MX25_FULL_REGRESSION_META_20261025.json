@@ -1,0 +1,30 @@
+{
+  "task": "MX-25/MX-28",
+  "baseline_commit": "15dd282",
+  "test_branch": "feature/mx-13-s2c-emission",
+  "full_regression": {
+    "mode": "full",
+    "passed": 65,
+    "total": 65,
+    "failed": 0,
+    "exit_code": 0,
+    "elapsed_sec": 224,
+    "unhandled_traceback": false,
+    "log_sha256": "bf2436176d8ca4d2bcaf1e664f7c6901b2f0413f9484d7a0798221ef365fe82c",
+    "raw_log_committed": false
+  },
+  "singleplayer": {
+    "independent_gate_file": "MX25_SINGLEPLAYER_CLEAN_REGRESSION_20261025.json",
+    "passing_runs": 2,
+    "assertions_per_run": 25,
+    "unhandled_traceback": false,
+    "natural_encounter_map": 1028,
+    "starter_city_map": 1001
+  },
+  "native_gui_parse_status": "NOT_TESTED",
+  "automated_physical_emission_coverage": {
+    "numerator": 44,
+    "denominator": 160
+  },
+  "note": "Tests were executed on isolated P0 checkout; original P67 failing test remains historically excluded."
+}
