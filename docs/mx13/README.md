@@ -62,3 +62,13 @@ python (Join-Path $root '服务端源码\tests\sim\tests\_run_all.py')
 - To reproduce: `python docs/mx13/adjudicate_44_routes.py --check` from the MX-mx13 repository root, with the original MX-p67 worktree at the same parent level.
 - Evidence: `S2C_EMISSION_COVERAGE_ADJUDICATED.json` (160 decisions, P67 test receipts and SHA256), `S2C_ROUTE_ADJUDICATION_160.csv`, `MX28_EVIDENCE_ADJUDICATION.md`.
 - Independent source snapshots `S2C_EMISSION_COVERAGE_EXPANDED.json` (36) and P67 `S2C_EMISSION_COVERAGE.json` (38, PARTIAL) remain unmodified. **Original-client GUI parse remains NOT_TESTED.**
+
+## MX-25 native GUI readiness and singleplayer regression (2026-10-25)
+
+- Root-cause and source/session boundaries: `MX25_NATIVE_GUI_READINESS_AND_SINGLEPLAYER_ROOTCAUSE_20261025.md`.
+- 160-route native GUI evidence planning matrix (all native GUI fields **NOT_TESTED**): `MX25_GUI_ROUTE_VERIFICATION_BASELINE_160.csv`.
+- Reproduce static 160-route matrix: `python docs/mx13/mx25_prepare_native_gui_matrix.py --check`.
+- Reproduce singleplayer regression independently of the 65-step full runner: `python docs/mx13/mx25_run_singleplayer_gate.py --repeat 2` (runs genuine isolated loopback TCP and asserts no uncaught tracebacks; no raw auth logs committed).
+- Recorded independent gate: `MX25_SINGLEPLAYER_CLEAN_REGRESSION_20261025.json`; previous full-regression hash/stats: `MX25_FULL_REGRESSION_META_20261025.json`.
+- Native parser gate: `python docs/mx13/gui_parse_acceptance_gate.py` currently returns `NOT_TESTED`, expected exit code 2, since no native GUI parser hook and same-session server observer records exist.
+- **Do not** upgrade the accepted P0 automatic physical emission count above 44/160 or claim native DLL/client GUI compatibility from the corrected P0 test alone.
