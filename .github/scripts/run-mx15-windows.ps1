@@ -1,4 +1,4 @@
-#Requires -Version 5.1
+﻿#Requires -Version 5.1
 <#
 MX15 Windows runner launch, fail closed.  Secrets, client binaries and raw
 authentication traces must never be committed or uploaded.

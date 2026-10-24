@@ -1,4 +1,4 @@
-#Requires -Version 5.1
+﻿#Requires -Version 5.1
 <#
 Apply the MX15 default-branch ruleset to an EXPLICIT private MX repo only.
 Requires an administrator-authenticated GitHub CLI; never takes or prints a token.
