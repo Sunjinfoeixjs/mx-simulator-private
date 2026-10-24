@@ -1,0 +1,277 @@
+{
+  "test_boundary": {
+    "fragmented_packet": "PASS",
+    "coalesced_packet": "PASS",
+    "builder_not_emission": "PASS",
+    "failed_send_not_counted": "PASS",
+    "observation_failure_isolation": "PASS",
+    "sent_events": 4
+  },
+  "test_real_socket": {
+    "test": "mx13_p0_real_socket_login_move_gm_battle",
+    "status": "PASS",
+    "driver": "genuine loopback TCP socket (not fake transport)",
+    "client_received": {
+      "login": [
+        2
+      ],
+      "create_role": [
+        6,
+        2,
+        3
+      ],
+      "enter_world": [
+        16,
+        18,
+        19,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        65,
+        65,
+        65,
+        65,
+        65,
+        65,
+        65,
+        65,
+        65,
+        65,
+        65,
+        65,
+        65,
+        65,
+        65,
+        65,
+        65,
+        96,
+        99,
+        99,
+        99,
+        99,
+        99,
+        99,
+        99,
+        99,
+        105,
+        97
+      ],
+      "move": [
+        48,
+        49,
+        53,
+        50,
+        33,
+        33,
+        33,
+        33,
+        33,
+        33,
+        33,
+        33,
+        33,
+        33,
+        86
+      ],
+      "npc_look": [
+        152
+      ],
+      "gm_war_start": [
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        112,
+        115,
+        115,
+        129,
+        115,
+        114
+      ],
+      "gm_war_end": [
+        116,
+        113
+      ],
+      "post_query_received_bytes": 536
+    },
+    "actual_emitted_frames": 98,
+    "distinct_opcodes": 26,
+    "observed_route_ids": [
+      "R001",
+      "R002",
+      "R007",
+      "R009",
+      "R010",
+      "R011",
+      "R014",
+      "R018",
+      "R020",
+      "R025",
+      "R026",
+      "R032",
+      "R034",
+      "R072",
+      "R073",
+      "R075",
+      "R079",
+      "R091",
+      "R092",
+      "R097",
+      "R100",
+      "R109",
+      "R114",
+      "R117",
+      "R119",
+      "R121"
+    ],
+    "observed_opcodes": [
+      1,
+      2,
+      3,
+      6,
+      16,
+      17,
+      18,
+      19,
+      33,
+      48,
+      49,
+      50,
+      53,
+      65,
+      86,
+      96,
+      97,
+      99,
+      105,
+      112,
+      113,
+      114,
+      115,
+      116,
+      129,
+      152
+    ],
+    "unmapped_events": 0,
+    "send_errors": 0,
+    "examples": [
+      {
+        "route_id": "R091",
+        "opcode": 1,
+        "path": [
+          "m4_server.py:flush:4190",
+          "m4_server.py:recv:4182",
+          "m4_server.py:recv_exact:3101",
+          "m4_server.py:handle:10834",
+          "emission_probe.py:wrapped:111",
+          "m4_server.py:run:10737",
+          "threading.py:run:995"
+        ]
+      },
+      {
+        "route_id": "R092",
+        "opcode": 2,
+        "path": [
+          "m4_server.py:flush:4190",
+          "m4_server.py:_flush_out:5259",
+          "m4_server.py:handle:10943",
+          "emission_probe.py:wrapped:111",
+          "m4_server.py:run:10737",
+          "threading.py:run:995",
+          "threading.py:_bootstrap_inner:1044"
+        ]
+      },
+      {
+        "route_id": "R097",
+        "opcode": 6,
+        "path": [
+          "m4_server.py:flush:4190",
+          "m4_server.py:_flush_out:5259",
+          "m4_server.py:handle:10943",
+          "emission_probe.py:wrapped:111",
+          "m4_server.py:run:10737",
+          "threading.py:run:995",
+          "threading.py:_bootstrap_inner:1044"
+        ]
+      },
+      {
+        "route_id": "R092",
+        "opcode": 2,
+        "path": [
+          "m4_server.py:flush:4190",
+          "m4_server.py:_flush_out:5259",
+          "m4_server.py:handle:10943",
+          "emission_probe.py:wrapped:111",
+          "m4_server.py:run:10737",
+          "threading.py:run:995",
+          "threading.py:_bootstrap_inner:1044"
+        ]
+      },
+      {
+        "route_id": "R100",
+        "opcode": 3,
+        "path": [
+          "m4_server.py:flush:4190",
+          "m4_server.py:_flush_out:5259",
+          "m4_server.py:handle:10943",
+          "emission_probe.py:wrapped:111",
+          "m4_server.py:run:10737",
+          "threading.py:run:995",
+          "threading.py:_bootstrap_inner:1044"
+        ]
+      },
+      {
+        "route_id": "R072",
+        "opcode": 16,
+        "path": [
+          "m4_server.py:flush:4190",
+          "m4_server.py:_flush_out:5259",
+          "m4_server.py:handle:10943",
+          "emission_probe.py:wrapped:111",
+          "m4_server.py:run:10737",
+          "threading.py:run:995",
+          "threading.py:_bootstrap_inner:1044"
+        ]
+      },
+      {
+        "route_id": "R075",
+        "opcode": 18,
+        "path": [
+          "m4_server.py:flush:4190",
+          "m4_server.py:_flush_out:5259",
+          "m4_server.py:handle:10943",
+          "emission_probe.py:wrapped:111",
+          "m4_server.py:run:10737",
+          "threading.py:run:995",
+          "threading.py:_bootstrap_inner:1044"
+        ]
+      },
+      {
+        "route_id": "R073",
+        "opcode": 19,
+        "path": [
+          "m4_server.py:flush:4190",
+          "m4_server.py:_flush_out:5259",
+          "m4_server.py:handle:10943",
+          "emission_probe.py:wrapped:111",
+          "m4_server.py:run:10737",
+          "threading.py:run:995",
+          "threading.py:_bootstrap_inner:1044"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+﻿[world_config] 鉁?宸插簲鐢?world_config.json锛?0 寮犲湴鍥撅紝updated=2026-10-22T13:20:36锛寁1锛?
+[PASS] 鏈嶅姟宸插惎鍔ㄣ€€port=28975
+[PASS] stop() 鍚?run 绾跨▼閫€鍑恒€€alive=False
+[PASS] 鍋滄鍚庣鍙ｅ彲閲嶆柊缁戝畾锛堢洃鍚湡鐨勫叧浜嗭級
+[PASS] stop() 鍙噸澶嶈皟鐢紙骞傜瓑锛?
+[PASS] 鏈惎鍔ㄥ疄渚?stop() 涓嶅穿
+[PASS] atexit 閽╁瓙宸叉瑁咃紙_atexit_armed锛夈€€_atexit_armed=True
+
+============================================================
+浼橀泤鍋滄锛?/6 閫氳繃
+PASS
