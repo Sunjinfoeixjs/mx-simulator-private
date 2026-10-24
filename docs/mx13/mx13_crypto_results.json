@@ -1,0 +1,91 @@
+{
+  "test": "mx13_P0_true_encrypted_TCP_LZSS",
+  "status": "PASS",
+  "seed": "0x12345678",
+  "hello_plain": true,
+  "successful_encrypted_frames": 66,
+  "successful_encrypted_unique_routes": 20,
+  "encrypted_physical_wire_bytes": 1450,
+  "independently_lzss_verified_frames": 66,
+  "traces": {
+    "login": [
+      2
+    ],
+    "create": [
+      6,
+      2,
+      3
+    ],
+    "world": [
+      16,
+      18,
+      19,
+      17,
+      17,
+      17,
+      17,
+      17,
+      17,
+      17,
+      17,
+      17,
+      17,
+      17,
+      17,
+      17,
+      17,
+      65,
+      65,
+      65,
+      65,
+      65,
+      65,
+      65,
+      65,
+      65,
+      65,
+      65,
+      65,
+      65,
+      65,
+      65,
+      65,
+      65,
+      96,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      105,
+      97
+    ],
+    "craft_details": [
+      48,
+      49,
+      53,
+      50,
+      33,
+      33,
+      33,
+      33,
+      33,
+      33,
+      33,
+      33,
+      33,
+      33,
+      151
+    ],
+    "craft_cost": [
+      155
+    ],
+    "minerals": [
+      87
+    ]
+  },
+  "no_original_GUI_client": true
+}

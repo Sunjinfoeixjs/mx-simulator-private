@@ -1,0 +1,68 @@
+{
+  "title": "Prior P1 genuine native GUI evidence cross-referenced to P0 static route IDs",
+  "status": "GUI_FUNCTIONAL_CORROBORATION_ONLY",
+  "native_gui_screenshot_count": 5,
+  "route_ids_correlated": 5,
+  "route_parse_confirmed": 0,
+  "reason": "No same-session per-S2C-frame success telemetry and no client dispatcher return callback; historical P1 pictures cannot become P0 route parse confirmations.",
+  "original_screenshot_manifest_sha256": "8ba170793a3ab02ce9d6a264bb294e5cbb779e7eb3d51fd64d301c031650438a",
+  "historical_server_log_sha256": "aeddf1fb4b389ffa8c8290bbc1ac8fc272d56da56194bb847899463265892252",
+  "historical_server_log_excluded_from_output": "contains raw login request/credential data; must not copy",
+  "evidence": [
+    {
+      "opcode": 96,
+      "route_id": "R117",
+      "handler": "netmap.S2CMapSceneM",
+      "screenshot": "mx18_same_account_relogin_world.png",
+      "screenshot_sha256": "cc69c171a4d66bcf3102350a0e0e21ca9c3aa931467c0f07e2dd774b965bc0f7",
+      "observation": "world scene rendered",
+      "evidence_class": "GUI_FUNCTIONAL_CORROBORATION_ONLY",
+      "GUI_PARSE_VERIFIED": false,
+      "project_baseline": "P1 R006/R007 historical GUI; NOT P0"
+    },
+    {
+      "opcode": 16,
+      "route_id": "R072",
+      "handler": "nethero.S2CPropInit",
+      "screenshot": "mx18_relogin_gui_lv2_exp20.png",
+      "screenshot_sha256": "bbb38a90973d9c4f3fc420438262bc69a164d5dedfec692f9727b5c0b84020a5",
+      "observation": "character grade and experience panel rendered",
+      "evidence_class": "GUI_FUNCTIONAL_CORROBORATION_ONLY",
+      "GUI_PARSE_VERIFIED": false,
+      "project_baseline": "P1 R006/R007 historical GUI; NOT P0"
+    },
+    {
+      "opcode": 17,
+      "route_id": "R001",
+      "handler": "nethero.S2CPropChange",
+      "screenshot": "mx18_gui_native_levelup_clicked.png",
+      "screenshot_sha256": "cd4eba220605c52158ac5774957f11cc4de2a330bc7104edce28d1743818b88f",
+      "observation": "native level-up button effect",
+      "evidence_class": "GUI_FUNCTIONAL_CORROBORATION_ONLY",
+      "GUI_PARSE_VERIFIED": false,
+      "project_baseline": "P1 R006/R007 historical GUI; NOT P0"
+    },
+    {
+      "opcode": 112,
+      "route_id": "R018",
+      "handler": "netwar.S2CWarStart",
+      "screenshot": "mx18_gui_battle_started.png",
+      "screenshot_sha256": "3ea2d84db843907311dc5aa2fc1e175da8fffcd2f2593b85dc4630f084a082cf",
+      "observation": "native GUI battle screen",
+      "evidence_class": "GUI_FUNCTIONAL_CORROBORATION_ONLY",
+      "GUI_PARSE_VERIFIED": false,
+      "project_baseline": "P1 R006/R007 historical GUI; NOT P0"
+    },
+    {
+      "opcode": 113,
+      "route_id": "R026",
+      "handler": "netwar.S2CWarEnd",
+      "screenshot": "mx18_gui_battle_auto_action.png",
+      "screenshot_sha256": "0b04f0044c00e15db00436c204ca96d68801f712aa9578c93e253ed23f72a182",
+      "observation": "battle turn UI; NOT proof this frame decoded",
+      "evidence_class": "GUI_FUNCTIONAL_CORROBORATION_ONLY",
+      "GUI_PARSE_VERIFIED": false,
+      "project_baseline": "P1 R006/R007 historical GUI; NOT P0"
+    }
+  ]
+}
