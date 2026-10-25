@@ -28,7 +28,7 @@ jobs:
         with:
           python-version: '3.11'
       - name: Frozen baseline, JSON, dispatch and snapshot-independent MX12 tests
-        run: python -B docs/mx15/hosted_static_gate.py
+        run: |\n          python -B tools/security/check_public_redaction.py\n          python -B docs/mx15/hosted_static_gate.py
 
   hosted-windows-static:
     name: mx15/hosted-windows-static
@@ -48,4 +48,4 @@ jobs:
         shell: pwsh
         env:
           PYTHONIOENCODING: utf-8
-        run: python -B docs/mx15/hosted_static_gate.py
+        run: |\n          python -B tools/security/check_public_redaction.py\n          python -B docs/mx15/hosted_static_gate.py
