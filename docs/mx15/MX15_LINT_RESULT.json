@@ -1,0 +1,100 @@
+{
+  "task": "MX-15",
+  "mode": "lint",
+  "created_utc": "2026-10-24T17:49:29.247186+00:00",
+  "status": "PASS_WITH_NATIVE_GUI_NOT_TESTED",
+  "evidence": {
+    "p0_tag_commit": "15dd2828ceb2e1ea7023fd09ae69955579a5b74d",
+    "json_sweep": {
+      "status": "PASS",
+      "strict_json_count": 21,
+      "all_duplicate_keys_rejected": true,
+      "input_sha256": {
+        "协议资料/字典/combat_opcodes_fields.json": "3d3b73a1ef326d76d48f382d38c8c1f20ae5f7d975f937c7f94a4cc825874df6",
+        "协议资料/字典/itempet_opcodes_fields.json": "6329a1b2ddc64b7aeb27bbc6b89e3914b6a538a04162be5da23345fb06901867",
+        "协议资料/字典/protocol_functions.json": "a5a07a73de8cc043a95fe767801dc4a9b283def6cefdb576f7840db93be15d7e",
+        "协议资料/字典/protocol_map.json": "79a2bb67173db3f1ea31b7d51da33e573e6f0a809f19b585a3b668f3e3e4fd3f",
+        "协议资料/报告/final_manifest.json": "36b7d40d42d754266478070e457a3ce5dedd7095327d47782975e04d46fa58e2",
+        "协议资料/报告/mx12_reconciliation_baseline.json": "4eda594cd8e87a737a049f6374124486909fae6b9139257625158f17627ceec6",
+        "docs/mx13/emission_domains_results.json": "c5ca276276434c73c8df7038673f23cda862f7d5f63a9ff565202cf716deac3b",
+        "docs/mx13/GUI_ROUTE_EVIDENCE_CORROBORATION.json": "d19dd110df24abbbe2cda58eb5c0d40f3ed181327b4ab39f6fa6ab6d72f60af0",
+        "docs/mx13/GUI_ROUTE_PARSE_ACCEPTANCE.json": "8bfa9f7905cdce64df9876ac33eadc6607f7552dc67dcfe035acdb1dbb8d3041",
+        "docs/mx13/MX13_ACCEPTANCE_AUDIT.json": "2d997c255eab5889fe047cffe4e9d827b4dd4cff32ba1d047c3a15a858ae6d5d",
+        "docs/mx13/MX13_CROSS_BRANCH_44_CANDIDATES.json": "768e1e288a199a7ae9854ee1516afbeaea9bfe74446daab5665f7c081f449015",
+        "docs/mx13/mx13_crypto_results.json": "9c3465a1a9ce5fabeed4c43c935a50e84b586392c5c7fc6760e5561660790aef",
+        "docs/mx13/mx13_execution_results.json": "2ad0e622b0aa4eeec481dd4f12da35d6b551ec7de26457ff2e28d3f704f34fc6",
+        "docs/mx13/MX13_EXPANDED_ACCEPTANCE_AUDIT.json": "eb146bbff0ea5ff83f0d002750faae9c5bf4ae182bed5064c09da0c75f8d1e05",
+        "docs/mx13/MX25_FULL_REGRESSION_META_20261025.json": "d5c5f15c241755d63fd3e00155e8bdb63e97f570e0ae15747d6c7a8828e2f0d8",
+        "docs/mx13/MX25_SINGLEPLAYER_CLEAN_REGRESSION_20261025.json": "e96f983d07ab430fdfdf13c05374ca1fe34ac6a2762fc00d15dedd06f71652d2",
+        "docs/mx13/regression_subset.json": "0b68676f6493c3445875cdb9c33676612352772c0bcbe3e55399bd88a2d2fc00",
+        "docs/mx13/route_inventory.json": "f59a6e44686f98d7d2276443d72979f1a021a187d0cd3216a17f61dbb59d7ce8",
+        "docs/mx13/S2C_EMISSION_COVERAGE.json": "a93c62dcee9f722e7e4030cf5aea49b1d12144d51d6789a5f34c9ad0df4a7f43",
+        "docs/mx13/S2C_EMISSION_COVERAGE_ADJUDICATED.json": "525f5838c20f43e98b2cf9c98ed8510652f90cca5a3b6b82c9725767e7cf5a9b",
+        "docs/mx13/S2C_EMISSION_COVERAGE_EXPANDED.json": "bd7faf9a9b8e89997594cbfd9b2de3a89dd3c04f8ed0b1d8346ecc615cf152f1"
+      }
+    },
+    "dispatch_ast": {
+      "status": "PASS",
+      "method": "M4Server._dispatch_locked",
+      "p0_ast_sha256": "e1e6d86497a9d39983e1b13b10cb16799a6290ac0ed10cdb62d4f632b3855b4f",
+      "checkout_ast_sha256": "e1e6d86497a9d39983e1b13b10cb16799a6290ac0ed10cdb62d4f632b3855b4f",
+      "scope": "Mechanical behavior freeze, not original-server authenticity"
+    },
+    "s2c": {
+      "status": "PASS_EMISSION_ONLY",
+      "accepted_routes": 44,
+      "denominator": 160,
+      "native_gui_parser": "NOT_TESTED"
+    },
+    "gui": {
+      "status": "NOT_TESTED",
+      "verified_routes": null,
+      "rate_percent": null,
+      "reason": "Real native client session absent"
+    }
+  },
+  "steps": [
+    {
+      "name": "mx12_strict_json_and_123_134_baseline",
+      "status": "PASS",
+      "return_code": 0,
+      "timed_out": false,
+      "duration_seconds": 1.22,
+      "raw_local_ignored_log": "docs/mx15/.runtime/logs/mx12_strict_json_and_123_134_baseline.log",
+      "log_sha256": "57ecd07c2fc7812135dc8dd8d7331a99c4776972ccb102dc4d8ed6ae0ebbfb10"
+    },
+    {
+      "name": "mx12_negative_unit_tests",
+      "status": "PASS",
+      "return_code": 0,
+      "timed_out": false,
+      "duration_seconds": 2.27,
+      "raw_local_ignored_log": "docs/mx15/.runtime/logs/mx12_negative_unit_tests.log",
+      "log_sha256": "f9254897a8938d3a78fc09e0d8a3f6982d428f8ff70193df4aed748dfb485c45"
+    },
+    {
+      "name": "s2c_44_160_physical_send_evidence",
+      "status": "PASS",
+      "return_code": 0,
+      "timed_out": false,
+      "duration_seconds": 0.29,
+      "raw_local_ignored_log": "docs/mx15/.runtime/logs/s2c_44_160_physical_send_evidence.log",
+      "log_sha256": "f844844586efafed603c07e737b2b1a8412126040dc87d144ab75a3f225b549f"
+    },
+    {
+      "name": "mx25_gui_matrix_not_tested",
+      "status": "PASS",
+      "return_code": 0,
+      "timed_out": false,
+      "duration_seconds": 0.09,
+      "raw_local_ignored_log": "docs/mx15/.runtime/logs/mx25_gui_matrix_not_tested.log",
+      "log_sha256": "7ee982f9b40213cdbed307e227f69f8b97f531ed437c3ed987b74814716fa70c"
+    }
+  ],
+  "baseline": "p0-accepted/15dd282",
+  "limits": [
+    "44/160 is server successful physical send only, not native GUI parse",
+    "Native GUI Unpack/handler must be proven by real same-session events; standard full suite never claims GUI PASS",
+    "Release requires six critical native GUI handlers; original-server authenticity requires separate P8 evidence"
+  ]
+}

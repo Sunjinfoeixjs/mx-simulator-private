@@ -44,3 +44,16 @@ _crypto_re/__pycache__/
 服务端源码/服务端源码/logs/
 # 测试运行时产生的 0 字节锁文件（非证据）
 服务端源码/tests/**/save/*.lock
+
+
+# MX public-repository hygiene: local originals remain outside tracked source.
+.workbuddy/
+docs/acceptance_20261023/
+1/*.zip
+协议资料/字典/dreamworld_netwar*.zip
+.env
+.env.*
+*.pem
+*.p12
+*.pfx
+*.key

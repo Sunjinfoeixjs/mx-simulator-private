@@ -1,0 +1,37 @@
+{
+  "result": "PASS",
+  "baseline": "p0-accepted/15dd282",
+  "static_routes": 160,
+  "physical_successful_frames": 251,
+  "emitted_unique_routes": 36,
+  "automated_percent": 22.5,
+  "not_emitted": 124,
+  "native_gui_status": "NOT_TESTED",
+  "native_gui_verified_routes": 0,
+  "historic_gui_correlated_screenshots": 5,
+  "crypto_lzss_verified_frames": 66,
+  "craft_product": {
+    "shape": 25201,
+    "iid": 9002,
+    "in_inventory": true
+  },
+  "full_p0_regression": {
+    "steps_failed": "0",
+    "steps_passed": "65",
+    "steps_total": "65"
+  },
+  "scenarios": [
+    {
+      "name": "plain_login_move_GM",
+      "sha256": "6f391b3b722876f642103cae79e1bb3b17e12f467347ea254466b86174758a49"
+    },
+    {
+      "name": "quest_pet_craft_trade",
+      "sha256": "69a89b00c82a584e3c354ce0dc1a119244299073ebfe9fba357caafdc6dd0a90"
+    },
+    {
+      "name": "xor_lzss",
+      "sha256": "520fc5d47f8bc25d844f0045b62d38981870b0aadec4caeed9d01ebb447de55c"
+    }
+  ]
+}

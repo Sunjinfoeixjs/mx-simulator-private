@@ -1,0 +1,55 @@
+name: MX15 Hosted Static Merge Gates
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# No self-hosted runner, client binaries, private net.py, or P67 sources.
+# Success means static gate + 8 independent unit tests ONLY, not full 65.
+jobs:
+  hosted-static:
+    name: mx15/hosted-static
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout with P0 tag
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Frozen baseline, JSON, dispatch and snapshot-independent MX12 tests
+        run: |
+          python -B tools/security/check_public_redaction.py
+          python -B docs/mx15/hosted_static_gate.py
+
+  hosted-windows-static:
+    name: mx15/hosted-windows-static
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout with P0 tag
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Frozen baseline, JSON, dispatch and snapshot-independent MX12 tests
+        shell: pwsh
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          python -B tools/security/check_public_redaction.py
+          python -B docs/mx15/hosted_static_gate.py

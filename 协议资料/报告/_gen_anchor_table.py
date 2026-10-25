@@ -26,10 +26,8 @@ import re
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SIM = r'C:\Users\Administrator\MX\服务端源码\sim'
-if not os.path.isdir(SIM):
-    # 本工作区布局：sim 在 服务端源码/tests/sim（写死单一路径会让扫描直接崩）
-    SIM = r'C:\Users\Administrator\MX\服务端源码\tests\sim'
+PROJECT_ROOT = os.path.dirname(os.path.dirname(HERE))
+SIM = os.path.join(PROJECT_ROOT, '服务端源码', 'tests', 'sim')
 DOC = os.path.join(HERE, '模拟服全链路代码解析.md')
 
 BEGIN = '<!-- BEGIN: 符号索引（脚本生成，勿手改） -->'

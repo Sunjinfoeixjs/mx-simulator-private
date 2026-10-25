@@ -1,0 +1,176 @@
+{
+  "task": "MX-15 GitHub Actions integration local simulation",
+  "status": "PASS_LOCAL_SIMULATION_ONLY",
+  "date": "2026-10-25",
+  "simulation_source_commit": "346914a",
+  "latest_local_ci_commit": "fe46e45",
+  "ci_host": "Local Windows PowerShell simulation, NOT GitHub Actions runner",
+  "p0_baseline": "15dd282",
+  "p67_evidence": "7db4df1",
+  "bootstrap": {
+    "fresh_git_clone": true,
+    "separate_p67_git_clone": true,
+    "client_python_only_copy": true,
+    "native_gui_session_captured": false
+  },
+  "reports": {
+    "selftest": {
+      "status": "PASS",
+      "step_count": 0,
+      "steps": [],
+      "evidence_report_sha256": "e1b1e280f927e9735b5e56f1f18445b138137cf6b3262baf9043c74ba20d63d5"
+    },
+    "lint": {
+      "status": "PASS_WITH_NATIVE_GUI_NOT_TESTED",
+      "step_count": 4,
+      "steps": [
+        {
+          "name": "mx12_strict_json_and_123_134_baseline",
+          "status": "PASS",
+          "exit_code": 0,
+          "log_sha256": "57ecd07c2fc7812135dc8dd8d7331a99c4776972ccb102dc4d8ed6ae0ebbfb10"
+        },
+        {
+          "name": "mx12_negative_unit_tests",
+          "status": "PASS",
+          "exit_code": 0,
+          "log_sha256": "d2d40c0091a6965d6904bec948f9de17dbddee87da52a79aa4ad970bc8d77dd5"
+        },
+        {
+          "name": "s2c_44_160_physical_send_evidence",
+          "status": "PASS",
+          "exit_code": 0,
+          "log_sha256": "f844844586efafed603c07e737b2b1a8412126040dc87d144ab75a3f225b549f"
+        },
+        {
+          "name": "mx25_gui_matrix_not_tested",
+          "status": "PASS",
+          "exit_code": 0,
+          "log_sha256": "7ee982f9b40213cdbed307e227f69f8b97f531ed437c3ed987b74814716fa70c"
+        }
+      ],
+      "evidence_report_sha256": "4f5c835370b3f89bbbfc05c7236549d5f36b6061f4f646ba796176ad06fe3924"
+    },
+    "incremental": {
+      "status": "PASS_WITH_NATIVE_GUI_NOT_TESTED",
+      "step_count": 5,
+      "steps": [
+        {
+          "name": "mx12_strict_json_and_123_134_baseline",
+          "status": "PASS",
+          "exit_code": 0,
+          "log_sha256": "57ecd07c2fc7812135dc8dd8d7331a99c4776972ccb102dc4d8ed6ae0ebbfb10"
+        },
+        {
+          "name": "mx12_negative_unit_tests",
+          "status": "PASS",
+          "exit_code": 0,
+          "log_sha256": "da6ffcee4a5aab3f1fedf14184276aa1d7b00fd77fe888477304f20e4cc8262d"
+        },
+        {
+          "name": "s2c_44_160_physical_send_evidence",
+          "status": "PASS",
+          "exit_code": 0,
+          "log_sha256": "f844844586efafed603c07e737b2b1a8412126040dc87d144ab75a3f225b549f"
+        },
+        {
+          "name": "mx25_gui_matrix_not_tested",
+          "status": "PASS",
+          "exit_code": 0,
+          "log_sha256": "7ee982f9b40213cdbed307e227f69f8b97f531ed437c3ed987b74814716fa70c"
+        },
+        {
+          "name": "incremental__stats",
+          "status": "PASS",
+          "exit_code": 0,
+          "log_sha256": "d5e661b361ec69d2268b987ec6a97249b3170b1a80d34477f832c79d5de03f1a"
+        }
+      ],
+      "evidence_report_sha256": "653470647c46b4d2ef665048b96b64651068226c6550bceac7894b20ac5085df",
+      "selection": {
+        "changed_paths": [
+          "docs/mx15/MX15_LINT_RESULT.json",
+          "docs/mx15/MX15_SELFTEST_RESULT.json"
+        ],
+        "profile": "quality_gate",
+        "regression_selectors": [
+          "_stats"
+        ],
+        "extra_socket_tests": [],
+        "singleplayer": false,
+        "full_run_required_before_merge": true
+      }
+    },
+    "full": {
+      "status": "PASS_WITH_NATIVE_GUI_NOT_TESTED",
+      "step_count": 6,
+      "steps": [
+        {
+          "name": "mx12_strict_json_and_123_134_baseline",
+          "status": "PASS",
+          "exit_code": 0,
+          "log_sha256": "57ecd07c2fc7812135dc8dd8d7331a99c4776972ccb102dc4d8ed6ae0ebbfb10"
+        },
+        {
+          "name": "mx12_negative_unit_tests",
+          "status": "PASS",
+          "exit_code": 0,
+          "log_sha256": "d2d40c0091a6965d6904bec948f9de17dbddee87da52a79aa4ad970bc8d77dd5"
+        },
+        {
+          "name": "s2c_44_160_physical_send_evidence",
+          "status": "PASS",
+          "exit_code": 0,
+          "log_sha256": "f844844586efafed603c07e737b2b1a8412126040dc87d144ab75a3f225b549f"
+        },
+        {
+          "name": "mx25_gui_matrix_not_tested",
+          "status": "PASS",
+          "exit_code": 0,
+          "log_sha256": "7ee982f9b40213cdbed307e227f69f8b97f531ed437c3ed987b74814716fa70c"
+        },
+        {
+          "name": "full_original_65",
+          "status": "PASS",
+          "exit_code": 0,
+          "log_sha256": "05a143152d2293de5d10e6815c3834d0a929baa95884dbd9ce3a6fe47bb6631e"
+        },
+        {
+          "name": "singleplayer_twice_clean",
+          "status": "PASS",
+          "exit_code": 0,
+          "log_sha256": "78e0bd859a3aa8bcec92a1cf9531645cc211fb50e6f294448bf78dd200a2f1ec"
+        }
+      ],
+      "evidence_report_sha256": "c46e1914b9fe3b828ce2fef06de4e8b4befd67ff0dc0528c1badfd694bbfae03",
+      "regression": {
+        "steps_total": 65,
+        "steps_passed": 65,
+        "steps_failed": 0,
+        "mode": "full"
+      }
+    }
+  },
+  "singleplayer_repeat": 2,
+  "singleplayer_runs": [
+    {
+      "run": 1,
+      "status": "PASS",
+      "exit_code": 0,
+      "all_25_assertions_passed": true
+    },
+    {
+      "run": 2,
+      "status": "PASS",
+      "exit_code": 0,
+      "all_25_assertions_passed": true
+    }
+  ],
+  "simulation_log_sha256": "ccfd9250355e29a61117e1ab7b4cb895e10f77ff5c06af14ca4309489551a4df",
+  "git_remote_mx_repo_configured": false,
+  "github_actions_workflow_pushed": false,
+  "github_windows_runner_registered": false,
+  "github_protected_branch_checks_activated": false,
+  "original_native_client_parse": "NOT_TESTED",
+  "caveat": "The latest local commit changes only the unknown-delta incremental selector from an incidental gate test to conservative --fast; this precise selector path was statically verified but was not rerun in the local full CI simulation; original full 65 suite passed."
+}

@@ -1,0 +1,9 @@
+{
+  "status": "NOT_TESTED",
+  "verified_routes": 0,
+  "reason": "Same-session physical-send and native-GUI decoder return events are both required",
+  "required_files": [
+    "C:\\Users\\Administrator\\MX-mx13\\docs\\mx13\\native_gui_live\\server_physical_sent.jsonl",
+    "C:\\Users\\Administrator\\MX-mx13\\docs\\mx13\\native_gui_live\\native_client_parser.jsonl"
+  ]
+}

@@ -1,0 +1,18 @@
+﻿[
+    {
+        "exit_code":  0,
+        "name":  "_test_bus.py"
+    },
+    {
+        "exit_code":  0,
+        "name":  "_test_dispatch.py"
+    },
+    {
+        "exit_code":  0,
+        "name":  "_test_multisession.py"
+    },
+    {
+        "exit_code":  0,
+        "name":  "_test_server_stop.py"
+    }
+]

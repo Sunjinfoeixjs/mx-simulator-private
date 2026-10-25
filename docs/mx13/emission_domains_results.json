@@ -1,0 +1,221 @@
+{
+  "test": "mx13_P0_real_TCP_quest_pet_craft_trade",
+  "status": "PASS",
+  "physical_successful_frames": 86,
+  "unique_routes": 29,
+  "route_ids": [
+    "R001",
+    "R002",
+    "R003",
+    "R007",
+    "R009",
+    "R010",
+    "R011",
+    "R014",
+    "R039",
+    "R072",
+    "R073",
+    "R075",
+    "R079",
+    "R089",
+    "R091",
+    "R092",
+    "R097",
+    "R100",
+    "R109",
+    "R114",
+    "R117",
+    "R119",
+    "R122",
+    "R123",
+    "R126",
+    "R134",
+    "R140",
+    "R156",
+    "R157"
+  ],
+  "unmapped": 0,
+  "traces": {
+    "world": [
+      16,
+      18,
+      19,
+      17,
+      17,
+      17,
+      17,
+      17,
+      17,
+      17,
+      17,
+      17,
+      17,
+      17,
+      17,
+      17,
+      17,
+      65,
+      65,
+      65,
+      65,
+      65,
+      65,
+      65,
+      65,
+      65,
+      65,
+      65,
+      65,
+      65,
+      65,
+      65,
+      65,
+      65,
+      96,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      105,
+      97
+    ],
+    "task_ids_before": [],
+    "quest_list": {
+      "C2S": 48,
+      "S2C_received": [
+        152,
+        72
+      ],
+      "send_events_snapshot": 2,
+      "snapshot_note": "Asynchronous observer event append can follow receiver read; authoritative count is post-stop JSONL"
+    },
+    "pet_ids": [
+      1001
+    ],
+    "pet_view": {
+      "C2S": 129,
+      "S2C_received": [
+        48,
+        49,
+        53,
+        50,
+        33,
+        33,
+        33,
+        33,
+        33,
+        33,
+        33,
+        33,
+        33,
+        33,
+        51
+      ],
+      "send_events_snapshot": 58,
+      "snapshot_note": "Asynchronous observer event append can follow receiver read; authoritative count is post-stop JSONL"
+    },
+    "craft_details": {
+      "C2S": 101,
+      "S2C_received": [
+        49,
+        151
+      ],
+      "send_events_snapshot": 2,
+      "snapshot_note": "Asynchronous observer event append can follow receiver read; authoritative count is post-stop JSONL"
+    },
+    "craft_cost": {
+      "C2S": 104,
+      "S2C_received": [
+        155
+      ],
+      "send_events_snapshot": 1,
+      "snapshot_note": "Asynchronous observer event append can follow receiver read; authoritative count is post-stop JSONL"
+    },
+    "minerals": {
+      "C2S": 78,
+      "S2C_received": [
+        87
+      ],
+      "send_events_snapshot": 1,
+      "snapshot_note": "Asynchronous observer event append can follow receiver read; authoritative count is post-stop JSONL"
+    },
+    "trade_center": {
+      "C2S": 112,
+      "S2C_received": [
+        152
+      ],
+      "send_events_snapshot": 1,
+      "snapshot_note": "Asynchronous observer event append can follow receiver read; authoritative count is post-stop JSONL"
+    },
+    "merchant_look": {
+      "C2S": 96,
+      "S2C_received": [
+        152
+      ],
+      "send_events_snapshot": 1,
+      "snapshot_note": "Asynchronous observer event append can follow receiver read; authoritative count is post-stop JSONL"
+    },
+    "quest_accept": {
+      "C2S": 98,
+      "S2C_received": [
+        72
+      ],
+      "send_events_snapshot": 1,
+      "snapshot_note": "Asynchronous observer event append can follow receiver read; authoritative count is post-stop JSONL"
+    },
+    "task_ids_after_accept": [
+      1
+    ],
+    "quest_detail": {
+      "C2S": 100,
+      "S2C_received": [
+        72
+      ],
+      "send_events_snapshot": 1,
+      "snapshot_note": "Asynchronous observer event append can follow receiver read; authoritative count is post-stop JSONL"
+    },
+    "merchant_open_shop": {
+      "C2S": 98,
+      "S2C_received": [
+        152,
+        147
+      ],
+      "send_events_snapshot": 1,
+      "snapshot_note": "Asynchronous observer event append can follow receiver read; authoritative count is post-stop JSONL"
+    },
+    "shop_open_requested": true,
+    "quest_giveup": {
+      "C2S": 49,
+      "S2C_received": [
+        73
+      ],
+      "send_events_snapshot": 2,
+      "snapshot_note": "Asynchronous observer event append can follow receiver read; authoritative count is post-stop JSONL"
+    },
+    "craft_fixture_material_id": 9001,
+    "craft_complete": {
+      "C2S": 102,
+      "S2C_received": [
+        33,
+        34,
+        17,
+        17,
+        65,
+        33,
+        164,
+        160
+      ],
+      "send_events_snapshot": 1,
+      "snapshot_note": "Asynchronous observer event append can follow receiver read; authoritative count is post-stop JSONL"
+    },
+    "craft_result": {
+      "shape": 25201,
+      "iid": 9002,
+      "in_inventory": true
+    }
+  }
+}

@@ -1,0 +1,185 @@
+{
+  "json_lint": {
+    "json_entries": 53,
+    "json_unique_opcodes": 17,
+    "json_shared_opcodes": {
+      "23": [
+        "C2SBuyIB",
+        "C2SBuyIB2",
+        "C2SOpenIB"
+      ],
+      "34": [
+        "C2SItemUse",
+        "C2SItemsUse",
+        "C2SItemSummonUse"
+      ],
+      "71": [
+        "C2SSHMove",
+        "C2SPushSH",
+        "C2SPopSH",
+        "C2SSHItemString",
+        "C2SSHSetPwd",
+        "C2SSHPay",
+        "C2SUnlock",
+        "C2SSHClearPwd",
+        "C2SEnterSH",
+        "C2SRentSH",
+        "C2SReNameSH",
+        "C2SUpGradeStoreHouse",
+        "C2SOpenStoreHouse",
+        "C2SNormalToInsure",
+        "C2SInsureToNormal",
+        "C2SArrange"
+      ],
+      "89": [
+        "C2SPutItem",
+        "C2SGetItem",
+        "C2SModifyPrice",
+        "C2SGetShopList",
+        "C2SGetShopIntro",
+        "C2SLookShop",
+        "C2SGetItemInfo",
+        "C2SBuyItem",
+        "C2SSaving",
+        "C2SDraw",
+        "C2SSwithItem",
+        "C2SLock",
+        "C2SUnLock",
+        "C2SSetIntro",
+        "C2SSetAdFee",
+        "C2SChangeType",
+        "C2SSaveSign",
+        "C2SSendShopIdx"
+      ]
+    },
+    "dictionary_sha256": "6329a1b2ddc64b7aeb27bbc6b89e3914b6a538a04162be5da23345fb06901867"
+  },
+  "reconciliation": {
+    "legacy_rows": 123,
+    "legacy_unique_opcodes": 121,
+    "legacy_duplicate_extra_rows": 2,
+    "legacy_duplicate_opcodes": [
+      {
+        "opcode": 174,
+        "entries": [
+          {
+            "name": "C2S_WAR_SUMM_ESCAPE",
+            "line": 119
+          },
+          {
+            "name": "GS2C_CLIENTUI",
+            "line": 120
+          }
+        ]
+      },
+      {
+        "opcode": 181,
+        "entries": [
+          {
+            "name": "GS2C_ZHIDAO",
+            "line": 124
+          },
+          {
+            "name": "C2S_NPC_TJTRADECENTER",
+            "line": 125
+          }
+        ]
+      }
+    ],
+    "net_const_names": 138,
+    "used_const_names": 136,
+    "active_unique_opcodes": 134,
+    "new_only_opcodes": [
+      {
+        "opcode": 6,
+        "name": "C2GS_PBZLIST"
+      },
+      {
+        "opcode": 21,
+        "name": "C2GS_PLAYER_SYSSWITCH"
+      },
+      {
+        "opcode": 57,
+        "name": "C2GS_NEW_FRIEND"
+      },
+      {
+        "opcode": 58,
+        "name": "C2GS_BEAUTY_VOTE"
+      },
+      {
+        "opcode": 59,
+        "name": "C2GS_ROLESALE"
+      },
+      {
+        "opcode": 61,
+        "name": "C2GS_TIME"
+      },
+      {
+        "opcode": 65,
+        "name": "C2GS_SHOP"
+      },
+      {
+        "opcode": 86,
+        "name": "C2S_TEXT"
+      },
+      {
+        "opcode": 90,
+        "name": "C2GS_ZHIDAO"
+      },
+      {
+        "opcode": 91,
+        "name": "C2GS_CHILD"
+      },
+      {
+        "opcode": 92,
+        "name": "C2GS_BAIKE"
+      },
+      {
+        "opcode": 93,
+        "name": "C2GS_BLOG"
+      },
+      {
+        "opcode": 94,
+        "name": "C2GS_SALE"
+      },
+      {
+        "opcode": 135,
+        "name": "C2GS_RIDE"
+      },
+      {
+        "opcode": 155,
+        "name": "C2GS_LOOKFOR_TEAM"
+      }
+    ],
+    "old_only_opcodes": [
+      {
+        "opcode": 24,
+        "entries": [
+          {
+            "name": "GS2C_PLAYER_IB",
+            "line": 24
+          }
+        ]
+      },
+      {
+        "opcode": 114,
+        "entries": [
+          {
+            "name": "C2S_NPC_PETADOPT",
+            "line": 79
+          }
+        ]
+      }
+    ],
+    "net_py_sha256": "98929e57e440d40950a8b530c3ec006eeb5999b500eb732495e513534699aa31",
+    "client_python_file_count": 484,
+    "client_source_digest_sha256": "59d4db486e6afd8c312fe32b8349d45bb18f0eb7c001fab8fe67d76d294c3785",
+    "accounting": {
+      "active_minus_legacy_rows": 11,
+      "new_only_count": 15,
+      "old_only_count": 2,
+      "duplicate_extra_count": 2,
+      "explained_delta": 11
+    }
+  }
+}

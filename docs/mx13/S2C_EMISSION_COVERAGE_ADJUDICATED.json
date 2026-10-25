@@ -1,0 +1,3517 @@
+{
+  "schema": 1,
+  "task": "MX-28",
+  "metric": "verified_successful_socket_sendall_unique_routes",
+  "status": "PASS_EMISSION_ONLY",
+  "baseline": "p0-accepted/15dd282",
+  "denominator": 160,
+  "accepted_numerator": 44,
+  "accepted_coverage_percent": 27.5,
+  "previously_accepted_numerator": 36,
+  "newly_admitted_routes": 8,
+  "not_observed": 116,
+  "groups": {
+    "BOTH_PASS": 30,
+    "NOT_TESTED": 116,
+    "MX13_PASS": 6,
+    "P67_PASS": 8
+  },
+  "gui_parse_status": "NOT_TESTED",
+  "gui_parse_accepted": null,
+  "p67_overall_test_status": "PARTIAL",
+  "p67_failed_test": "_test_singleplayer",
+  "p67_failed_test_events_excluded": 67,
+  "p67_send_failures_excluded": 1,
+  "p67_outside_route_registry": {
+    "250": 6
+  },
+  "p67_pass_test_frames": 1474,
+  "p67_mapped_pass_test_frames": 1468,
+  "mx13_pass_frames": 251,
+  "p67_original_test_receipts": {
+    "_e2e_m4": {
+      "status": "PASS",
+      "success_frames_in_original_test_log": 210,
+      "receipt_sha256": "4cc77d5fdfa1d60f89ee85f029497b3d30e19136f5cf51f41ef710853f2ac63e",
+      "original_events_sha256": "4484e12321cd73b25addb17c1f50229ac0968c2958807e0dff84101ff9d1c8fc"
+    },
+    "_e2e_m5": {
+      "status": "PASS",
+      "success_frames_in_original_test_log": 423,
+      "receipt_sha256": "7bf93cf573f67847f017f5e9b971a87fd6fbd14b8a010cf0cab930e8090a9c7c",
+      "original_events_sha256": "c175757ec40f369b61cbf079d4388c640359a40e8f3b6ac7aee7b12fbb9232ac"
+    },
+    "_e2e_m7": {
+      "status": "PASS",
+      "success_frames_in_original_test_log": 112,
+      "receipt_sha256": "630accad71f34a9c36d82ce57ab13cda22a5646d7d05317a42b83fe3810274aa",
+      "original_events_sha256": "522305cede91750e88fda6120ea2b3bf0a9546c9655efe91591a352b09577e62"
+    },
+    "_e2e_m9": {
+      "status": "PASS",
+      "success_frames_in_original_test_log": 76,
+      "receipt_sha256": "fafc35b3fb7abd456b9e0f1b57141a98f68bb230c98a2f60fe0191ac9a1812ce",
+      "original_events_sha256": "504fb4291bdc716e04c5bd57da06b6140da6afed006793b19c3bf191f2adbaf7"
+    },
+    "_e2e_m11": {
+      "status": "PASS",
+      "success_frames_in_original_test_log": 9,
+      "receipt_sha256": "32efb11dc8b1cf68e9af0aed17b6e8f6d4c175ad4f37385cc86c1f8547660f20",
+      "original_events_sha256": "ee022a12ee41acac11dd4083fa2b211262c8fff6a5825c198bb60e34663f116e"
+    },
+    "_test_multisession": {
+      "status": "PASS",
+      "success_frames_in_original_test_log": 223,
+      "receipt_sha256": "b210231b067f16b3f57cb586965e559285bacc5845898d91029223647a382608",
+      "original_events_sha256": "ae834397b55c237de462b2296ec63ca0d74320df43ec647720e8a2ae972c92f0"
+    },
+    "_test_singleplayer": {
+      "status": "FAIL",
+      "success_frames_in_original_test_log": 67,
+      "receipt_sha256": "aa1fdb24ee747ceb3f0801402749e505d9b0d7ca8ce695a23d2764e024efe61e",
+      "original_events_sha256": "7147578b0ed4c69de9172b1e438f088e544e27c14e7c37816453dab894677f0a"
+    },
+    "_test_bus": {
+      "status": "PASS",
+      "success_frames_in_original_test_log": 126,
+      "receipt_sha256": "803fbb50d854fc4dfa35b256c37ae0afd2c6a49ac1933cd7fa14e3d865d4dce9",
+      "original_events_sha256": "402e7fc674a38a45eac1ca55bb3377530637bc35e1e8c64650b1064fa941218e"
+    },
+    "_test_war2": {
+      "status": "PASS",
+      "success_frames_in_original_test_log": 177,
+      "receipt_sha256": "028c7328b592145080db64564e2607f8fdc4a241f085d0ccdf0c1a8a72c8ec55",
+      "original_events_sha256": "1768f0de2d147b6372df88fd54d14301b222d995a33e12e6428cebc2d62068b3"
+    },
+    "_test_tap": {
+      "status": "PASS",
+      "success_frames_in_original_test_log": 118,
+      "receipt_sha256": "b52b3430b87e10274b4ef38d85d1ddd98d89a472c79ff60d2a2ad94b93915a6a",
+      "original_events_sha256": "ea4e394e3c84514643a3b5a42c08d77a16da23cb2db3baab04122e6d88946393"
+    }
+  },
+  "merged_frame_count_not_applicable": true,
+  "source_sha256": {
+    "p67_events": "7e36ce7bf34e47bd75ad7f3015235bc8fdd0e58fdd86fa190bf6a984a2f25b9a",
+    "p67_report": "4225b0524ab6f6a50c9b329884763d97f8eb08b17ba5f975c71039472ed06410",
+    "mx13_report": "bd7faf9a9b8e89997594cbfd9b2de3a89dd3c04f8ed0b1d8346ecc615cf152f1",
+    "mx13_event_files": {
+      "emission_socket_actual.jsonl": "6f391b3b722876f642103cae79e1bb3b17e12f467347ea254466b86174758a49",
+      "emission_domains_actual.jsonl": "69a89b00c82a584e3c354ce0dc1a119244299073ebfe9fba357caafdc6dd0a90",
+      "emission_encrypted_actual.jsonl": "520fc5d47f8bc25d844f0045b62d38981870b0aadec4caeed9d01ebb447de55c"
+    },
+    "client_registry": "98929e57e440d40950a8b530c3ec006eeb5999b500eb732495e513534699aa31",
+    "p0_route_list": "17c57cdb77300bc222d68fbbc9ed154af98763c4e5024b79c51bd7f76807e7e4"
+  },
+  "accepted_p67_only": [
+    {
+      "route_id": "R005",
+      "opcode": 35,
+      "handler": "netitem.S2CItemQuantity",
+      "tag": 1,
+      "emission_status": "P67_PASS",
+      "accepted": true,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 2,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 104,
+          "wire_sha256": "ce5d692e4a73b6267d7e5fb55b42d2133bdf94d0fbcf2f161eee1b943e42bd11"
+        },
+        {
+          "test": "_test_war2",
+          "event_id": 151,
+          "wire_sha256": "ce5d692e4a73b6267d7e5fb55b42d2133bdf94d0fbcf2f161eee1b943e42bd11"
+        }
+      ],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R023",
+      "opcode": 117,
+      "handler": "netwar.S2CWarAttackNormal",
+      "tag": 18,
+      "emission_status": "P67_PASS",
+      "accepted": true,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 91,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_test_tap",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 84,
+          "wire_sha256": "5491e294cf2961bdcf07159e6e83d8e8393e5c264ffed41b807805f22d8e8241"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 89,
+          "wire_sha256": "7435dcda732086c69556ce5d66f825f24ab80514f58f36156f764782c5f855a6"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 94,
+          "wire_sha256": "b2b722d4af65eaa584a865acc60d2a0b6573e46a8afb94989a2a2e11eb2adea5"
+        }
+      ],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R024",
+      "opcode": 119,
+      "handler": "netwar.S2CWarAttackNormalEnd",
+      "tag": 18,
+      "emission_status": "P67_PASS",
+      "accepted": true,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 92,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_test_tap",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 87,
+          "wire_sha256": "d4739dc1247957d4e8653023bc3cb4a9fffade36de0ee0db4dc258b71bc0b91e"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 92,
+          "wire_sha256": "8cd7c591cf0f311462eb3ff4792c9c78c44f82ac9c69c2e7a13703ed1ed1d27b"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 97,
+          "wire_sha256": "1ec143bfd90bc718aa8bb6b383677bf97945e4f34ab3aceb205197d04482d830"
+        }
+      ],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R031",
+      "opcode": 121,
+      "handler": "netwar.S2CWarProtect",
+      "tag": 18,
+      "emission_status": "P67_PASS",
+      "accepted": true,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 1,
+      "p67_test_names": [
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_test_war2",
+          "event_id": 124,
+          "wire_sha256": "974afdc716cdfcced84993de4a693c9f3b98a43337908b9d4352c54bc6280234"
+        }
+      ],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R029",
+      "opcode": 122,
+      "handler": "netwar.S2CWarPerform",
+      "tag": 18,
+      "emission_status": "P67_PASS",
+      "accepted": true,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 6,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m7",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 80,
+          "wire_sha256": "aef31ed5645369b8c97c5b60feb4886ad66b71e7ade242f7bced4f393521f183"
+        },
+        {
+          "test": "_e2e_m7",
+          "event_id": 78,
+          "wire_sha256": "235e91393c7bbd5654db3addfc90e1f4554ed5a7294607d11a5742ce2176b776"
+        },
+        {
+          "test": "_e2e_m7",
+          "event_id": 85,
+          "wire_sha256": "b790832302b09c251ab4550cea9b611c4b4a5f4bc49b17ebea476c5ea9a7a764"
+        }
+      ],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R035",
+      "opcode": 123,
+      "handler": "netwar.S2CWarWState",
+      "tag": 18,
+      "emission_status": "P67_PASS",
+      "accepted": true,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 99,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_test_tap",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 81,
+          "wire_sha256": "1f02c39928035b86de0655da65f9fdc61abf7ac1dec30f50fe816785c73fb9d0"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 85,
+          "wire_sha256": "a41617efdf0ddb44b47a032e665db17ea46d80ef3eccb50bd6f46cc487483459"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 90,
+          "wire_sha256": "a41617efdf0ddb44b47a032e665db17ea46d80ef3eccb50bd6f46cc487483459"
+        }
+      ],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R027",
+      "opcode": 125,
+      "handler": "netwar.S2CWarHPPercent",
+      "tag": 18,
+      "emission_status": "P67_PASS",
+      "accepted": true,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 82,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_test_tap",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 86,
+          "wire_sha256": "8a494b4194a3947dfd4ccf8b045adeeff24293a9165e2da9f7fcfad2271a7101"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 91,
+          "wire_sha256": "f2a7c20ff19b49b9fc1181d9fff0c6bc5cb6039822c1a11f7bc4a07f843f8dad"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 96,
+          "wire_sha256": "39f5c6757b4c096ec6a39072caee9ef8a90ea3b3bc8ef48fb0f0823b4113cbc4"
+        }
+      ],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R131",
+      "opcode": 149,
+      "handler": "netnpc.S2CNpcLearnList",
+      "tag": null,
+      "emission_status": "P67_PASS",
+      "accepted": true,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 1,
+      "p67_test_names": [
+        "_e2e_m9"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m9",
+          "event_id": 73,
+          "wire_sha256": "ad7c5a5ad94177b4b924eeb1cebfd85a7ba72c219d8818c5e9a5859c99f867a8"
+        }
+      ],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    }
+  ],
+  "routes": [
+    {
+      "route_id": "R091",
+      "opcode": 1,
+      "handler": "netlogin.S2CHello",
+      "tag": null,
+      "emission_status": "BOTH_PASS",
+      "accepted": true,
+      "mx13_success_events": 3,
+      "p67_success_events_from_PASS_tests": 14,
+      "p67_test_names": [
+        "_e2e_m11",
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_e2e_m9",
+        "_test_bus",
+        "_test_multisession",
+        "_test_tap",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 1,
+          "wire_sha256": "a7ad7e782b8901afed2e068cbbffe1263fcec4efc03524f528cd453a841acb44"
+        },
+        {
+          "test": "_e2e_m5",
+          "event_id": 1,
+          "wire_sha256": "a7ad7e782b8901afed2e068cbbffe1263fcec4efc03524f528cd453a841acb44"
+        },
+        {
+          "test": "_e2e_m5",
+          "event_id": 307,
+          "wire_sha256": "a7ad7e782b8901afed2e068cbbffe1263fcec4efc03524f528cd453a841acb44"
+        }
+      ],
+      "mx13_frame_sha256_samples": [
+        "a7ad7e782b8901afed2e068cbbffe1263fcec4efc03524f528cd453a841acb44",
+        "a7ad7e782b8901afed2e068cbbffe1263fcec4efc03524f528cd453a841acb44"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R092",
+      "opcode": 2,
+      "handler": "netlogin.S2CLoginAccountInfo",
+      "tag": null,
+      "emission_status": "BOTH_PASS",
+      "accepted": true,
+      "mx13_success_events": 6,
+      "p67_success_events_from_PASS_tests": 21,
+      "p67_test_names": [
+        "_e2e_m11",
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_e2e_m9",
+        "_test_bus",
+        "_test_multisession",
+        "_test_tap",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 2,
+          "wire_sha256": "6d5fb552c29db078e9a74ef0c98e1b197b18a6eec64c4bfc3740f61211422853"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 4,
+          "wire_sha256": "a29e2618d22e09922458ebee01c8d223d81baa98247f2af03e6c88cb1059a82d"
+        },
+        {
+          "test": "_e2e_m5",
+          "event_id": 2,
+          "wire_sha256": "5181b1648e0c8deafede9dc555ace577fb68c884520139ac59d14f0e24c81f09"
+        }
+      ],
+      "mx13_frame_sha256_samples": [
+        "6efcfdcc31dfdd098d82ae071d8b2bbbabd9139a7eab89675e3f0df5ee69f3aa",
+        "347796b1a0744f8646e01939ecc9cbc76779ceb857fa25cf7e96a28a7a685b28"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R100",
+      "opcode": 3,
+      "handler": "netlogin.S2CLoginRoleInfo",
+      "tag": null,
+      "emission_status": "BOTH_PASS",
+      "accepted": true,
+      "mx13_success_events": 3,
+      "p67_success_events_from_PASS_tests": 12,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_e2e_m9",
+        "_test_bus",
+        "_test_multisession",
+        "_test_tap",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 5,
+          "wire_sha256": "2b00f4c2ec5e3c18273c200d4858e35fb786803784d27896a081e408d8852edc"
+        },
+        {
+          "test": "_e2e_m5",
+          "event_id": 5,
+          "wire_sha256": "2b00f4c2ec5e3c18273c200d4858e35fb786803784d27896a081e408d8852edc"
+        },
+        {
+          "test": "_e2e_m5",
+          "event_id": 311,
+          "wire_sha256": "2b00f4c2ec5e3c18273c200d4858e35fb786803784d27896a081e408d8852edc"
+        }
+      ],
+      "mx13_frame_sha256_samples": [
+        "ee4bdef37c8f80f491a25d802d7406393ab74f33098c274dc924356368768295",
+        "148feb75e1b1d1d9d02a19e7774f0a82307878919a5cb486bb4e476f42a296f5"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R099",
+      "opcode": 4,
+      "handler": "netlogin.S2CLoginRoleEnter",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R098",
+      "opcode": 5,
+      "handler": "netlogin.S2CLoginQueue",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R097",
+      "opcode": 6,
+      "handler": "netlogin.S2CLoginPlayerAdd",
+      "tag": null,
+      "emission_status": "BOTH_PASS",
+      "accepted": true,
+      "mx13_success_events": 3,
+      "p67_success_events_from_PASS_tests": 10,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_e2e_m9",
+        "_test_bus",
+        "_test_multisession",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 3,
+          "wire_sha256": "44602a999abbebedf7de0ae1318e4f57e3cb1d67e482a65f9657f7541f3fe4bb"
+        },
+        {
+          "test": "_e2e_m5",
+          "event_id": 3,
+          "wire_sha256": "44602a999abbebedf7de0ae1318e4f57e3cb1d67e482a65f9657f7541f3fe4bb"
+        },
+        {
+          "test": "_e2e_m5",
+          "event_id": 309,
+          "wire_sha256": "44602a999abbebedf7de0ae1318e4f57e3cb1d67e482a65f9657f7541f3fe4bb"
+        }
+      ],
+      "mx13_frame_sha256_samples": [
+        "44602a999abbebedf7de0ae1318e4f57e3cb1d67e482a65f9657f7541f3fe4bb",
+        "44602a999abbebedf7de0ae1318e4f57e3cb1d67e482a65f9657f7541f3fe4bb"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R090",
+      "opcode": 7,
+      "handler": "netlogin.S2CAccountManage",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R094",
+      "opcode": 8,
+      "handler": "netlogin.S2CLoginError",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R095",
+      "opcode": 9,
+      "handler": "netlogin.S2CLoginLocalPW",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R093",
+      "opcode": 10,
+      "handler": "netlogin.S2CLoginDelRole",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R054",
+      "opcode": 11,
+      "handler": "netcommon.S2CCommon",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R041",
+      "opcode": 14,
+      "handler": "blacklist.S2CBlacklist",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R046",
+      "opcode": 15,
+      "handler": "mxgw.S2CTime",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R072",
+      "opcode": 16,
+      "handler": "nethero.S2CPropInit",
+      "tag": null,
+      "emission_status": "BOTH_PASS",
+      "accepted": true,
+      "mx13_success_events": 3,
+      "p67_success_events_from_PASS_tests": 12,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_e2e_m9",
+        "_test_bus",
+        "_test_multisession",
+        "_test_tap",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 6,
+          "wire_sha256": "af7010f2eb7bc628f3d54a3b4904b3db0d6330faf21780f451d59c7e4624d58d"
+        },
+        {
+          "test": "_e2e_m5",
+          "event_id": 6,
+          "wire_sha256": "af7010f2eb7bc628f3d54a3b4904b3db0d6330faf21780f451d59c7e4624d58d"
+        },
+        {
+          "test": "_e2e_m5",
+          "event_id": 312,
+          "wire_sha256": "af7010f2eb7bc628f3d54a3b4904b3db0d6330faf21780f451d59c7e4624d58d"
+        }
+      ],
+      "mx13_frame_sha256_samples": [
+        "70dec856fbdcb8cfed67e7001cb9384b4478acd49f17a2314b08dc048cdd9701",
+        "c9fcd2bd19acb62b6c84ab3a2685d5209455007ec05b05fbdcc456baa06184d3"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R001",
+      "opcode": 17,
+      "handler": "nethero.S2CPropChange",
+      "tag": 1,
+      "emission_status": "BOTH_PASS",
+      "accepted": true,
+      "mx13_success_events": 51,
+      "p67_success_events_from_PASS_tests": 301,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_e2e_m9",
+        "_test_bus",
+        "_test_multisession",
+        "_test_tap",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 9,
+          "wire_sha256": "a3223151ff20d7973ffd94fa0a859b30a296d2aa56a0b9056d000925b91879a0"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 10,
+          "wire_sha256": "8078aab102ebb3a45b27165b35caab26931e113582eb79794e588cb6c65233fa"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 11,
+          "wire_sha256": "23e21484b4f068777ce97b71efea78e31916eba8bb67e96ea060ea199d9e8568"
+        }
+      ],
+      "mx13_frame_sha256_samples": [
+        "a3223151ff20d7973ffd94fa0a859b30a296d2aa56a0b9056d000925b91879a0",
+        "8078aab102ebb3a45b27165b35caab26931e113582eb79794e588cb6c65233fa"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R075",
+      "opcode": 18,
+      "handler": "nethero.S2CPropResist",
+      "tag": null,
+      "emission_status": "BOTH_PASS",
+      "accepted": true,
+      "mx13_success_events": 3,
+      "p67_success_events_from_PASS_tests": 12,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_e2e_m9",
+        "_test_bus",
+        "_test_multisession",
+        "_test_tap",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 7,
+          "wire_sha256": "e15285915869e025fc97ffe98f67c301b940969e3f787c97204cf2c121b1d315"
+        },
+        {
+          "test": "_e2e_m5",
+          "event_id": 7,
+          "wire_sha256": "e15285915869e025fc97ffe98f67c301b940969e3f787c97204cf2c121b1d315"
+        },
+        {
+          "test": "_e2e_m5",
+          "event_id": 313,
+          "wire_sha256": "e15285915869e025fc97ffe98f67c301b940969e3f787c97204cf2c121b1d315"
+        }
+      ],
+      "mx13_frame_sha256_samples": [
+        "e15285915869e025fc97ffe98f67c301b940969e3f787c97204cf2c121b1d315",
+        "e15285915869e025fc97ffe98f67c301b940969e3f787c97204cf2c121b1d315"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R073",
+      "opcode": 19,
+      "handler": "nethero.S2CPropPower",
+      "tag": null,
+      "emission_status": "BOTH_PASS",
+      "accepted": true,
+      "mx13_success_events": 3,
+      "p67_success_events_from_PASS_tests": 12,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_e2e_m9",
+        "_test_bus",
+        "_test_multisession",
+        "_test_tap",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 8,
+          "wire_sha256": "3bb8c6b22add804620d2e0755ab9b0f2cfdc95abd78cb677e04f2e933496b078"
+        },
+        {
+          "test": "_e2e_m5",
+          "event_id": 8,
+          "wire_sha256": "3bb8c6b22add804620d2e0755ab9b0f2cfdc95abd78cb677e04f2e933496b078"
+        },
+        {
+          "test": "_e2e_m5",
+          "event_id": 314,
+          "wire_sha256": "3bb8c6b22add804620d2e0755ab9b0f2cfdc95abd78cb677e04f2e933496b078"
+        }
+      ],
+      "mx13_frame_sha256_samples": [
+        "3bb8c6b22add804620d2e0755ab9b0f2cfdc95abd78cb677e04f2e933496b078",
+        "3bb8c6b22add804620d2e0755ab9b0f2cfdc95abd78cb677e04f2e933496b078"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R146",
+      "opcode": 20,
+      "handler": "netplayer.S2CPropPhoto",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R076",
+      "opcode": 21,
+      "handler": "nethero.S2CPropSwitch",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R074",
+      "opcode": 22,
+      "handler": "nethero.S2CPropRepute",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R077",
+      "opcode": 23,
+      "handler": "nethero.S2CPropXinfa",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R069",
+      "opcode": 25,
+      "handler": "nethero.S2CPlayerCash",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R071",
+      "opcode": 26,
+      "handler": "nethero.S2CPropAdvXinfa",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R155",
+      "opcode": 27,
+      "handler": "nettask.S2CJuqingStatus",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R102",
+      "opcode": 28,
+      "handler": "netmail.S2CDeathInfo",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R040",
+      "opcode": 29,
+      "handler": "banword.S2CBandWord",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R096",
+      "opcode": 30,
+      "handler": "netlogin.S2CLoginMessage",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R083",
+      "opcode": 32,
+      "handler": "netitem.S2CItemKey",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R002",
+      "opcode": 33,
+      "handler": "netitem.S2CItemAdd",
+      "tag": 1,
+      "emission_status": "BOTH_PASS",
+      "accepted": true,
+      "mx13_success_events": 32,
+      "p67_success_events_from_PASS_tests": 110,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_e2e_m9",
+        "_test_bus",
+        "_test_multisession",
+        "_test_tap",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 55,
+          "wire_sha256": "f1ff806c4c3a2e6fb94ffbf2b76abfa49109206b0453dcae7a90010b16d29ee7"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 56,
+          "wire_sha256": "cf602cb791779fe3c4c970310f1e0d82d85bcd26dc0dc38c54224d032539920f"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 57,
+          "wire_sha256": "3560c15528ec579d0d3a84a40a8c0161e6666bb43847a83f53b1b27f4baa0ad5"
+        }
+      ],
+      "mx13_frame_sha256_samples": [
+        "f1ff806c4c3a2e6fb94ffbf2b76abfa49109206b0453dcae7a90010b16d29ee7",
+        "cf602cb791779fe3c4c970310f1e0d82d85bcd26dc0dc38c54224d032539920f"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R003",
+      "opcode": 34,
+      "handler": "netitem.S2CItemDel",
+      "tag": 1,
+      "emission_status": "MX13_PASS",
+      "accepted": true,
+      "mx13_success_events": 1,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [
+        "96824f571f84bdc051a0e6741d53848b15c3b2192983ad34c528d5c75b8eec37"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R005",
+      "opcode": 35,
+      "handler": "netitem.S2CItemQuantity",
+      "tag": 1,
+      "emission_status": "P67_PASS",
+      "accepted": true,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 2,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 104,
+          "wire_sha256": "ce5d692e4a73b6267d7e5fb55b42d2133bdf94d0fbcf2f161eee1b943e42bd11"
+        },
+        {
+          "test": "_test_war2",
+          "event_id": 151,
+          "wire_sha256": "ce5d692e4a73b6267d7e5fb55b42d2133bdf94d0fbcf2f161eee1b943e42bd11"
+        }
+      ],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R004",
+      "opcode": 36,
+      "handler": "netitem.S2CItemPos",
+      "tag": 1,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R082",
+      "opcode": 37,
+      "handler": "netitem.S2CAskBind",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R084",
+      "opcode": 38,
+      "handler": "netitem.S2CItemString",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R142",
+      "opcode": 39,
+      "handler": "netplayer.S2CItemLock",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R103",
+      "opcode": 40,
+      "handler": "netmail.S2CEms",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R101",
+      "opcode": 43,
+      "handler": "netmail.S2CChargeHistory",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R151",
+      "opcode": 45,
+      "handler": "netrolesale.S2CRoleSale",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R009",
+      "opcode": 48,
+      "handler": "netpet.S2CSummonInfo",
+      "tag": 1,
+      "emission_status": "BOTH_PASS",
+      "accepted": true,
+      "mx13_success_events": 5,
+      "p67_success_events_from_PASS_tests": 18,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_e2e_m9",
+        "_test_bus",
+        "_test_multisession",
+        "_test_tap",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 51,
+          "wire_sha256": "260320d9635e783218cd221b9710711e20453ce56fe5ae1a80673db96849a833"
+        },
+        {
+          "test": "_e2e_m5",
+          "event_id": 51,
+          "wire_sha256": "260320d9635e783218cd221b9710711e20453ce56fe5ae1a80673db96849a833"
+        },
+        {
+          "test": "_e2e_m5",
+          "event_id": 357,
+          "wire_sha256": "260320d9635e783218cd221b9710711e20453ce56fe5ae1a80673db96849a833"
+        }
+      ],
+      "mx13_frame_sha256_samples": [
+        "260320d9635e783218cd221b9710711e20453ce56fe5ae1a80673db96849a833",
+        "260320d9635e783218cd221b9710711e20453ce56fe5ae1a80673db96849a833"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R011",
+      "opcode": 49,
+      "handler": "netpet.S2CSummonSkill",
+      "tag": 1,
+      "emission_status": "BOTH_PASS",
+      "accepted": true,
+      "mx13_success_events": 6,
+      "p67_success_events_from_PASS_tests": 15,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_e2e_m9",
+        "_test_bus",
+        "_test_multisession",
+        "_test_tap",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 52,
+          "wire_sha256": "41e24b7cf42c8352dfc44c2af4f9448978da256bdff30187d117cdfc2601566f"
+        },
+        {
+          "test": "_e2e_m5",
+          "event_id": 52,
+          "wire_sha256": "41e24b7cf42c8352dfc44c2af4f9448978da256bdff30187d117cdfc2601566f"
+        },
+        {
+          "test": "_e2e_m5",
+          "event_id": 358,
+          "wire_sha256": "41e24b7cf42c8352dfc44c2af4f9448978da256bdff30187d117cdfc2601566f"
+        }
+      ],
+      "mx13_frame_sha256_samples": [
+        "41e24b7cf42c8352dfc44c2af4f9448978da256bdff30187d117cdfc2601566f",
+        "41e24b7cf42c8352dfc44c2af4f9448978da256bdff30187d117cdfc2601566f"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R007",
+      "opcode": 50,
+      "handler": "netpet.S2CSetFight",
+      "tag": 1,
+      "emission_status": "BOTH_PASS",
+      "accepted": true,
+      "mx13_success_events": 3,
+      "p67_success_events_from_PASS_tests": 11,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_e2e_m9",
+        "_test_bus",
+        "_test_multisession",
+        "_test_tap",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 54,
+          "wire_sha256": "2d78570ee5283f14518077241be5a0ddb51d3b80f733bce313ca32e282b0aba7"
+        },
+        {
+          "test": "_e2e_m5",
+          "event_id": 54,
+          "wire_sha256": "2d78570ee5283f14518077241be5a0ddb51d3b80f733bce313ca32e282b0aba7"
+        },
+        {
+          "test": "_e2e_m5",
+          "event_id": 360,
+          "wire_sha256": "2d78570ee5283f14518077241be5a0ddb51d3b80f733bce313ca32e282b0aba7"
+        }
+      ],
+      "mx13_frame_sha256_samples": [
+        "2d78570ee5283f14518077241be5a0ddb51d3b80f733bce313ca32e282b0aba7",
+        "2d78570ee5283f14518077241be5a0ddb51d3b80f733bce313ca32e282b0aba7"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R140",
+      "opcode": 51,
+      "handler": "netpet.S2CPropView",
+      "tag": null,
+      "emission_status": "MX13_PASS",
+      "accepted": true,
+      "mx13_success_events": 1,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [
+        "8ea2d9a7aef9bfd4b2b613d4ae2714c22e14c5ba5e733b3b3537c69c62bf2efe"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R006",
+      "opcode": 52,
+      "handler": "netpet.S2CPropState",
+      "tag": 1,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R010",
+      "opcode": 53,
+      "handler": "netpet.S2CSummonKey",
+      "tag": 1,
+      "emission_status": "BOTH_PASS",
+      "accepted": true,
+      "mx13_success_events": 5,
+      "p67_success_events_from_PASS_tests": 15,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_e2e_m9",
+        "_test_bus",
+        "_test_multisession",
+        "_test_tap",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 53,
+          "wire_sha256": "7a56cd13844ccb16c58c5b2ac7aac3d38678be7b38df3a7e62880a2738e165fa"
+        },
+        {
+          "test": "_e2e_m5",
+          "event_id": 53,
+          "wire_sha256": "7a56cd13844ccb16c58c5b2ac7aac3d38678be7b38df3a7e62880a2738e165fa"
+        },
+        {
+          "test": "_e2e_m5",
+          "event_id": 359,
+          "wire_sha256": "7a56cd13844ccb16c58c5b2ac7aac3d38678be7b38df3a7e62880a2738e165fa"
+        }
+      ],
+      "mx13_frame_sha256_samples": [
+        "7a56cd13844ccb16c58c5b2ac7aac3d38678be7b38df3a7e62880a2738e165fa",
+        "7a56cd13844ccb16c58c5b2ac7aac3d38678be7b38df3a7e62880a2738e165fa"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R008",
+      "opcode": 54,
+      "handler": "netpet.S2CSummEquip",
+      "tag": 1,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R044",
+      "opcode": 56,
+      "handler": "marriage.S2CMarriage",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R068",
+      "opcode": 58,
+      "handler": "nethero.S2CMobile",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R147",
+      "opcode": 64,
+      "handler": "netplayer.S2CSaleHistory",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R079",
+      "opcode": 65,
+      "handler": "nethero.S2CSkillLevel",
+      "tag": null,
+      "emission_status": "BOTH_PASS",
+      "accepted": true,
+      "mx13_success_events": 52,
+      "p67_success_events_from_PASS_tests": 206,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_e2e_m9",
+        "_test_bus",
+        "_test_multisession",
+        "_test_tap",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 23,
+          "wire_sha256": "550a79dad3e4edf54d7a81f17c4901495853b907196156712bda31a0a369bb54"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 24,
+          "wire_sha256": "17edc561bd887176db3d3063f650372f7879e024619b67c73e41925aa5e052b5"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 25,
+          "wire_sha256": "c4e3b37d59a20f18c9a56a706a593070b13a2eb922fabafa87d2a4d8966c34d8"
+        }
+      ],
+      "mx13_frame_sha256_samples": [
+        "550a79dad3e4edf54d7a81f17c4901495853b907196156712bda31a0a369bb54",
+        "17edc561bd887176db3d3063f650372f7879e024619b67c73e41925aa5e052b5"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R143",
+      "opcode": 66,
+      "handler": "netplayer.S2CPlayerInfo",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R064",
+      "opcode": 67,
+      "handler": "nethero.S2CDesignAdd",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R065",
+      "opcode": 68,
+      "handler": "nethero.S2CDesignDel",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R059",
+      "opcode": 69,
+      "handler": "netfriend.S2CFriendAdd",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R060",
+      "opcode": 70,
+      "handler": "netfriend.S2CFriendDel",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R058",
+      "opcode": 71,
+      "handler": "netfriend.S2CFriend",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R156",
+      "opcode": 72,
+      "handler": "nettask.S2CTaskAdd",
+      "tag": null,
+      "emission_status": "BOTH_PASS",
+      "accepted": true,
+      "mx13_success_events": 3,
+      "p67_success_events_from_PASS_tests": 4,
+      "p67_test_names": [
+        "_e2e_m11",
+        "_e2e_m4"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 208,
+          "wire_sha256": "2cdbf5e346278cbc2326b12eb03bc57ea05df1ca1a30093ea3c3fbd3a2b39a79"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 210,
+          "wire_sha256": "2cdbf5e346278cbc2326b12eb03bc57ea05df1ca1a30093ea3c3fbd3a2b39a79"
+        },
+        {
+          "test": "_e2e_m11",
+          "event_id": 5,
+          "wire_sha256": "2cdbf5e346278cbc2326b12eb03bc57ea05df1ca1a30093ea3c3fbd3a2b39a79"
+        }
+      ],
+      "mx13_frame_sha256_samples": [
+        "2cdbf5e346278cbc2326b12eb03bc57ea05df1ca1a30093ea3c3fbd3a2b39a79",
+        "2cdbf5e346278cbc2326b12eb03bc57ea05df1ca1a30093ea3c3fbd3a2b39a79"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R157",
+      "opcode": 73,
+      "handler": "nettask.S2CTaskRemove",
+      "tag": null,
+      "emission_status": "BOTH_PASS",
+      "accepted": true,
+      "mx13_success_events": 1,
+      "p67_success_events_from_PASS_tests": 1,
+      "p67_test_names": [
+        "_e2e_m11"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m11",
+          "event_id": 8,
+          "wire_sha256": "c76c6ee5e8946801af2be3f93e188d87f9fa1b272b3850f0b47626c32e78b213"
+        }
+      ],
+      "mx13_frame_sha256_samples": [
+        "c76c6ee5e8946801af2be3f93e188d87f9fa1b272b3850f0b47626c32e78b213"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R152",
+      "opcode": 74,
+      "handler": "netstate.S2CStateAdd",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R153",
+      "opcode": 75,
+      "handler": "netstate.S2CStateRemove",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R063",
+      "opcode": 77,
+      "handler": "nethero.S2CBlock",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R139",
+      "opcode": 79,
+      "handler": "netpet.S2CPetRefine",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R160",
+      "opcode": 80,
+      "handler": "room.S2CHouse",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R154",
+      "opcode": 81,
+      "handler": "netstorehouse.S2CStoreHouse",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R158",
+      "opcode": 82,
+      "handler": "netteam.S2CPlayerTeam",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R144",
+      "opcode": 83,
+      "handler": "netplayer.S2CPlayerOnSale",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R061",
+      "opcode": 84,
+      "handler": "netgroup.S2CGroup",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R112",
+      "opcode": 85,
+      "handler": "netmap.S2CMapDel",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R121",
+      "opcode": 86,
+      "handler": "netmap.S2CMapTrack",
+      "tag": null,
+      "emission_status": "BOTH_PASS",
+      "accepted": true,
+      "mx13_success_events": 1,
+      "p67_success_events_from_PASS_tests": 21,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_test_multisession",
+        "_test_tap",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 65,
+          "wire_sha256": "e7920102e819beec71fea8d8f01bd15dd1c0264ea4d0dd0b388df279e6ad19b2"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 66,
+          "wire_sha256": "b33b17f47a76d701231b9fed1727b35436c7ec91daacfbf21027476dac3fe7ed"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 67,
+          "wire_sha256": "790ac29404b39ea9738ed3ea631d698e7aa98e45fc3217c18f5d28578f158c05"
+        }
+      ],
+      "mx13_frame_sha256_samples": [
+        "b691c34315cc9c9c6e5c4b35dd061f0d9ac9564828f964068e307e8046b734ca"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R089",
+      "opcode": 87,
+      "handler": "netliving.S2CProduce",
+      "tag": null,
+      "emission_status": "MX13_PASS",
+      "accepted": true,
+      "mx13_success_events": 2,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [
+        "31bee4fcbb89ec1dc7f92ac551c53cc7ae2b72a6037d303683b2a6b76462cd53",
+        "a552e97487ba9042070afefbc267bf58a1ff632ec1b418da7da1834ddb67dd17"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R088",
+      "opcode": 88,
+      "handler": "netliving.S2CMiniGame",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R138",
+      "opcode": 89,
+      "handler": "netopenui.S2COpenUI",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R086",
+      "opcode": 90,
+      "handler": "netliving.S2CFactory",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R042",
+      "opcode": 91,
+      "handler": "district.S2CDistrict",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R149",
+      "opcode": 92,
+      "handler": "netresident.S2CResident",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R141",
+      "opcode": 93,
+      "handler": "netplayer.S2CDianka",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R145",
+      "opcode": 94,
+      "handler": "netplayer.S2CPlayerTrade",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R062",
+      "opcode": 95,
+      "handler": "netgroup.S2CStock",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R117",
+      "opcode": 96,
+      "handler": "netmap.S2CMapSceneM",
+      "tag": null,
+      "emission_status": "BOTH_PASS",
+      "accepted": true,
+      "mx13_success_events": 4,
+      "p67_success_events_from_PASS_tests": 17,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_e2e_m9",
+        "_test_bus",
+        "_test_multisession",
+        "_test_tap",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 40,
+          "wire_sha256": "a66dc40d74834483d2db5c941a7558287148c3857caacd67ea1116bafc154318"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 196,
+          "wire_sha256": "0087c9b93602ae7a25f5a7fc2d01f7eafb6f15ad0a5e5fb56d140958d601608c"
+        },
+        {
+          "test": "_e2e_m5",
+          "event_id": 40,
+          "wire_sha256": "a66dc40d74834483d2db5c941a7558287148c3857caacd67ea1116bafc154318"
+        }
+      ],
+      "mx13_frame_sha256_samples": [
+        "a66dc40d74834483d2db5c941a7558287148c3857caacd67ea1116bafc154318",
+        "53cf9c521a1570e28d01abd79098dc20855ac22208963315ca35a3615f30ca09"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R114",
+      "opcode": 97,
+      "handler": "netmap.S2CMapGotoM",
+      "tag": null,
+      "emission_status": "BOTH_PASS",
+      "accepted": true,
+      "mx13_success_events": 4,
+      "p67_success_events_from_PASS_tests": 17,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_e2e_m9",
+        "_test_bus",
+        "_test_multisession",
+        "_test_tap",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 50,
+          "wire_sha256": "559d23f346c3a37aa3c9ede6e50018bd3bb1c8033dc958de1e8a5f0e5979db94"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 205,
+          "wire_sha256": "0cbb9fa50d50c6084ade93d35d791738b47826162f6bceb7ba4c2bfbe4632fb0"
+        },
+        {
+          "test": "_e2e_m5",
+          "event_id": 50,
+          "wire_sha256": "559d23f346c3a37aa3c9ede6e50018bd3bb1c8033dc958de1e8a5f0e5979db94"
+        }
+      ],
+      "mx13_frame_sha256_samples": [
+        "559d23f346c3a37aa3c9ede6e50018bd3bb1c8033dc958de1e8a5f0e5979db94",
+        "9917b44dd0d3cedeb18bb88ce3387006a5c506a925516d8b3a57289c2ae431a5"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R110",
+      "opcode": 98,
+      "handler": "netmap.S2CMapAddPlayer",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R109",
+      "opcode": 99,
+      "handler": "netmap.S2CMapAddNpc",
+      "tag": null,
+      "emission_status": "BOTH_PASS",
+      "accepted": true,
+      "mx13_success_events": 32,
+      "p67_success_events_from_PASS_tests": 124,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_e2e_m9",
+        "_test_bus",
+        "_test_multisession",
+        "_test_tap",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 41,
+          "wire_sha256": "1ffab020e09773c13d9bba51b142d46495876a8a8d14fb3973551c114f1181ce"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 42,
+          "wire_sha256": "26b3a5096083ab3f72860cd36699a6e868dc234d32cced5969f2939158101926"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 43,
+          "wire_sha256": "c1e04fa768f81b635f80caaedd4375f6d9db0ef3c45c3d1aede09429b589ffec"
+        }
+      ],
+      "mx13_frame_sha256_samples": [
+        "1ffab020e09773c13d9bba51b142d46495876a8a8d14fb3973551c114f1181ce",
+        "26b3a5096083ab3f72860cd36699a6e868dc234d32cced5969f2939158101926"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R108",
+      "opcode": 100,
+      "handler": "netmap.S2CMapAddGoods",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R116",
+      "opcode": 101,
+      "handler": "netmap.S2CMapRefreshNpcSign",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R113",
+      "opcode": 102,
+      "handler": "netmap.S2CMapEffect",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R120",
+      "opcode": 103,
+      "handler": "netmap.S2CMapTeam",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R111",
+      "opcode": 104,
+      "handler": "netmap.S2CMapAddon",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R119",
+      "opcode": 105,
+      "handler": "netmap.S2CMapSummon",
+      "tag": null,
+      "emission_status": "BOTH_PASS",
+      "accepted": true,
+      "mx13_success_events": 4,
+      "p67_success_events_from_PASS_tests": 15,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_e2e_m9",
+        "_test_bus",
+        "_test_multisession",
+        "_test_tap",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 49,
+          "wire_sha256": "83378bc3cbaa9448099c2e1f834cee44e1891b56dbd1376b9caa347f1c48301e"
+        },
+        {
+          "test": "_e2e_m5",
+          "event_id": 49,
+          "wire_sha256": "83378bc3cbaa9448099c2e1f834cee44e1891b56dbd1376b9caa347f1c48301e"
+        },
+        {
+          "test": "_e2e_m5",
+          "event_id": 355,
+          "wire_sha256": "83378bc3cbaa9448099c2e1f834cee44e1891b56dbd1376b9caa347f1c48301e"
+        }
+      ],
+      "mx13_frame_sha256_samples": [
+        "83378bc3cbaa9448099c2e1f834cee44e1891b56dbd1376b9caa347f1c48301e",
+        "83378bc3cbaa9448099c2e1f834cee44e1891b56dbd1376b9caa347f1c48301e"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R106",
+      "opcode": 106,
+      "handler": "netmap.S2CChangeShape",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R118",
+      "opcode": 107,
+      "handler": "netmap.S2CMapStore",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R115",
+      "opcode": 108,
+      "handler": "netmap.S2CMapHide",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R045",
+      "opcode": 111,
+      "handler": "mask.S2CADDMASK",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R018",
+      "opcode": 112,
+      "handler": "netwar.S2CWarStart",
+      "tag": 16,
+      "emission_status": "BOTH_PASS",
+      "accepted": true,
+      "mx13_success_events": 1,
+      "p67_success_events_from_PASS_tests": 8,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_test_multisession",
+        "_test_tap",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 74,
+          "wire_sha256": "eee5476dd25fad8d5dc8d4e64f671087d5b0e57def8ef2ab67c7c51ff733efab"
+        },
+        {
+          "test": "_e2e_m5",
+          "event_id": 74,
+          "wire_sha256": "20bad090d99720a4a6f5650a5aecc059e2eaa6bdf4670d2631f209d434b5b4ed"
+        },
+        {
+          "test": "_e2e_m5",
+          "event_id": 380,
+          "wire_sha256": "20bad090d99720a4a6f5650a5aecc059e2eaa6bdf4670d2631f209d434b5b4ed"
+        }
+      ],
+      "mx13_frame_sha256_samples": [
+        "668c68d1797bfed4fa022eafd0b316d73c16c2ace85a1a37eef70a6c67b5ac1e"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R026",
+      "opcode": 113,
+      "handler": "netwar.S2CWarEnd",
+      "tag": 18,
+      "emission_status": "BOTH_PASS",
+      "accepted": true,
+      "mx13_success_events": 1,
+      "p67_success_events_from_PASS_tests": 4,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_test_multisession"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 195,
+          "wire_sha256": "47363549c1352b112960313bdf1cadb91e9849e2301c2573a6fefd9a02aebcb9"
+        },
+        {
+          "test": "_e2e_m5",
+          "event_id": 302,
+          "wire_sha256": "47363549c1352b112960313bdf1cadb91e9849e2301c2573a6fefd9a02aebcb9"
+        },
+        {
+          "test": "_e2e_m7",
+          "event_id": 94,
+          "wire_sha256": "47363549c1352b112960313bdf1cadb91e9849e2301c2573a6fefd9a02aebcb9"
+        }
+      ],
+      "mx13_frame_sha256_samples": [
+        "47363549c1352b112960313bdf1cadb91e9849e2301c2573a6fefd9a02aebcb9"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R034",
+      "opcode": 114,
+      "handler": "netwar.S2CWarTurn",
+      "tag": 18,
+      "emission_status": "BOTH_PASS",
+      "accepted": true,
+      "mx13_success_events": 1,
+      "p67_success_events_from_PASS_tests": 45,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_test_multisession",
+        "_test_tap",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 79,
+          "wire_sha256": "62cf380adf2397acbac870e0f74f3df5a32dfffff38267c87d035e292d4c7acd"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 83,
+          "wire_sha256": "70ec376d2da583e32955dc0fcf96ef0a851479e7c538eff46b0bd46a0306590f"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 99,
+          "wire_sha256": "62cf380adf2397acbac870e0f74f3df5a32dfffff38267c87d035e292d4c7acd"
+        }
+      ],
+      "mx13_frame_sha256_samples": [
+        "62cf380adf2397acbac870e0f74f3df5a32dfffff38267c87d035e292d4c7acd"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R020",
+      "opcode": 115,
+      "handler": "netwar.S2CWarAdd",
+      "tag": 18,
+      "emission_status": "BOTH_PASS",
+      "accepted": true,
+      "mx13_success_events": 3,
+      "p67_success_events_from_PASS_tests": 40,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_test_multisession",
+        "_test_tap",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 75,
+          "wire_sha256": "2cb187970410f637405946f180744d36824ea8d84b8dc4a4fee0bf6c518ce6b2"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 76,
+          "wire_sha256": "9bd9f2b13ef5b8cf21d79af6e264a2256a70895dbcef88364bae7a26e123ad0d"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 77,
+          "wire_sha256": "e0e6c3abcf420599f30da6cc1dcdc5b1b0406abe68724873b0cd6d50031e719a"
+        }
+      ],
+      "mx13_frame_sha256_samples": [
+        "7c5a18be4b6e9c6828f49c6aa369363152b4665c9ad5592ec48cf6d9d2adaa3a",
+        "b2362833097c91195cee03a28e4e2fd80521aaebdb762213a3fe6be335aea826"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R025",
+      "opcode": 116,
+      "handler": "netwar.S2CWarDel",
+      "tag": 18,
+      "emission_status": "BOTH_PASS",
+      "accepted": true,
+      "mx13_success_events": 1,
+      "p67_success_events_from_PASS_tests": 13,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_test_multisession",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 142,
+          "wire_sha256": "426a3b86d65a0ec856aa028f8cd022a29b9d73b7dab4b0b5cc51bfd08a93f778"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 173,
+          "wire_sha256": "26e769baadc697cfba1c7d278a988d81d634317cd37a974db781f76a6a0c377c"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 194,
+          "wire_sha256": "31159169e6b07d37935098c8e8d63aa768d4752634f74ca336f61e75f1288766"
+        }
+      ],
+      "mx13_frame_sha256_samples": [
+        "426a3b86d65a0ec856aa028f8cd022a29b9d73b7dab4b0b5cc51bfd08a93f778"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R023",
+      "opcode": 117,
+      "handler": "netwar.S2CWarAttackNormal",
+      "tag": 18,
+      "emission_status": "P67_PASS",
+      "accepted": true,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 91,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_test_tap",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 84,
+          "wire_sha256": "5491e294cf2961bdcf07159e6e83d8e8393e5c264ffed41b807805f22d8e8241"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 89,
+          "wire_sha256": "7435dcda732086c69556ce5d66f825f24ab80514f58f36156f764782c5f855a6"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 94,
+          "wire_sha256": "b2b722d4af65eaa584a865acc60d2a0b6573e46a8afb94989a2a2e11eb2adea5"
+        }
+      ],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R024",
+      "opcode": 119,
+      "handler": "netwar.S2CWarAttackNormalEnd",
+      "tag": 18,
+      "emission_status": "P67_PASS",
+      "accepted": true,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 92,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_test_tap",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 87,
+          "wire_sha256": "d4739dc1247957d4e8653023bc3cb4a9fffade36de0ee0db4dc258b71bc0b91e"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 92,
+          "wire_sha256": "8cd7c591cf0f311462eb3ff4792c9c78c44f82ac9c69c2e7a13703ed1ed1d27b"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 97,
+          "wire_sha256": "1ec143bfd90bc718aa8bb6b383677bf97945e4f34ab3aceb205197d04482d830"
+        }
+      ],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R022",
+      "opcode": 120,
+      "handler": "netwar.S2CWarAttackConverg",
+      "tag": 18,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R031",
+      "opcode": 121,
+      "handler": "netwar.S2CWarProtect",
+      "tag": 18,
+      "emission_status": "P67_PASS",
+      "accepted": true,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 1,
+      "p67_test_names": [
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_test_war2",
+          "event_id": 124,
+          "wire_sha256": "974afdc716cdfcced84993de4a693c9f3b98a43337908b9d4352c54bc6280234"
+        }
+      ],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R029",
+      "opcode": 122,
+      "handler": "netwar.S2CWarPerform",
+      "tag": 18,
+      "emission_status": "P67_PASS",
+      "accepted": true,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 6,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m7",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 80,
+          "wire_sha256": "aef31ed5645369b8c97c5b60feb4886ad66b71e7ade242f7bced4f393521f183"
+        },
+        {
+          "test": "_e2e_m7",
+          "event_id": 78,
+          "wire_sha256": "235e91393c7bbd5654db3addfc90e1f4554ed5a7294607d11a5742ce2176b776"
+        },
+        {
+          "test": "_e2e_m7",
+          "event_id": 85,
+          "wire_sha256": "b790832302b09c251ab4550cea9b611c4b4a5f4bc49b17ebea476c5ea9a7a764"
+        }
+      ],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R035",
+      "opcode": 123,
+      "handler": "netwar.S2CWarWState",
+      "tag": 18,
+      "emission_status": "P67_PASS",
+      "accepted": true,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 99,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_test_tap",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 81,
+          "wire_sha256": "1f02c39928035b86de0655da65f9fdc61abf7ac1dec30f50fe816785c73fb9d0"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 85,
+          "wire_sha256": "a41617efdf0ddb44b47a032e665db17ea46d80ef3eccb50bd6f46cc487483459"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 90,
+          "wire_sha256": "a41617efdf0ddb44b47a032e665db17ea46d80ef3eccb50bd6f46cc487483459"
+        }
+      ],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R021",
+      "opcode": 124,
+      "handler": "netwar.S2CWarAddon",
+      "tag": 18,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R027",
+      "opcode": 125,
+      "handler": "netwar.S2CWarHPPercent",
+      "tag": 18,
+      "emission_status": "P67_PASS",
+      "accepted": true,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 82,
+      "p67_test_names": [
+        "_e2e_m4",
+        "_e2e_m5",
+        "_e2e_m7",
+        "_test_tap",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 86,
+          "wire_sha256": "8a494b4194a3947dfd4ccf8b045adeeff24293a9165e2da9f7fcfad2271a7101"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 91,
+          "wire_sha256": "f2a7c20ff19b49b9fc1181d9fff0c6bc5cb6039822c1a11f7bc4a07f843f8dad"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 96,
+          "wire_sha256": "39f5c6757b4c096ec6a39072caee9ef8a90ea3b3bc8ef48fb0f0823b4113cbc4"
+        }
+      ],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R028",
+      "opcode": 126,
+      "handler": "netwar.S2CWarONACT",
+      "tag": 18,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R030",
+      "opcode": 127,
+      "handler": "netwar.S2CWarPlayerChat",
+      "tag": 18,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R032",
+      "opcode": 129,
+      "handler": "netwar.S2CWarSummon",
+      "tag": 18,
+      "emission_status": "BOTH_PASS",
+      "accepted": true,
+      "mx13_success_events": 1,
+      "p67_success_events_from_PASS_tests": 5,
+      "p67_test_names": [
+        "_e2e_m7",
+        "_test_multisession",
+        "_test_tap",
+        "_test_war2"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m7",
+          "event_id": 75,
+          "wire_sha256": "add135a9cad7f271808e3f513e63d99659131f50cf8795eb41fe4047da565b24"
+        },
+        {
+          "test": "_test_multisession",
+          "event_id": 139,
+          "wire_sha256": "add135a9cad7f271808e3f513e63d99659131f50cf8795eb41fe4047da565b24"
+        },
+        {
+          "test": "_test_multisession",
+          "event_id": 172,
+          "wire_sha256": "add135a9cad7f271808e3f513e63d99659131f50cf8795eb41fe4047da565b24"
+        }
+      ],
+      "mx13_frame_sha256_samples": [
+        "add135a9cad7f271808e3f513e63d99659131f50cf8795eb41fe4047da565b24"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R033",
+      "opcode": 130,
+      "handler": "netwar.S2CWarSummonCatch",
+      "tag": 18,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R036",
+      "opcode": 131,
+      "handler": "netwar.S2CWarWeather",
+      "tag": 18,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R017",
+      "opcode": 132,
+      "handler": "netwar.S2CWarSign",
+      "tag": 16,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R016",
+      "opcode": 133,
+      "handler": "netwar.S2CWarChildSkill",
+      "tag": 16,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R015",
+      "opcode": 134,
+      "handler": "netwar.S2CWarCalledPet",
+      "tag": 16,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R019",
+      "opcode": 135,
+      "handler": "netwar.S2CChangeAction",
+      "tag": 18,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R124",
+      "opcode": 144,
+      "handler": "netnpc.S2CNpcChat",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R129",
+      "opcode": 145,
+      "handler": "netnpc.S2CNpcItemChoose",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R123",
+      "opcode": 147,
+      "handler": "netnpc.S2CNpcBuyList",
+      "tag": null,
+      "emission_status": "BOTH_PASS",
+      "accepted": true,
+      "mx13_success_events": 1,
+      "p67_success_events_from_PASS_tests": 1,
+      "p67_test_names": [
+        "_test_tap"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_test_tap",
+          "event_id": 66,
+          "wire_sha256": "3b9a42a561d7523f4ffe0e13793aa10c7bf3d31a3e0ce448ff0c9863f473d15e"
+        }
+      ],
+      "mx13_frame_sha256_samples": [
+        "3b9a42a561d7523f4ffe0e13793aa10c7bf3d31a3e0ce448ff0c9863f473d15e"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R135",
+      "opcode": 148,
+      "handler": "netnpc.S2CNpcSellList",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R131",
+      "opcode": 149,
+      "handler": "netnpc.S2CNpcLearnList",
+      "tag": null,
+      "emission_status": "P67_PASS",
+      "accepted": true,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 1,
+      "p67_test_names": [
+        "_e2e_m9"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m9",
+          "event_id": 73,
+          "wire_sha256": "ad7c5a5ad94177b4b924eeb1cebfd85a7ba72c219d8818c5e9a5859c99f867a8"
+        }
+      ],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R136",
+      "opcode": 150,
+      "handler": "netnpc.S2CNpcTrade",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R126",
+      "opcode": 151,
+      "handler": "netnpc.S2CNpcDetails",
+      "tag": null,
+      "emission_status": "BOTH_PASS",
+      "accepted": true,
+      "mx13_success_events": 2,
+      "p67_success_events_from_PASS_tests": 2,
+      "p67_test_names": [
+        "_e2e_m11"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m11",
+          "event_id": 3,
+          "wire_sha256": "2216e8d9754b4a3cc41389b856c4e165f12e917323b54d432366ffad306cfe16"
+        },
+        {
+          "test": "_e2e_m11",
+          "event_id": 9,
+          "wire_sha256": "7b7ed0041191571639f22564698292bc68bf0f5cd22128f8eb8863c195517a85"
+        }
+      ],
+      "mx13_frame_sha256_samples": [
+        "2216e8d9754b4a3cc41389b856c4e165f12e917323b54d432366ffad306cfe16",
+        "789b96a310d4072bf44bab547b58636a17d72029a9958fd6675e89e99117cb3c"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R014",
+      "opcode": 152,
+      "handler": "netnpc.S2CNpcChatExt",
+      "tag": 16,
+      "emission_status": "BOTH_PASS",
+      "accepted": true,
+      "mx13_success_events": 5,
+      "p67_success_events_from_PASS_tests": 8,
+      "p67_test_names": [
+        "_e2e_m11",
+        "_e2e_m4",
+        "_e2e_m9",
+        "_test_tap"
+      ],
+      "p67_event_samples": [
+        {
+          "test": "_e2e_m4",
+          "event_id": 207,
+          "wire_sha256": "ea8701ca50c465e5282d04e1e2a93869ac09f004b2061ed756b20ca7007ca717"
+        },
+        {
+          "test": "_e2e_m4",
+          "event_id": 209,
+          "wire_sha256": "4b19480f6108d5a01b6342d9c77007e2f8e1f5f78c02775359655500f4fd2e1e"
+        },
+        {
+          "test": "_e2e_m9",
+          "event_id": 72,
+          "wire_sha256": "69be2235aa3f55a856a686e63275b4a988136bc086b36442dc995a40f35ac5f2"
+        }
+      ],
+      "mx13_frame_sha256_samples": [
+        "ea8701ca50c465e5282d04e1e2a93869ac09f004b2061ed756b20ca7007ca717",
+        "c5ad83010d5b5bb0ee43b485d510c0c86915b6573725ce2e14a34ee715a96bf9"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R127",
+      "opcode": 153,
+      "handler": "netnpc.S2CNpcInput",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R133",
+      "opcode": 154,
+      "handler": "netnpc.S2CNpcMake",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R134",
+      "opcode": 155,
+      "handler": "netnpc.S2CNpcMakeCost",
+      "tag": null,
+      "emission_status": "MX13_PASS",
+      "accepted": true,
+      "mx13_success_events": 2,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [
+        "6fd33033b4a34334c18647874469ff3a8dbe338efd510a085bafe188ea1fcac6",
+        "55fefa2c4203fee9e3a6ffe604d5164c4dd3de6eaa64299b62ce9c8c2fbbcff2"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R128",
+      "opcode": 156,
+      "handler": "netnpc.S2CNpcItemBill",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R137",
+      "opcode": 157,
+      "handler": "netnpc.S2CNpcTradeCenter",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R125",
+      "opcode": 158,
+      "handler": "netnpc.S2CNpcChatJuQing",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R132",
+      "opcode": 159,
+      "handler": "netnpc.S2CNpcLearnPerformList",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R122",
+      "opcode": 160,
+      "handler": "netnpc.S2CMakeCompleteNotify",
+      "tag": null,
+      "emission_status": "MX13_PASS",
+      "accepted": true,
+      "mx13_success_events": 1,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [
+        "940675561580ce5565e3a036e039eea2c7a3091177695e2802cb28ed0a73fb31"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R080",
+      "opcode": 161,
+      "handler": "nethero.S2CSummonInfo",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R066",
+      "opcode": 162,
+      "handler": "nethero.S2CItemInfo",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R070",
+      "opcode": 163,
+      "handler": "nethero.S2CPlayerNotify",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R039",
+      "opcode": 164,
+      "handler": "nethero.S2CNotifyExt",
+      "tag": 19,
+      "emission_status": "MX13_PASS",
+      "accepted": true,
+      "mx13_success_events": 1,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [
+        "e7a9f58580df5edeab89cd456a0edcc7240a5d55e7df5bf45e0d29238f66bac3"
+      ],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R038",
+      "opcode": 165,
+      "handler": "netchat.S2CSysNotify",
+      "tag": 19,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R104",
+      "opcode": 166,
+      "handler": "netmail.S2CMail",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R013",
+      "opcode": 167,
+      "handler": "netchat.S2CPlayerChat",
+      "tag": 16,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R012",
+      "opcode": 168,
+      "handler": "netchat.S2CWarNotify",
+      "tag": 3,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R037",
+      "opcode": 169,
+      "handler": "netchat.S2CNotify",
+      "tag": 19,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R047",
+      "opcode": 170,
+      "handler": "mxv.S2CVer",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R105",
+      "opcode": 171,
+      "handler": "netmap.S2CAddTempNpc",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R107",
+      "opcode": 172,
+      "handler": "netmap.S2CFBNpc",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R053",
+      "opcode": 173,
+      "handler": "netchildinfo.S2CChildInfo",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R081",
+      "opcode": 175,
+      "handler": "nethero.S2CSummonInfo6",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R055",
+      "opcode": 177,
+      "handler": "netcountry.S2CNewspaper",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R057",
+      "opcode": 178,
+      "handler": "netforum.S2CForum",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R078",
+      "opcode": 179,
+      "handler": "nethero.S2CServiceAnswer",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R085",
+      "opcode": 180,
+      "handler": "netitemshop.S2CItemShop",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R056",
+      "opcode": 181,
+      "handler": "netdreamknow.S2CGetDreamKnow",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R052",
+      "opcode": 182,
+      "handler": "netchild.S2CChild",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R050",
+      "opcode": 183,
+      "handler": "netbaike.S2CBaike",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R051",
+      "opcode": 184,
+      "handler": "netblog.S2CBlog",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R130",
+      "opcode": 185,
+      "handler": "netnpc.S2CNpcItemDiscount",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R150",
+      "opcode": 186,
+      "handler": "netrichgood.S2COpenUpload",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R148",
+      "opcode": 187,
+      "handler": "netrelation.S2COpenTeach",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R159",
+      "opcode": 188,
+      "handler": "nettjtradecenter.S2CTJTradeCenter",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R087",
+      "opcode": 189,
+      "handler": "netliving.S2CFactoryList",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R067",
+      "opcode": 190,
+      "handler": "nethero.S2CItemTCInfo",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R048",
+      "opcode": 191,
+      "handler": "netachieve.S2CAchieve",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R043",
+      "opcode": 192,
+      "handler": "dlgcalendar.S2CTime",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    },
+    {
+      "route_id": "R049",
+      "opcode": 193,
+      "handler": "netachieve.S2CAchieveBadge",
+      "tag": null,
+      "emission_status": "NOT_TESTED",
+      "accepted": false,
+      "mx13_success_events": 0,
+      "p67_success_events_from_PASS_tests": 0,
+      "p67_test_names": [],
+      "p67_event_samples": [],
+      "mx13_frame_sha256_samples": [],
+      "native_gui_parse": "NOT_TESTED"
+    }
+  ],
+  "limits": [
+    "Physical successful sendall is not TCP delivery confirmation.",
+    "Python test receiver does not prove original GUI client decode.",
+    "P67 full suite PARTIAL because _test_singleplayer failed.",
+    "No original-DLL XOR/LZSS equivalence proof.",
+    "This is a cross-run union of unique opcode/handler pairs, not frame counts."
+  ]
+}

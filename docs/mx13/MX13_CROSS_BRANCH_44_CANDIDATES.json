@@ -1,0 +1,101 @@
+{
+  "task": "MX-28",
+  "status": "CANDIDATE_ONLY",
+  "p0": "p0-accepted/15dd282",
+  "p67_commit": "7db4df1",
+  "mx13_commit": "4d8c236",
+  "source_sha256": {
+    "p67_report": "4225b0524ab6f6a50c9b329884763d97f8eb08b17ba5f975c71039472ed06410",
+    "mx13_report": "bd7faf9a9b8e89997594cbfd9b2de3a89dd3c04f8ed0b1d8346ecc615cf152f1",
+    "client_registry": "98929e57e440d40950a8b530c3ec006eeb5999b500eb732495e513534699aa31",
+    "p0_route_list": "17c57cdb77300bc222d68fbbc9ed154af98763c4e5024b79c51bd7f76807e7e4"
+  },
+  "counts": {
+    "p67": 38,
+    "mx13": 36,
+    "common": 30,
+    "p67_only": 8,
+    "mx13_only": 6,
+    "candidate_union": 44,
+    "neither": 116
+  },
+  "p67_all_tests_passed": false,
+  "p67_status": "PARTIAL",
+  "verified_merged_coverage": false,
+  "native_gui_parse": "NOT_TESTED",
+  "known_failure": "_test_singleplayer timeout waiting for opcode 112; failed test emissions excluded from P67 numerator",
+  "p67_only": [
+    {
+      "route_id": "R005",
+      "opcode": 35,
+      "handler": "netitem.S2CItemQuantity"
+    },
+    {
+      "route_id": "R023",
+      "opcode": 117,
+      "handler": "netwar.S2CWarAttackNormal"
+    },
+    {
+      "route_id": "R024",
+      "opcode": 119,
+      "handler": "netwar.S2CWarAttackNormalEnd"
+    },
+    {
+      "route_id": "R031",
+      "opcode": 121,
+      "handler": "netwar.S2CWarProtect"
+    },
+    {
+      "route_id": "R029",
+      "opcode": 122,
+      "handler": "netwar.S2CWarPerform"
+    },
+    {
+      "route_id": "R035",
+      "opcode": 123,
+      "handler": "netwar.S2CWarWState"
+    },
+    {
+      "route_id": "R027",
+      "opcode": 125,
+      "handler": "netwar.S2CWarHPPercent"
+    },
+    {
+      "route_id": "R131",
+      "opcode": 149,
+      "handler": "netnpc.S2CNpcLearnList"
+    }
+  ],
+  "mx13_only": [
+    {
+      "route_id": "R003",
+      "opcode": 34,
+      "handler": "netitem.S2CItemDel"
+    },
+    {
+      "route_id": "R140",
+      "opcode": 51,
+      "handler": "netpet.S2CPropView"
+    },
+    {
+      "route_id": "R089",
+      "opcode": 87,
+      "handler": "netliving.S2CProduce"
+    },
+    {
+      "route_id": "R134",
+      "opcode": 155,
+      "handler": "netnpc.S2CNpcMakeCost"
+    },
+    {
+      "route_id": "R122",
+      "opcode": 160,
+      "handler": "netnpc.S2CMakeCompleteNotify"
+    },
+    {
+      "route_id": "R039",
+      "opcode": 164,
+      "handler": "nethero.S2CNotifyExt"
+    }
+  ]
+}

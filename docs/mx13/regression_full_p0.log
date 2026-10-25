@@ -1,0 +1,226 @@
+﻿==============================================================================
+ 涓€閿洖褰掞細65 涓楠?
+==============================================================================
+
+鈹€鈹€ 鈶?鍗忚瀵硅处 鈹€鈹€
+  鈻?绾垮簭瀵硅处 _extract_wire --audit 鈥?
+    PASS锛?.1s锛?
+  鈻?build_*鈫擮VERLAY 瀹¤ 鈥?
+    PASS锛?.2s锛?
+  鈻?涓婅瑕嗙洊鐜?_c2s_coverage 鈥?
+    PASS锛?.1s锛?
+
+鈹€鈹€ 鈶?鍒嗘淳濂戠害 / 鏁版嵁灞?鈹€鈹€
+  鈻?纭害鏉?#5/#16/#17 _test_hard_constraints 鈥?
+    PASS锛?.2s锛?
+  鈻?鍒嗘淳濂戠害 _test_dispatch 鈥?
+    PASS锛?.3s锛?
+  鈻?鐗╀激鍏紡 _test_damage 鈥?
+    PASS锛?.0s锛?
+  鈻?鐜╁鎷涘紡 _test_hero_magic 鈥?
+    PASS锛?.2s锛?
+  鈻?瀹犵墿鎷涘紡 _test_pet_skill 鈥?
+    PASS锛?.3s锛?
+  鈻?榛樿妯″瀷瀹堟姢 _test_dmg_default_model 鈥?
+    PASS锛?.2s锛?
+  鈻?鏃堕棿鍙岄€氶亾 _test_time_channels 鈥?
+    PASS锛?.4s锛?
+  鈻?STATS 鏍煎紡濂戠害 _stats --self-test 鈥?
+    PASS锛?.1s锛?
+  鈻?鐪熸満绔彛涓€鑷存€?_test_live_port_sync 鈥?
+    PASS锛?.2s锛?
+  鈻?瀹㈡埛绔В鐮佸鐓?_test_client_decode 鈥?
+    PASS锛?.2s锛?
+  鈻?瑕嗙洊琛ㄨВ鐮?_test_tap 鈥?
+    PASS锛?5.8s锛?
+  鈻?澶氫細璇濋殧绂?_test_multisession 鈥?
+    PASS锛?.5s锛?
+  鈻?P0 寮傚父鎭㈠ _test_p0_crash_recovery 鈥?
+    PASS锛?.6s锛?
+  鈻?璋冭瘯鍣ㄧ鍒扮 _test_debugger 鈥?
+    PASS锛?9.1s锛?
+  鈻?鐪熷疄閾捐矾鏍囩孩 _test_war_chain 鈥?
+    PASS锛?.8s锛?
+  鈻?涓栫晫缂栬緫鍣?_test_editor 鈥?
+    PASS锛?.3s锛?
+  鈻?鍦板浘鍏ㄥ浘 _test_map 鈥?
+    PASS锛?.5s锛?
+  鈻?鍦烘櫙閬囨€?_test_encounter_map 鈥?
+    PASS锛?.2s锛?
+  鈻?涓荤嚎 1鈥? _test_quest_chain 鈥?
+    PASS锛?.1s锛?
+  鈻?鑰佽鑹查噸鐧?_test_returning_login 鈥?
+    PASS锛?.2s锛?
+  鈻?鍒朵綔閾韭风湡鎵ｈ垂 _test_craft 鈥?
+    PASS锛?.3s锛?
+  鈻?浜嬩欢鎬荤嚎路甯ф壒鍚堝苟 _test_bus 鈥?
+    PASS锛?2.2s锛?
+  鈻?鎺掑簭绋冲畾 _test_speed_stability 鈥?
+    PASS锛?.2s锛?
+  鈻?瀹犵墿瀹炰緥 _test_pet_instance 鈥?
+    PASS锛?.2s锛?
+  鈻?瀹犵墿浜や粯 _test_pet_delivery 鈥?
+    PASS锛?.3s锛?
+  鈻?瀹犵墿瑁呭 _test_pet_equip 鈥?
+    PASS锛?.8s锛?
+  鈻?瑙掕壊鍏绘垚 _test_p3_progression 鈥?
+    PASS锛?.3s锛?
+  鈻?瀹犵墿鍏绘垚 _test_p3_pet_growth 鈥?
+    PASS锛?.3s锛?
+  鈻?楂樼骇鎴樻枟 _test_p3_03_combat 鈥?
+    PASS锛?.4s锛?
+  鈻?涓荤嚎鍓ф儏1-16 _test_quest_story4 鈥?
+    PASS锛?.2s锛?
+  鈻?涓荤嚎7-16 _test_quest_716 鈥?
+    PASS锛?.0s锛?
+  鈻?鎴樻枟鍏ㄩ摼璺?_test_battle_flow 鈥?
+    PASS锛?.2s锛?
+  鈻?鎴樻枟鏍稿績 _test_battle_core 鈥?
+    PASS锛?.2s锛?
+  鈻?绯荤粺璁剧疆 _test_sysopt 鈥?
+    PASS锛?.2s锛?
+  鈻?鍐呭鎵╁厖 _test_content 鈥?
+    PASS锛?.2s锛?
+  鈻?瀛樻。閿?_test_save_lock 鈥?
+    PASS锛?.0s锛?
+  鈻?瀛樻。鏍硅矾寰?_test_save_paths 鈥?
+    PASS锛?.2s锛?
+  鈻?瀛樻。澧為噺路寮傛 _test_save_async 鈥?
+    PASS锛?.4s锛?
+  鈻?鐘舵€佷竴鑷存€?_test_state_consistency 鈥?
+    PASS锛?.2s锛?
+  鈻?鎸佷箙鍖栧啋鐑?_test_persist 鈥?
+    PASS锛?.2s锛?
+  鈻?鍘熷瓙瀛樻。 _test_role_persistence 鈥?
+    PASS锛?.3s锛?
+  鈻?浼橀泤鍋滄 _test_server_stop 鈥?
+    PASS锛?.6s锛?
+  鈻?GM 闈㈡澘鐘舵€?_test_gm_web_state 鈥?
+    PASS锛?.0s锛?
+  鈻?Web 绔彛鍐茬獊 _test_web_port_conflict 鈥?
+    PASS锛?.4s锛?
+  鈻?绔彛鍥炲～ _test_port_backfill 鈥?
+    PASS锛?.2s锛?
+  鈻?寰幆瑙ｇ爜 _test_loop_decode 鈥?
+    PASS锛?.4s锛?
+  鈻?涓㈠抚璁℃暟 _test_drop_count 鈥?
+    PASS锛?.2s锛?
+  鈻?鐑姞杞?_test_world_config_reload 鈥?
+    PASS锛?.4s锛?
+  鈻?鐗规€х姸鎬?_test_feature_status 鈥?
+    PASS锛?.3s锛?
+  鈻?鍙樺紓路瑙勮寖鍖栧畧鎶?_test_mutation_normalize 鈥?
+    PASS锛?.7s锛?
+  鈻?schema 杩佺Щ _test_schema_migration 鈥?
+    PASS锛?.2s锛?
+  鈻?缁忔祹鏀跺彛 _test_p3_05_economy 鈥?
+    PASS锛?.1s锛?
+
+鈹€鈹€ 鈶?socket 鍐掔儫 鈹€鈹€
+  鈻?鍐掔儫 _e2e_m4锛堟垬鏂楀熀纭€锛?鈥?
+    PASS锛?.1s锛?
+  鈻?鍐掔儫 _e2e_m5锛堟垬璐?6鏁岋級 鈥?
+    PASS锛?.2s锛?
+  鈻?鍐掔儫 _e2e_m7锛堟嫑寮?浼氬績锛?鈥?
+    PASS锛?.6s锛?
+  鈻?鍐掔儫 _e2e_m9锛堝吇鎴愰棴鐜級 鈥?
+    PASS锛?2.6s锛?
+  鈻?鍐掔儫 _e2e_m11锛坥p100/101锛?鈥?
+    PASS锛?.6s锛?
+  鈻?鍐掔儫 _test_war2锛堟垬鏂楁繁鍖柭疯嚜甯﹀唴鏍革級 鈥?
+    PASS锛?4.5s锛?
+  鈻?瑕嗙洊缁熻 coverage_smoke 鈥?
+    PASS锛?3.7s锛?
+
+鈹€鈹€ 鈶?鏂囨。浣撴 鈹€鈹€
+  鈻?鍒嗗唽鍚屾 _split_docs --check 鈥?
+    PASS锛?.1s锛?
+  鈻?璺ㄦ枃浠舵壂鎻?_test_anchor_multifile 鈥?
+    PASS锛?.1s锛?
+  鈻?鏂囨。涓夊悜浣撴 _check_anchors锛堜富鏂囨。 + docs/锛?鈥?
+    PASS锛?.6s锛?
+
+==============================================================================
+ 姹囨€?
+==============================================================================
+  PASS      0.1s  绾垮簭瀵硅处 _extract_wire --audit
+  PASS      0.2s  build_*鈫擮VERLAY 瀹¤
+  PASS      1.1s  涓婅瑕嗙洊鐜?_c2s_coverage
+  PASS      0.2s  纭害鏉?#5/#16/#17 _test_hard_constraints
+  PASS      0.3s  鍒嗘淳濂戠害 _test_dispatch
+  PASS      0.0s  鐗╀激鍏紡 _test_damage
+  PASS      0.2s  鐜╁鎷涘紡 _test_hero_magic
+  PASS      0.3s  瀹犵墿鎷涘紡 _test_pet_skill
+  PASS      0.2s  榛樿妯″瀷瀹堟姢 _test_dmg_default_model
+  PASS      0.4s  鏃堕棿鍙岄€氶亾 _test_time_channels
+  PASS      0.1s  STATS 鏍煎紡濂戠害 _stats --self-test
+  PASS      0.2s  鐪熸満绔彛涓€鑷存€?_test_live_port_sync
+  PASS      0.2s  瀹㈡埛绔В鐮佸鐓?_test_client_decode
+  PASS     15.8s  瑕嗙洊琛ㄨВ鐮?_test_tap
+  PASS      1.5s  澶氫細璇濋殧绂?_test_multisession
+  PASS      1.6s  P0 寮傚父鎭㈠ _test_p0_crash_recovery
+  PASS     19.1s  璋冭瘯鍣ㄧ鍒扮 _test_debugger
+  PASS      1.8s  鐪熷疄閾捐矾鏍囩孩 _test_war_chain
+  PASS      9.3s  涓栫晫缂栬緫鍣?_test_editor
+  PASS      0.5s  鍦板浘鍏ㄥ浘 _test_map
+  PASS      0.2s  鍦烘櫙閬囨€?_test_encounter_map
+  PASS      1.1s  涓荤嚎 1鈥? _test_quest_chain
+  PASS      0.2s  鑰佽鑹查噸鐧?_test_returning_login
+  PASS      0.3s  鍒朵綔閾韭风湡鎵ｈ垂 _test_craft
+  PASS     12.2s  浜嬩欢鎬荤嚎路甯ф壒鍚堝苟 _test_bus
+  PASS      0.2s  鎺掑簭绋冲畾 _test_speed_stability
+  PASS      0.2s  瀹犵墿瀹炰緥 _test_pet_instance
+  PASS      0.3s  瀹犵墿浜や粯 _test_pet_delivery
+  PASS      0.8s  瀹犵墿瑁呭 _test_pet_equip
+  PASS      0.3s  瑙掕壊鍏绘垚 _test_p3_progression
+  PASS      0.3s  瀹犵墿鍏绘垚 _test_p3_pet_growth
+  PASS      0.4s  楂樼骇鎴樻枟 _test_p3_03_combat
+  PASS      1.2s  涓荤嚎鍓ф儏1-16 _test_quest_story4
+  PASS      1.0s  涓荤嚎7-16 _test_quest_716
+  PASS      0.2s  鎴樻枟鍏ㄩ摼璺?_test_battle_flow
+  PASS      0.2s  鎴樻枟鏍稿績 _test_battle_core
+  PASS      0.2s  绯荤粺璁剧疆 _test_sysopt
+  PASS      0.2s  鍐呭鎵╁厖 _test_content
+  PASS      3.0s  瀛樻。閿?_test_save_lock
+  PASS      0.2s  瀛樻。鏍硅矾寰?_test_save_paths
+  PASS      2.4s  瀛樻。澧為噺路寮傛 _test_save_async
+  PASS      0.2s  鐘舵€佷竴鑷存€?_test_state_consistency
+  PASS      0.2s  鎸佷箙鍖栧啋鐑?_test_persist
+  PASS      0.3s  鍘熷瓙瀛樻。 _test_role_persistence
+  PASS      0.6s  浼橀泤鍋滄 _test_server_stop
+  PASS      2.0s  GM 闈㈡澘鐘舵€?_test_gm_web_state
+  PASS      1.4s  Web 绔彛鍐茬獊 _test_web_port_conflict
+  PASS      1.2s  绔彛鍥炲～ _test_port_backfill
+  PASS      0.4s  寰幆瑙ｇ爜 _test_loop_decode
+  PASS      0.2s  涓㈠抚璁℃暟 _test_drop_count
+  PASS      0.4s  鐑姞杞?_test_world_config_reload
+  PASS      1.3s  鐗规€х姸鎬?_test_feature_status
+  PASS      0.7s  鍙樺紓路瑙勮寖鍖栧畧鎶?_test_mutation_normalize
+  PASS      0.2s  schema 杩佺Щ _test_schema_migration
+  PASS      1.1s  缁忔祹鏀跺彛 _test_p3_05_economy
+  PASS      1.1s  鍐掔儫 _e2e_m4锛堟垬鏂楀熀纭€锛?
+  PASS      2.2s  鍐掔儫 _e2e_m5锛堟垬璐?6鏁岋級
+  PASS      0.6s  鍐掔儫 _e2e_m7锛堟嫑寮?浼氬績锛?
+  PASS     12.6s  鍐掔儫 _e2e_m9锛堝吇鎴愰棴鐜級
+  PASS      4.6s  鍐掔儫 _e2e_m11锛坥p100/101锛?
+  PASS     14.5s  鍐掔儫 _test_war2锛堟垬鏂楁繁鍖柭疯嚜甯﹀唴鏍革級
+  PASS     93.7s  瑕嗙洊缁熻 coverage_smoke
+  PASS      0.1s  鍒嗗唽鍚屾 _split_docs --check
+  PASS      0.1s  璺ㄦ枃浠舵壂鎻?_test_anchor_multifile
+  PASS      2.6s  鏂囨。涓夊悜浣撴 _check_anchors锛堜富鏂囨。 + docs/锛?
+------------------------------------------------------------------------------
+ 鍚堣 65/65 閫氳繃
+
+閫€鍑虹爜瀹¤锛氶€氳繃锛堟棤闈?0 琚悶锛? 鏉′緥澶栧潎宸茬櫥璁帮級
+
+=== STATS ===
+build_star_count     : 58
+coverage_denominator : 134
+coverage_numerator   : 134
+dispatch_pre_war_ops : 58
+elapsed_sec          : 220.0
+mode                 : full
+steps_failed         : 0
+steps_passed         : 65
+steps_total          : 65
+=== END STATS ===

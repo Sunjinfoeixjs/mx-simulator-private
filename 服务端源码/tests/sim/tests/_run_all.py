@@ -63,7 +63,7 @@ def _find_tests_dir(sim_dir):
 # 可跑的测试统一放在「_test_dispatch.py 所在层」（历史上一份 _test_dispatch 曾复制到
 # sim/tests 并漂移，现已收敛：runner 只指向那一层，那边是唯一副本）
 TESTS = _find_tests_dir(SIM)
-REPORT = r'C:\Users\Administrator\MX\协议资料\报告'
+REPORT = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(SIM))), '协议资料', '报告')  # isolated worktree, never original dirty checkout
 PY = sys.executable or 'python'
 
 # (名称, 层, 参数, 超时秒, 通过准则)。参数相对各自工作目录解析。

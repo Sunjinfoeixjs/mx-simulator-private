@@ -1,0 +1,18 @@
+{
+  "task": "MX-15",
+  "mode": "selftest",
+  "created_utc": "2026-10-24T17:54:18.042221+00:00",
+  "status": "PASS",
+  "evidence": {
+    "p0_tag_commit": "15dd2828ceb2e1ea7023fd09ae69955579a5b74d",
+    "selftest": {
+      "status": "PASS",
+      "malformed_json_rejected": 6,
+      "dispatch_mutation_rejected": true,
+      "false_success_stats_rejected": true,
+      "socket_route_selection_verified": true
+    }
+  },
+  "steps": [],
+  "baseline": "p0-accepted/15dd282"
+}

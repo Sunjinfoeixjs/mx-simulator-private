@@ -1,0 +1,43 @@
+{
+  "result": "PASS",
+  "route_denominator": 160,
+  "actually_sent_unique_routes": 26,
+  "emitted_successful_frames": 98,
+  "python_client_decoded_routes": 25,
+  "gui_metric": "NOT_TESTED",
+  "status_counts": {
+    "PASS": 26,
+    "FAIL": 0,
+    "NOT_TESTED": 134
+  },
+  "initial_full_p0": {
+    "status": "FAIL",
+    "steps": {
+      "steps_failed": "2",
+      "steps_passed": "63",
+      "steps_total": "65"
+    },
+    "reason": "Cross-worktree path drift in two doc gates"
+  },
+  "no_client_asset_junction": {
+    "status": "FAIL",
+    "steps": {
+      "steps_failed": "9",
+      "steps_passed": "56",
+      "steps_total": "65"
+    },
+    "reason": "External decompiled client data path absent; 9 dependent tests cannot run"
+  },
+  "final_full_p0": {
+    "status": "PASS",
+    "steps": {
+      "steps_failed": "0",
+      "steps_passed": "65",
+      "steps_total": "65"
+    },
+    "exit_code": 0,
+    "source": "regression_full_p0_junction_client.log",
+    "dependency": "Git-ignored client-source junction with pinned net.py SHA256"
+  },
+  "client_dictionary_extra_mappings": 8
+}
